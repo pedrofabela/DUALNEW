@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts> 
+    <constant name="struts.multipart.maxSize" value="299999999" />
+    <constant name="struts.ui.theme" value="simple"></constant>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+    
+    <package name="default" namespace="/" extends="struts-default">
+
+        <!-- ACCESO  A MENUS-->
+        <action name="acceso" class="action.Acceso_Action" method="verMevu">
+            <result name="SUCCESS">/pages/login.jsp</result>			              
+            <result name="ERROR">/pages/login.jsp</result>
+            <result name="input">/pages/login.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+		
+		
+        <action name="verAcceso" class="action.Acceso_Action" method="MuestraMenuPrincipalUsuario">
+            <result name="SUCCESS">/pages/index.jsp</result>    
+            <result name="SUCCESS2">/pages/index2.jsp</result>    
+            <result name="SUCCESS3">/pages/tablero.jsp</result>              
+            <result name="ERROR">/pages/login.jsp</result>
+            <result name="input">/pages/login.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        <!-- ***************************************** STRUTS PETER************************************************************-->
+        
+         <action name="consultaDashboard" class="action.PrincipalAction" method="consultaDashboard">
+            <result name="SUCCESS">/pages/tablero.jsp</result>                          
+            <result name="ERROR">/pages/index.jsp</result>
+            <result name="input">/pages/index.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <!-- ***************************************** parte 2************************************************************-->
+        <action name="actualizarAlumno" class="action.PrincipalAction" method="actualizarAlumno">
+         
+            <result name="SUCCESS">/pages/index2.jsp</result>			              
+            <result name="ERROR">/pages/index2.jsp</result>
+            <result name="input">/pages/index2.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <action name="buscarAlumno" class="action.PrincipalAction" method="buscarAlumno">
+         
+            <result name="SUCCESS">/pages/index2.jsp</result>			              
+            <result name="ERROR">/pages/login.jsp</result>
+            <result name="input">/pages/login.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        
+        <action name="registroDual" class="action.PrincipalAction" method="registroDual">
+         
+            <result name="SUCCESS">/pages/registrodual.jsp</result>			              
+            <result name="ERROR">/pages/login.jsp</result>
+            <result name="input">/pages/login.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <action name="BuscarRFC" class="action.PrincipalAction" method="BuscarRFC">
+         
+            <result name="SUCCESS">/pages/registrodual.jsp</result>			              
+            <result name="ERROR">/pages/login.jsp</result>
+            <result name="input">/pages/login.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <action name="GuardarEmpresa" class="action.PrincipalAction" method="GuardarEmpresa">
+         
+            <result name="SUCCESS">/pages/registrodual.jsp</result>			              
+            <result name="ERROR">/pages/registrodual.jsp</result>
+            <result name="input">/pages/registrodual.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <action name="GuardarAsesor" class="action.PrincipalAction" method="GuardarAsesor">   
+            <result name="SUCCESS">/pages/registrodual.jsp</result>			              
+            <result name="ERROR">/pages/registrodual.jsp</result>
+            <result name="input">/pages/registrodual.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <action name="AgregarProyecto" class="action.PrincipalAction" method="AgregarProyecto">   
+            <result name="SUCCESS">/pages/registrodual.jsp</result>			              
+            <result name="ERROR">/pages/registrodual.jsp</result>
+            <result name="input">/pages/registrodual.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <action name="ModificarProyecto" class="action.PrincipalAction" method="ModificarProyecto">   
+            <result name="SUCCESS">/pages/Editardual.jsp</result>			              
+            <result name="ERROR">/pages/Editardual.jsp</result>
+            <result name="input">/pages/Editardual.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+         <action name="GuardarProyecto" class="action.PrincipalAction" method="GuardarProyecto">   
+             <result name="SUCCESS" type="chain">verAcceso</result>			              
+            <result name="ERROR">/pages/registrodual.jsp</result>
+            <result name="input">/pages/registrodual.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+         <action name="ActualizarProyecto" class="action.PrincipalAction" method="ActualizarProyecto">   
+             <result name="SUCCESS" type="chain">verAcceso</result>			              
+            <result name="ERROR">/pages/registrodual.jsp</result>
+            <result name="input">/pages/registrodual.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <action name="ReturnStar" class="action.PrincipalAction" method="RegresarIncio">
+            <result name="SUCCESS" type="chain">verAcceso</result>			              
+            <result name="ERROR">/pages/index.jsp</result>
+            <result name="input">/pages/index.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+         <action name="registroBeca" class="action.PrincipalAction" method="registroBeca">    
+            <result name="SUCCESS">/pages/registroBeca.jsp</result>			              
+            <result name="ERROR">/pages/login.jsp</result>
+            <result name="input">/pages/login.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        <action name="AgregarBeca" class="action.PrincipalAction" method="GuardarBeca">   
+            <result name="SUCCESS">/pages/registroBeca.jsp</result>			              
+            <result name="ERROR">/pages/registroBeca.jsp</result>
+            <result name="input">/pages/registroBeca.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <action name="ActualizarBeca" class="action.PrincipalAction" method="ActualizaBeca">   
+             <result name="SUCCESS">/pages/registroBeca.jsp</result>			              
+            <result name="ERROR">/pages/registroBeca.jsp</result>
+            <result name="input">/pages/registroBeca.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <action name="EliminarBeca" class="action.PrincipalAction" method="EliminarBeca">   
+             <result name="SUCCESS">/pages/registroBeca.jsp</result>			              
+            <result name="ERROR">/pages/registroBeca.jsp</result>
+            <result name="input">/pages/registroBeca.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <!-- ***************************************** fin parte 2************************************************************-->
+        
+        <!-- ***************************************** parte 1************************************************************-->
+        <action name="AgregarCarrera" class="action.RegistroArcAction" method="GuardaCarrera">
+            <result name="SUCCESS">/pages/index.jsp</result>                          
+            <result name="ERROR">/pages/index.jsp</result>
+            <result name="input">/pages/index.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action> 
+        
+        <action name="EliminarCarrera" class="action.RegistroArcAction" method="EliminarCarrera">
+            <result name="SUCCESS">/pages/index.jsp</result>                          
+            <result name="ERROR">/pages/index.jsp</result>
+            <result name="input">/pages/index.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>  
+        
+        <action name="GuardarResponsable" class="action.RegistroArcAction" method="validaArchivoResponsable">
+            <result name="SUCCESS">/pages/index.jsp</result>                          
+            <result name="ERROR">/pages/index.jsp</result>
+            <result name="input">/pages/index.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <action name="GuardarAsesoresI" class="action.RegistroArcAction" method="validaArchivoAsesorInterno">
+            <result name="SUCCESS">/pages/index.jsp</result>                          
+            <result name="ERROR">/pages/index.jsp</result>
+            <result name="input">/pages/index.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <action name="GuardarAlumnos" class="action.RegistroArcAction" method="validaArchivoAlumnos">
+            <result name="SUCCESS">/pages/index.jsp</result>                          
+            <result name="ERROR">/pages/index.jsp</result>
+            <result name="input">/pages/index.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+      
+        <!-- *****************************************fin  parte 1************************************************************-->
+            
+        <!-- CERRAR SESION -->
+        <action name="CerrarSesion" class="action.CerrarSesion" method="cerrar">  
+            <result name="SUCCESS" type="chain">acceso</result>
+            <result name="input" type="chain">acceso</result>
+        </action>	
+        
+		
+    </package>
+	
+</struts>
