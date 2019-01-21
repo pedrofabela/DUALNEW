@@ -154,7 +154,25 @@
                                                     });
                                                 </script>
 
+                                                <script type="text/javascript">
+                                                    $(document).ready(function () {
 
+                                                        (function ($) {
+
+                                                            $('#filtrarB').keyup(function () {
+
+                                                                var rex = new RegExp($(this).val(), 'i');
+                                                                $('.buscarB tr').hide();
+                                                                $('.buscarB tr').filter(function () {
+                                                                    return rex.test($(this).text());
+                                                                }).show();
+
+                                                            })
+
+                                                        }(jQuery));
+
+                                                    });
+                                                </script>
 
                                                 </head>
 
@@ -345,7 +363,7 @@
 
                                                                                 <div class="input-group ">                        
                                                                                     <i class="fa fa-search fa-2x " style="color: #0056b3"></i>                                                                                                                  
-                                                                                    <input id="filtrar" type="text" class="form-control" placeholder="INGRESA EL NOMBRE DEL ALUMNO QUE BUSCA...."/>
+                                                                                    <input id="filtrarB" type="text" class="form-control" placeholder="INGRESA EL NOMBRE DEL ALUMNO QUE BUSCA...."/>
                                                                                 </div>                                                                                                                                                     
 
                                                                                 <br/>
@@ -365,7 +383,7 @@
 
                                                                                             </tr>
                                                                                         </thead>
-                                                                                        <tbody class='buscar'>
+                                                                                        <tbody class='buscarB'>
 
                                                                                         <s:iterator value="ListaAlumnosBeca" id="ListaAlumnosBeca" status="stat">
                                                                                             <tr style="color: #666; font-size: 70%;">
