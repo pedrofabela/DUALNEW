@@ -415,7 +415,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
     }
 
     public List listaAlumnos2(DatosBean datos) throws Exception {
-        String query = "SELECT CURP,MATRICULA,NOMBRE ||' ' ||APELLIDOP ||' ' ||APELLIDOM AS NOMBRE_COMPLETO,(SELECT NOM_CAR FROM cat_carreras WHERE CVE_CAR=CVE_CARRERA) AS NOM_CAR,CCT FROM CAT_ALUMNOS WHERE CURP='" + datos.getCURPA() + "'";
+        String query = "SELECT CURP,MATRICULA,NOMBRE ||' ' ||APELLIDOP ||' ' ||APELLIDOM AS NOMBRE_COMPLETO,(SELECT NOM_CAR FROM cat_carreras WHERE CVE_CAR=CVE_CARRERA) AS NOM_CAR,CVE_CARRERA,CCT FROM CAT_ALUMNOS WHERE CURP='" + datos.getCURPA() + "'";
         Constantes.enviaMensajeConsola("Consulta ALUMNOS----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new listaAlumnos2Mapper());
@@ -474,8 +474,8 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         return list;
     }
 
-    public List ConsultaAsesoresI(String cct) throws Exception {
-        String query = "SELECT ID_CAT_ASE,NOMBRE ||' ' ||APELLIDOP ||' ' ||APELLIDOM AS NOMBRE_COMPLETO FROM CAT_ASESOR_INSTITUCIONAL WHERE CCT='" + cct + "'";
+    public List ConsultaAsesoresI(String cct,String CVE_CAR) throws Exception {
+        String query = "SELECT ID_CAT_ASE,NOMBRE ||' ' ||APELLIDOP ||' ' ||APELLIDOM AS NOMBRE_COMPLETO FROM CAT_ASESOR_INSTITUCIONAL WHERE CCT='" + cct + "' AND CVE_CAR_RES='"+CVE_CAR+"'";
         Constantes.enviaMensajeConsola("Consulta ASESORES ESCOLARES----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new AsesoresIMapper());

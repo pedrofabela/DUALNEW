@@ -156,8 +156,8 @@ public class ConsultasBusiness {
         return lista;
     }
 
-    public List ConsultaAsesoresI(String CCT) throws Exception {
-        List lista = this.con.ConsultaAsesoresI(CCT);
+    public List ConsultaAsesoresI(String CCT, String CVE_CAR) throws Exception {
+        List lista = this.con.ConsultaAsesoresI(CCT,CVE_CAR);
         return lista;
     }
 

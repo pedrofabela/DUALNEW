@@ -75,7 +75,7 @@ public interface ConsultaDAO {
 
     public List ConsultaAsesores(String RFC) throws Exception;
 
-    public List ConsultaAsesoresI(String CCT) throws Exception;
+    public List ConsultaAsesoresI(String CCT, String CVE_CAR) throws Exception;
 
     public List ConsultaResponsableI(String CCT) throws Exception;
 

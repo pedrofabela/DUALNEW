@@ -164,6 +164,7 @@
                                                     </tr>     
                                                     <s:textfield name="datos.CCT" id="datos.CCT" cssStyle="display:none;"></s:textfield>  
                                                     <s:textfield name="datos.CURP" id="datos.CURP" cssStyle="display:none;"></s:textfield>  
+                                                    <s:textfield name="datos.CLAVECARRERA" id="datos.CLAVECARRERA" cssStyle="display:none;"></s:textfield>  
 
                                                         <tr>
                                                             <td class="text-center bg-primary" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" colspan="4"><h5>DATOS DE LA EMPRESA</h5></td>

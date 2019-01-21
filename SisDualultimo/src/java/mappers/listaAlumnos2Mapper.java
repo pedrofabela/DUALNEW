@@ -44,6 +44,12 @@ public class listaAlumnos2Mapper implements Mapper {
             dat.setNOMBRE_CARRERA(rs.getString("NOM_CAR"));
         }
         
+        if (rs.getString("CVE_CARRERA") != null) {
+            dat.setCVE_CAR_RES(rs.getString("CVE_CARRERA").trim());
+        } else {
+            dat.setCVE_CAR_RES(rs.getString("CVE_CARRERA"));
+        }
+        
          if (rs.getString("CCT") != null) {
             dat.setCCT(rs.getString("CCT").trim());
         } else {

@@ -207,6 +207,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
                 datos.setCCT(obj.getCCT());
                 datos.setCURP(obj.getCURP());
+                datos.setCLAVECARRERA(obj.getCVE_CAR_RES());
             }
 
             return "SUCCESS";
@@ -618,7 +619,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             }
 
             ListaResponsables = (ArrayList<ProyectoBean>) con.ConsultaResponsableI(datos.getCCT());
-            ListaAsesoresI = (ArrayList<ProyectoBean>) con.ConsultaAsesoresI(datos.getCCT());
+            ListaAsesoresI = (ArrayList<ProyectoBean>) con.ConsultaAsesoresI(datos.getCCT(),datos.getCLAVECARRERA());
             ListaEstatus = (ArrayList<ProyectoBean>) con.ConsultaEstatus();
 
             BanRegistraProyecto = true;
@@ -850,10 +851,11 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
                 datos.setCCT(obj.getCCT());
                 datos.setCURP(obj.getCURP());
+                datos.setCLAVECARRERA(obj.getCVE_CAR_RES());
             }
 
             ListaResponsables = (ArrayList<ProyectoBean>) con.ConsultaResponsableI(datos.getCCT());
-            ListaAsesoresI = (ArrayList<ProyectoBean>) con.ConsultaAsesoresI(datos.getCCT());
+            ListaAsesoresI = (ArrayList<ProyectoBean>) con.ConsultaAsesoresI(datos.getCCT(),datos.getCLAVECARRERA());
             ListaEstatus = (ArrayList<ProyectoBean>) con.ConsultaEstatus();
             pro = con.ConsultaProyecto(datos.getCURP());
 

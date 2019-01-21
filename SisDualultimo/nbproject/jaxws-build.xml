@@ -346,5 +346,53 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/mx/gob/edomex/dgsei/ws"/>
         <delete dir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_19"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-ConsultaRenapoPorCurp, wsimport-client-ConsultaRenapoPorCurp_1, wsimport-client-ConsultaRenapoPorCurp_2, wsimport-client-ConsultaRenapoPorCurp_3, wsimport-client-ConsultaRenapoPorCurp_4, wsimport-client-ConsultaRenapoPorCurp_5, wsimport-client-ConsultaRenapoPorCurp_6, wsimport-client-ConsultaRenapoPorCurp_7, wsimport-client-ConsultaRenapoPorCurp_8, wsimport-client-ConsultaRenapoPorCurp_9, wsimport-client-ConsultaRenapoPorCurp_10, wsimport-client-ConsultaRenapoPorCurp_11, wsimport-client-ConsultaRenapoPorCurp_12, wsimport-client-ConsultaRenapoPorCurp_13, wsimport-client-ConsultaRenapoPorCurp_14, wsimport-client-ConsultaRenapoPorCurp_15, wsimport-client-ConsultaRenapoPorCurp_16, wsimport-client-ConsultaRenapoPorCurp_17, wsimport-client-ConsultaRenapoPorCurp_18, wsimport-client-ConsultaRenapoPorCurp_19"/>
+    <target name="wsimport-client-ConsultaRenapoPorCurp_20" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_20"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_20" destdir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_20" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ConsultaRenapoPorCurp_20/wsdl/tramitesyservicios.edomex.gob.mx/WebServiceRenapo/ConsultaRenapoPorCurp.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://tramitesyservicios.edomex.gob.mx/WebServiceRenapo/ConsultaRenapoPorCurp?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ConsultaRenapoPorCurp_20/wsdl/tramitesyservicios.edomex.gob.mx/WebServiceRenapo/ConsultaRenapoPorCurp.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_20"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_20">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-ConsultaRenapoPorCurp_20" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/mx/gob/edomex/dgsei/ws"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_20"/>
+    </target>
+    <target name="wsimport-client-ConsultaRenapoPorCurp_21" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_21"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_21" destdir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_21" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ConsultaRenapoPorCurp_21/wsdl/tramitesyservicios.edomex.gob.mx/WebServiceRenapo/ConsultaRenapoPorCurp.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://tramitesyservicios.edomex.gob.mx/WebServiceRenapo/ConsultaRenapoPorCurp?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ConsultaRenapoPorCurp_21/wsdl/tramitesyservicios.edomex.gob.mx/WebServiceRenapo/ConsultaRenapoPorCurp.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_21"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_21">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-ConsultaRenapoPorCurp_21" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/mx/gob/edomex/dgsei/ws"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_21"/>
+    </target>
+    <target name="wsimport-client-ConsultaRenapoPorCurp_22" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_22"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_22" destdir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_22" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ConsultaRenapoPorCurp_22/wsdl/tramitesyservicios.edomex.gob.mx/WebServiceRenapo/ConsultaRenapoPorCurp.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://tramitesyservicios.edomex.gob.mx/WebServiceRenapo/ConsultaRenapoPorCurp?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ConsultaRenapoPorCurp_22/wsdl/tramitesyservicios.edomex.gob.mx/WebServiceRenapo/ConsultaRenapoPorCurp.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_22"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_22">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-ConsultaRenapoPorCurp_22" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/mx/gob/edomex/dgsei/ws"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/ConsultaRenapoPorCurp_22"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-ConsultaRenapoPorCurp, wsimport-client-ConsultaRenapoPorCurp_1, wsimport-client-ConsultaRenapoPorCurp_2, wsimport-client-ConsultaRenapoPorCurp_3, wsimport-client-ConsultaRenapoPorCurp_4, wsimport-client-ConsultaRenapoPorCurp_5, wsimport-client-ConsultaRenapoPorCurp_6, wsimport-client-ConsultaRenapoPorCurp_7, wsimport-client-ConsultaRenapoPorCurp_8, wsimport-client-ConsultaRenapoPorCurp_9, wsimport-client-ConsultaRenapoPorCurp_10, wsimport-client-ConsultaRenapoPorCurp_11, wsimport-client-ConsultaRenapoPorCurp_12, wsimport-client-ConsultaRenapoPorCurp_13, wsimport-client-ConsultaRenapoPorCurp_14, wsimport-client-ConsultaRenapoPorCurp_15, wsimport-client-ConsultaRenapoPorCurp_16, wsimport-client-ConsultaRenapoPorCurp_17, wsimport-client-ConsultaRenapoPorCurp_18, wsimport-client-ConsultaRenapoPorCurp_19, wsimport-client-ConsultaRenapoPorCurp_20, wsimport-client-ConsultaRenapoPorCurp_21, wsimport-client-ConsultaRenapoPorCurp_22"/>
 </project>
