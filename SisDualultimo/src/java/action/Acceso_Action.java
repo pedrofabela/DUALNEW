@@ -88,7 +88,7 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
             ConsultasBusiness con = new ConsultasBusiness();
             usuariocons = acceso.consultaUsuario(cveusuario, pasusuario);
 
-            System.out.println("esto llega de usuario: " + usuariocons);
+            Constantes.enviaMensajeConsola("esto llega de usuario: " + usuariocons);
 
             if (usuariocons != null) {
 
@@ -102,7 +102,7 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
 
                 if (usuariocons.getPERFIL() == 2) {
 
-                    System.out.println("entre a perfil admin");
+                    Constantes.enviaMensajeConsola("entre a perfil admin");
 
                     String fecha = fecha();
                     System.out.println(fecha);
@@ -120,10 +120,10 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                     Iterator iterG = modulosAUX.iterator();
                     while (iterG.hasNext()) {
                         moduloBean Concep = (moduloBean) iterG.next();
-                        System.out.println("VALOR -->" + Concep.getCVE_MODPADRE());
-                        System.out.println("VALOR -->" + Concep.getDESC_MOD());
-                        System.out.println("VALOR -->" + Concep.getACTION());
-                        System.out.println("VALOR -->" + Concep.getIMAGEN());
+                        Constantes.enviaMensajeConsola("VALOR -->" + Concep.getCVE_MODPADRE());
+                        Constantes.enviaMensajeConsola("VALOR -->" + Concep.getDESC_MOD());
+                        Constantes.enviaMensajeConsola("VALOR -->" + Concep.getACTION());
+                        Constantes.enviaMensajeConsola("VALOR -->" + Concep.getIMAGEN());
 
                     }
 

@@ -65,10 +65,14 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
     public ArrayList<BecaBean> ListaBecas = new ArrayList<>();
 
-    //*****************************************LISTAS PETER*****************************************************
+    //*****************************************LISTAS TABLERO*****************************************************
     public List<DatosBean> ListaAlumnosDashboard = new ArrayList<DatosBean>();
     public List<DatosBean> ListaTotalEstatus = new ArrayList<DatosBean>();
     public List<DatosBean> ListaTotalEsuela = new ArrayList<DatosBean>();
+    
+    public List<DatosBean> ListaAlumnosDashboardU = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaTotalEstatusU = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaTotalEsuelaU = new ArrayList<DatosBean>();
 
     private boolean bantablero = false;
 
@@ -1308,7 +1312,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
         be.setID_BECA("");
     }
 
-    //****************************************METODOS PETER********************************************************
+    //****************************************METODOS TABLERO********************************************************
     public String consultaDashboard() {
         //validando session***********************************************************************
         if (session.get("cveUsuario") != null) {
@@ -1338,8 +1342,126 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             datos.setFECHA_TERMINO(fecha());
 
             ListaAlumnosDashboard = con.listaAlumnosDashboard(datos);
+            
+            Constantes.enviaMensajeConsola("lista Alumnos : "+ListaAlumnosDashboard.size());
 
             Iterator LAD = ListaAlumnosDashboard.iterator();
+
+            DatosBean obj;
+            int total = 0;
+            int activo = 0;
+            int inactivo = 0;
+            int hombre = 0;
+            int mujer = 0;
+
+            while (LAD.hasNext()) {
+                obj = (DatosBean) LAD.next();
+                total = total + 1;
+                
+                 Constantes.enviaMensajeConsola("SEXO: "+obj.getSEXO());
+
+                if (obj.getESTATUS_GENERAL().equals("ACTIVO")) {
+
+                    activo = activo + 1;
+                }
+                if (obj.getESTATUS_GENERAL().equals("INACTIVO")) {
+
+                    inactivo = inactivo + 1;
+                }
+
+                if (obj.getSEXO().equals("HOMBRE")) {
+                                     
+                    hombre = hombre + 1;
+                }
+                if (obj.getSEXO().equals("MUJER")) {
+                                       
+                    mujer = mujer + 1;
+                }
+            }
+
+            datos.setTOTAL_ALU_DUAL(String.valueOf(total));
+            datos.setTOTAL_ALU_ACTIVO(String.valueOf(activo));
+            datos.setTOTAL_ALU_INACTIVO(String.valueOf(inactivo));
+            datos.setTOTAL_HOMBRE(String.valueOf(hombre));
+            datos.setTOTAL_MUJER(String.valueOf(mujer));
+
+            Constantes.enviaMensajeConsola("hombre&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" + hombre + " asignado" + datos.getTOTAL_HOMBRE());
+
+            ListaTotalEstatus = con.listaTotalEstatus(datos);
+            ListaTotalEsuela = con.listaTotalEscuela(datos);
+
+            return "SUCCESS";
+
+        } catch (Exception e) {
+            TipoError = "SESSION";
+            TipoException = e.getMessage();
+            return "ERROR";
+        }
+    }
+    
+    
+    public String AbreTablero() {
+
+        //validando session***********************************************************************
+        if (session.get("cveUsuario") != null) {
+            String sUsu = (String) session.get("cveUsuario");
+        } else {
+            addActionError("**** La sesión ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+        if (session.containsKey("usuario")) {
+            usuariocons = (usuarioBean) session.get("usuario");
+        } else {
+            addActionError("**** La sesión ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+
+        try {
+            
+            Constantes.enviaMensajeConsola("usuario: "+usuariocons.getNAMEUSUARIO());
+            String fecha = fecha();
+            fecha = fecha.substring(3, 8);
+            datos.setFECHA_INICIO("01/" + fecha);
+            datos.setFECHA_TERMINO(fecha());
+
+            return "SUCCESS";
+
+        } catch (Exception e) {
+
+            TipoException = e.getMessage();
+            return "ERROR";
+        }
+    }
+    
+    public String consultaDashboardU() {
+        //validando session***********************************************************************
+        if (session.get("cveUsuario") != null) {
+            String sUsu = (String) session.get("cveUsuario");
+        } else {
+            addActionError("**** La sesión ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+        if (session.containsKey("usuario")) {
+            usuariocons = (usuarioBean) session.get("usuario");
+        } else {
+            addActionError("**** La sesión ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+
+        try {
+
+            ConsultasBusiness con = new ConsultasBusiness();
+
+           
+
+            bantablero = true;
+            
+            datos.setCCT(usuariocons.getUSUARIO());
+           
+
+            ListaAlumnosDashboardU = con.listaAlumnosDashboardU(datos);
+
+            Iterator LAD = ListaAlumnosDashboardU.iterator();
 
             DatosBean obj;
             int total = 0;
@@ -1361,11 +1483,11 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                     inactivo = inactivo + 1;
                 }
 
-                if (obj.getSEXO().equals("MASCULINO")) {
+                if (obj.getSEXO().equals("HOMBRE")) {
 
                     hombre = hombre + 1;
                 }
-                if (obj.getSEXO().equals("FEMENINO")) {
+                if (obj.getSEXO().equals("MUJER")) {
 
                     mujer = mujer + 1;
                 }
@@ -1377,10 +1499,10 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             datos.setTOTAL_HOMBRE(String.valueOf(hombre));
             datos.setTOTAL_MUJER(String.valueOf(mujer));
 
-            System.out.println("hombre&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&6" + hombre + " asignado" + datos.getTOTAL_HOMBRE());
+            Constantes.enviaMensajeConsola("hombre&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&6" + hombre + " asignado" + datos.getTOTAL_HOMBRE());
 
-            ListaTotalEstatus = con.listaTotalEstatus(datos);
-            ListaTotalEsuela = con.listaTotalEscuela(datos);
+            ListaTotalEstatusU = con.listaTotalEstatusU(datos);
+            ListaTotalEsuelaU = con.listaTotalAsesorProyecto(datos);
 
             return "SUCCESS";
 
@@ -1390,7 +1512,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             return "ERROR";
         }
     }
-
+    
     public String fecha() {
         Date ahora = new Date();
         SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yy");
@@ -1795,6 +1917,32 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public void setListaTotalEsuela(List<DatosBean> ListaTotalEsuela) {
         this.ListaTotalEsuela = ListaTotalEsuela;
     }
+
+    public List<DatosBean> getListaAlumnosDashboardU() {
+        return ListaAlumnosDashboardU;
+    }
+
+    public void setListaAlumnosDashboardU(List<DatosBean> ListaAlumnosDashboardU) {
+        this.ListaAlumnosDashboardU = ListaAlumnosDashboardU;
+    }
+
+    public List<DatosBean> getListaTotalEstatusU() {
+        return ListaTotalEstatusU;
+    }
+
+    public void setListaTotalEstatusU(List<DatosBean> ListaTotalEstatusU) {
+        this.ListaTotalEstatusU = ListaTotalEstatusU;
+    }
+
+    public List<DatosBean> getListaTotalEsuelaU() {
+        return ListaTotalEsuelaU;
+    }
+
+    public void setListaTotalEsuelaU(List<DatosBean> ListaTotalEsuelaU) {
+        this.ListaTotalEsuelaU = ListaTotalEsuelaU;
+    }
+    
+    
 
     public boolean isBantablero() {
         return bantablero;

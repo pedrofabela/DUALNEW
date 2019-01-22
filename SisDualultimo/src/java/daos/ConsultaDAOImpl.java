@@ -624,7 +624,15 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
     //***********************************************************IMPL PETER********************************************************** 
     public List listaAlumnosDashboard(DatosBean datos) throws Exception {
         String query = "SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_REG FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_REG)>='" + datos.getFECHA_INICIO() + "' AND TO_DATE(FECHA_REG)<='" + datos.getFECHA_TERMINO() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS";
-        Constantes.enviaMensajeConsola("Consulta cct----->" + query);
+        Constantes.enviaMensajeConsola("Consulta Alumnos Dashboard----->" + query);
+        List list = null;
+        list = queryForList(query, (Mapper) new alumnosDashboardMapper());
+        return list;
+    }
+    
+    public List listaAlumnosDashboardU(DatosBean datos) throws Exception {
+        String query = "SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_REG FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_REG)>='" + datos.getFECHA_INICIO() + "' AND TO_DATE(FECHA_REG)<='" + datos.getFECHA_TERMINO() + "' AND CCT='"+datos.getCCT()+"')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS";
+        Constantes.enviaMensajeConsola("Consulta Alumnos Dashboard----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new alumnosDashboardMapper());
         return list;
@@ -637,9 +645,25 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         list = queryForList(query, (Mapper) new totalEstatusMapper());
         return list;
     }
+    
+    public List listaTotalEstatusU(DatosBean datos) throws Exception {
+        String query = "SELECT DISTINCT(NOM_ESTATUS), COUNT(NOM_ESTATUS) AS TOTAL_ESTATUS FROM (SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_REG FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_REG)>='" + datos.getFECHA_INICIO() + "' AND TO_DATE(FECHA_REG)<='" + datos.getFECHA_TERMINO() + "' AND CCT='"+datos.getCCT()+"')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS) GROUP BY NOM_ESTATUS";
+        Constantes.enviaMensajeConsola("Consulta cct----->" + query);
+        List list = null;
+        list = queryForList(query, (Mapper) new totalEstatusMapper());
+        return list;
+    }
 
     public List listaTotalEscuela(DatosBean datos) throws Exception {
         String query = "SELECT DISTINCT(CCT), COUNT(CCT) AS TOTAL_CCT FROM (SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_REG FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_REG)>='" + datos.getFECHA_INICIO() + "' AND TO_DATE(FECHA_REG)<='" + datos.getFECHA_TERMINO() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS) GROUP BY CCT";
+        Constantes.enviaMensajeConsola("Consulta cct----->" + query);
+        List list = null;
+        list = queryForList(query, (Mapper) new totalAluEscuela());
+        return list;
+    }
+    
+    public List listaTotalAsesorProyecto(DatosBean datos) throws Exception {
+        String query = "SELECT NOMBRE_COMPLETO AS CCT, TOTAL_PROYECTOS AS TOTAL_CCT FROM (SELECT DISTINCT(ASE.CURP) AS CURP_ASESOR,  SUM(ALU.TOTAL_ASESOR) AS TOTAL_PROYECTOS , ASE.NOMBRE||' '||ASE.APELLIDOP||' '||ASE.APELLIDOM AS NOMBRE_COMPLETO FROM (SELECT ASESOR_INT, COUNT(ASESOR_INT) AS TOTAL_ASESOR FROM TBL_PROYECTOS WHERE CCT='"+datos.getCCT()+"' AND TO_DATE(FECHA_REG)>='"+datos.getFECHA_INICIO()+"' AND TO_DATE(FECHA_REG)<='"+datos.getFECHA_TERMINO()+"' GROUP BY ASESOR_INT) ALU LEFT OUTER JOIN (SELECT ID_CAT_ASE,  NOMBRE,  APELLIDOP,  APELLIDOM,  CVE_CAR_RES,  CURP,  CCT FROM CAT_ASESOR_INSTITUCIONAL) ASE ON ALU.ASESOR_INT=ASE.ID_CAT_ASE GROUP BY ASE.CURP, ASE.NOMBRE, ASE.APELLIDOP, ASE.APELLIDOM) ";
         Constantes.enviaMensajeConsola("Consulta cct----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new totalAluEscuela());

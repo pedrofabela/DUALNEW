@@ -129,12 +129,11 @@ public class ConsultasBusiness {
         List lista = this.con.listaAlumnos(datos);
         return lista;
     }
-    
+
     public List listaAlumnosBeca(DatosBean datos) throws Exception {
         List lista = this.con.listaAlumnosBeca(datos);
         return lista;
     }
-
 
     public List listaAlumnos2(DatosBean datos) throws Exception {
         List lista = this.con.listaAlumnos2(datos);
@@ -157,7 +156,7 @@ public class ConsultasBusiness {
     }
 
     public List ConsultaAsesoresI(String CCT, String CVE_CAR) throws Exception {
-        List lista = this.con.ConsultaAsesoresI(CCT,CVE_CAR);
+        List lista = this.con.ConsultaAsesoresI(CCT, CVE_CAR);
         return lista;
     }
 
@@ -203,37 +202,42 @@ public class ConsultasBusiness {
     public boolean ActualizarProyecto(ProyectoBean pro) throws Exception {
         return this.con.ActualizarProyecto(pro);
     }
-    
+
     public boolean ActualizarEstatusAlumnos(ProyectoBean pro) throws Exception {
         return this.con.ActualizarEstatusAlumnos(pro);
     }
-    
-     public boolean GuardaBecas(BecaBean be) throws Exception {
+
+    public boolean GuardaBecas(BecaBean be) throws Exception {
         return this.con.GuardaBecas(be);
     }
 
     public boolean ActualizaStatusBeca(BecaBean be) throws Exception {
         return con.ActualizaStatusBeca(be);
     }
-    
-     public List ConsultaBecas(DatosBean obj) throws Exception {
+
+    public List ConsultaBecas(DatosBean obj) throws Exception {
         List lista = this.con.ConsultaBecas(obj);
         return lista;
     }
-     
+
     public boolean ActualizarBecas(BecaBean be) throws Exception {
         return this.con.ActualizarBecas(be);
-    } 
-     
+    }
+
     public boolean EliminarBecas(BecaBean be) throws Exception {
         return this.con.EliminarBecas(be);
-    } 
-    
+    }
 
     //*****************************************************FIN PARTE 2******************************************************
     //*****************************************************BUSSINESS PETER******************************************************
     public List listaAlumnosDashboard(DatosBean datos) throws Exception {
         List lista = this.con.listaAlumnosDashboard(datos);
+        return lista;
+
+    }
+    
+    public List listaAlumnosDashboardU(DatosBean datos) throws Exception {
+        List lista = this.con.listaAlumnosDashboardU(datos);
         return lista;
 
     }
@@ -243,9 +247,21 @@ public class ConsultasBusiness {
         return lista;
 
     }
+    
+     public List listaTotalEstatusU(DatosBean datos) throws Exception {
+        List lista = this.con.listaTotalEstatusU(datos);
+        return lista;
+
+    }
 
     public List listaTotalEscuela(DatosBean datos) throws Exception {
         List lista = this.con.listaTotalEscuela(datos);
+        return lista;
+
+    }
+    
+     public List listaTotalAsesorProyecto(DatosBean datos) throws Exception {
+        List lista = this.con.listaTotalAsesorProyecto(datos);
         return lista;
 
     }

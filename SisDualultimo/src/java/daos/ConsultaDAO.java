@@ -112,8 +112,14 @@ public interface ConsultaDAO {
     //**********************************************************FIN PARTE 2*****************************************************
     //**********************************************************DAO PETER*****************************************************
     public List listaAlumnosDashboard(DatosBean datos) throws Exception;
+    
+    public List listaAlumnosDashboardU(DatosBean datos) throws Exception;
 
     public List listaTotalEstatus(DatosBean datos) throws Exception;
+    
+    public List listaTotalEstatusU(DatosBean datos) throws Exception;
 
     public List listaTotalEscuela(DatosBean datos) throws Exception;
+    
+    public List listaTotalAsesorProyecto(DatosBean datos) throws Exception;
 }

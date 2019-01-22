@@ -29,12 +29,26 @@
             <result name="input">/pages/login.jsp</result>
             <result name="SESSION" type="chain">CerrarSesion</result>
         </action>
-        <!-- ***************************************** STRUTS PETER************************************************************-->
+        <!-- ***************************************** STRUTS TABLERO************************************************************-->
         
-         <action name="consultaDashboard" class="action.PrincipalAction" method="consultaDashboard">
+        <action name="consultaDashboard" class="action.PrincipalAction" method="consultaDashboard">
             <result name="SUCCESS">/pages/tablero.jsp</result>                          
             <result name="ERROR">/pages/index.jsp</result>
             <result name="input">/pages/index.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <action name="AbreTablero" class="action.PrincipalAction" method="AbreTablero">
+            <result name="SUCCESS">/pages/tablero_cct.jsp</result>                          
+            <result name="ERROR">/pages/index2.jsp</result>
+            <result name="input">/pages/index2.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <action name="consultaDashboardU" class="action.PrincipalAction" method="consultaDashboardU">
+            <result name="SUCCESS">/pages/tablero_cct.jsp</result>                          
+            <result name="ERROR">/pages/tablero_cct.jsp</result>
+            <result name="input">/pages/tablero_cct.jsp</result>
             <result name="SESSION" type="chain">CerrarSesion</result>
         </action>
         

@@ -31,7 +31,7 @@ public class AccesoUsarioDAOImpl extends OracleDAOFactory implements AccesoUsari
     	 String query = "SELECT MP.CVEMODULO,NAMEMOD,ACTION,MODPADRE,IMAGEN FROM " + Constantes.TablaModulosPerfiles + " MP "
          + " LEFT OUTER JOIN " + Constantes.TablaModulos + " M ON MP.CVEMODULO=M.CVEMODULO "
          + " WHERE PERFIL='" + cvePer + "' ORDER BY ORDEN";
-		 System.out.println("QueryConsultaSubModulosPerfil ---> " + query);
+		 Constantes.enviaMensajeConsola("QueryConsultaSubModulosPerfil ---> " + query);
 		 List list = null;
 		 list = queryForList(query, new moduloMapper());
 		 return list;
@@ -42,7 +42,7 @@ public class AccesoUsarioDAOImpl extends OracleDAOFactory implements AccesoUsari
     	 String query = "SELECT MP.CVEMODULO,NAMEMOD,ACTION,MODPADRE FROM " + Constantes.TablaModulosPerfiles + " MP "
          + " LEFT OUTER JOIN " + Constantes.TablaModulos + " M ON MP.CVEMODULO=M.CVEMODULO "
          + " WHERE PERFIL='" + cvePer + "' ORDER BY ORDEN";
-		 System.out.println("QueryConsultaSubModulosPerfil ---> " + query);
+		 Constantes.enviaMensajeConsola("QueryConsultaSubModulosPerfil ---> " + query);
 		 List list = null;
 		 list = queryForList(query, new moduloAuxMapper());
 		 return list;

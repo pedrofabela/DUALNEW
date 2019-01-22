@@ -93,8 +93,8 @@ function drawBarColors() {
 
             
         
-    ['Masculino', <s:property value="datos.TOTAL_HOMBRE" />,  '<s:property value="datos.TOTAL_HOMBRE" />'],
-    ['Femenino', <s:property value="datos.TOTAL_MUJER" />,  '<s:property value="datos.TOTAL_MUJER" />'],
+    ['Hombre', <s:property value="datos.TOTAL_HOMBRE" />,  '<s:property value="datos.TOTAL_HOMBRE" />'],
+    ['Mujer', <s:property value="datos.TOTAL_MUJER" />,  '<s:property value="datos.TOTAL_MUJER" />'],
 
        
       ]);
