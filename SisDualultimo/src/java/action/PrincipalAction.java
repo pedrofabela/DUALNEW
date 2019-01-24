@@ -118,9 +118,11 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public boolean BanAsesoresE = false;
     public boolean BanExisteEmpresa = false;
     public boolean BanEmpresaEncontrada = false;
+    public boolean BanEmpresaRegistrada=false;
     public boolean BanAsesorRegistrado = false;
     public boolean BanExisteAsesor = false;
-    public boolean BanRegistraProyecto = false;
+    public boolean BanRegistraProyecto = false;    
+    public boolean BanProyectoRegistrado=false;
 
     public String RegresarIncio() {
 
@@ -428,9 +430,12 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
                     }
                     BanExisteEmpresa = true;
+                    
                 } else {
 
                     con.GuardaEmpresa(pro);
+                    
+                    BanEmpresaRegistrada=true;
 
                     BuscaRFC = (ArrayList<ProyectoBean>) con.buscaRFC(pro.getRFC());
 
@@ -801,11 +806,12 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                 pro.setSTATUS_P("1");
 
                 con.GuardaProyecto(pro);
-
                 con.GuardaAsesor(pro);
 
                 pro.setAVANCE("100");
                 con.ActualizaStatus(pro);
+                
+                BanProyectoRegistrado=true;
 
                 return "SUCCESS";
 
@@ -1590,6 +1596,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
         pro.setSECTOR("");
         pro.setDOMICILIOE("");
         pro.setLOCALIDADE("");
+        pro.setCOLONIAE("");
         pro.setCPE("");
         pro.setMUNICIPIOE("");
         pro.setTELEFONOE("");
@@ -1742,6 +1749,16 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
         this.BanEmpresaEncontrada = BanEmpresaEncontrada;
     }
 
+    public boolean isBanEmpresaRegistrada() {
+        return BanEmpresaRegistrada;
+    }
+
+    public void setBanEmpresaRegistrada(boolean BanEmpresaRegistrada) {
+        this.BanEmpresaRegistrada = BanEmpresaRegistrada;
+    }
+    
+    
+
     public boolean isBanAsesorRegistrado() {
         return BanAsesorRegistrado;
     }
@@ -1765,6 +1782,16 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public void setBanRegistraProyecto(boolean BanRegistraProyecto) {
         this.BanRegistraProyecto = BanRegistraProyecto;
     }
+
+    public boolean isBanProyectoRegistrado() {
+        return BanProyectoRegistrado;
+    }
+
+    public void setBanProyectoRegistrado(boolean BanProyectoRegistrado) {
+        this.BanProyectoRegistrado = BanProyectoRegistrado;
+    }
+    
+    
 
     public DatosBean getDatos() {
         return datos;

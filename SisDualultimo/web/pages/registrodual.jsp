@@ -288,6 +288,11 @@
                                                                                     </div>      
 
                                                                                 </div>
+                                                                                <s:if test="BanEmpresaRegistrada">
+                                                                                    <div class="alert alert-success"  style="width:100%; border-radius: 5px; ">
+                                                                                        <h5 align="center" style="color: #ffffff">Empresa Registrada Correctamente</h5>
+                                                                                    </div>
+                                                                                </s:if>        
                                                                                 <div class="form-group col-lg-12">                                                                                     
                                                                                     <a class="btn bg-success text-white" href="Javascript:Accion('AgregarProyecto')">AGREGAR PROYECTO</a>
                                                                                 </div>        

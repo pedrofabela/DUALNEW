@@ -101,7 +101,7 @@
 
 
                                                     window.onload = function () {/*hace que se cargue la función lo que predetermina que div estará oculto hasta llamar a la función nuevamente*/
-                                                        
+
 
                                                         if (document.getElementById) {
                                                             /* variables para ocultar load de ARCHIVO*/
@@ -130,7 +130,7 @@
 
                                                     }
 
-                                                    
+
                                                 </script>
                                                 <!-- Bootstrap core JavaScript -->
                                                 <script src="vendor/jquery/jquery.min.js"></script>   
@@ -240,6 +240,12 @@
                                                                     </div>  
                                                                     <div class="modal-body">                                              
                                                                         <div class="row">
+
+                                                                            <s:if test="BanProyectoRegistrado">
+                                                                                <div class="alert alert-success"  style="width:100%; border-radius: 5px; ">
+                                                                                    <h5 align="center" style="color: #ffffff">Proyecto Registrado Correctamente</h5>
+                                                                                </div>
+                                                                            </s:if> 
 
 
                                                                             <div class="input-group ">                        
