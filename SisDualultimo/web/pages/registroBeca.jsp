@@ -186,6 +186,21 @@
                                                                 <div class="modal-content" style="border-radius: 10px;"> 
                                                                     <div class="modal-body "  >
                                                                         <div class="row">
+                                                                             <s:if test="BanBecaRegistrada">
+                                                                                <div class="alert alert-success"  style="width:100%; border-radius: 5px; ">
+                                                                                    <h5 align="center" style="color: #ffffff">Beca Registrada Correctamente</h5>
+                                                                                </div>
+                                                                            </s:if> 
+                                                                            <s:if test="BanBecaActualizada">
+                                                                                <div class="alert alert-success"  style="width:100%; border-radius: 5px; ">
+                                                                                    <h5 align="center" style="color: #ffffff">Beca Actualizada Correctamente</h5>
+                                                                                </div>
+                                                                            </s:if> 
+                                                                            <s:if test="BanBecaEliminada">
+                                                                                <div class="alert alert-danger"  style="width:100%; border-radius: 5px; ">
+                                                                                    <h5 align="center" style="color: #ffffff">Beca Eliminada Correctamente</h5>
+                                                                                </div>
+                                                                            </s:if> 
                                                                             <div class="form-group col-lg-4">
                                                                                 <label class="col-form-label text-muted" for="RFC">FUENTE:</label>
                                                                                 <div class="col-sm-auto">

@@ -365,7 +365,7 @@
                                                                                 <div class="col-sm-auto">
                                                                                     <s:file cssClass="text-muted"  name="archi" id="archi" accept=" application/pdf" title="Solo archivos con extension PDF" />
 
-                                                                                    <s:fielderror fieldName="ErrorArc" cssClass="alert alert-danger"/>
+                                                                                    <s:fielderror fieldName="archierror" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>
                                                                                   
@@ -387,8 +387,8 @@
                                                                                 <label class="col-form-label text-muted" for="REPLEGAL">CONVENIO REGISTRADO</label>
                                                                                 <s:if test="pro.getCONVENIOR().length()>0">
                                                                                 <div class="col-sm-auto">
-                                                                                    <a target="black" href="https://dual.edugem.gob.mx/documentos/<s:property  value="pro.CONVENIOR"/> "><s:property  value="pro.CONVENIOR"/></a>
-
+                                                                                    <a  target="black" href="https://dual.edugem.gob.mx/documentos/<s:property  value="pro.CONVENIOR"/> "><s:property  value="pro.CONVENIOR"/></a>
+                                                                                    <s:hidden name="pro.CONVENIOR" id="%{pro.CONVENIOR}"></s:hidden>
                                                                                 </div> 
                                                                                 </s:if>   
                                                                                 <s:else>
@@ -581,9 +581,21 @@
                                         <s:hidden  name = "ListaMunicipios[%{#stat.index}].ID" id="ID"></s:hidden>
                                         <s:hidden  name = "ListaMunicipios[%{#stat.index}].MUNICIPIO" id="MUNICIPIO"></s:hidden>
                                     </s:iterator>
+                                    
+                                     <s:iterator value="ListaResponsables" id="ListaResponsables" status="stat">
+                                        <s:hidden  name = "ListaResponsables[%{#stat.index}].ID_RESPONSABLE" id="ID_RESPONSABLE"></s:hidden>
+                                        <s:hidden  name = "ListaResponsables[%{#stat.index}].NOMBRE_COMPLETO_RESP" id="NOMBRE_COMPLETO_RESP"></s:hidden>
+                                    </s:iterator>
 
-
-
+                                    <s:iterator value="ListaAsesoresI" id="ListaAsesoresI" status="stat">
+                                        <s:hidden  name = "ListaAsesoresI[%{#stat.index}].ID_ASESOR_I" id="ID_ASESOR_I"></s:hidden>
+                                        <s:hidden  name = "ListaAsesoresI[%{#stat.index}].NOMBRE_COMPLETO_AI" id="NOMBRE_COMPLETO_AI"></s:hidden>
+                                    </s:iterator>
+                                    
+                                    <s:iterator value="ListaEstatus" id="ListaEstatus" status="stat">
+                                        <s:hidden  name = "ListaEstatus[%{#stat.index}].ID_ESTATUS" id="ID_ESTATUS"></s:hidden>
+                                        <s:hidden  name = "ListaEstatus[%{#stat.index}].NOM_ESTATUS" id="NOM_ESTATUS"></s:hidden>
+                                    </s:iterator>
 
                                     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

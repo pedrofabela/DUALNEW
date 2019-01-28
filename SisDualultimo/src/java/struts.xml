@@ -124,8 +124,8 @@
         
          <action name="ActualizarProyecto" class="action.PrincipalAction" method="ActualizarProyecto">   
              <result name="SUCCESS" type="chain">verAcceso</result>			              
-            <result name="ERROR">/pages/registrodual.jsp</result>
-            <result name="input">/pages/registrodual.jsp</result>
+            <result name="ERROR">/pages/Editardual.jsp</result>
+            <result name="input">/pages/Editardual.jsp</result>
             <result name="SESSION" type="chain">CerrarSesion</result>
         </action>
         

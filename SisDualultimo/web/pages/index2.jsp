@@ -246,6 +246,13 @@
                                                                                     <h5 align="center" style="color: #ffffff">Proyecto Registrado Correctamente</h5>
                                                                                 </div>
                                                                             </s:if> 
+                                                                            <s:if test="BanProyectoActualizado">
+                                                                                <div class="alert alert-success"  style="width:100%; border-radius: 5px; ">
+                                                                                    <h5 align="center" style="color: #ffffff">Proyecto Actualizado Correctamente</h5>
+                                                                                </div>
+                                                                            </s:if> 
+                                                                            
+                                                                            
 
 
                                                                             <div class="input-group ">                        

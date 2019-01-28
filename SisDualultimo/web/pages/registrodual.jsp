@@ -485,7 +485,7 @@
                                                                                     <div class="col-sm-auto">
                                                                                         <s:file cssClass="text-muted"  name="archi" id="archi" accept=" application/pdf" title="Solo archivos con extension PDF" />
 
-                                                                                        <s:fielderror fieldName="ErrorArc" cssClass="alert alert-danger"/>
+                                                                                        <s:fielderror fieldName="archierror" cssClass="alert alert-danger"/>
                                                                                     </div> 
                                                                                 </div>
                                                                                 <div class="form-group col-lg-6">

@@ -69,7 +69,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public List<DatosBean> ListaAlumnosDashboard = new ArrayList<DatosBean>();
     public List<DatosBean> ListaTotalEstatus = new ArrayList<DatosBean>();
     public List<DatosBean> ListaTotalEsuela = new ArrayList<DatosBean>();
-    
+
     public List<DatosBean> ListaAlumnosDashboardU = new ArrayList<DatosBean>();
     public List<DatosBean> ListaTotalEstatusU = new ArrayList<DatosBean>();
     public List<DatosBean> ListaTotalEsuelaU = new ArrayList<DatosBean>();
@@ -118,11 +118,17 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public boolean BanAsesoresE = false;
     public boolean BanExisteEmpresa = false;
     public boolean BanEmpresaEncontrada = false;
-    public boolean BanEmpresaRegistrada=false;
+    public boolean BanEmpresaRegistrada = false;
     public boolean BanAsesorRegistrado = false;
     public boolean BanExisteAsesor = false;
-    public boolean BanRegistraProyecto = false;    
-    public boolean BanProyectoRegistrado=false;
+    public boolean BanRegistraProyecto = false;
+    public boolean BanProyectoRegistrado = false;
+    public boolean BanProyectoActualizado = false;
+    public boolean BanErrorSubirArchivo = false;
+    public boolean BanBecaRegistrada=false;
+    public boolean BanBecaActualizada=false;
+    public boolean BanBecaEliminada=false;
+    
 
     public String RegresarIncio() {
 
@@ -430,12 +436,12 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
                     }
                     BanExisteEmpresa = true;
-                    
+
                 } else {
 
                     con.GuardaEmpresa(pro);
-                    
-                    BanEmpresaRegistrada=true;
+
+                    BanEmpresaRegistrada = true;
 
                     BuscaRFC = (ArrayList<ProyectoBean>) con.buscaRFC(pro.getRFC());
 
@@ -628,7 +634,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             }
 
             ListaResponsables = (ArrayList<ProyectoBean>) con.ConsultaResponsableI(datos.getCCT());
-            ListaAsesoresI = (ArrayList<ProyectoBean>) con.ConsultaAsesoresI(datos.getCCT(),datos.getCLAVECARRERA());
+            ListaAsesoresI = (ArrayList<ProyectoBean>) con.ConsultaAsesoresI(datos.getCCT(), datos.getCLAVECARRERA());
             ListaEstatus = (ArrayList<ProyectoBean>) con.ConsultaEstatus();
 
             BanRegistraProyecto = true;
@@ -687,7 +693,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             if (pro.getETAPA().length() > 0) {
                 etapa = true;
             } else {
-                addFieldError("ErrorETAPA", "se requiere el nombre del asesor");
+                addFieldError("ErrorETAPA", "se requiere una etapa");
                 etapa = false;
             }
             Constantes.enviaMensajeConsola("area: " + pro.getAREA_CONOCIMIENTO());
@@ -801,7 +807,14 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                         File newarch = new File(ruta);
 
                         FileUtils.copyFile(archi, newarch);
+                    } else {
+                        AgregarProyecto();
+                        BanRegistraProyecto = true;
+                        BanBuscaRFC = true;
+                        return "ERROR";
                     }
+                }else{
+                    pro.setCONVENIO("");
                 }
                 pro.setSTATUS_P("1");
 
@@ -810,8 +823,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
                 pro.setAVANCE("100");
                 con.ActualizaStatus(pro);
-                
-                BanProyectoRegistrado=true;
+
+                BanProyectoRegistrado = true;
 
                 return "SUCCESS";
 
@@ -865,7 +878,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             }
 
             ListaResponsables = (ArrayList<ProyectoBean>) con.ConsultaResponsableI(datos.getCCT());
-            ListaAsesoresI = (ArrayList<ProyectoBean>) con.ConsultaAsesoresI(datos.getCCT(),datos.getCLAVECARRERA());
+            ListaAsesoresI = (ArrayList<ProyectoBean>) con.ConsultaAsesoresI(datos.getCCT(), datos.getCLAVECARRERA());
             ListaEstatus = (ArrayList<ProyectoBean>) con.ConsultaEstatus();
             pro = con.ConsultaProyecto(datos.getCURP());
 
@@ -1018,9 +1031,15 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                 pro.setCCT(datos.getCCT());
                 pro.setCURP_AL(datos.getCURP());
 
-                if (archiFileName != null) {
-                    validate2();
+                Constantes.enviaMensajeConsola("cct" + pro.getCCT());
 
+                Constantes.enviaMensajeConsola("curp" + pro.getCURP_AL());
+
+                if (archiFileName != null) {
+                    Constantes.enviaMensajeConsola("entro a validar");
+
+                    validate2();
+                    Constantes.enviaMensajeConsola("Valor de la bandera: " + banT);
                     if (banT == false) {
 
                         String Extension = "";
@@ -1031,20 +1050,30 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                         archiFileName = pro.getCCT() + "CONVENIO" + pro.getCURP_AL() + "." + Extension;
 
                         pro.setCONVENIO(archiFileName);
+
+                        Constantes.enviaMensajeConsola("archivo: " + pro.getCONVENIO());
                         ruta = Constantes.rutaArch + archiFileName;
 
                         Constantes.enviaMensajeConsola(ruta);
                         File newarch = new File(ruta);
 
                         FileUtils.copyFile(archi, newarch);
+                    } else {
+                        return "ERROR";
                     }
+                } else {
+                    pro.setCONVENIO("");
                 }
+
+                Constantes.enviaMensajeConsola("paos lo de archivos");
 
                 con.ActualizarProyecto(pro);
 
                 con.ActualizarAsesor(pro);
 
                 con.ActualizarEstatusAlumnos(pro);
+
+                BanProyectoActualizado = true;
 
                 return "SUCCESS";
 
@@ -1175,6 +1204,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                 ListaBecas = (ArrayList<BecaBean>) con.ConsultaBecas(datos);
 
                 limpiarBeca();
+                
+                BanBecaRegistrada=true;
 
                 return "SUCCESS";
 
@@ -1252,6 +1283,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                 ListaBecas = (ArrayList<BecaBean>) con.ConsultaBecas(datos);
 
                 limpiarBeca();
+                
+                BanBecaActualizada=true;
 
                 return "SUCCESS";
 
@@ -1287,10 +1320,9 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             ConsultasBusiness con = new ConsultasBusiness();
 
             con.EliminarBecas(be);
-            
-              be.setCCT_B(datos.getCCT());
-                be.setCURP_AB(datos.getCURP());
 
+            be.setCCT_B(datos.getCCT());
+            be.setCURP_AB(datos.getCURP());
 
             ListaBecas = (ArrayList<BecaBean>) con.ConsultaBecas(datos);
 
@@ -1300,6 +1332,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             }
 
             limpiarBeca();
+            
+            BanBecaEliminada=true;
 
             return "SUCCESS";
 
@@ -1348,8 +1382,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             datos.setFECHA_TERMINO(fecha());
 
             ListaAlumnosDashboard = con.listaAlumnosDashboard(datos);
-            
-            Constantes.enviaMensajeConsola("lista Alumnos : "+ListaAlumnosDashboard.size());
+
+            Constantes.enviaMensajeConsola("lista Alumnos : " + ListaAlumnosDashboard.size());
 
             Iterator LAD = ListaAlumnosDashboard.iterator();
 
@@ -1363,8 +1397,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             while (LAD.hasNext()) {
                 obj = (DatosBean) LAD.next();
                 total = total + 1;
-                
-                 Constantes.enviaMensajeConsola("SEXO: "+obj.getSEXO());
+
+                Constantes.enviaMensajeConsola("SEXO: " + obj.getSEXO());
 
                 if (obj.getESTATUS_GENERAL().equals("ACTIVO")) {
 
@@ -1376,11 +1410,11 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                 }
 
                 if (obj.getSEXO().equals("HOMBRE")) {
-                                     
+
                     hombre = hombre + 1;
                 }
                 if (obj.getSEXO().equals("MUJER")) {
-                                       
+
                     mujer = mujer + 1;
                 }
             }
@@ -1404,8 +1438,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             return "ERROR";
         }
     }
-    
-    
+
     public String AbreTablero() {
 
         //validando session***********************************************************************
@@ -1423,8 +1456,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
         }
 
         try {
-            
-            Constantes.enviaMensajeConsola("usuario: "+usuariocons.getNAMEUSUARIO());
+
+            Constantes.enviaMensajeConsola("usuario: " + usuariocons.getNAMEUSUARIO());
             String fecha = fecha();
             fecha = fecha.substring(3, 8);
             datos.setFECHA_INICIO("01/" + fecha);
@@ -1438,7 +1471,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             return "ERROR";
         }
     }
-    
+
     public String consultaDashboardU() {
         //validando session***********************************************************************
         if (session.get("cveUsuario") != null) {
@@ -1458,12 +1491,9 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
             ConsultasBusiness con = new ConsultasBusiness();
 
-           
-
             bantablero = true;
-            
+
             datos.setCCT(usuariocons.getUSUARIO());
-           
 
             ListaAlumnosDashboardU = con.listaAlumnosDashboardU(datos);
 
@@ -1518,7 +1548,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             return "ERROR";
         }
     }
-    
+
     public String fecha() {
         Date ahora = new Date();
         SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yy");
@@ -1552,19 +1582,22 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
         try {
 //agregando la validacion de tipo de archivo...
-            if (archiFileName != null) {
-//Constantes.enviaMensajeConsola("--EL ARCHIVO ES .... " + archiFileName);
-//Constantes.enviaMensajeConsola("--entre a validar el tipo de arcivo.... " + sitio.getTIP_MSJ());
-                if (!archiFileName.contains(".pdf")) {
-                    archiFileName = "";
-                    addFieldError("archi", "*** La extensión del archivo no es aceptada debe ser (pdf)***");
+            if (archiFileName.toLowerCase() != null) {
+                Constantes.enviaMensajeConsola("--EL ARCHIVO ES .... " + archiFileName.toLowerCase());
+
+                if (!archiFileName.toLowerCase().contains(".pdf")) {
+
+                    addFieldError("archierror", "*** La extensión del archivo no es aceptada debe ser (pdf)***");
+                    Constantes.enviaMensajeConsola("--EL ARCHIVO ES DIFERENTE DE PDF .... " + archiFileName.toLowerCase());
                     banT = true;
 
                 }
 
                 //if (archiFileName.length() > 2097152 ) 
                 if (16777126 <= FileUtils.sizeOf(archi)) {
-                    addFieldError("archi", "*** No se permiten archivos mayores a 15MB ***");
+
+                    Constantes.enviaMensajeConsola("--EL ARCHIVO ES MAYOR .... " + archiFileName.toLowerCase());
+                    addFieldError("archierror", "*** No se permiten archivos mayores a 15MB ***");
 
                     banT = true;
 
@@ -1756,8 +1789,6 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public void setBanEmpresaRegistrada(boolean BanEmpresaRegistrada) {
         this.BanEmpresaRegistrada = BanEmpresaRegistrada;
     }
-    
-    
 
     public boolean isBanAsesorRegistrado() {
         return BanAsesorRegistrado;
@@ -1789,6 +1820,46 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
     public void setBanProyectoRegistrado(boolean BanProyectoRegistrado) {
         this.BanProyectoRegistrado = BanProyectoRegistrado;
+    }
+
+    public boolean isBanProyectoActualizado() {
+        return BanProyectoActualizado;
+    }
+
+    public void setBanProyectoActualizado(boolean BanProyectoActualizado) {
+        this.BanProyectoActualizado = BanProyectoActualizado;
+    }
+
+    public boolean isBanErrorSubirArchivo() {
+        return BanErrorSubirArchivo;
+    }
+
+    public void setBanErrorSubirArchivo(boolean BanErrorSubirArchivo) {
+        this.BanErrorSubirArchivo = BanErrorSubirArchivo;
+    }
+
+    public boolean isBanBecaRegistrada() {
+        return BanBecaRegistrada;
+    }
+
+    public void setBanBecaRegistrada(boolean BanBecaRegistrada) {
+        this.BanBecaRegistrada = BanBecaRegistrada;
+    }
+
+    public boolean isBanBecaActualizada() {
+        return BanBecaActualizada;
+    }
+
+    public void setBanBecaActualizada(boolean BanBecaActualizada) {
+        this.BanBecaActualizada = BanBecaActualizada;
+    }
+
+    public boolean isBanBecaEliminada() {
+        return BanBecaEliminada;
+    }
+
+    public void setBanBecaEliminada(boolean BanBecaEliminada) {
+        this.BanBecaEliminada = BanBecaEliminada;
     }
     
     
@@ -1968,8 +2039,6 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public void setListaTotalEsuelaU(List<DatosBean> ListaTotalEsuelaU) {
         this.ListaTotalEsuelaU = ListaTotalEsuelaU;
     }
-    
-    
 
     public boolean isBantablero() {
         return bantablero;
