@@ -4,6 +4,7 @@
  */
 package daos;
 
+import beans.AlumnosBean;
 import beans.BecaBean;
 import beans.DatosBean;
 import beans.ProyectoBean;
@@ -103,6 +104,8 @@ public interface ConsultaDAO {
 
     public boolean ActualizaStatusBeca(BecaBean be) throws Exception;
     
+    public List ConsultaTipoBeca() throws Exception;
+    
     public List ConsultaBecas(DatosBean obj) throws Exception;
     
     public boolean ActualizarBecas(BecaBean be) throws Exception;
@@ -122,4 +125,8 @@ public interface ConsultaDAO {
     public List listaTotalEscuela(DatosBean datos) throws Exception;
     
     public List listaTotalAsesorProyecto(DatosBean datos) throws Exception;
+    
+    //******************************************************REGISTRO ALUMNOS INDIVIDUAL************************************************
+    public List ConsultaAlumnos2(DatosBean obj) throws Exception;
+    public boolean GuardaAlumnos(AlumnosBean objdatos) throws Exception;
 }

@@ -23,6 +23,10 @@ public String DURACION;
 public String FECHA_REG_BECA;
 public String STATUS_B;
 public String BECA;
+public String ID_TIPO_BECA;
+public String NOM_BECA;
+public String TIPO_BECA;
+public String DES_BECA;
 
 
 public String ID_BECAA;
@@ -31,6 +35,8 @@ public String FUENTEA;
 public String MONTOA;
 public String PERIODICIDADA;
 public String DURACIONA;
+public String TIPO_BECAA;
+public String DES_BECAA;
 
     public String getID_BECA() {
         return ID_BECA;
@@ -112,6 +118,42 @@ public String DURACIONA;
         this.BECA = BECA;
     }
 
+    public String getID_TIPO_BECA() {
+        return ID_TIPO_BECA;
+    }
+
+    public void setID_TIPO_BECA(String ID_TIPO_BECA) {
+        this.ID_TIPO_BECA = ID_TIPO_BECA;
+    }
+
+    public String getNOM_BECA() {
+        return NOM_BECA;
+    }
+
+    public void setNOM_BECA(String NOM_BECA) {
+        this.NOM_BECA = NOM_BECA;
+    }
+
+    public String getTIPO_BECA() {
+        return TIPO_BECA;
+    }
+
+    public void setTIPO_BECA(String TIPO_BECA) {
+        this.TIPO_BECA = TIPO_BECA;
+    }
+
+    public String getDES_BECA() {
+        return DES_BECA;
+    }
+
+    public void setDES_BECA(String DES_BECA) {
+        this.DES_BECA = DES_BECA;
+    }
+    
+    
+    
+    
+
     public String getID_BECAA() {
         return ID_BECAA;
     }
@@ -162,6 +204,23 @@ public String DURACIONA;
     public void setDURACIONA(String DURACIONA) {
         this.DURACIONA = DURACIONA;
     }
+
+    public String getTIPO_BECAA() {
+        return TIPO_BECAA;
+    }
+
+    public void setTIPO_BECAA(String TIPO_BECAA) {
+        this.TIPO_BECAA = TIPO_BECAA;
+    }
+
+    public String getDES_BECAA() {
+        return DES_BECAA;
+    }
+
+    public void setDES_BECAA(String DES_BECAA) {
+        this.DES_BECAA = DES_BECAA;
+    }
+    
     
     
     

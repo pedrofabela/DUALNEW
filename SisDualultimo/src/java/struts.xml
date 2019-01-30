@@ -52,6 +52,31 @@
             <result name="SESSION" type="chain">CerrarSesion</result>
         </action>
         
+        <!-- ***************************************** Registro de alumno************************************************************-->
+        <action name="FormAlumn" class="action.RegistraAlumnosAction" method="FormAlumno">
+         
+            <result name="SUCCESS">/pages/registroAlumnos.jsp</result>			              
+            <result name="ERROR">/pages/index2.jsp</result>
+            <result name="input">/pages/index2.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <action name="BuscarCurp" class="action.RegistraAlumnosAction" method="consultacurp">
+         
+            <result name="SUCCESS">/pages/registroAlumnos.jsp</result>			              
+            <result name="ERROR">/pages/registroAlumnos.jsp</result>
+            <result name="input">/pages/registroAlumnos.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <action name="RegistrarAlum" class="action.RegistraAlumnosAction" method="GuardaAlum">      
+            <result name="SUCCESS" type="chain">verAcceso</result>			              
+            <result name="ERROR">/pages/registroAlumnos.jsp</result>
+            <result name="input">/pages/registroAlumnos.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
+        <!-- *****************************************FIN Registro de alumno************************************************************-->
         <!-- ***************************************** parte 2************************************************************-->
         <action name="actualizarAlumno" class="action.PrincipalAction" method="actualizarAlumno">
          
@@ -115,15 +140,15 @@
             <result name="SESSION" type="chain">CerrarSesion</result>
         </action>
         
-         <action name="GuardarProyecto" class="action.PrincipalAction" method="GuardarProyecto">   
-             <result name="SUCCESS" type="chain">verAcceso</result>			              
+        <action name="GuardarProyecto" class="action.PrincipalAction" method="GuardarProyecto">   
+            <result name="SUCCESS" type="chain">verAcceso</result>			              
             <result name="ERROR">/pages/registrodual.jsp</result>
             <result name="input">/pages/registrodual.jsp</result>
             <result name="SESSION" type="chain">CerrarSesion</result>
         </action>
         
-         <action name="ActualizarProyecto" class="action.PrincipalAction" method="ActualizarProyecto">   
-             <result name="SUCCESS" type="chain">verAcceso</result>			              
+        <action name="ActualizarProyecto" class="action.PrincipalAction" method="ActualizarProyecto">   
+            <result name="SUCCESS" type="chain">verAcceso</result>			              
             <result name="ERROR">/pages/Editardual.jsp</result>
             <result name="input">/pages/Editardual.jsp</result>
             <result name="SESSION" type="chain">CerrarSesion</result>
@@ -136,7 +161,7 @@
             <result name="SESSION" type="chain">CerrarSesion</result>
         </action>
         
-         <action name="registroBeca" class="action.PrincipalAction" method="registroBeca">    
+        <action name="registroBeca" class="action.PrincipalAction" method="registroBeca">    
             <result name="SUCCESS">/pages/registroBeca.jsp</result>			              
             <result name="ERROR">/pages/login.jsp</result>
             <result name="input">/pages/login.jsp</result>
@@ -150,14 +175,14 @@
         </action>
         
         <action name="ActualizarBeca" class="action.PrincipalAction" method="ActualizaBeca">   
-             <result name="SUCCESS">/pages/registroBeca.jsp</result>			              
+            <result name="SUCCESS">/pages/registroBeca.jsp</result>			              
             <result name="ERROR">/pages/registroBeca.jsp</result>
             <result name="input">/pages/registroBeca.jsp</result>
             <result name="SESSION" type="chain">CerrarSesion</result>
         </action>
         
         <action name="EliminarBeca" class="action.PrincipalAction" method="EliminarBeca">   
-             <result name="SUCCESS">/pages/registroBeca.jsp</result>			              
+            <result name="SUCCESS">/pages/registroBeca.jsp</result>			              
             <result name="ERROR">/pages/registroBeca.jsp</result>
             <result name="input">/pages/registroBeca.jsp</result>
             <result name="SESSION" type="chain">CerrarSesion</result>

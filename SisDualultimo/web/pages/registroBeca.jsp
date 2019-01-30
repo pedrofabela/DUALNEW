@@ -97,8 +97,126 @@
 
                                 }
 
+                                function ValorBeca() {
+                                    valor = document.getElementById('TIPO_BECA').value;
+
+                                    if (valor == "") {
+                                        $("#MONTO").css("display", "none");
+                                        $("#DES_BECA").css("display", "none");
+                                    }
+
+                                    if (valor == 1) {
+
+                                        $("#MONTO").css("display", "block");
+                                        $("#DES_BECA").css("display", "none");
+
+                                    }
+                                    if (valor > 1 && valor != "") {
+
+                                        $("#DES_BECA").css("display", "block");
+                                        $("#MONTO").css("display", "none");
+
+                                    }
+
+                                }
+
+                                function ValorBecaM() {
+                                    valor = document.getElementById('tipobeca').value;
+                                    if (valor == "") {
+                                        $("#MONTOM").css("display", "none");
+                                        $("#DES_BECAM").css("display", "none");
+                                    }
+
+                                    if (valor == 1) {
+
+                                        $("#MONTOM").css("display", "block");
+                                        $("#DES_BECAM").css("display", "none");
+
+                                    }
+                                    if (valor > 1 && valor != "") {
+
+                                        $("#DES_BECAM").css("display", "block");
+                                        $("#MONTOM").css("display", "none");
+
+                                    }
+                                }
+
+                                function Valida(accion) {
+
+                                    var fuente = document.getElementById('fuente').value;
+                                    var tipobeca = document.getElementById('tipobeca').selectedIndex;
+                                    var monto = document.getElementById('monto').value;
+                                    var desbeca = document.getElementById('desbeca').value;
+                                    var periodo = document.getElementById('periodo').value;
+                                    var duracion = document.getElementById('duracion').value;
+
+                                    var banfuente = false;
+                                    var bantipobeca = false;
+                                    var banmonto = false;
+                                    var bandesbeca = false;
+                                    var banperiodo = false;
+                                    var banduracion = false;
 
 
+
+                                    if (fuente == null || fuente.length == 0 || /^\s+$/.test(fuente)) {
+                                        alert('ERROR: Debe agregar la fuente de la beca');
+                                        banfuente = false;
+                                    } else {
+                                        banfuente = true;
+                                    }
+
+                                    if (tipobeca == null || tipobeca == 0) {
+                                        alert('ERROR: Debe seleccionar un Tipo de beca ');
+                                        bantipobeca = false;
+                                    } else {
+                                        bantipobeca = true;
+
+                                        if (tipobeca == 1) {
+                                            if (monto == null || monto.length == 0 || /^\s+$/.test(monto)) {
+                                                alert('ERROR: Debe agregar el monto de la beca');
+                                                banmonto = false;
+                                            } else {
+                                                banmonto = true;
+                                            }
+                                        }
+                                        if (tipobeca > 1) {
+                                            if (desbeca == null || desbeca.length == 0 || /^\s+$/.test(desbeca)) {
+                                                alert('ERROR: Debe agregar la descripcion de la beca');
+                                                bandesbeca = false;
+                                            } else {
+                                                bandesbeca = true;
+                                            }
+
+                                        }
+
+                                    }
+
+                                    if (periodo == null || periodo.length == 0 || /^\s+$/.test(periodo)) {
+                                        alert('ERROR: Debe agregar la fuente de la beca');
+                                        banperiodo = false;
+                                    } else {
+                                        banperiodo = true;
+                                    }
+
+                                    if (duracion == null || duracion.length == 0 || /^\s+$/.test(duracion)) {
+                                        alert('ERROR: Debe agregar la fuente de la beca');
+                                        banduracion = false;
+                                    } else {
+                                        banduracion = true;
+                                    }
+
+                                    if (banfuente && bantipobeca && banmonto || bandesbeca && banperiodo && banduracion) {
+                                        
+                                        document.formularioPrincipal.action = accion;
+                                        document.formularioPrincipal.submit();
+                                        
+                                    }
+
+
+
+
+                                }
 
 
                             </script>
@@ -144,11 +262,11 @@
 
                                                 <tbody class="col-lg-12">
                                                     <tr>
-                                                        <td colspan="6">
+                                                        <td colspan="8">
 
                                                             <table class="table table-hover" >
                                                                 <tr>
-                                                                    <td class="text-center bg-primary" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"colspan="6" ><h5>DATOS DE ALUMNO</h5></td>
+                                                                    <td class="text-center bg-primary" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"colspan="8" ><h5>DATOS DE ALUMNO</h5></td>
                                                                 </tr>
                                                                 <tr style="color:#000; background: #cccccc;"  >
                                                                     <td >Curp</td>
@@ -175,10 +293,10 @@
                                                         </td>
                                                     </tr>        
                                                     <tr>
-                                                        <td class="text-center bg-primary" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" colspan="6" ><h5>REGISTRO DE BECAS</h5></td>
+                                                        <td class="text-center bg-primary" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" colspan="8" ><h5>REGISTRO DE BECAS</h5></td>
                                                     </tr>
                                                     <tr style=" background: #ffffff;  font-size: 15px;">
-                                                        <td colspan="6">
+                                                        <td colspan="8">
 
 
 
@@ -186,7 +304,7 @@
                                                                 <div class="modal-content" style="border-radius: 10px;"> 
                                                                     <div class="modal-body "  >
                                                                         <div class="row">
-                                                                             <s:if test="BanBecaRegistrada">
+                                                                            <s:if test="BanBecaRegistrada">
                                                                                 <div class="alert alert-success"  style="width:100%; border-radius: 5px; ">
                                                                                     <h5 align="center" style="color: #ffffff">Beca Registrada Correctamente</h5>
                                                                                 </div>
@@ -208,14 +326,32 @@
                                                                                     <s:fielderror fieldName="ErrorFuente" cssClass="alert alert-danger"></s:fielderror>
                                                                                     </div> 
                                                                                 </div>
-                                                                                <div class="form-group col-lg-4 ">
-                                                                                    <label class="col-form-label text-muted" style="text-align : left;" for="RAZON">MONTO:</label>
-                                                                                    <div class="col-sm-auto">
+                                                                                <div class="form-group col-lg-4">
+                                                                                    <label class="col-form-label text-muted " for="Municipio" >TIPO DE BECA:</label>
+                                                                                    <div class="col-sm-auto ">
+                                                                                    <s:select  name="be.TIPO_BECA" id="TIPO_BECA" list="ListaTipoBeca"  listKey="ID_TIPO_BECA"  listValue="NOM_BECA" headerKey=""   headerValue="--SELECIONE UNA OPCION--" cssClass="form-control " onchange="Javascript:ValorBeca()" ></s:select>
+                                                                                    <s:fielderror fieldName="ErrorTipoBeca" cssClass="alert alert-danger" cssStyle="font-size: 12px; margin-top: 00px; margin-botton:40px;"/>
+                                                                                    <s:iterator value="ListaTipoBeca" id="ListaTipoBeca" status="stat">
+                                                                                        <s:hidden  name = "ListaTipoBeca[%{#stat.index}].ID_TIPO_BECA" id="ID_TIPO_BECA"></s:hidden>
+                                                                                        <s:hidden  name = "ListaTipoBeca[%{#stat.index}].NOM_BECA" id="NOM_BECA"></s:hidden>
+                                                                                    </s:iterator>
+                                                                                </div> 
+                                                                            </div>     
+                                                                            <div class="form-group col-lg-4 " id="MONTO" style="display: none;">
+                                                                                <label class="col-form-label text-muted" style="text-align : left;" for="RAZON">MONTO:</label>
+                                                                                <div class="col-sm-auto">
                                                                                     <s:textfield  cssClass="form-control text-uppercase" name="be.MONTO" id="be.MONTO"  ></s:textfield>
                                                                                     <s:fielderror fieldName="ErrorMonto" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>
-                                                                            <div class="form-group col-lg-4">
+                                                                            <div class="form-group col-lg-4 " id="DES_BECA" style="display: none;">
+                                                                                <label class="col-form-label text-muted" style="text-align : left;" for="RAZON">DESCRIPCIÓN DE LA BECA:</label>
+                                                                                <div class="col-sm-auto">
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="be.DES_BECA" id="be.DES_BECA"  ></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorDes_Beca" cssClass="alert alert-danger"/>
+                                                                                </div> 
+                                                                            </div>    
+                                                                            <div class="form-group col-lg-4" >
                                                                                 <label class="col-form-label text-muted" for="GIRO">PERIODICIDAD:</label>
                                                                                 <div class="col-sm-auto">
                                                                                     <s:textfield  cssClass="form-control text-uppercase" name="be.PERIODICIDAD" id="be.PERIODICIDAD" ></s:textfield>
@@ -239,15 +375,16 @@
                                                         </td>
                                                     </tr>
                                                     <tr><td>&nbsp;</td></tr>
-                                                                           
-                                                        <tr>
-                                                            <td class="text-center bg-primary" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" colspan="6" ><h5>BECAS REGISTRADAS</h5></td>
-                                                        </tr>
-                                                        <s:if test="ListaBecas.size()>0"> 
+
+                                                    <tr>
+                                                        <td class="text-center bg-primary" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" colspan="8" ><h5>BECAS REGISTRADAS</h5></td>
+                                                    </tr>
+                                                    <s:if test="ListaBecas.size()>0"> 
                                                         <tr style="color:#000 ; background: #cccccc" >
 
                                                             <td >Fuente</td>
-                                                            <td >Monto</td>
+                                                            <td >Tipo de Beca</td>
+                                                            <td >Monto o Descripcion de beca</td>       
                                                             <td >Periodicidad</td>
                                                             <td >Duración</td>
                                                             <td >Modificar</td>
@@ -259,16 +396,27 @@
 
 
                                                                 <td ><s:property value="FUENTE"/></td>
-                                                                <td ><s:property value="MONTO"/></td>
+                                                                <td ><s:property value="NOM_BECA"/></td>
+                                                                <s:if test="TIPO_BECA==1">
+                                                                    <td ><s:property value="MONTO"/></td>
+                                                                </s:if>
+                                                                <s:if test="TIPO_BECA>1">
+                                                                    <td ><s:property value="DES_BECA"/></td>
+                                                                </s:if>
                                                                 <td ><s:property value="PERIODICIDAD"/></td>
                                                                 <td ><s:property value="DURACION" /></td>
                                                                 <td >
-                                                                    <a href="" data-toggle='modal' data-target='#editBeca' 
+                                                                    <a href="" 
                                                                        data-fuente='<s:property value="FUENTE"/>' 
+                                                                       data-tipobeca='<s:property value="TIPO_BECA"/>' 
                                                                        data-monto='<s:property value="MONTO"/>' 
+                                                                       data-desbeca='<s:property value="DES_BECA"/>' 
                                                                        data-periodo='<s:property value="PERIODICIDAD"/>' 
                                                                        data-duracion='<s:property value="DURACION"/>' 
                                                                        data-id='<s:property value="ID_BECA"/>' 
+                                                                       data-toggle='modal' 
+                                                                       data-target='#editBeca' 
+
                                                                        ><i class="fa fa-edit" style="font-size: 25px; color: #004085; "></i> <span class="text-muted">Modificar Beca</span> </a>
                                                                 </td>
                                                                 <td >
@@ -279,20 +427,23 @@
 
                                                             </tr>   
                                                             <s:hidden  name = "ListaBecas[%{#stat.index}].FUENTE" id="FUENTE"></s:hidden>
+                                                            <s:hidden  name = "ListaBecas[%{#stat.index}].NOM_BECA" id="NOM_BECA"></s:hidden>
+                                                            <s:hidden  name = "ListaBecas[%{#stat.index}].TIPO_BECA" id="TIPO_BECA"></s:hidden>
+                                                            <s:hidden  name = "ListaBecas[%{#stat.index}].DES_BECA" id="DES_BECA"></s:hidden>
                                                             <s:hidden  name = "ListaBecas[%{#stat.index}].MONTO" id="MONTO"></s:hidden>
                                                             <s:hidden  name = "ListaBecas[%{#stat.index}].PERIODICIDAD" id="PERIODICIDAD"></s:hidden>
                                                             <s:hidden  name = "ListaBecas[%{#stat.index}].DURACION" id="DURACION"></s:hidden>
                                                             <s:hidden  name = "ListaBecas[%{#stat.index}].ID_BECA" id="ID_BECA"></s:hidden>
                                                         </s:iterator>   
                                                     </s:if> 
-                                                    
+
                                                     <s:else>
                                                         <tr>
                                                             <td>
-                                                                 <div style="color: #e1173e; font-size: 20px; text-align: center;">No hay Becas Registradas </div>
+                                                                <div style="color: #e1173e; font-size: 20px; text-align: center;">No hay Becas Registradas </div>
                                                             </td>
                                                         </tr>
-                                                       
+
                                                     </s:else>
                                                 </tbody>
                                             </table>
@@ -379,7 +530,7 @@
                                         </div>
 
                                         <!-- Actualiza Modal-->
-                                        <div class="modal fade" id="editBeca" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="editBeca" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg " role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header bg-primary">
@@ -398,13 +549,31 @@
                                                                 <s:fielderror fieldName="ErrorFuenteA" cssClass="alert alert-danger"></s:fielderror>
                                                                 </div> 
                                                             </div>
-                                                            <div class="form-group col-lg-6 ">
-                                                                <label class="col-form-label" style="text-align : left;" for="curp">MONTO:</label>
-                                                                <div class="col-sm-auto">
-                                                                <s:textfield  cssClass="form-control text-uppercase" name="be.MONTOA" id="monto" ></s:textfield>
-                                                                <s:fielderror fieldName="ErrorMontoA" cssClass="alert alert-danger"/>
+                                                            <div class="form-group col-lg-4">
+                                                                <label class="col-form-label text-muted " for="Municipio" >TIPO DE BECA:</label>
+                                                                <div class="col-sm-auto ">
+                                                                <s:select  name="be.TIPO_BECAA" id="tipobeca" list="ListaTipoBeca"  listKey="ID_TIPO_BECA"  listValue="NOM_BECA" headerKey=""   headerValue="--SELECIONE UNA OPCION--" cssClass="form-control " onchange="Javascript:ValorBecaM()" ></s:select>
+                                                                <s:fielderror fieldName="ErrorTipoBeca" cssClass="alert alert-danger" cssStyle="font-size: 12px; margin-top: 00px; margin-botton:40px;"/>
+
                                                             </div> 
                                                         </div>
+
+                                                        <div class="form-group col-lg-4 " id="MONTOM" style="display: none;" >
+                                                            <label class="col-form-label text-muted" style="text-align : left;" for="RAZON">MONTO:</label>
+                                                            <div class="col-sm-auto">
+                                                                <s:textfield  cssClass="form-control text-uppercase" name="be.MONTOA" id="monto"  ></s:textfield>
+                                                                <s:fielderror fieldName="ErrorMonto" cssClass="alert alert-danger"/>
+                                                            </div> 
+                                                        </div>
+
+                                                        <div class="form-group col-lg-4 " id="DES_BECAM" style="display: none;" >
+                                                            <label class="col-form-label text-muted" style="text-align : left;" for="RAZON">DESCRIPCIÓN DE LA BECA:</label>
+                                                            <div class="col-sm-auto">
+                                                                <s:textfield  cssClass="form-control text-uppercase" name="be.DES_BECAA" id="desbeca"  ></s:textfield>
+                                                                <s:fielderror fieldName="ErrorDes_Beca" cssClass="alert alert-danger"/>
+                                                            </div> 
+                                                        </div> 
+
                                                         <div class="form-group col-lg-12">
                                                             <label class="col-form-label" for="nombre">PERIODICIDAD:</label>
                                                             <div class="col-sm-auto">
@@ -425,7 +594,7 @@
                                                         </div>        
                                                         <div class="modal-footer">
                                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                            <a class="btn btn-primary" href="Javascript:Accion('ActualizarBeca')">Actualizar Beca</a>
+                                                            <a class="btn btn-primary" href="Javascript:Valida('ActualizarBeca')">Actualizar Beca</a>
                                                         </div>                                         
                                                     </div>
                                                 </div>
@@ -483,11 +652,15 @@
                                 $('#editBeca').on('show.bs.modal', function (event) {
                                     var button = $(event.relatedTarget) // Button that triggered the modal
 
+
+
                                     var recipient0 = button.data('fuente')
                                     var recipient1 = button.data('monto')
                                     var recipient2 = button.data('periodo')
                                     var recipient3 = button.data('duracion')
                                     var recipient4 = button.data('id')
+                                    var recipient5 = button.data('tipobeca')
+                                    var recipient6 = button.data('desbeca')
 
                                     var modal = $(this)
                                     modal.find('.modal-body #fuente').val(recipient0)
@@ -495,6 +668,29 @@
                                     modal.find('.modal-body #periodo').val(recipient2)
                                     modal.find('.modal-body #duracion').val(recipient3)
                                     modal.find('.modal-body #id').val(recipient4)
+                                    modal.find('.modal-body #tipobeca').val(recipient5)
+                                    modal.find('.modal-body #desbeca').val(recipient6)
+
+
+                                    if (recipient5 == "") {
+                                        $("#MONTOM").css("display", "none");
+                                        $("#DES_BECAM").css("display", "none");
+                                    }
+
+                                    if (recipient5 == 1) {
+
+                                        $("#MONTOM").css("display", "block");
+                                        $("#DES_BECAM").css("display", "none");
+
+                                    }
+                                    if (recipient5 > 1 && recipient5 != "") {
+
+                                        $("#DES_BECAM").css("display", "block");
+                                        $("#MONTOM").css("display", "none");
+
+                                    }
+
+
                                 });
                                     </script>
 

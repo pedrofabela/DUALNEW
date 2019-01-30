@@ -65,6 +65,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
     public ArrayList<BecaBean> ListaBecas = new ArrayList<>();
 
+    public ArrayList<BecaBean> ListaTipoBeca = new ArrayList<>();
+
     //*****************************************LISTAS TABLERO*****************************************************
     public List<DatosBean> ListaAlumnosDashboard = new ArrayList<DatosBean>();
     public List<DatosBean> ListaTotalEstatus = new ArrayList<DatosBean>();
@@ -125,10 +127,9 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public boolean BanProyectoRegistrado = false;
     public boolean BanProyectoActualizado = false;
     public boolean BanErrorSubirArchivo = false;
-    public boolean BanBecaRegistrada=false;
-    public boolean BanBecaActualizada=false;
-    public boolean BanBecaEliminada=false;
-    
+    public boolean BanBecaRegistrada = false;
+    public boolean BanBecaActualizada = false;
+    public boolean BanBecaEliminada = false;
 
     public String RegresarIncio() {
 
@@ -813,7 +814,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                         BanBuscaRFC = true;
                         return "ERROR";
                     }
-                }else{
+                } else {
                     pro.setCONVENIO("");
                 }
                 pro.setSTATUS_P("1");
@@ -1113,6 +1114,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
             ListaAlumnos2 = (ArrayList<DatosBean>) con.listaAlumnos2(datos);
 
+            ListaTipoBeca = (ArrayList<BecaBean>) con.ConsultaTipoBeca();
+
             Iterator LA2 = ListaAlumnos2.iterator();
             DatosBean obj;
 
@@ -1152,7 +1155,9 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             ConsultasBusiness con = new ConsultasBusiness();
 
             boolean fuente = false;
+            boolean tipo_beca = false;
             boolean monto = false;
+            boolean des_beca = false;
             boolean periodo = false;
             boolean duracion = false;
 
@@ -1165,13 +1170,36 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                 addFieldError("ErrorFuente", "se requiere la fuente ");
                 fuente = false;
             }
-            Constantes.enviaMensajeConsola("monto: " + be.getMONTO());
-            if (be.getMONTO().length() > 0) {
-                monto = true;
+            Constantes.enviaMensajeConsola("tipobeca: " + be.getTIPO_BECA());
+            if (be.getTIPO_BECA().length() > 0) {
+                tipo_beca = true;
             } else {
-                addFieldError("ErrorMonto", "se requiere el monto de la beca");
-                monto = false;
+                addFieldError("ErrorTipoBeca", "seleccione el tipo de beca");
+                tipo_beca = false;
             }
+
+            if (Integer.valueOf(be.getTIPO_BECA()) == 1) {
+                Constantes.enviaMensajeConsola("monto: " + be.getMONTO());
+                if (be.getMONTO().length() > 0) {
+                    monto = true;
+                } else {
+                    addFieldError("ErrorMonto", "se requiere el monto de la beca");
+                    monto = false;
+                }
+
+            }
+
+            if (Integer.valueOf(be.getTIPO_BECA()) > 1) {
+                Constantes.enviaMensajeConsola("monto: " + be.getMONTO());
+                if (be.getDES_BECA().length() > 0) {
+                    des_beca = true;
+                } else {
+                    addFieldError("ErrorDes_Beca", "se requiere una descripción de la beca");
+                    des_beca = false;
+                }
+
+            }
+
             Constantes.enviaMensajeConsola("periodo: " + be.getPERIODICIDAD());
             if (be.getPERIODICIDAD().length() > 0) {
                 periodo = true;
@@ -1187,7 +1215,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                 duracion = false;
             }
 
-            if (fuente && monto && periodo && duracion) {
+            if (fuente && tipo_beca && monto || des_beca && periodo && duracion) {
 
                 Constantes.enviaMensajeConsola("paso validacion");
 
@@ -1204,8 +1232,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                 ListaBecas = (ArrayList<BecaBean>) con.ConsultaBecas(datos);
 
                 limpiarBeca();
-                
-                BanBecaRegistrada=true;
+
+                BanBecaRegistrada = true;
 
                 return "SUCCESS";
 
@@ -1238,62 +1266,24 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
             ConsultasBusiness con = new ConsultasBusiness();
 
-            boolean fuente = false;
-            boolean monto = false;
-            boolean periodo = false;
-            boolean duracion = false;
+            Constantes.enviaMensajeConsola("paso validacion");
 
-            String ruta = null;
+            if (be.getTIPO_BECAA().equals("1")) {
 
-            Constantes.enviaMensajeConsola("fuente: " + be.getFUENTEA());
-            if (be.getFUENTEA().length() > 0) {
-                fuente = true;
-            } else {
-                addFieldError("ErrorFuenteA", "se requiere la fuente ");
-                fuente = false;
-            }
-            Constantes.enviaMensajeConsola("monto: " + be.getMONTOA());
-            if (be.getMONTOA().length() > 0) {
-                monto = true;
-            } else {
-                addFieldError("ErrorMontoA", "se requiere el monto de la beca");
-                monto = false;
-            }
-            Constantes.enviaMensajeConsola("periodo: " + be.getPERIODICIDADA());
-            if (be.getPERIODICIDADA().length() > 0) {
-                periodo = true;
-            } else {
-                addFieldError("ErrorPeriodoA", "se requiere una periodicidad");
-                periodo = false;
-            }
-            Constantes.enviaMensajeConsola("duracion: " + be.getDURACION());
-            if (be.getDURACIONA().length() > 0) {
-                duracion = true;
-            } else {
-                addFieldError("ErrorDuracionA", "se requiere la duracion de la beca");
-                duracion = false;
+                be.setDES_BECAA("");
+            }else if (!be.getTIPO_BECAA().equals("1")) {
+                be.setMONTOA("");
             }
 
-            if (fuente && monto && periodo && duracion) {
+            con.ActualizarBecas(be);
 
-                Constantes.enviaMensajeConsola("paso validacion");
+            ListaBecas = (ArrayList<BecaBean>) con.ConsultaBecas(datos);
 
-                con.ActualizarBecas(be);
+            limpiarBeca();
 
-                ListaBecas = (ArrayList<BecaBean>) con.ConsultaBecas(datos);
+            BanBecaActualizada = true;
 
-                limpiarBeca();
-                
-                BanBecaActualizada=true;
-
-                return "SUCCESS";
-
-            } else {
-                AgregarProyecto();
-                BanRegistraProyecto = true;
-                BanBuscaRFC = true;
-                return "ERROR";
-            }
+            return "SUCCESS";
 
         } catch (Exception e) {
             TipoError = "SESSION";
@@ -1332,8 +1322,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             }
 
             limpiarBeca();
-            
-            BanBecaEliminada=true;
+
+            BanBecaEliminada = true;
 
             return "SUCCESS";
 
@@ -1345,8 +1335,10 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     }
 
     public void limpiarBeca() {
+        be.setTIPO_BECA("");
         be.setFUENTE("");
         be.setMONTO("");
+        be.setDES_BECA("");
         be.setPERIODICIDAD("");
         be.setDURACION("");
         be.setID_BECA("");
@@ -1861,8 +1853,6 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public void setBanBecaEliminada(boolean BanBecaEliminada) {
         this.BanBecaEliminada = BanBecaEliminada;
     }
-    
-    
 
     public DatosBean getDatos() {
         return datos;
@@ -1990,6 +1980,14 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
     public void setListaBecas(ArrayList<BecaBean> ListaBecas) {
         this.ListaBecas = ListaBecas;
+    }
+
+    public ArrayList<BecaBean> getListaTipoBeca() {
+        return ListaTipoBeca;
+    }
+
+    public void setListaTipoBeca(ArrayList<BecaBean> ListaTipoBeca) {
+        this.ListaTipoBeca = ListaTipoBeca;
     }
 
     public List<DatosBean> getListaAlumnosDashboard() {

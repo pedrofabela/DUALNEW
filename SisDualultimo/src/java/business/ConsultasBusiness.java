@@ -1,5 +1,6 @@
 package business;
 
+import beans.AlumnosBean;
 import beans.BecaBean;
 import beans.DatosBean;
 import beans.GeneraArchivoBean;
@@ -214,6 +215,11 @@ public class ConsultasBusiness {
     public boolean ActualizaStatusBeca(BecaBean be) throws Exception {
         return con.ActualizaStatusBeca(be);
     }
+    
+    public List ConsultaTipoBeca() throws Exception {
+        List lista = this.con.ConsultaTipoBeca();
+        return lista;
+    }
 
     public List ConsultaBecas(DatosBean obj) throws Exception {
         List lista = this.con.ConsultaBecas(obj);
@@ -265,5 +271,18 @@ public class ConsultasBusiness {
         return lista;
 
     }
+     
+   //******************************************************************REGISTRO DE ALUMNO INDIVIDUAL*************************************************************
+     
+      public List ConsultaAlumnos2(DatosBean obj) throws Exception {
+        List lista = this.con.ConsultaAlumnos2(obj);
+        return lista;
+    }
+     
+      public boolean GuardaAlumnos(AlumnosBean objdatos) throws Exception  {
+        return this.con.GuardaAlumnos(objdatos);
+    }
+
+     
 
 }

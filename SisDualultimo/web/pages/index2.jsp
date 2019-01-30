@@ -191,6 +191,10 @@
                                                                 <div class="collapse navbar-collapse" id="navbarResponsive">
                                                                     <ul class="navbar-nav ml-auto">
                                                                         <li class="nav-item mx-0 mx-lg-1">
+                                                                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Javascript:Accion('FormAlumn')">Registrar Alumno</a>
+                                                                        </li>
+
+                                                                        <li class="nav-item mx-0 mx-lg-1">
                                                                             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#ab">Agregar Becas</a>
                                                                         </li>
                                                                         <li class="nav-item mx-0 mx-lg-1">
@@ -232,6 +236,16 @@
                                                         <!-- Header -->
                                                         <header class="masthead text-white text-center" style="background:  linear-gradient(to bottom, rgba(73,155,234,1) 0%, rgba(11,82,158,1) 83%, rgba(11,82,158,1) 100%);" >
 
+                                                            <div class="modal-header alert-warning col-lg-12">
+                                                                <h4 align="center"  style="color: #000">  Para las escuelas que se encuentran en la prueba PILOTO del sistema DUAL. Se les comunica que apartir del dia 31/01/2019 ya pueden hacer la carga de información real. </h4> 
+                                                                <br/>
+                                                            </div> 
+                                                            <br/>
+                                                            <s:if test="BanAlumReg">
+                                                                <div class="alert bg-success"  style="width:100%; border-radius: 5px; ">
+                                                                    <h5 align="center" style="color: #ffffff">Alumno Registrado Correctamente</h5>
+                                                                </div>
+                                                            </s:if> 
                                                             <div class="container-fluid"  >
                                                                 <div class="modal-content" style="border-radius: 10px;">
                                                                     <div class="modal-header bg-secondary col-lg-12">
@@ -251,8 +265,9 @@
                                                                                     <h5 align="center" style="color: #ffffff">Proyecto Actualizado Correctamente</h5>
                                                                                 </div>
                                                                             </s:if> 
-                                                                            
-                                                                            
+
+
+
 
 
                                                                             <div class="input-group ">                        
