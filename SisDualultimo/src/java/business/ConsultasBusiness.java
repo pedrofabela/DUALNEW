@@ -272,6 +272,30 @@ public class ConsultasBusiness {
 
     }
      
+    public String AlumnosNuevoIngresoA(DatosBean datos) throws Exception {
+        String nuevos = this.con.AlumnosNuevoIngresoA(datos);
+        return nuevos;
+
+    } 
+    
+     public String AlumnosActivosPeriodoA(DatosBean datos) throws Exception {
+        String periodo = this.con.AlumnosActivosPeriodoA(datos);
+        return periodo;
+
+    }  
+     
+    public String AlumnosNuevoIngreso(DatosBean datos) throws Exception {
+        String nuevos = this.con.AlumnosNuevoIngreso(datos);
+        return nuevos;
+
+    } 
+    
+     public String AlumnosActivosPeriodo(DatosBean datos) throws Exception {
+        String periodo = this.con.AlumnosActivosPeriodo(datos);
+        return periodo;
+
+    } 
+     
    //******************************************************************REGISTRO DE ALUMNO INDIVIDUAL*************************************************************
      
       public List ConsultaAlumnos2(DatosBean obj) throws Exception {

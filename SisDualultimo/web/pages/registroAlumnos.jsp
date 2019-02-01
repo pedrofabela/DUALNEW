@@ -305,7 +305,7 @@
                                                                 </div> 
                                                             </div>        
                                                             <div class="form-group col-lg-12">                                                                                     
-                                                                <a class="btn bg-success text-white" href="Javascript:Accion('RegistrarAlum')">REGISTRAR ALUMNO</a>
+                                                                <a class="btn bg-success text-white" href="Javascript:Accion('RegistrarAlum')" onclick="this.onclick=function(){return false}">REGISTRAR ALUMNO</a>
                                                             </div>  
                                                             <s:if test="BanExisteAlum">
                                                                 <div class="alert bg-warning"  style="width:100%; border-radius: 5px; ">

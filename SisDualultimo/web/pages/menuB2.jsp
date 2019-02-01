@@ -42,7 +42,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
 
-                <s:form name="formularioPrincipal" method="post" id="formularioPrincipal">
+               
                    
                         
                             <li class="nav-item mx-0 mx-lg-1">
@@ -79,8 +79,7 @@
                         <s:hidden  name = "modulosAUXP[%{#stat.index}].CVE_ACCESO_AUX" id="CVE_ACCESO_AUX"></s:hidden>
                     </s:iterator>
 
-                </s:form>  
-
+                
 
 
 

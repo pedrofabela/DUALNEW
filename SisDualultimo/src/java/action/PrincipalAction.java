@@ -1364,16 +1364,21 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
             ConsultasBusiness con = new ConsultasBusiness();
 
-            String fecha = fecha();
+            
+            
 
             bantablero = true;
+            
+            
 
-            fecha = fecha.substring(3, 8);
+           
 
-            datos.setFECHA_INICIO("01/" + fecha);
-            datos.setFECHA_TERMINO(fecha());
+            Constantes.enviaMensajeConsola("FECHA INICIO"+datos.getFECHA_INICIO());
+            Constantes.enviaMensajeConsola("FECHA termino"+datos.getFECHA_TERMINO());
 
             ListaAlumnosDashboard = con.listaAlumnosDashboard(datos);
+            
+            
 
             Constantes.enviaMensajeConsola("lista Alumnos : " + ListaAlumnosDashboard.size());
 
@@ -1414,6 +1419,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             datos.setTOTAL_ALU_DUAL(String.valueOf(total));
             datos.setTOTAL_ALU_ACTIVO(String.valueOf(activo));
             datos.setTOTAL_ALU_INACTIVO(String.valueOf(inactivo));
+            datos.setALUMNOS_NUEVO_INGRESO(con.AlumnosNuevoIngresoA(datos));
+            datos.setALUMNOS_ACTIVOS_PERIODO(con.AlumnosActivosPeriodoA(datos));
             datos.setTOTAL_HOMBRE(String.valueOf(hombre));
             datos.setTOTAL_MUJER(String.valueOf(mujer));
 
@@ -1524,10 +1531,14 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             datos.setTOTAL_ALU_DUAL(String.valueOf(total));
             datos.setTOTAL_ALU_ACTIVO(String.valueOf(activo));
             datos.setTOTAL_ALU_INACTIVO(String.valueOf(inactivo));
+            datos.setALUMNOS_NUEVO_INGRESO(con.AlumnosNuevoIngreso(datos));
+            datos.setALUMNOS_ACTIVOS_PERIODO(con.AlumnosActivosPeriodo(datos));
             datos.setTOTAL_HOMBRE(String.valueOf(hombre));
             datos.setTOTAL_MUJER(String.valueOf(mujer));
 
             Constantes.enviaMensajeConsola("hombre&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&6" + hombre + " asignado" + datos.getTOTAL_HOMBRE());
+            
+            
 
             ListaTotalEstatusU = con.listaTotalEstatusU(datos);
             ListaTotalEsuelaU = con.listaTotalAsesorProyecto(datos);

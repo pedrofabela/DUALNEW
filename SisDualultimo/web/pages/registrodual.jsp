@@ -558,7 +558,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group col-lg-12">
-                                                                            <a class="btn bg-secondary text-white" href="Javascript:Accion('GuardarProyecto')">Guardar Proyecto</a>
+                                                                            <a class="btn bg-secondary text-white" href="Javascript:Accion('GuardarProyecto')" onclick="this.onclick=function(){return false}">Guardar Proyecto</a>
                                                                         </div>  
                                                                     </div> 
 

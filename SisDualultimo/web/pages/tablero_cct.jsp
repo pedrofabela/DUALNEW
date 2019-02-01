@@ -385,6 +385,10 @@
 
                                                     <a href="Javascript:Accion('consultaDashboardU')" ><div style="width: 80%; max-width: 250px;  height: 35px; background: #072146; margin: auto; margin-top: 20px; color: white; border-radius: 10px; text-align: center; padding: 5px;">Generar</div></a>
                                                     <s:if test="bantablero">
+
+                                                        <div style="position: absolute; color: white; float: left; width: 150px; height: 40px; background: #633974; margin-top: -15px; border-radius: 20px 20px 0px 0px; padding: 8px; box-shadow: 3px 3px 10px #666; z-index: 1; font-size: 12px;">
+                                                            Alumnos DUAL: <s:property value="datos.ALUMNOS_NUEVO_INGRESO"/>                                                          
+                                                        </div>
                                                         <div id="wrapper2">         
 
                                                             <div class="row">
@@ -398,8 +402,39 @@
                                                                         <table style="width: 98%; text-align: center;  ">
                                                                             <tr style="background: #edecec;">
 
-                                                                                <td style="width: 50%;" ><div style="width: 90%; height: 140px; background: #a2a3b8; color: white; margin: auto; border-radius: 10px; margin-top: 35px; margin-bottom: 25px; box-shadow: 5px 5px 10px #666; "><h1 style="padding: 40px; font-size: 50px;"><s:property value="datos.TOTAL_ALU_DUAL"/></h1></div></td>
-                                                                                <td style="width: 50%;"><a href="#popup" style="text-decoration: none;" > <div style="width: 90%; height: 65px; background: #9dc325; display: block; margin: auto;  margin-top: 5px; border-radius: 10px; box-shadow: 5px 5px 10px #666;"><div style="width: 100%; color: white ; margin-top: 10px; display: block;">Activos</div> <div style="width: 100%; color: white ; margin-top: 0px; display: block;"><h3><s:property value="datos.TOTAL_ALU_ACTIVO"/></h3><i class="material-icons" style="float: right; margin-top: -45px; margin-right: 15px; font-size: 25px; color: white;"></i> </div></div>  </a>                    <a href="#popup2" style="text-decoration: none;" >  <div style="width: 90%; height: 65px; background: #e1173e; display: block;  margin: auto; margin-top: 10px; border-radius: 10px; box-shadow: 5px 5px 10px #666;"><div style="width: 100%; color: white ; margin-top: 10px; display: block;">Inactivos</div> <div style="width: 100%; color: white ; margin-top: 0px; display: block;"><h3><s:property value="datos.TOTAL_ALU_INACTIVO"/></h3></div></div> </a></td>
+                                                                                <td style="width: 40%;" ><div style="width: 90%; height: 140px; background: #a2a3b8; color: white; margin: auto; border-radius: 10px; margin-top: 35px; margin-bottom: 25px; box-shadow: 5px 5px 10px #666; "><h1 style="padding: 40px; font-size: 50px;"><s:property value="datos.TOTAL_ALU_DUAL"/></h1></div></td>
+                                                                                <td style="width: 60%;">
+                                                                                    <a href="#popup" style="text-decoration: none;" > 
+                                                                                        <div style="width: 43%; height: 65px; background: #145a32 ; display: inline-block; margin: auto;  margin-top: 5px; border-radius: 10px; box-shadow: 5px 5px 10px #666;">
+                                                                                            <div style="width: 100%; color: white ; margin-top: 10px; display: block;">Activos</div> 
+                                                                                            <div style="width: 100%; color: white ; margin-top: 0px; display: block;">
+                                                                                                <h3><s:property value="datos.TOTAL_ALU_ACTIVO"/></h3>
+                                                                                                <i class="material-icons" style="float: right; margin-top: -45px; margin-right: 15px; font-size: 25px; color: white;"></i> 
+                                                                                            </div>
+                                                                                        </div> 
+                                                                                    </a>
+
+                                                                                    <a href="#popup2" style="text-decoration: none;" >  
+                                                                                        <div style="width: 43%; height: 65px; background: #ce0039; display: inline-block;  margin: auto; margin-top: 10px; border-radius: 10px; box-shadow: 5px 5px 10px #666;">
+                                                                                            <div style="width: 100%; color: white ; margin-top: 10px; display: block;">Inactivos</div> 
+                                                                                            <div style="width: 100%; color: white ; margin-top: 0px; display: block;">
+                                                                                                <h3><s:property value="datos.TOTAL_ALU_INACTIVO"/></h3>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </a>
+
+                                                                                    
+
+
+                                                                                    <div style="width: 90%; height: 65px; background: #3366CC; display: inline-block; margin: auto;  margin-top: 5px; border-radius: 10px; box-shadow: 5px 5px 10px #666;">
+                                                                                        <div style="width: 100%; color: white ; margin-top: 10px; display: block; ">Activos por proyecto</div> 
+                                                                                        <div style="width: 100%; color: white ; margin-top: 0px; display: block;">
+                                                                                            <h3><s:property value="datos.ALUMNOS_ACTIVOS_PERIODO"/></h3>
+                                                                                            <i class="material-icons" style="float: right; margin-top: -45px; margin-right: 15px; font-size: 25px; color: white;"></i> 
+                                                                                        </div>
+                                                                                    </div> 
+
+                                                                                </td>
                                                                             </tr>
                                                                             <tr style="">
 
@@ -432,7 +467,7 @@
                                                                     <div style="width:100%; text-align: center; background: #606060; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Total de Proyectos Asignados por Asesor   </div>
                                                                     <div class="col-sm-auto  " style="background:  #edecec; margin-left: 00px;">
                                                                         <s:if test="ListaTotalEsuelaU.size()>0">
-                                                                        <div id="columnchart_values" style="width: 100%; height: 300px;"></div>
+                                                                            <div id="columnchart_values" style="width: 100%; height: 300px;"></div>
                                                                         </s:if>
                                                                         <s:else>
                                                                             <div  style="width: 100%; height: 300px; color: red; font-size: 22px;">Sin información</div>

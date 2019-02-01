@@ -112,6 +112,8 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                     datos.setFECHA_INICIO("01/" + fecha);
                     datos.setFECHA_TERMINO(fecha());
 
+                    
+
                     return "SUCCESS3";
 
                 } else {

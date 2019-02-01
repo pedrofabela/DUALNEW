@@ -633,7 +633,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
     }
 
     public List listaAlumnosDashboardU(DatosBean datos) throws Exception {
-        String query = "SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_REG FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_REG)>='" + datos.getFECHA_INICIO() + "' AND TO_DATE(FECHA_REG)<='" + datos.getFECHA_TERMINO() + "' AND CCT='" + datos.getCCT() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS";
+        String query = "SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_REG FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_REG)>='" + datos.getFECHA_INICIO() + "' AND TO_DATE(FECHA_REG)<='" + datos.getFECHA_TERMINO() + "' AND  CCT='" + datos.getCCT() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS";
         Constantes.enviaMensajeConsola("Consulta Alumnos Dashboard----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new alumnosDashboardMapper());
@@ -670,6 +670,46 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         List list = null;
         list = queryForList(query, (Mapper) new totalAluEscuela());
         return list;
+    }
+    
+    public String AlumnosNuevoIngresoA(DatosBean datos) throws Exception{
+        String query="SELECT COUNT(ID_ALUMNO) AS ALUMNOS_NUEVOS FROM CAT_ALUMNOS  ";
+        Constantes.enviaMensajeConsola("Consulta nuevo ingreso----->" + query);
+        String nuevos=null;
+        
+        nuevos=queryStringUnCampo(query);
+        
+        return nuevos;
+    }
+    
+    public String AlumnosActivosPeriodoA(DatosBean datos) throws Exception{
+        String query="SELECT COUNT(ALUMNOS_ACTIVOS) ALUMNOS_ACTIVOS_PERIODO FROM  (SELECT  DISTINCT(CURP_A) AS ALUMNOS_ACTIVOS  FROM TBL_PROYECTOS WHERE TO_DATE(FECHA_REG)<='"+datos.getFECHA_TERMINO()+"' AND TO_DATE(FECHA_REG)>='"+datos.getFECHA_INICIO()+"' GROUP BY CURP_A )";
+        Constantes.enviaMensajeConsola("Consulta nuevo ActivosPeriodo----->" + query);
+        String periodo=null;
+        
+        periodo=queryStringUnCampo(query);
+        
+        return periodo;
+    }
+    
+    public String AlumnosNuevoIngreso(DatosBean datos) throws Exception{
+        String query="SELECT COUNT(ID_ALUMNO) AS ALUMNOS_NUEVOS FROM CAT_ALUMNOS WHERE  CCT='"+datos.getCCT()+"'";
+        Constantes.enviaMensajeConsola("Consulta nuevo ingreso----->" + query);
+        String nuevos=null;
+        
+        nuevos=queryStringUnCampo(query);
+        
+        return nuevos;
+    }
+    
+    public String AlumnosActivosPeriodo(DatosBean datos) throws Exception{
+        String query="SELECT COUNT(ALUMNOS_ACTIVOS) ALUMNOS_ACTIVOS_PERIODO FROM  (SELECT  DISTINCT(CURP_A) AS ALUMNOS_ACTIVOS  FROM TBL_PROYECTOS WHERE TO_DATE(FECHA_REG)<='"+datos.getFECHA_TERMINO()+"' AND TO_DATE(FECHA_REG)>='"+datos.getFECHA_INICIO()+"' AND CCT='"+datos.getCCT()+"' GROUP BY CURP_A )";
+        Constantes.enviaMensajeConsola("Consulta nuevo ActivosPeriodo----->" + query);
+        String periodo=null;
+        
+        periodo=queryStringUnCampo(query);
+        
+        return periodo;
     }
 
     public boolean ActualizaStatus(ProyectoBean datos) throws Exception {

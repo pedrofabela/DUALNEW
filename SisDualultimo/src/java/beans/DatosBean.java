@@ -87,6 +87,9 @@ public class DatosBean {
 
     private String TOTAL_HOMBRE;
     private String TOTAL_MUJER;
+    
+    private String ALUMNOS_NUEVO_INGRESO;
+    private String ALUMNOS_ACTIVOS_PERIODO;
 
     public DatosBean() {
     }
@@ -690,5 +693,26 @@ public class DatosBean {
     public void setTOTAL_MUJER(String TOTAL_MUJER) {
         this.TOTAL_MUJER = TOTAL_MUJER;
     }
+
+    public String getALUMNOS_NUEVO_INGRESO() {
+        return ALUMNOS_NUEVO_INGRESO;
+    }
+
+    public void setALUMNOS_NUEVO_INGRESO(String ALUMNOS_NUEVO_INGRESO) {
+        this.ALUMNOS_NUEVO_INGRESO = ALUMNOS_NUEVO_INGRESO;
+    }
+
+    public String getALUMNOS_ACTIVOS_PERIODO() {
+        return ALUMNOS_ACTIVOS_PERIODO;
+    }
+
+    public void setALUMNOS_ACTIVOS_PERIODO(String ALUMNOS_ACTIVOS_PERIODO) {
+        this.ALUMNOS_ACTIVOS_PERIODO = ALUMNOS_ACTIVOS_PERIODO;
+    }
+    
+    
+
+    
+    
 
 }

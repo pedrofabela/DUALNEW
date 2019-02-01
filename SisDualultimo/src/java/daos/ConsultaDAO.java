@@ -126,6 +126,14 @@ public interface ConsultaDAO {
     
     public List listaTotalAsesorProyecto(DatosBean datos) throws Exception;
     
+    public String AlumnosNuevoIngresoA(DatosBean datos) throws Exception;
+    
+     public String AlumnosActivosPeriodoA(DatosBean datos) throws Exception;
+    
+    public String AlumnosNuevoIngreso(DatosBean datos) throws Exception;
+    
+     public String AlumnosActivosPeriodo(DatosBean datos) throws Exception;
+    
     //******************************************************REGISTRO ALUMNOS INDIVIDUAL************************************************
     public List ConsultaAlumnos2(DatosBean obj) throws Exception;
     public boolean GuardaAlumnos(AlumnosBean objdatos) throws Exception;
