@@ -35,6 +35,8 @@ public interface ConsultaDAO {
 
     public boolean EliminarCar(DatosBean dat) throws Exception;
 
+    public List ConsultaTipoAlumno() throws Exception;
+
     //******************************************************daos responsables*********************************************
     public List ConsultaResponsable(DatosBean obj) throws Exception;
 
@@ -103,38 +105,43 @@ public interface ConsultaDAO {
     public boolean GuardaBecas(BecaBean be) throws Exception;
 
     public boolean ActualizaStatusBeca(BecaBean be) throws Exception;
-    
+
     public List ConsultaTipoBeca() throws Exception;
-    
+
     public List ConsultaBecas(DatosBean obj) throws Exception;
-    
+
     public boolean ActualizarBecas(BecaBean be) throws Exception;
-     
+
     public boolean EliminarBecas(BecaBean be) throws Exception;
 
     //**********************************************************FIN PARTE 2*****************************************************
     //**********************************************************DAO PETER*****************************************************
     public List listaAlumnosDashboard(DatosBean datos) throws Exception;
-    
+
     public List listaAlumnosDashboardU(DatosBean datos) throws Exception;
 
     public List listaTotalEstatus(DatosBean datos) throws Exception;
-    
+
     public List listaTotalEstatusU(DatosBean datos) throws Exception;
 
     public List listaTotalEscuela(DatosBean datos) throws Exception;
-    
+
     public List listaTotalAsesorProyecto(DatosBean datos) throws Exception;
-    
+
     public String AlumnosNuevoIngresoA(DatosBean datos) throws Exception;
-    
-     public String AlumnosActivosPeriodoA(DatosBean datos) throws Exception;
-    
+
+    public String AlumnosActivosPeriodoA(DatosBean datos) throws Exception;
+
     public String AlumnosNuevoIngreso(DatosBean datos) throws Exception;
-    
-     public String AlumnosActivosPeriodo(DatosBean datos) throws Exception;
-    
+
+    public String AlumnosActivosPeriodo(DatosBean datos) throws Exception;
+
     //******************************************************REGISTRO ALUMNOS INDIVIDUAL************************************************
     public List ConsultaAlumnos2(DatosBean obj) throws Exception;
+
+    public String ConsultaStatus(DatosBean obj) throws Exception;
+
     public boolean GuardaAlumnos(AlumnosBean objdatos) throws Exception;
+
+    public boolean HabilitarAlumno(AlumnosBean objdatos) throws Exception;
 }

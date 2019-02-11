@@ -1313,7 +1313,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
 
                 }
             } else {
-                addFieldError("NOCARRERAS", getText("DEBÉ AGREGAR PRIMERO EL CATALOGO DE CARRERAS, PARA PODER REGISTRAR RESPONSABLES."));
+                addFieldError("NOCARRERAS", getText("DEBÉ AGREGAR PRIMERO EL CATALOGO DE CARRERAS, PARA PODER REGISTRAR ASESORES INSTITUCIONALES."));
                 return "ERROR";
 
             }

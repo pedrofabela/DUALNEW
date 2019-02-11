@@ -47,6 +47,9 @@ public class DatosBean {
     private String GRADO_CURSA;
     private String TIPO_ALUM;
     private String BECA;
+    private String ID_TIPOALUM;
+    private String NOM_TIPO;
+            
 
     private String ID_CVE_CAR;
     private String CLAVECARRERA;
@@ -455,6 +458,23 @@ public class DatosBean {
     public void setBECA(String BECA) {
         this.BECA = BECA;
     }
+
+    public String getID_TIPOALUM() {
+        return ID_TIPOALUM;
+    }
+
+    public void setID_TIPOALUM(String ID_TIPOALUM) {
+        this.ID_TIPOALUM = ID_TIPOALUM;
+    }
+
+    public String getNOM_TIPO() {
+        return NOM_TIPO;
+    }
+
+    public void setNOM_TIPO(String NOM_TIPO) {
+        this.NOM_TIPO = NOM_TIPO;
+    }
+    
     
     
 

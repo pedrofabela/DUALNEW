@@ -69,6 +69,14 @@
             <result name="SESSION" type="chain">CerrarSesion</result>
         </action>
         
+        <action name="HabilitarAlumno" class="action.RegistraAlumnosAction" method="HabilitarAlumno">
+         
+            <result name="SUCCESS" type="chain">verAcceso</result>		              
+            <result name="ERROR">/pages/registroAlumnos.jsp</result>
+            <result name="input">/pages/registroAlumnos.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>
+        
         <action name="RegistrarAlum" class="action.RegistraAlumnosAction" method="GuardaAlum">      
             <result name="SUCCESS" type="chain">verAcceso</result>			              
             <result name="ERROR">/pages/registroAlumnos.jsp</result>

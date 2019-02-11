@@ -15,6 +15,7 @@ import mappers.AsesoresMapper;
 import mappers.BuscaRFCMapper;
 import mappers.CCTMapper;
 import mappers.CarrerasMapper;
+import mappers.ConsultaTipoAlumnoMapper;
 import mappers.EstatusMapper;
 import mappers.Mapper;
 import mappers.ProyectoMapper;
@@ -108,6 +109,14 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         Constantes.enviaMensajeConsola("verifica si existe cuenta con esta curp EN DATOS CUENTA----->" + query);
         List list = null;
         list = queryForList(query, new VerificaCuentaxCurpDCMapper());
+        return list;
+    }
+    
+    public List ConsultaTipoAlumno() throws Exception{
+        String query = "select id_tipoalumno,nom_tipo from cat_tipoalumno";
+        Constantes.enviaMensajeConsola("verifica si existe cuenta con esta curp EN DATOS CUENTA----->" + query);
+        List list = null;
+        list = queryForList(query, new ConsultaTipoAlumnoMapper());
         return list;
     }
 
@@ -418,7 +427,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
 
     public List listaAlumnos2(DatosBean datos) throws Exception {
         String query = "SELECT CURP,MATRICULA,NOMBRE ||' ' ||APELLIDOP ||' ' ||APELLIDOM AS NOMBRE_COMPLETO,(SELECT NOM_CAR FROM cat_carreras WHERE CVE_CAR=CVE_CARRERA) AS NOM_CAR,CVE_CARRERA,CCT FROM CAT_ALUMNOS WHERE CURP='" + datos.getCURPA() + "'";
-        Constantes.enviaMensajeConsola("Consulta ALUMNOS----->" + query);
+        Constantes.enviaMensajeConsola("Consulta ALUMNOS 2----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new listaAlumnos2Mapper());
         return list;
@@ -946,11 +955,19 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
     //*********************************************************************************REGISTRO DE ALUMNO INDIVIDUAL***********************************************************************************
      @Override
     public List ConsultaAlumnos2(DatosBean obj) throws Exception {
-        String query = "SELECT MATRICULA,CURP FROM " + Constantes.TablaAlumnos + " WHERE CURP='" + obj.getCURP() + "'";
-        Constantes.enviaMensajeConsola("verifica si existen responsable PARA cvecarrera----->" + query);
+        String query = "SELECT MATRICULA,CURP FROM " + Constantes.TablaAlumnos + " WHERE CURP='" + obj.getCURP().toUpperCase() + "'";
+        Constantes.enviaMensajeConsola("verifica si existen alumno registrado----->" + query);
         List list = null;
         list = queryForList(query, new VerificaAlumnosMapper());
         return list;
+    }
+    
+     public String ConsultaStatus(DatosBean obj) throws Exception{
+        String query = "SELECT STATUS FROM " + Constantes.TablaAlumnos + " WHERE CURP='" + obj.getCURP().toUpperCase() + "'";
+        Constantes.enviaMensajeConsola("verifica estatus del alumno----->" + query);
+        String status = null;
+        status = queryStringUnCampo(query);
+        return status;
     }
     
     public boolean GuardaAlumnos(AlumnosBean objdatos) throws Exception {
@@ -1011,6 +1028,34 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
 //Se terminan de adicionar a nuesto ArrayLis los objetos
 //Ejecutar la funcion del OracleDAOFactory queryInsert, se deber pasar como parmetros la tabla en donde se insertara
         return oraDaoFac.queryInsert(Constantes.TablaAlumnos, arregloCampos);
+    }
+    
+    public boolean HabilitarAlumno(AlumnosBean objdatos) throws Exception {
+        
+
+//Crear un ArrayList para agregar los campos a insertar
+        ArrayList<ObjPrepareStatement> arregloCampos = new ArrayList<ObjPrepareStatement>();
+//Crear un objeto de tipo ObjPrepareStatement
+        ObjPrepareStatement temporal;
+//imprimiendo los valores del objeto tipo CCT...........
+        Constantes.enviaMensajeConsola("Entre al DAO del INSERT...................................");
+
+//En el objeto temporal settear el campo de la tabla, el tipo de dato y el valor a insertar
+        temporal = new ObjPrepareStatement("STATUS", "STRING", objdatos.getSTATUS());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("AVANCE", "STRING", objdatos.getAVANCE());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("BECA", "STRING", objdatos.getBECA());
+        arregloCampos.add(temporal);
+
+        String Condicion;
+        Condicion = " WHERE CURP='" + objdatos.getCURPA().toUpperCase() + "'";
+
+//Se terminan de adicionar a nuesto ArrayLis los objetos
+//Ejecutar la funcion del OracleDAOFactory queryInsert, se deber pasar como parmetros la tabla en donde se insertara
+        return oraDaoFac.queryUpdate(Constantes.TablaAlumnos, arregloCampos, Condicion);
+    
+        
     }
 
 }

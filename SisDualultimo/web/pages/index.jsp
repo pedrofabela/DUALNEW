@@ -156,10 +156,10 @@
                                                                             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#cc">Agregar Carreras</a>
                                                                         </li>
                                                                         <li class="nav-item mx-0 mx-lg-1">
-                                                                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#cr">Cargar Responsables</a>
+                                                                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#cr">Cargar Responsables DUAL</a>
                                                                         </li>
                                                                         <li class="nav-item mx-0 mx-lg-1">
-                                                                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#cri">Cargar Asesores Institucionales</a>
+                                                                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#cri">Cargar Asesores Institucionales DUAL</a>
                                                                         </li>
                                                                         <li class="nav-item mx-0 mx-lg-1">
                                                                             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#ca">Cargar Alumnos</a>
@@ -1029,7 +1029,10 @@
                                                                 <div class="form-group col-lg-4"style="margin: auto; color:white;  text-align: center; margin-top: 30px;">
 
                                                                     <div style="width: 100%; height: 25px; display: block;  text-decoration: underline;">Acerca del portal</div>
-                                                                    <div style="width: 80%; height: 25px; display: block; margin: auto; margin-top: 15px;">Unidad de Desarrollo Administrativa e Informática</div>
+                                                                    <div style="width: 80%; height: 10px; display: block; margin: auto; margin-top: 15px;">Unidad de Desarrollo Administrativo e Informática</div>
+                                                                    <div style="width: 80%; height: 10px; display: block; margin: auto; margin-top: 15px;">Para asistencia y soporte técnico sobre este sistema:</div>
+                                                                    <div style="width: 80%; height: 10px; display: block; margin: auto; margin-top: 15px;">mesadeservicios@edugem.gob.mx</div>
+                                                                    <div style="width: 80%; height: 10px; display: block; margin: auto; margin-top: 15px;">Llamanos (01 722) 2264304</div>
 
 
                                                                 </div>  

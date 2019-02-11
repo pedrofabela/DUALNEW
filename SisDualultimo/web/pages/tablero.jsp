@@ -349,7 +349,7 @@
                                         <div class="container"  style="margin-top: -50px;" >
                                             <div class="modal-content" style="border-radius: 10px;">
                                                 <div class="modal-header bg-secondary col-lg-12">
-                                                    <h4 align="center"  style="color: #ffffff"> <i class="fas fa-book"></i> TABLERO DE CONTROL</h4> 
+                                                    <h4 align="center"  style="color: #ffffff"> <i class="fas fa-book"></i> TABLERO DE CONTROL DE LA <s:property value="usuariocons.getNAMEUSUARIO()"/></h4> 
                                                     <br/>
                                                 </div>  
                                                 <div class="modal-body">                                              
@@ -726,8 +726,10 @@
                                             <div class="form-group col-lg-4"style="margin: auto; color:white;  text-align: center; margin-top: 30px;">
 
                                                 <div style="width: 100%; height: 25px; display: block;  text-decoration: underline;">Acerca del portal</div>
-                                                <div style="width: 80%; height: 25px; display: block; margin: auto; margin-top: 15px;">Unidad de Desarrollo Administrativa e Informática</div>
-
+                                                <div style="width: 80%; height: 10px; display: block; margin: auto; margin-top: 15px;">Unidad de Desarrollo Administrativo e Informática</div>
+                                                <div style="width: 80%; height: 10px; display: block; margin: auto; margin-top: 15px;">Para asistencia y soporte técnico sobre este sistema:</div>
+                                                <div style="width: 80%; height: 10px; display: block; margin: auto; margin-top: 15px;">mesadeservicios@edugem.gob.mx</div>
+                                                <div style="width: 80%; height: 10px; display: block; margin: auto; margin-top: 15px;">Llamanos (01 722) 2264304</div>
 
                                             </div>  
 

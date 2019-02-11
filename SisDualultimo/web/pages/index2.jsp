@@ -236,14 +236,15 @@
                                                         <!-- Header -->
                                                         <header class="masthead text-white text-center" style="background:  linear-gradient(to bottom, rgba(73,155,234,1) 0%, rgba(11,82,158,1) 83%, rgba(11,82,158,1) 100%);" >
 
-                                                            <div class="modal-header alert-warning col-lg-12">
-                                                                <h4 align="center"  style="color: #000">  Para las escuelas que se encuentran en la prueba PILOTO del sistema DUAL. Se les comunica que apartir del dia 31/01/2019 ya pueden hacer la carga de información real. </h4> 
-                                                                <br/>
-                                                            </div> 
-                                                            <br/>
+
                                                             <s:if test="BanAlumReg">
                                                                 <div class="alert bg-success"  style="width:100%; border-radius: 5px; ">
                                                                     <h5 align="center" style="color: #ffffff">Alumno Registrado Correctamente</h5>
+                                                                </div>
+                                                            </s:if> 
+                                                            <s:if test="BanAlumHabilitado">
+                                                                <div class="alert bg-success"  style="width:100%; border-radius: 5px; ">
+                                                                    <h5 align="center" style="color: #ffffff">Alumno Habilitado Correctamnte</h5>
                                                                 </div>
                                                             </s:if> 
                                                             <div class="container-fluid"  >
@@ -595,7 +596,7 @@
                                                                             <div class="form-group col-lg-4">
                                                                                 <label class="col-form-label" for="tipo_Alumno">Tipo de Alumno:</label>
                                                                                 <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="datos.TIPO_ALUM" id="tipo_alu" ></s:textfield>
+                                                                                    <s:select  name="datos.TIPO_ALUM" id="tipo_alu" list="ListaTipoAlumno"  listKey="ID_TIPOALUM"  listValue="NOM_TIPO"  headerKey="" headerValue="--SELECCIONE--" cssClass="form-control " ></s:select>                                                                                                                 
                                                                                     <s:fielderror fieldName="ErrorTipoAlum" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>      
@@ -645,8 +646,10 @@
                                                                     <div class="form-group col-lg-4"style="margin: auto; color:white;  text-align: center; margin-top: 30px;">
 
                                                                         <div style="width: 100%; height: 25px; display: block;  text-decoration: underline;">Acerca del portal</div>
-                                                                        <div style="width: 80%; height: 25px; display: block; margin: auto; margin-top: 15px;">Unidad de Desarrollo Administrativa e Informática</div>
-
+                                                                        <div style="width: 80%; height: 10px; display: block; margin: auto; margin-top: 15px;">Unidad de Desarrollo Administrativo e Informática</div>
+                                                                        <div style="width: 80%; height: 10px; display: block; margin: auto; margin-top: 15px;">Para asistencia y soporte técnico sobre este sistema:</div>
+                                                                        <div style="width: 80%; height: 10px; display: block; margin: auto; margin-top: 15px;">mesadeservicios@edugem.gob.mx</div>
+                                                                        <div style="width: 80%; height: 10px; display: block; margin: auto; margin-top: 15px;">Llamanos (01 722) 2264304</div>
 
                                                                     </div>  
 
@@ -816,6 +819,11 @@
                                                     });
 
                                                             </script>
+
+                                                        <s:iterator value="ListaTipoAlumno" id="ListaTipoAlumno" status="stat">
+                                                            <s:hidden  name = "ListaTipoAlumno[%{#stat.index}].ID_TIPOALUM" id="ID_TIPOALUM"></s:hidden>
+                                                            <s:hidden  name = "ListaTipoAlumno[%{#stat.index}].NOM_TIPO" id="NOM_TIPO"></s:hidden>
+                                                        </s:iterator>       
 
                                                     </s:form>
 

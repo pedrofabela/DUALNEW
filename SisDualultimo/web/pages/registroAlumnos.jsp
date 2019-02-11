@@ -150,24 +150,50 @@
                                                                 <br/>
                                                                 <a class="btn bg-primary text-white" href="Javascript:Accion('BuscarCurp')">CONSULTAR CURP</a>
                                                             </div> 
+                                                            &nbsp;
+                                                            <s:if test="BanExisteAlum">
+                                                                <div class="alert bg-warning"  style="width:100%; border-radius: 5px; ">
+                                                                    <h5 align="center" style="color: #ffffff">EL ALUMNO QUE INTENTA REGISTRAR YA EXISTE EN LA BASE DE DATOS</h5>
+                                                                </div>
+                                                            </s:if>    
+                                                            <s:if test="BanExisteAlumStatusInhabil">
+
+                                                                <div  class="modal-dialog bg-info" role="document">
+                                                                    <div class="modal-content ">
+                                                                        <div class="modal-header bg-secondary">
+                                                                            <h5 class="modal-title" id="exampleModalLabel">Habilitar Alumno</h5>
+                                                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true"></span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body bg-primary">El Alumno que intenta registrar ya se encuentra en la base de datos con un estatus inhabilitado. Desea Habilitar al Alumno?</div>
+                                                                        <div class="modal-footer bg-secondary">
+
+                                                                            <a class="btn btn-primary" href="Javascript:Accion('HabilitarAlumno')">Aceptar</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </s:if>   
+
                                                         </div>
                                                     </div>
 
 
                                                     <s:if test="BANCURPENCONTRADA">   
-
-                                                        <div class="row">
-                                                            <div class="alert bg-info"  style="width:100%; border-radius: 5px; ">
-                                                                <h5 align="center" style="color: #ffffff">Cupr verificada con renapo</h5>
-                                                            </div>
-                                                            <div class="form-group col-lg-12">
-                                                                <div class="col-lg-12 bg-primary">
-                                                                    <h5>Datos Personales</h5>
+                                                        <s:hidden name="BANCURPENCONTRADA"    value="%{BANCURPENCONTRADA}"></s:hidden>      
+                                                            <div class="row">
+                                                                <div class="alert bg-info"  style="width:100%; border-radius: 5px; ">
+                                                                    <h5 align="center" style="color: #ffffff">Cupr verificada con renapo</h5>
                                                                 </div>
-                                                            </div> 
-                                                            <div class="form-group col-lg-4">
-                                                                <label class="col-form-label text-muted" for="CURP">CURP:</label>
-                                                                <div class="col-sm-auto">
+                                                                <div class="form-group col-lg-12">
+                                                                    <div class="col-lg-12 bg-primary">
+                                                                        <h5>Datos Personales</h5>
+                                                                    </div>
+                                                                </div> 
+                                                                <div class="form-group col-lg-4">
+                                                                    <label class="col-form-label text-muted" for="CURP">CURP:</label>
+                                                                    <div class="col-sm-auto">
                                                                     <s:textfield  cssClass="form-control text-uppercase" name="al.CURP" id="al.CURP" maxLength="20" readonly="true"></s:textfield>
                                                                     <s:fielderror fieldName="ErrorCURP" cssClass="alert alert-danger"></s:fielderror>
                                                                     </div> 
@@ -300,119 +326,118 @@
                                                             <div class="form-group col-lg-4">
                                                                 <label class="col-form-label text-muted" for="tipoalu">TIPO DE ALUMNO: </label>
                                                                 <div class="col-sm-auto">
-                                                                    <s:textfield  cssClass="form-control text-uppercase" name="al.TIPO_ALUM" id="al.TIPO_ALUM" ></s:textfield>
+                                                                    <s:select  name="al.TIPO_ALUM" id="al.TIPO_ALUM" list="ListaTipoAlumno"  listKey="ID_TIPOALUM"  listValue="NOM_TIPO"  headerKey="" headerValue="--SELECCIONE--" cssClass="form-control " ></s:select>                                                                  
                                                                     <s:fielderror fieldName="ErrorTipoAlu" cssClass="alert alert-danger"/>
                                                                 </div> 
                                                             </div>        
                                                             <div class="form-group col-lg-12">                                                                                     
-                                                                <a class="btn bg-success text-white" href="Javascript:Accion('RegistrarAlum')" onclick="this.onclick=function(){return false}">REGISTRAR ALUMNO</a>
+                                                                <a class="btn bg-success text-white" href="Javascript:Accion('RegistrarAlum')" onclick="this.onclick = function () {
+                                                                            return false
+                                                                        }">REGISTRAR ALUMNO</a>
                                                             </div>  
-                                                            <s:if test="BanExisteAlum">
-                                                                <div class="alert bg-warning"  style="width:100%; border-radius: 5px; ">
-                                                                    <h5 align="center" style="color: #ffffff">EL ALUMNO QUE INTENTA REGISTRAR YA EXISTE EN LA BASE DE DATOS</h5>
-                                                                </div>
-                                                            </s:if>    
 
 
 
                                                         </div>
                                                     </s:if>     
-                                                    <s:hidden name="BANCURPENCONTRADA"    value="%{BANCURPENCONTRADA}"></s:hidden>         
+
+                                                </div>
+
+
+
+
+
+                                                </header>
+
+
+
+
+                                                <footer class="footer text-center bg-primary">
+
+
+
+                                                    <div class="row" style="width: 100%; ">
+                                                        <div class="form-group col-lg-4"style="margin: auto; color:white; ; text-align: center; margin-top: 30px; ">
+
+                                                            <div style="width: 100%; height: 25px; display: block; text-decoration: underline; ">Aviso de Privacidad</div>
+                                                            <div style="width: 80%; height: 25px; display: block; margin: auto; margin-top: 15px;">Consulta nuestro aviso de privacidad</div>
+
+
+
+                                                        </div>  
+
+                                                        <div class="form-group col-lg-4"style="margin: auto; color:white;  text-align: center; margin-top: 30px;">
+
+                                                            <div style="width: 100%; height: 25px; display: block; text-decoration: underline;">Enlaces de intéres</div>
+                                                            <div style="width: 80%; height: 25px; display: block; margin: auto; margin-top: 15px;">Gobierno del Estado de México</div>
+                                                            <div style="width: 80%; height: 25px; display: block; margin: auto;">Secretaría de Educación del Estado de México </div>
+
+
+
+                                                        </div>  
+
+                                                        <div class="form-group col-lg-4"style="margin: auto; color:white;  text-align: center; margin-top: 30px;">
+
+                                                            <div style="width: 100%; height: 25px; display: block;  text-decoration: underline;">Acerca del portal</div>
+                                                            <div style="width: 80%; height: 10px; display: block; margin: auto; margin-top: 15px;">Unidad de Desarrollo Administrativo e Informática</div>
+                                                            <div style="width: 80%; height: 10px; display: block; margin: auto; margin-top: 15px;">Para asistencia y soporte técnico sobre este sistema:</div>
+                                                            <div style="width: 80%; height: 10px; display: block; margin: auto; margin-top: 15px;">mesadeservicios@edugem.gob.mx</div>
+                                                            <div style="width: 80%; height: 10px; display: block; margin: auto; margin-top: 15px;">Llamanos (01 722) 2264304</div>
+
+                                                        </div>  
+
                                                     </div>
 
-
-
-
-
-                                                    </header>
-
-
-
-
-                                                    <footer class="footer text-center bg-primary">
-
-
-
-                                                        <div class="row" style="width: 100%; ">
-                                                            <div class="form-group col-lg-4"style="margin: auto; color:white; ; text-align: center; margin-top: 30px; ">
-
-                                                                <div style="width: 100%; height: 25px; display: block; text-decoration: underline; ">Aviso de Privacidad</div>
-                                                                <div style="width: 80%; height: 25px; display: block; margin: auto; margin-top: 15px;">Consulta nuestro aviso de privacidad</div>
-
-
-
-                                                            </div>  
-
-                                                            <div class="form-group col-lg-4"style="margin: auto; color:white;  text-align: center; margin-top: 30px;">
-
-                                                                <div style="width: 100%; height: 25px; display: block; text-decoration: underline;">Enlaces de intéres</div>
-                                                                <div style="width: 80%; height: 25px; display: block; margin: auto; margin-top: 15px;">Gobierno del Estado de México</div>
-                                                                <div style="width: 80%; height: 25px; display: block; margin: auto;">Secretaría de Educación del Estado de México </div>
-
-
-
-                                                            </div>  
-
-                                                            <div class="form-group col-lg-4"style="margin: auto; color:white;  text-align: center; margin-top: 30px;">
-
-                                                                <div style="width: 100%; height: 25px; display: block;  text-decoration: underline;">Acerca del portal</div>
-                                                                <div style="width: 80%; height: 25px; display: block; margin: auto; margin-top: 15px;">Unidad de Desarrollo Administrativa e Informática</div>
-
-
-                                                            </div>  
-
-                                                        </div>
-
-                                                    </footer>                     
-                                                    <div class="copyright bg-secondary py-4 text-center text-white">
-                                                        <div class="container">
-                                                            <small>Copyright &copy; Your Website 2018</small>
-                                                        </div>
+                                                </footer>                     
+                                                <div class="copyright bg-secondary py-4 text-center text-white">
+                                                    <div class="container">
+                                                        <small>Copyright &copy; Your Website 2018</small>
                                                     </div>
+                                                </div>
 
 
 
 
 
-                                                    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-                                                    <div class="scroll-to-top d-lg-none position-fixed ">
-                                                        <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
-                                                            <i class="fa fa-chevron-up"></i>
-                                                        </a>
-                                                    </div>
+                                                <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+                                                <div class="scroll-to-top d-lg-none position-fixed ">
+                                                    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+                                                        <i class="fa fa-chevron-up"></i>
+                                                    </a>
+                                                </div>
 
-                                                    <!-- Logout Modal-->
-                                                    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Cerrar Sesión</h5>
-                                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true"></span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">Estas seguro que deseas cerrar sesión.</div>
-                                                                <div class="modal-footer">
-                                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                                    <a class="btn btn-primary" href="Javascript:Accion('CerrarSesion')">Aceptar</a>
-                                                                </div>
+                                                <!-- Logout Modal-->
+                                                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Cerrar Sesión</h5>
+                                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true"></span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">Estas seguro que deseas cerrar sesión.</div>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                                <a class="btn btn-primary" href="Javascript:Accion('CerrarSesion')">Aceptar</a>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </div>
 
 
-                                                    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                                                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                                                    <!-- Plugin JavaScript -->
-                                                    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-                                                    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+                                                <!-- Plugin JavaScript -->
+                                                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+                                                <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
-                                                    <!-- Contact Form JavaScript -->
-                                                    <script src="js/jqBootstrapValidation.js"></script>
-                                                    <script src="js/contact_me.js"></script>
+                                                <!-- Contact Form JavaScript -->
+                                                <script src="js/jqBootstrapValidation.js"></script>
+                                                <script src="js/contact_me.js"></script>
 
-                                                    <!-- Custom scripts for this template -->
-                                                    <script src="js/freelancer.min.js"></script>
+                                                <!-- Custom scripts for this template -->
+                                                <script src="js/freelancer.min.js"></script>
 
                                                 <s:iterator value="ListaMunicipios" id="ListaMunicipios" status="stat">
                                                     <s:hidden  name = "ListaMunicipios[%{#stat.index}].ID" id="ID"></s:hidden>
@@ -422,6 +447,11 @@
                                                 <s:iterator value="ListaCarreras" id="ListaCarreras" status="stat">
                                                     <s:hidden  name = "ListaCarreras[%{#stat.index}].CLAVECARRERA" id="CLAVECARRERA"></s:hidden>
                                                     <s:hidden  name = "ListaCarreras[%{#stat.index}].NOMBRE_CARRERA" id="NOMBRE_CARRERA"></s:hidden>
+                                                </s:iterator>
+
+                                                <s:iterator value="ListaTipoAlumno" id="ListaTipoAlumno" status="stat">
+                                                    <s:hidden  name = "ListaTipoAlumno[%{#stat.index}].ID_TIPOALUM" id="ID_TIPOALUM"></s:hidden>
+                                                    <s:hidden  name = "ListaTipoAlumno[%{#stat.index}].NOM_TIPO" id="NOM_TIPO"></s:hidden>
                                                 </s:iterator>
 
 

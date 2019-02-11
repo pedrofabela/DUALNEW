@@ -44,9 +44,12 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
     public List<DatosBean> ListaMunicipios = new ArrayList<DatosBean>();
 
     private List<DatosBean> ListaCarreras = new ArrayList<>();
+    
+    private List<DatosBean> ListaTipoAlumno = new ArrayList<>();
 
     private List<DatosBean> VerificaAlumno = new ArrayList<>();
-
+    
+   
     //SESSIN USUARIO	
     // private Map session  = ActionContext.getContext().getSession();
     private String nivelUsuario;
@@ -81,8 +84,10 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
     DatosBean obj = new DatosBean();
 
     private boolean BANCURPENCONTRADA = false;
-    private boolean BanExisteAlum=false;
-    private boolean BanAlumReg=false;
+    private boolean BanExisteAlum = false;
+    private boolean BanExisteAlumStatusInhabil=false;
+    private boolean BanAlumReg = false;
+    private boolean BanAlumHabilitado = false;
 
     public String FormAlumno() {
 
@@ -145,48 +150,79 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
 
             if (banlong) {
 
-                //System.outprintln ("MICURP ES: " + micurp);
-                service = new ConsultaRenapoPorCurp_Service();
-                port = service.getConsultaRenapoPorCurpPort();
-                personas = port.consultaPorCurp(al.getCURPA());
-                //port.consultaPorCurp(micurp)
-
                 ConsultasBusiness con = new ConsultasBusiness();
+                
+                 obj.setCURP(al.getCURPA());
 
-                if (personas.getResultado().equals("EXITO")) {
+                VerificaAlumno = con.ConsultaAlumnos2(obj);
 
-                    BANCURPENCONTRADA = true;
-
-                    al.setNOMBRE(personas.getNombre());
-                    al.setAPELLIDOP(personas.getApellidoPaterno());
-                    al.setAPELLIDOM(personas.getApellidoMaterno());
-                    al.setFECNAC(personas.getFechaNacimientoAxu());
-                    al.setCURP(personas.getCurp());
-
-                    if (personas.getSexo().equals("H")) {
-                        al.setSEXO("HOMBRE");
+                if (VerificaAlumno.size() > 0) {
+                    
+                    String VerificaStatus=con.ConsultaStatus(obj);
+                    
+                    Constantes.enviaMensajeConsola(VerificaStatus);
+                    
+                    if (VerificaStatus.equals("1")) {
+                        
+                         BanExisteAlum = true;
+                        
                     } else {
-                        al.setSEXO("MUJER");
+                        Constantes.enviaMensajeConsola("entro aqui");
+                         BanExisteAlumStatusInhabil = true;
                     }
+                    
+                    
+                    
+                    
 
-                    obj.setCCT(usuariocons.getUSUARIO());
-
-                    al.setCCT(usuariocons.getUSUARIO());
-
-                    ListaMunicipios = con.listaMunicipios();
-                    ListaCarreras = con.ConsultaCarreraExistente(obj);
-
-                    al.setCURPA("");
+                   
+                    return "input";
 
                 } else {
 
-                    BANCURPENCONTRADA = false;
-                    System.out.println("Resultado            : " + personas.getResultado());
-                    System.out.println("Codigo de error      : " + personas.getCodigoError());
-                    System.out.println("Descripcion Error    : " + personas.getDescripcionError());
+                    //System.outprintln ("MICURP ES: " + micurp);
+                    service = new ConsultaRenapoPorCurp_Service();
+                    port = service.getConsultaRenapoPorCurpPort();
+                    personas = port.consultaPorCurp(al.getCURPA());
+                    //port.consultaPorCurp(micurp)
 
-                    addFieldError("ErrorValCurp", personas.getDescripcionError());
-                }
+                    if (personas.getResultado().equals("EXITO")) {
+
+                        BANCURPENCONTRADA = true;
+
+                        al.setNOMBRE(personas.getNombre());
+                        al.setAPELLIDOP(personas.getApellidoPaterno());
+                        al.setAPELLIDOM(personas.getApellidoMaterno());
+                        al.setFECNAC(personas.getFechaNacimientoAxu());
+                        al.setCURP(personas.getCurp());
+
+                        if (personas.getSexo().equals("H")) {
+                            al.setSEXO("HOMBRE");
+                        } else {
+                            al.setSEXO("MUJER");
+                        }
+
+                        obj.setCCT(usuariocons.getUSUARIO());
+
+                        al.setCCT(usuariocons.getUSUARIO());
+
+                        ListaMunicipios = con.listaMunicipios();
+                        ListaCarreras = con.ConsultaCarreraExistente(obj);
+                        ListaTipoAlumno=con.ConsultaTipoAlumno();
+                                
+
+                        al.setCURPA("");
+
+                    } else {
+
+                        BANCURPENCONTRADA = false;
+                        System.out.println("Resultado            : " + personas.getResultado());
+                        System.out.println("Codigo de error      : " + personas.getCodigoError());
+                        System.out.println("Descripcion Error    : " + personas.getDescripcionError());
+
+                        addFieldError("ErrorValCurp", personas.getDescripcionError());
+                    }
+                } 
             }
         } catch (Exception e) {
             addActionError("Ocurrio un error: " + e);
@@ -194,6 +230,63 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
         }
         return "SUCCESS";
     }
+    
+    public String HabilitarAlumno() {
+        //validando session***********************************************************************
+        if (session.get("cveUsuario") != null) {
+            String sUsu = (String) session.get("cveUsuario");
+        } else {
+            addActionError("**** La sesión ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+        if (session.containsKey("usuario")) {
+            usuariocons = (usuarioBean) session.get("usuario");
+        } else {
+            addActionError("**** La sesión ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+
+        try {
+
+            boolean curp = false;
+           al.getCURPA();
+
+            if (al.getCURPA().length() > 0) {
+                curp = true;
+            } else {
+                addFieldError("ErrorCurp", "Agregar el domicilio del alumno");
+                curp = false;
+            }
+           
+
+            if (curp ) {
+
+                ConsultasBusiness con = new ConsultasBusiness();
+
+               
+
+                al.setSTATUS("1");
+                al.setAVANCE("50");
+                al.setBECA("no");
+
+                con.HabilitarAlumno(al);
+
+                BanAlumHabilitado = true;
+
+            } else {
+
+                return "ERROR";
+
+            }
+
+        } catch (Exception e) {
+            addActionError("Ocurrio un error: " + e);
+            return "ERROR";
+        }
+        return "SUCCESS";
+    }
+    
+    
 
     public String GuardaAlum() {
         //validando session***********************************************************************
@@ -294,7 +387,7 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
             if (al.getTIPO_ALUM().length() > 0) {
                 tipoalu = true;
             } else {
-                addFieldError("ErrorTipoAlu", "Agregar el tipo de alumno ");
+                addFieldError("ErrorTipoAlu", "Seleccionar el tipo de alumno ");
                 tipoalu = false;
             }
 
@@ -302,26 +395,15 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
 
                 ConsultasBusiness con = new ConsultasBusiness();
 
-                obj.setCURP(al.getCURP());
-                
+               
 
-                VerificaAlumno = con.ConsultaAlumnos2(obj);
+                al.setSTATUS("1");
+                al.setAVANCE("50");
+                al.setBECA("no");
 
-                if (VerificaAlumno.size() > 0) {
-                    
-                    BanExisteAlum=true;
-                    return "input";
-                    
+                con.GuardaAlumnos(al);
 
-                } else {
-                    al.setSTATUS("1");
-                    al.setAVANCE("50");
-                    al.setBECA("no");
-
-                    con.GuardaAlumnos(al);
-                    
-                    BanAlumReg=true;
-                }
+                BanAlumReg = true;
 
             } else {
 
@@ -344,8 +426,8 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
         // Comprobar si encaja
         return m.matches();
     }
-    
-    public void limpiar(){
+
+    public void limpiar() {
         al.setCURP("");
         al.setNOMBRE("");
         al.setAPELLIDOP("");
@@ -398,6 +480,16 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
         this.BanExisteAlum = BanExisteAlum;
     }
 
+    public boolean isBanExisteAlumStatusInhabil() {
+        return BanExisteAlumStatusInhabil;
+    }
+
+    public void setBanExisteAlumStatusInhabil(boolean BanExisteAlumStatusInhabil) {
+        this.BanExisteAlumStatusInhabil = BanExisteAlumStatusInhabil;
+    }
+    
+    
+
     public boolean isBanAlumReg() {
         return BanAlumReg;
     }
@@ -405,7 +497,17 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
     public void setBanAlumReg(boolean BanAlumReg) {
         this.BanAlumReg = BanAlumReg;
     }
-     
+
+    public boolean isBanAlumHabilitado() {
+        return BanAlumHabilitado;
+    }
+
+    public void setBanAlumHabilitado(boolean BanAlumHabilitado) {
+        this.BanAlumHabilitado = BanAlumHabilitado;
+    }
+    
+    
+
     public List<DatosBean> getListaMunicipios() {
         return ListaMunicipios;
     }
@@ -430,6 +532,16 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
         this.ListaCarreras = ListaCarreras;
     }
 
+    public List<DatosBean> getListaTipoAlumno() {
+        return ListaTipoAlumno;
+    }
+
+    public void setListaTipoAlumno(List<DatosBean> ListaTipoAlumno) {
+        this.ListaTipoAlumno = ListaTipoAlumno;
+    }
+    
+    
+
     public List<DatosBean> getVerificaAlumno() {
         return VerificaAlumno;
     }
@@ -437,5 +549,9 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
     public void setVerificaAlumno(List<DatosBean> VerificaAlumno) {
         this.VerificaAlumno = VerificaAlumno;
     }
+
+   
+    
+    
 
 }

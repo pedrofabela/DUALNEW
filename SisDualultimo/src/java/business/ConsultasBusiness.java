@@ -54,6 +54,11 @@ public class ConsultasBusiness {
         List lista = this.con.ConsultaCarreraExistente(obj);
         return lista;
     }
+    
+    public List ConsultaTipoAlumno() throws Exception {
+        List lista = this.con.ConsultaTipoAlumno();
+        return lista;
+    }
 
     public List ConsultaDatos(DatosBean obj) throws Exception {
         List lista = this.con.ConsultaDatos(obj);
@@ -302,9 +307,18 @@ public class ConsultasBusiness {
         List lista = this.con.ConsultaAlumnos2(obj);
         return lista;
     }
+      
+      public String ConsultaStatus(DatosBean obj) throws Exception {
+        String status = this.con.ConsultaStatus(obj);
+        return status;
+    }
      
       public boolean GuardaAlumnos(AlumnosBean objdatos) throws Exception  {
         return this.con.GuardaAlumnos(objdatos);
+    }
+      
+       public boolean HabilitarAlumno(AlumnosBean objdatos) throws Exception  {
+        return this.con.HabilitarAlumno(objdatos);
     }
 
      
