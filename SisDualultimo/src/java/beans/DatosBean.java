@@ -93,7 +93,32 @@ public class DatosBean {
     
     private String ALUMNOS_NUEVO_INGRESO;
     private String ALUMNOS_ACTIVOS_PERIODO;
+     private String EGRESADOS;
+     private String ALUMNOS_NUEVOS;
 
+    public String getALUMNOS_NUEVOS() {
+        return ALUMNOS_NUEVOS;
+    }
+
+    public void setALUMNOS_NUEVOS(String ALUMNOS_NUEVOS) {
+        this.ALUMNOS_NUEVOS = ALUMNOS_NUEVOS;
+    }
+
+    
+     
+     
+
+    public String getEGRESADOS() {
+        return EGRESADOS;
+    }
+
+    public void setEGRESADOS(String EGRESADOS) {
+        this.EGRESADOS = EGRESADOS;
+    }
+
+     
+     
+     
     public DatosBean() {
     }
 
