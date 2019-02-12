@@ -27,6 +27,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import static javax.print.attribute.standard.MediaPrintableArea.MM;
 import org.apache.commons.io.FileUtils;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -1365,8 +1366,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
         try {
 
             ConsultasBusiness con = new ConsultasBusiness();
-
             
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
             
 
             bantablero = true;
@@ -1392,6 +1393,14 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             int inactivo = 0;
             int hombre = 0;
             int mujer = 0;
+             int egresados = 0;
+              int nuevos = 0;
+               Date fechaReg=null;
+               Date fechainicio=null;
+                Date fechatermino=null;
+              System.out.println("fecha reg" + fechaReg);  
+                fechainicio=format.parse(datos.getFECHA_INICIO());
+                fechatermino=format.parse(datos.getFECHA_TERMINO());
 
             while (LAD.hasNext()) {
                 obj = (DatosBean) LAD.next();
@@ -1403,7 +1412,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
                     activo = activo + 1;
                 }
-                if (obj.getESTATUS_GENERAL().equals("INACTIVO")) {
+                if (obj.getESTATUS_GENERAL().equals("INACTIVO") && !obj.getSTATUS().equals("10")) {
 
                     inactivo = inactivo + 1;
                 }
@@ -1416,8 +1425,23 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
                     mujer = mujer + 1;
                 }
+                
+                 if (obj.getSTATUS().equals("10")) {
+
+                    egresados = egresados + 1;
+                }
+                 
+                 if(obj.getFECHA_REG()!=null){
+                fechaReg=format.parse(obj.getFECHA_REG());
+                if ( fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)  ) {
+
+                    nuevos = nuevos + 1;
+                }
+                 }
+                  
             }
 
+            
             datos.setTOTAL_ALU_DUAL(String.valueOf(total));
             datos.setTOTAL_ALU_ACTIVO(String.valueOf(activo));
             datos.setTOTAL_ALU_INACTIVO(String.valueOf(inactivo));
@@ -1425,7 +1449,9 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             datos.setALUMNOS_ACTIVOS_PERIODO(con.AlumnosActivosPeriodoA(datos));
             datos.setTOTAL_HOMBRE(String.valueOf(hombre));
             datos.setTOTAL_MUJER(String.valueOf(mujer));
-
+             datos.setEGRESADOS(String.valueOf(egresados));
+             datos.setALUMNOS_NUEVOS(String.valueOf(nuevos));
+             
             Constantes.enviaMensajeConsola("hombre&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" + hombre + " asignado" + datos.getTOTAL_HOMBRE());
 
             ListaTotalEstatus = con.listaTotalEstatus(datos);
