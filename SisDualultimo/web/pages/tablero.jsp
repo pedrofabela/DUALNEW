@@ -346,17 +346,17 @@
                                     <!-- Header -->
                                     <header class="masthead text-white text-center" >
 
-                                        <div class="container"  style="margin-top: -120px; " >
-                                            <div class="modal-content" style="border-radius: 10px; box-shadow: 5px 5px 10px #333;">
-                                                <div   style="background: #072146; text-align: center; width: 100%; margin: auto; height: 60px; padding: 20px; ">
-                                                    <h4 align="center"  style="color: #ffffff; font-size: 15px;"> TABLERO DE CONTROL DE LA <s:property value="usuariocons.getNAMEUSUARIO()"/></h4> 
-                                                    
+                                       <div class="container"  style="margin-top: -50px;" >
+                                            <div class="modal-content" style="border-radius: 10px;">
+                                                <div class="modal-header bg-secondary col-lg-12">
+                                                    <h5 align="center"  style="color: #ffffff"> <i class="fas fa-book"></i> TABLERO DE CONTROL DE LA <s:property value="usuariocons.getNAMEUSUARIO()"/></h5> 
+                                                    <br/>
                                                 </div>  
                                                 <div class="modal-body">                                              
                                                     
                                                             
                                                            
-                                                    <div class="mr-5">hola</div>
+                                                  
 
                                                     
                                                    

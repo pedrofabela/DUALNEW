@@ -121,7 +121,8 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                     
                     
                     
-                     SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
+
             
 
             bantablero = true;

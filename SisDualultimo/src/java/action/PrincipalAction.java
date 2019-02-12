@@ -1367,7 +1367,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
             ConsultasBusiness con = new ConsultasBusiness();
             
-            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
             
 
             bantablero = true;
@@ -1400,6 +1400,10 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                Date fechainicio=null;
                 Date fechatermino=null;
               System.out.println("fecha reg" + fechaReg);  
+              
+              
+              
+              
                 fechainicio=format.parse(datos.getFECHA_INICIO());
                 fechatermino=format.parse(datos.getFECHA_TERMINO());
 

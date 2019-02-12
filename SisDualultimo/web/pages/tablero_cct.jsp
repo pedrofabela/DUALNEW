@@ -352,46 +352,180 @@
                                     <!-- Header -->
                                     <header class="masthead text-white text-center" style="background:  linear-gradient(to bottom, rgba(73,155,234,1) 0%, rgba(11,82,158,1) 83%, rgba(11,82,158,1) 100%); " >
 
-                                        <div class="container"  style="margin-top: -50px;" >
+                                         <div class="container"  style="margin-top: -50px;" >
                                             <div class="modal-content" style="border-radius: 10px;">
                                                 <div class="modal-header bg-secondary col-lg-12">
-                                                    <h5 align="center"  style="color: #ffffff"> <i class="fas fa-book"></i> TABLERO DE CONTROL DE LA <s:property value="usuariocons.getNAMEUSUARIO()"/></h5> 
+                                                    <h5 align="center"  style="color: #ffffff"> <s:property value="usuariocons.getNAMEUSUARIO()"/></h5> 
                                                     <br/>
-                                                </div>  
+                                                </div>      
                                                 <div class="modal-body">                                              
-                                                    <div class="row">
+                                                   
 
 
-                                                        <div class="form-group col-lg-6"  >
+                                                  
 
-                                                            <s:textfield name="datos.FECHA_INICIO" id="Fecha"  placeholder="Fecha de Inicial" required="true" readonly="true" cssClass="campoFormBusqueda" onKeyUp="this.value=this.value.toUpperCase();" cssStyle="margin-left:5px;  width:95%; text-align:center;" />
-
-
-                                                        </div>
-
-
-                                                        <div class="form-group col-lg-6"  >
-
-                                                            <s:textfield name="datos.FECHA_TERMINO" id="Fecha1"  placeholder="Fecha de Inicial" required="true" readonly="true" cssClass="campoFormBusqueda" onKeyUp="this.value=this.value.toUpperCase();" cssStyle="margin-left:5px;  width:95%;  text-align:center;" />
-
-
-                                                        </div>
-
-
-
-
-                                                    </div>   
-
-
-                                                    <a href="Javascript:Accion('consultaDashboardU')" ><div style="width: 80%; max-width: 250px;  height: 35px; background: #072146; margin: auto; margin-top: 20px; color: white; border-radius: 10px; text-align: center; padding: 5px;">Generar</div></a>
-                                                    <s:if test="bantablero">
-
-                                                        <div style="position: absolute; color: white; float: left; width: 150px; height: 40px; background: #633974; margin-top: -15px; border-radius: 20px 20px 0px 0px; padding: 8px; box-shadow: 3px 3px 10px #666; z-index: 1; font-size: 12px;">
-                                                            Alumnos DUAL: <s:property value="datos.ALUMNOS_NUEVO_INGRESO"/>                                                          
-                                                        </div>
+                                                       
                                                         <div id="wrapper2">         
 
                                                             <div class="row">
+                                                                
+                                                                
+                                                                
+                                                                 <div class="form-group col-lg-4" style="background: #343a40; padding: 10px; height: 60px;"  >
+
+                                                                    <s:textfield name="datos.FECHA_INICIO" id="Fecha"  placeholder="Fecha de Inicial"  cssClass="form-control"   />
+
+
+                                                                </div>
+
+
+                                                                <div class="form-group col-lg-4"  style="background: #343a40; padding: 10px; height: 60px;" >
+
+                                                                    <s:textfield name="datos.FECHA_TERMINO" id="Fecha1"  placeholder="Fecha de Termmino"   cssClass="form-control"   />
+
+
+                                                                </div>
+
+                                                                <div class="form-group col-lg-4" style="background: #343a40; padding: 10px; height: 60px;" >                                                 
+                                                                    <a href="Javascript:Accion('consultaDashboardU')" ><div style="width: 80%; max-width: 250px;  height: 35px; background: #0065d2; margin: auto; margin-top: 2px; color: white; border-radius: 10px; text-align: center; padding: 5px; text-decoration: none;">Generar</div></a>
+
+                                                                </div>        
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                         
+                                                               <!-- indicadores de colores -->     
+                                                               <div class="form-group col-lg-3" style="padding: none;"  >
+
+                                                                   <div style="background: #28a745; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+
+                                                                       <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
+
+                                                                           Alumnos activos 
+
+                                                                       </div>
+                                                                           <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
+
+                                                                               <s:property value="datos.TOTAL_ALU_ACTIVO"/> <i class="fas fa-fw fa-user" style="position: absolute; z-index: 0; top : -2 rem; right: 0.5rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+
+                                                                       </div>
+                                                                     <a href="#popup" style="text-decoration: none; color:white;" >      <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+
+                                                                          Detalle de Alumnos        ->
+
+                                                                         </div></a>
+
+
+                                                                   </div>
+
+
+                                                               </div>  
+                                                                               
+                                                                               
+                                                                               
+                                                                     <div class="form-group col-lg-3" style="padding: none;"  >
+
+                                                                   <div style="background: #dc3545; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+
+                                                                       <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
+
+                                                                           Alumnos inactivos 
+
+                                                                       </div>
+                                                                            <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
+
+                                                                               <s:property value="datos.TOTAL_ALU_INACTIVO"/> <i class="fas fa-fw fa-thumbs-down" style="position: absolute; z-index: 0; top : -2 rem; right: 0.5rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+
+                                                                           </div> 
+                                                                               <a href="#popup2" style="text-decoration: none; color: white;" > <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+
+                                                                          Detalle de Alumnos        ->
+
+                                                                                   </div>
+                                                                               </a>
+
+
+                                                                   </div>
+
+
+                                                               </div>  
+                                                                                          
+                                                                               
+                                                                     
+                                                                               
+                                                                               
+                                                                               
+                                                                 <div class="form-group col-lg-3" style="padding: none;"  >
+
+                                                                   <div style="background: #ffc107; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+
+                                                                       <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
+
+                                                                           Alumnos egresados
+
+                                                                       </div>
+                                                                           <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
+
+                                                                               <s:property value="datos.EGRESADOS"/> <i class="fas fa-fw fa-graduation-cap" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+
+                                                                       </div>
+                                                                               <a href="#popup3" style="text-decoration: none; color: white;" >    <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+
+                                                                          Detalle de Alumnos        ->
+
+                                                                       </div>
+                                                                                   </a>
+
+
+                                                                   </div>
+
+
+                                                               </div>          
+                                                                    
+                                                                    
+                                                                    
+                                                                 <div class="form-group col-lg-3" style="padding: none;"  >
+
+                                                                   <div style="background: #007bff; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+
+                                                                       <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
+
+                                                                           Alumnos nuevos
+
+                                                                       </div>
+                                                                           <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
+
+                                                                               <s:property value="datos.ALUMNOS_NUEVOS"/> <i class="fas fa-fw fa-wrench" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+
+                                                                       </div>
+                                                                          <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+
+                                                                          Detalle de Alumnos        ->
+
+                                                                       </div>
+
+
+                                                                   </div>
+
+
+                                                               </div>                  
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
 
 
                                                                 <div class="form-group col-lg-6"  >
@@ -511,7 +645,7 @@
 
 
 
-                                                    </s:if>
+                                                  
 
 
                                                 </div>
