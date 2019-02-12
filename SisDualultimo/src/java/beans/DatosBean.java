@@ -91,7 +91,7 @@ public class DatosBean {
     private String TOTAL_HOMBRE;
     private String TOTAL_MUJER;
     
-    // ALUMNOS NUEVO INGRESO SE REFIERE A PROYECTOS 
+    // ALUMNOS NUEVO INGRESO SE REFIERE A PROYECTOS  PRUEBA DE CONBINACION
     
     private String ALUMNOS_NUEVO_INGRESO;
     private String ALUMNOS_ACTIVOS_PERIODO;
