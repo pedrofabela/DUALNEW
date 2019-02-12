@@ -1534,6 +1534,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
         try {
 
             ConsultasBusiness con = new ConsultasBusiness();
+              SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
 
             bantablero = true;
 
@@ -1549,6 +1550,12 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             int inactivo = 0;
             int hombre = 0;
             int mujer = 0;
+            int egresados = 0;
+              int nuevos = 0;
+              int tipo_alu=0;
+               Date fechaReg=null;
+               Date fechainicio=null;
+                Date fechatermino=null;
 
             while (LAD.hasNext()) {
                 obj = (DatosBean) LAD.next();
@@ -1571,6 +1578,30 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
                     mujer = mujer + 1;
                 }
+                
+                if (obj.getSTATUS().equals("10")) {
+
+                    egresados = egresados + 1;
+                }
+                 
+                 if(obj.getFECHA_REG()!=null){
+                fechaReg=format.parse(obj.getFECHA_REG());
+                if ( fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)  ) {
+
+                    nuevos = nuevos + 1;
+                }
+                 }
+                 
+                 if (obj.getTIPO_ALUMNO().equals("2")) {
+
+                    tipo_alu = tipo_alu + 1;
+                }
+                
+                
+                
+                
+                
+                
             }
 
             datos.setTOTAL_ALU_DUAL(String.valueOf(total));
@@ -1580,6 +1611,9 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             datos.setALUMNOS_ACTIVOS_PERIODO(con.AlumnosActivosPeriodo(datos));
             datos.setTOTAL_HOMBRE(String.valueOf(hombre));
             datos.setTOTAL_MUJER(String.valueOf(mujer));
+             datos.setEGRESADOS(String.valueOf(egresados));
+             datos.setALUMNOS_NUEVOS(String.valueOf(nuevos));
+               datos.setTOTAL_TIPO_ALUMNO(String.valueOf(tipo_alu));
 
             Constantes.enviaMensajeConsola("hombre&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&6" + hombre + " asignado" + datos.getTOTAL_HOMBRE());
             
