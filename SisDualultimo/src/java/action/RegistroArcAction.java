@@ -2102,6 +2102,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
             boolean PROMEDIOGRAL = false;
             boolean SITUACIONACA = false;
             boolean TIPO_ALUMNO = false;
+            boolean FECHA_INGRESO = false;
             boolean VALIDO = false;
             String Resultado = "";
             /**
@@ -2191,11 +2192,15 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                         Constantes.enviaMensajeConsola("TIPO_ALUMNO ");
                         TIPO_ALUMNO = true;
                     }
+                        if (ContenidoCabecera.equals("FECHA_INGRESO_DUAL")) {
+                        Constantes.enviaMensajeConsola("FECHA_INGRESO_DUAL ");
+                        FECHA_INGRESO = true;
+                    }
 
                 }
                 /*VALIDANDO NUMERO CAMPOS */
 
-                if (i > 16 || i < 16) {
+                if (i > 17 || i < 17) {
 
                     Constantes.enviaMensajeConsola("Número de campos no valido");
                     addFieldError("archiA", "*** FALTAN DATOS EN LA FILA NUMERO : " + fila + " FAVOR DE VERIFICAR ***");
@@ -2208,12 +2213,12 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                 }
 
             }
-            if (!MATRICULA || !CURP || !APATERNO || !AMATERNO || !NOMBRE || !DOMICILIO || !COLONIA || !CP || !CVE_MUNICIPIO || !TELEFONO || !EMAIL || !CVE_CAR || !CUATRI_CURSA || !PROMEDIOGRAL || !SITUACIONACA || !TIPO_ALUMNO) {
+            if (!MATRICULA || !CURP || !APATERNO || !AMATERNO || !NOMBRE || !DOMICILIO || !COLONIA || !CP || !CVE_MUNICIPIO || !TELEFONO || !EMAIL || !CVE_CAR || !CUATRI_CURSA || !PROMEDIOGRAL || !SITUACIONACA || !TIPO_ALUMNO || !FECHA_INGRESO) {
                 Constantes.enviaMensajeConsola("FALTA UN CAMPO REQUERIDO");
                 addFieldError("archiA", "*** FALTA UN CAMPO REQUERIDO Ó ESTA MAL ESCRITO ALGUN ENCABEZADO FAVOR DE VERIFICAR EL ARCHIVO***");
             }
 
-            if (MATRICULA && CURP && APATERNO && AMATERNO && NOMBRE && DOMICILIO && COLONIA && CP && CVE_MUNICIPIO && TELEFONO && EMAIL && CVE_CAR && CUATRI_CURSA && PROMEDIOGRAL && SITUACIONACA && TIPO_ALUMNO && VALIDO) {
+            if (MATRICULA && CURP && APATERNO && AMATERNO && NOMBRE && DOMICILIO && COLONIA && CP && CVE_MUNICIPIO && TELEFONO && EMAIL && CVE_CAR && CUATRI_CURSA && PROMEDIOGRAL && SITUACIONACA && TIPO_ALUMNO && FECHA_INGRESO && VALIDO ) {
 
                 Resultado = "Correcto";
 
@@ -2253,7 +2258,8 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
             boolean validaTel = false;
             boolean validaemail = false;
             boolean validacvecar = false;
-            boolean validaPromedio = false;
+            boolean validatipo_alumno = false;
+            boolean validafecha_ingreso = false;
 
             String Respuesta = null;
             int fila = 0;
@@ -2405,6 +2411,58 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                         }
                     }
                     if (fila >= 2 && columna == 12) {
+
+                        datos.setCVE_CAR_RES(contenidoCelda);
+
+                        if (ValidaCadenas(datos.getCVE_CAR_RES())) {
+                            //Constantes.enviaMensajeConsola("TIENE CARACTERES NO PERMITIDOS EN EL APELLIDO PATERNO DE LA FILA  " + (fila) + " FAVOR DE VERIFICAR LOS DATOS");
+                            datos.setDESERROR("TIENE CARACTERES NO PERMITIDOS EN LA CLAVE DE LA CARRERA  EN LA FILA  " + (fila) + " FAVOR DE VERIFICAR LOS DATOS");
+                            validacvecar = false;
+                        } else {
+                            String checkCar = null;
+
+                            checkCar = ValidaCarrera(datos);
+
+                            if (checkCar.equals("ok")) {
+                                validacvecar = true;
+                            } else {
+                                datos.setDESERROR("LA CLAVE DE LA CARRERA EN LA FILA  " + (fila) + " NO COINCIDE CON NINGUNA DE LAS CARRERAS REGISTRADAS, FAVOR DE VERIFICAR LOS DATOS");
+                                validacvecar = false;
+                            }
+
+                        }
+
+                    }
+                    
+                    if (fila >= 2 && columna == 16) {
+                        
+                        String TipoAlumno=null;
+
+                        TipoAlumno=contenidoCelda;
+
+                        if (ValidaCadenas(TipoAlumno)) {
+                            //Constantes.enviaMensajeConsola("TIENE CARACTERES NO PERMITIDOS EN EL APELLIDO PATERNO DE LA FILA  " + (fila) + " FAVOR DE VERIFICAR LOS DATOS");
+                            datos.setDESERROR("TIENE CARACTERES NO PERMITIDOS EN TIPO DE ALUMNO EN LA FILA  " + (fila) + " FAVOR DE VERIFICAR LOS DATOS");
+                            validatipo_alumno = false;
+                        } else {
+                            
+
+                            if (TipoAlumno.equals("NUEVO INGRESO")) {
+                                datos.setTIPO_ALUM("1");
+                                validatipo_alumno = true;
+                            } else if(TipoAlumno.equals("REINGRESO") ){
+                                datos.setTIPO_ALUM("2");
+                                validatipo_alumno = true;                    
+                            }else{
+                                datos.setDESERROR("EL TIPO DE ALUMNO  EN LA FILA  " + (fila) + " NO COINCIDE CON NINGUNA DE LAS OPCIONES DEBE SER (NUEVO INGRESO O REINGRESO), FAVOR DE VERIFICAR LOS DATOS");
+                                validatipo_alumno = false;
+                            }
+
+                        }
+
+                    }
+                    
+                    if (fila >= 2 && columna == 17) {
 
                         datos.setCVE_CAR_RES(contenidoCelda);
 
@@ -3116,7 +3174,12 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
         // Comprobar si encaja
         return m.matches();
     }
-
+    
+    public boolean validarFecha(String valFecha) {
+        valFecha = valFecha.toUpperCase().trim();
+        return valFecha.matches("[0-9]{2}[/][0-9]{2}[/][0-9]{4}");
+    }//Cierra método validarFOLIO
+    
     private void cierraConexiones() {
         try {
             objConexion.close();
