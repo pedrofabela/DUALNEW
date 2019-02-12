@@ -2192,10 +2192,10 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                         Constantes.enviaMensajeConsola("TIPO_ALUMNO ");
                         TIPO_ALUMNO = true;
                     }
-                        if (ContenidoCabecera.equals("FECHA_INGRESO_DUAL")) {
+                      /*  if (ContenidoCabecera.equals("FECHA_INGRESO_DUAL")) {
                         Constantes.enviaMensajeConsola("FECHA_INGRESO_DUAL ");
                         FECHA_INGRESO = true;
-                    }
+                    } */
 
                 }
                 /*VALIDANDO NUMERO CAMPOS */
@@ -2213,12 +2213,12 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                 }
 
             }
-            if (!MATRICULA || !CURP || !APATERNO || !AMATERNO || !NOMBRE || !DOMICILIO || !COLONIA || !CP || !CVE_MUNICIPIO || !TELEFONO || !EMAIL || !CVE_CAR || !CUATRI_CURSA || !PROMEDIOGRAL || !SITUACIONACA || !TIPO_ALUMNO || !FECHA_INGRESO) {
+            if (!MATRICULA || !CURP || !APATERNO || !AMATERNO || !NOMBRE || !DOMICILIO || !COLONIA || !CP || !CVE_MUNICIPIO || !TELEFONO || !EMAIL || !CVE_CAR || !CUATRI_CURSA || !PROMEDIOGRAL || !SITUACIONACA || !TIPO_ALUMNO ) {
                 Constantes.enviaMensajeConsola("FALTA UN CAMPO REQUERIDO");
                 addFieldError("archiA", "*** FALTA UN CAMPO REQUERIDO Ó ESTA MAL ESCRITO ALGUN ENCABEZADO FAVOR DE VERIFICAR EL ARCHIVO***");
             }
 
-            if (MATRICULA && CURP && APATERNO && AMATERNO && NOMBRE && DOMICILIO && COLONIA && CP && CVE_MUNICIPIO && TELEFONO && EMAIL && CVE_CAR && CUATRI_CURSA && PROMEDIOGRAL && SITUACIONACA && TIPO_ALUMNO && FECHA_INGRESO && VALIDO ) {
+            if (MATRICULA && CURP && APATERNO && AMATERNO && NOMBRE && DOMICILIO && COLONIA && CP && CVE_MUNICIPIO && TELEFONO && EMAIL && CVE_CAR && CUATRI_CURSA && PROMEDIOGRAL && SITUACIONACA && TIPO_ALUMNO  && VALIDO ) {
 
                 Resultado = "Correcto";
 
@@ -2462,7 +2462,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
 
                     }
                     
-                    if (fila >= 2 && columna == 17) {
+                 /*   if (fila >= 2 && columna == 17) {
 
                         datos.setCVE_CAR_RES(contenidoCelda);
 
@@ -2484,7 +2484,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
 
                         }
 
-                    }
+                    }*/
 
                 }
 
