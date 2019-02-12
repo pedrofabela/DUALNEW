@@ -1506,6 +1506,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             fecha = fecha.substring(3, 8);
             datos.setFECHA_INICIO("01/" + fecha);
             datos.setFECHA_TERMINO(fecha());
+            consultaDashboardU();
 
             return "SUCCESS";
 
@@ -1556,6 +1557,10 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                Date fechaReg=null;
                Date fechainicio=null;
                 Date fechatermino=null;
+                
+                
+                 fechainicio=format.parse(datos.getFECHA_INICIO());
+                fechatermino=format.parse(datos.getFECHA_TERMINO());
 
             while (LAD.hasNext()) {
                 obj = (DatosBean) LAD.next();
@@ -1565,7 +1570,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
                     activo = activo + 1;
                 }
-                if (obj.getESTATUS_GENERAL().equals("INACTIVO")) {
+                if (obj.getESTATUS_GENERAL().equals("INACTIVO") && !obj.getSTATUS().equals("10")) {
 
                     inactivo = inactivo + 1;
                 }

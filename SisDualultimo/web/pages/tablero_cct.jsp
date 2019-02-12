@@ -322,9 +322,9 @@
                                 <s:form name="formularioPrincipal" id="formularioPrincipal" enctype="multipart/form-data">
 
                                     <!-- Navigation -->
-                                    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+                                    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav" style="height: 60px;">
                                         <div class="container">
-                                            <img class="img-fluid mb-2 d-block mx-auto" src="images/logos-10.png" alt=""/>   
+                                            <img class="img-fluid mb-2 d-block mx-auto" src="images/logos-10.png" alt="" style="width: 25%;"/>   
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded " type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                                                 Menu
@@ -350,9 +350,9 @@
 
 
                                     <!-- Header -->
-                                    <header class="masthead text-white text-center" style="background:  linear-gradient(to bottom, rgba(73,155,234,1) 0%, rgba(11,82,158,1) 83%, rgba(11,82,158,1) 100%); " >
+                                    <header class="masthead text-white text-center"   >
 
-                                         <div class="container"  style="margin-top: -50px;" >
+                                         <div class="container"  style="margin-top: -100px; box-shadow: 5px 5px 10px #333;" >
                                             <div class="modal-content" style="border-radius: 10px;">
                                                 <div class="modal-header bg-secondary col-lg-12">
                                                     <h5 align="center"  style="color: #ffffff"> <s:property value="usuariocons.getNAMEUSUARIO()"/></h5> 
@@ -528,40 +528,36 @@
                                                                     
 
 
-                                                                <div class="form-group col-lg-6"  >
+                                                                <div class="form-group col-lg-6" >
 
 
-                                                                    <div style="width:100%; text-align: center; background: #606060; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Total de Alumnos en DUAL</div>
+                                                                    <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Total de Alumnos en DUAL</div>
                                                                     <div class="col-sm-auto  " style="background:  #edecec; margin-left: 00px;">
                                                                         <table style="width: 98%; text-align: center;  ">
                                                                             <tr style="background: #edecec;">
-
                                                                                 <td style="width: 40%;" ><div style="width: 90%; height: 140px; background: #a2a3b8; color: white; margin: auto; border-radius: 10px; margin-top: 35px; margin-bottom: 25px; box-shadow: 5px 5px 10px #666; "><h1 style="padding: 40px; font-size: 50px;"><s:property value="datos.TOTAL_ALU_DUAL"/></h1></div></td>
                                                                                 <td style="width: 60%;">
                                                                                     <a href="#popup" style="text-decoration: none;" > 
-                                                                                        <div style="width: 43%; height: 65px; background: #145a32 ; display: inline-block; margin: auto;  margin-top: 5px; border-radius: 10px; box-shadow: 5px 5px 10px #666;">
-                                                                                            <div style="width: 100%; color: white ; margin-top: 10px; display: block;">Activos</div> 
+                                                                                        <div style="width: 43%; height: 65px; background: #008080 ; display: inline-block; margin: auto;  margin-top: 5px; border-radius: 10px; box-shadow: 5px 5px 10px #666;">
+                                                                                            <div style="width: 100%; color: white ; margin-top: 5px; display: block;">Becas</div> 
                                                                                             <div style="width: 100%; color: white ; margin-top: 0px; display: block;">
-                                                                                                <h3><s:property value="datos.TOTAL_ALU_ACTIVO"/></h3>
+                                                                                                <h3><!--<s:property value="datos.TOTAL_ALU_ACTIVO"/>--> 0</h3>
                                                                                                 <i class="material-icons" style="float: right; margin-top: -45px; margin-right: 15px; font-size: 25px; color: white;"></i> 
                                                                                             </div>
                                                                                         </div> 
                                                                                     </a>
 
                                                                                     <a href="#popup2" style="text-decoration: none;" >  
-                                                                                        <div style="width: 43%; height: 65px; background: #ce0039; display: inline-block;  margin: auto; margin-top: 10px; border-radius: 10px; box-shadow: 5px 5px 10px #666;">
-                                                                                            <div style="width: 100%; color: white ; margin-top: 10px; display: block;">Inactivos</div> 
+                                                                                        <div style="width: 43%; height: 65px; background: #A5DF00; display: inline-block;  margin: auto; margin-top: 10px; border-radius: 10px; box-shadow: 5px 5px 10px #666;">
+                                                                                            <div style="width: 100%; color: white ; margin-top: 5px; display: block;">Reingresos</div> 
                                                                                             <div style="width: 100%; color: white ; margin-top: 0px; display: block;">
-                                                                                                <h3><s:property value="datos.TOTAL_ALU_INACTIVO"/></h3>
+                                                                                                <h3><s:property value="datos.TOTAL_TIPO_ALUMNO"/></h3>
                                                                                             </div>
                                                                                         </div>
                                                                                     </a>
 
-                                                                                    
-
-
-                                                                                    <div style="width: 90%; height: 65px; background: #3366CC; display: inline-block; margin: auto;  margin-top: 5px; border-radius: 10px; box-shadow: 5px 5px 10px #666;">
-                                                                                        <div style="width: 100%; color: white ; margin-top: 10px; display: block; ">Activos por proyecto</div> 
+                                                                                    <div style="width: 90%; height: 65px; background: purple; display: inline-block; margin: auto;  margin-top: 10px; border-radius: 10px; box-shadow: 5px 5px 10px #666;">
+                                                                                        <div style="width: 100%; color: white ; margin-top: 5px; display: block; ">Proyectos Registrados</div> 
                                                                                         <div style="width: 100%; color: white ; margin-top: 0px; display: block;">
                                                                                             <h3><s:property value="datos.ALUMNOS_ACTIVOS_PERIODO"/></h3>
                                                                                             <i class="material-icons" style="float: right; margin-top: -45px; margin-right: 15px; font-size: 25px; color: white;"></i> 
@@ -569,6 +565,7 @@
                                                                                     </div> 
 
                                                                                 </td>
+
                                                                             </tr>
                                                                             <tr style="">
 

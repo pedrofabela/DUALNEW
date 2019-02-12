@@ -320,7 +320,7 @@
                                 });
                             </script>
 
-
+                            
 
 
 
@@ -344,9 +344,9 @@
 
 
                                     <!-- Header -->
-                                    <header class="masthead text-white text-center" >
+                                    <header class="masthead text-white text-center"  >
 
-                                       <div class="container"  style="margin-top: -50px;" >
+                                       <div class="container"  style="margin-top: -100px;" >
                                             <div class="modal-content" style="border-radius: 10px;">
                                                 <div class="modal-header bg-secondary col-lg-12">
                                                     <h5 align="center"  style="color: #ffffff"> <i class="fas fa-book"></i> TABLERO DE CONTROL DE LA <s:property value="usuariocons.getNAMEUSUARIO()"/></h5> 
