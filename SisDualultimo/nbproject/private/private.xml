@@ -3,13 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/gioca/Documents/NetBeansProjects/Dual/SisDualultimo/web/pages/tablero_cct.jsp</file>
-            <file>file:/C:/Users/gioca/Documents/NetBeansProjects/Dual/SisDualultimo/src/java/action/PrincipalAction.java</file>
-            <file>file:/C:/Users/gioca/Documents/NetBeansProjects/Dual/SisDualultimo/src/java/business/ConsultasBusiness.java</file>
-            <file>file:/C:/Users/gioca/Documents/NetBeansProjects/Dual/SisDualultimo/src/java/daos/ConsultaDAO.java</file>
-            <file>file:/C:/Users/gioca/Documents/NetBeansProjects/Dual/SisDualultimo/src/java/daos/ConsultaDAOImpl.java</file>
-            <file>file:/C:/Users/gioca/Documents/NetBeansProjects/Dual/SisDualultimo/web/pages/tablero.jsp</file>
-            <file>file:/C:/Users/gioca/Documents/NetBeansProjects/Dual/SisDualultimo/src/java/utilidades/Constantes.java</file>
+            <file>file:/home/pedro/NetBeansProjects/Dual/SisDualultimo/src/java/daos/ConsultaDAO.java</file>
+            <file>file:/home/pedro/NetBeansProjects/Dual/SisDualultimo/web/pages/tablero.jsp</file>
+            <file>file:/home/pedro/NetBeansProjects/Dual/SisDualultimo/web/pages/menuB2.jsp</file>
+            <file>file:/home/pedro/NetBeansProjects/Dual/SisDualultimo/web/css/estilo.css</file>
+            <file>file:/home/pedro/NetBeansProjects/Dual/SisDualultimo/src/java/daos/ConsultaDAOImpl.java</file>
+            <file>file:/home/pedro/NetBeansProjects/Dual/SisDualultimo/src/java/action/PrincipalAction.java</file>
+            <file>file:/home/pedro/NetBeansProjects/Dual/SisDualultimo/src/java/business/ConsultasBusiness.java</file>
+            <file>file:/home/pedro/NetBeansProjects/Dual/SisDualultimo/web/pages/login.jsp</file>
+            <file>file:/home/pedro/NetBeansProjects/Dual/SisDualultimo/src/java/beans/DatosBean.java</file>
+            <file>file:/home/pedro/NetBeansProjects/Dual/SisDualultimo/src/java/action/RegistraAlumnosAction.java</file>
+            <file>file:/home/pedro/NetBeansProjects/Dual/SisDualultimo/src/java/beans/BecaBean.java</file>
+            <file>file:/home/pedro/NetBeansProjects/Dual/SisDualultimo/src/java/beans/AlumnosBean.java</file>
+            <file>file:/home/pedro/NetBeansProjects/Dual/SisDualultimo/src/java/mappers/alumnosDashboardMapper.java</file>
         </group>
     </open-files>
 </project-private>

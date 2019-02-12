@@ -1395,6 +1395,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             int mujer = 0;
              int egresados = 0;
               int nuevos = 0;
+              int tipo_alu=0;
                Date fechaReg=null;
                Date fechainicio=null;
                 Date fechatermino=null;
@@ -1426,6 +1427,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                     mujer = mujer + 1;
                 }
                 
+                
                  if (obj.getSTATUS().equals("10")) {
 
                     egresados = egresados + 1;
@@ -1438,6 +1440,16 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                     nuevos = nuevos + 1;
                 }
                  }
+                 
+                 if (obj.getTIPO_ALUMNO().equals("2")) {
+
+                    tipo_alu = tipo_alu + 1;
+                }
+                 
+                 
+                 
+                 
+                 
                   
             }
 
@@ -1451,6 +1463,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             datos.setTOTAL_MUJER(String.valueOf(mujer));
              datos.setEGRESADOS(String.valueOf(egresados));
              datos.setALUMNOS_NUEVOS(String.valueOf(nuevos));
+               datos.setTOTAL_TIPO_ALUMNO(String.valueOf(tipo_alu));
              
             Constantes.enviaMensajeConsola("hombre&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" + hombre + " asignado" + datos.getTOTAL_HOMBRE());
 

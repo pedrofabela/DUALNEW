@@ -90,6 +90,7 @@ public class DatosBean {
 
     private String TOTAL_HOMBRE;
     private String TOTAL_MUJER;
+     
     
     // ALUMNOS NUEVO INGRESO SE REFIERE A PROYECTOS  PRUEBA DE CONBINACION
     
@@ -97,6 +98,31 @@ public class DatosBean {
     private String ALUMNOS_ACTIVOS_PERIODO;
      private String EGRESADOS;
      private String ALUMNOS_NUEVOS;
+     
+     private String TIPO_ALUMNO;
+      private String TOTAL_TIPO_ALUMNO;
+
+    public String getTOTAL_TIPO_ALUMNO() {
+        return TOTAL_TIPO_ALUMNO;
+    }
+
+    public void setTOTAL_TIPO_ALUMNO(String TOTAL_TIPO_ALUMNO) {
+        this.TOTAL_TIPO_ALUMNO = TOTAL_TIPO_ALUMNO;
+    }
+
+     
+     
+     
+    public String getTIPO_ALUMNO() {
+        return TIPO_ALUMNO;
+    }
+
+    public void setTIPO_ALUMNO(String TIPO_ALUMNO) {
+        this.TIPO_ALUMNO = TIPO_ALUMNO;
+    }
+     
+     
+     
 
     public String getALUMNOS_NUEVOS() {
         return ALUMNOS_NUEVOS;
