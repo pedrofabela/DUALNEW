@@ -315,6 +315,8 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         arregloCampos.add(temporal);
         temporal = new ObjPrepareStatement("BECA", "STRING", objdatos.getBECA());
         arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("FECHA_INGRESO_DUAL", "STRING", objdatos.getFECHA_INGRESO_DUAL());
+        arregloCampos.add(temporal);
 
         System.out.println("conn: " + conn);
         System.out.println("stat: " + stat);
@@ -407,7 +409,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
 
     public List listaAlumnos(DatosBean datos) throws Exception {
         String query = "SELECT CA.ID_ALUMNO, CA.MATRICULA,CA.CURP,CA.NOMBRE,CA.APELLIDOP,CA.APELLIDOM,CA.NOMBRE ||' ' ||CA.APELLIDOP ||' ' ||CA.APELLIDOM AS NOMBRE_COMPLETO,CA.GENERO,CA.FECHA_NAC,CA.DOMICILIO,CA.COLONIA,CA.CP,CA.TELEFONO,CA.CORREO,(SELECT C.NOM_CAR  FROM CAT_CARRERA_CCT C WHERE c.cve_car=ca.CVE_CARRERA AND C.CCT=CA.CCT  ) AS CARRERA, "
-                + "CA.GRADO, CA.PROMEDIO, CA.SITUACION_ACA, CA.TIPO_ALUMNO,CA.MUNICIPIO,(SELECT M.NOM_MUN FROM CAT_MUNICIPIOS M WHERE M.ID=CA.MUNICIPIO) AS NOMMUNICIPIO,CA.CCT ,CA.AVANCE "
+                + "CA.GRADO, CA.PROMEDIO, CA.SITUACION_ACA, CA.TIPO_ALUMNO,CA.MUNICIPIO,(SELECT M.NOM_MUN FROM CAT_MUNICIPIOS M WHERE M.ID=CA.MUNICIPIO) AS NOMMUNICIPIO,CA.CCT ,CA.AVANCE,CA.FECHA_INGRESO_DUAL "
                 + "FROM CAT_ALUMNOS CA  WHERE CA.CCT='" + datos.getCCT() + "' AND CA.STATUS='1' ORDER BY ca.cve_carrera ASC";
         Constantes.enviaMensajeConsola("Consulta ALUMNOS----->" + query);
         List list = null;
@@ -459,6 +461,8 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         temporal = new ObjPrepareStatement("TIPO_ALUMNO", "STRING", datos.getTIPO_ALUM().toUpperCase());
         arregloCampos.add(temporal);
         temporal = new ObjPrepareStatement("MUNICIPIO", "STRING", datos.getMUNICIPIO());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("FECHA_INGRESO_DUAL", "STRING", datos.getFECHA_INGRESO_DUAL());
         arregloCampos.add(temporal);
 
         String Condicion;
@@ -1023,6 +1027,8 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         temporal = new ObjPrepareStatement("CP", "STRING", objdatos.getCP());
         arregloCampos.add(temporal);
         temporal = new ObjPrepareStatement("BECA", "STRING", objdatos.getBECA());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("FECHA_INGRESO_DUAL", "STRING", objdatos.getFECHA_INGRESO_DUAL());
         arregloCampos.add(temporal);
 
 //Se terminan de adicionar a nuesto ArrayLis los objetos

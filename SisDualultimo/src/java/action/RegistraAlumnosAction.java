@@ -317,6 +317,7 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
             boolean promedio = false;
             boolean situacionaca = false;
             boolean tipoalu = false;
+            boolean fechaingresodual = false;
 
             if (al.getDOMICILIO().length() > 0) {
                 domicilio = true;
@@ -390,8 +391,14 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
                 addFieldError("ErrorTipoAlu", "Seleccionar el tipo de alumno ");
                 tipoalu = false;
             }
+            if (al.getFECHA_INGRESO_DUAL().length() > 0) {
+                fechaingresodual = true;
+            } else {
+                addFieldError("ErrorFID", "Debe agregar la fecha de ingreso a dual ");
+                fechaingresodual = false;
+            }
 
-            if (domicilio && colonia && cp && mun && tel && email && matricula && carrera && grado && promedio && situacionaca && tipoalu) {
+            if (domicilio && colonia && cp && mun && tel && email && matricula && carrera && grado && promedio && situacionaca && tipoalu && fechaingresodual) {
 
                 ConsultasBusiness con = new ConsultasBusiness();
 

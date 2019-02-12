@@ -329,11 +329,16 @@
                                                                     <s:select  name="al.TIPO_ALUM" id="al.TIPO_ALUM" list="ListaTipoAlumno"  listKey="ID_TIPOALUM"  listValue="NOM_TIPO"  headerKey="" headerValue="--SELECCIONE--" cssClass="form-control " ></s:select>                                                                  
                                                                     <s:fielderror fieldName="ErrorTipoAlu" cssClass="alert alert-danger"/>
                                                                 </div> 
-                                                            </div>        
+                                                            </div>
+                                                            <div class="form-group col-lg-4">
+                                                                <label class="col-form-label text-muted" for="FI">FECHA DE INGRESO A DUAL:</label>
+                                                                <div class="col-sm-auto">
+                                                                    <s:textfield name="al.FECHA_INGRESO_DUAL" id="Fecha"  placeholder="Fecha de ingreso a DUAl" required="true" readonly="true" cssClass="form-control text-uppercase"  />
+                                                                    <s:fielderror fieldName="ErrorFID" cssClass="alert alert-danger"/>
+                                                                </div> 
+                                                            </div>     
                                                             <div class="form-group col-lg-12">                                                                                     
-                                                                <a class="btn bg-success text-white" href="Javascript:Accion('RegistrarAlum')" onclick="this.onclick = function () {
-                                                                            return false
-                                                                        }">REGISTRAR ALUMNO</a>
+                                                                <a class="btn bg-success text-white" href="Javascript:Accion('RegistrarAlum')" onclick="this.onclick = function () {return false}">REGISTRAR ALUMNO</a>
                                                             </div>  
 
 

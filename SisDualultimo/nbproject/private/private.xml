@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/gioca/Documents/NetBeansProjects/Dual/SisDualultimo/web/pages/tablero_cct.jsp</file>
-            <file>file:/C:/Users/gioca/Documents/NetBeansProjects/Dual/SisDualultimo/src/java/action/PrincipalAction.java</file>
-            <file>file:/C:/Users/gioca/Documents/NetBeansProjects/Dual/SisDualultimo/src/java/business/ConsultasBusiness.java</file>
-            <file>file:/C:/Users/gioca/Documents/NetBeansProjects/Dual/SisDualultimo/src/java/daos/ConsultaDAO.java</file>
-            <file>file:/C:/Users/gioca/Documents/NetBeansProjects/Dual/SisDualultimo/src/java/daos/ConsultaDAOImpl.java</file>
-            <file>file:/C:/Users/gioca/Documents/NetBeansProjects/Dual/SisDualultimo/web/pages/tablero.jsp</file>
-            <file>file:/C:/Users/gioca/Documents/NetBeansProjects/Dual/SisDualultimo/src/java/utilidades/Constantes.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

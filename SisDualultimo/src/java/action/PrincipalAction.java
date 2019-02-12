@@ -178,6 +178,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
         try {
 
             ConsultasBusiness con = new ConsultasBusiness();
+            
+            Constantes.enviaMensajeConsola("fecha recibe: "+datos.getFECHA_INGRESO_DUAL());
 
             con.actualizarAlumno(datos);
 
