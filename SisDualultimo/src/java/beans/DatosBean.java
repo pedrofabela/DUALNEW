@@ -92,9 +92,11 @@ public class DatosBean {
     private String ALUMNOS_NUEVO_INGRESO;
     private String ALUMNOS_ACTIVOS_PERIODO;
     private String EGRESADOS;
-    private String ALUMNOS_NUEVOS;
-    
+    private String ALUMNOS_NUEVOS;  
     private String FECHA_INGRESO_DUAL;
+    
+    
+    
 
     public String getALUMNOS_NUEVOS() {
         return ALUMNOS_NUEVOS;
