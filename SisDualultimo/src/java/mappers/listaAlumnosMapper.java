@@ -151,12 +151,7 @@ public class listaAlumnosMapper implements Mapper {
             dat.setAVANCE(rs.getString("AVANCE").trim());
         } else {
             dat.setAVANCE(rs.getString("AVANCE"));
-        } 
-        if (rs.getString("FECHA_INGRESO_DUAL") != null) {
-            dat.setFECHA_INGRESO_DUAL(rs.getString("FECHA_INGRESO_DUAL").trim());
-        } else {
-            dat.setFECHA_INGRESO_DUAL(rs.getString("FECHA_INGRESO_DUAL"));
-        }
+        }   
 
         return dat;
 

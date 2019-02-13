@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
-    <system systemId="http://tramitesyservicios.edomex.gob.mx/WebServiceRenapo/ConsultaRenapoPorCurp?wsdl" uri="src/conf/xml-resources/web-service-references/ConsultaRenapoPorCurp_30/wsdl/tramitesyservicios.edomex.gob.mx/WebServiceRenapo/ConsultaRenapoPorCurp.wsdl"/>
-    <system systemId="http://tramitesyservicios.edomex.gob.mx:80/WebServiceRenapo/ConsultaRenapoPorCurp?xsd=1" uri="src/conf/xml-resources/web-service-references/ConsultaRenapoPorCurp_30/wsdl/tramitesyservicios.edomex.gob.mx_80/WebServiceRenapo/ConsultaRenapoPorCurp.xsd_1.xsd"/>
-</catalog>
