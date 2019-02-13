@@ -31,7 +31,7 @@ public class Constantes implements Serializable {
     public static final String TablaProyecto = "TBL_PROYECTOS";
     public static final String TablaBecas = "TBL_BECAS";
 
-   /* //**************DESARROLLO**********************************************************
+    /*//**************DESARROLLO**********************************************************
     public static final boolean esDesarrollo = true;
     public static final String rutaProyectos = "http://172.20.2.110:8080/";
     public static final String rutareportesjasper = "C:\\reportes/JasperSoft/permanecerEstudiando/";
@@ -43,7 +43,7 @@ public class Constantes implements Serializable {
 
     //******************* PRODUCCION*******************************************************
       
-		public static final boolean esDesarrollo = true;		
+		public static final boolean esDesarrollo = false;		
 		public static final String rutaProyectos =   "http://aplicaciones.edugem.gob.mx/";
 		public static final String rutareportesjasper = "/apachetomcat/reportes/";		                                                  
 		public static final String rutaArch = "/apachetomcat/dual/documentos/";  				

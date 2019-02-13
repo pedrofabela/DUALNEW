@@ -49,6 +49,7 @@ public class DatosBean {
     private String BECA;
     private String ID_TIPOALUM;
     private String NOM_TIPO;
+            
 
     private String ID_CVE_CAR;
     private String CLAVECARRERA;
@@ -64,11 +65,13 @@ public class DatosBean {
     private String CARGO_RESPONSABLE;
     private String TELEFONO_RESPONSABLE;
     private String EMAIL_RESPONSABLE;
-
+    
+    
     private String CURP_ASESORI;
     private String NOMBREAI;
     private String APELLIDOPAI;
     private String APELLIDOMAI;
+
 
     //*******************************beans peter******************************************************
     private String FECHA_INICIO;
@@ -87,16 +90,54 @@ public class DatosBean {
 
     private String TOTAL_HOMBRE;
     private String TOTAL_MUJER;
-
+     
+    
     // ALUMNOS NUEVO INGRESO SE REFIERE A PROYECTOS  PRUEBA DE CONBINACION
+    
     private String ALUMNOS_NUEVO_INGRESO;
     private String ALUMNOS_ACTIVOS_PERIODO;
-    private String EGRESADOS;
-    private String ALUMNOS_NUEVOS;  
-    private String FECHA_INGRESO_DUAL;
-    
-    
-    
+     private String EGRESADOS;
+     private String ALUMNOS_NUEVOS;
+     
+     private String TIPO_ALUMNO;
+      private String TOTAL_TIPO_ALUMNO;
+      
+      
+         private String FECHA_INGRESO_DUAL;
+
+    public String getFECHA_INGRESO_DUAL() {
+        return FECHA_INGRESO_DUAL;
+    }
+
+    public void setFECHA_INGRESO_DUAL(String FECHA_INGRESO_DUAL) {
+        this.FECHA_INGRESO_DUAL = FECHA_INGRESO_DUAL;
+    }
+
+
+         
+         
+         
+    public String getTOTAL_TIPO_ALUMNO() {
+        return TOTAL_TIPO_ALUMNO;
+    }
+
+    public void setTOTAL_TIPO_ALUMNO(String TOTAL_TIPO_ALUMNO) {
+        this.TOTAL_TIPO_ALUMNO = TOTAL_TIPO_ALUMNO;
+    }
+
+     
+     
+     
+    public String getTIPO_ALUMNO() {
+        return TIPO_ALUMNO;
+    }
+
+    public void setTIPO_ALUMNO(String TIPO_ALUMNO) {
+        this.TIPO_ALUMNO = TIPO_ALUMNO;
+    }
+     
+     
+     
 
     public String getALUMNOS_NUEVOS() {
         return ALUMNOS_NUEVOS;
@@ -106,6 +147,10 @@ public class DatosBean {
         this.ALUMNOS_NUEVOS = ALUMNOS_NUEVOS;
     }
 
+    
+     
+     
+
     public String getEGRESADOS() {
         return EGRESADOS;
     }
@@ -114,6 +159,9 @@ public class DatosBean {
         this.EGRESADOS = EGRESADOS;
     }
 
+     
+     
+     
     public DatosBean() {
     }
 
@@ -316,6 +364,8 @@ public class DatosBean {
     public void setCURPAB(String CURPAB) {
         this.CURPAB = CURPAB;
     }
+    
+    
 
     public String getSEXO() {
         return SEXO;
@@ -492,6 +542,9 @@ public class DatosBean {
     public void setNOM_TIPO(String NOM_TIPO) {
         this.NOM_TIPO = NOM_TIPO;
     }
+    
+    
+    
 
     public String getID_CVE_CAR() {
         return ID_CVE_CAR;
@@ -620,6 +673,9 @@ public class DatosBean {
     public void setAPELLIDOMAI(String APELLIDOMAI) {
         this.APELLIDOMAI = APELLIDOMAI;
     }
+    
+    
+    
 
     //************************************beans peter**********************************************
     public String getFECHA_INICIO() {
@@ -741,14 +797,9 @@ public class DatosBean {
     public void setALUMNOS_ACTIVOS_PERIODO(String ALUMNOS_ACTIVOS_PERIODO) {
         this.ALUMNOS_ACTIVOS_PERIODO = ALUMNOS_ACTIVOS_PERIODO;
     }
+    
+    
 
-    public String getFECHA_INGRESO_DUAL() {
-        return FECHA_INGRESO_DUAL;
-    }
-
-    public void setFECHA_INGRESO_DUAL(String FECHA_INGRESO_DUAL) {
-        this.FECHA_INGRESO_DUAL = FECHA_INGRESO_DUAL;
-    }
     
     
 

@@ -35,12 +35,26 @@ public class AlumnosBean {
     private String AVANCE;
     private String CP;
     private String BECA;
-    private String FECHA_INGRESO_DUAL;
+   private String FECHA_INGRESO_DUAL;
     
     
     private String CVE_CAR;
     private String NOM_CARRERA;
 
+    public String getFECHA_INGRESO_DUAL() {
+        return FECHA_INGRESO_DUAL;
+    }
+
+    public void setFECHA_INGRESO_DUAL(String FECHA_INGRESO_DUAL) {
+        this.FECHA_INGRESO_DUAL = FECHA_INGRESO_DUAL;
+    }
+
+    
+    
+    
+    
+    
+    
     public String getMATRICULA() {
         return MATRICULA;
     }
@@ -241,16 +255,7 @@ public class AlumnosBean {
         this.NOM_CARRERA = NOM_CARRERA;
     }
 
-    public String getFECHA_INGRESO_DUAL() {
-        return FECHA_INGRESO_DUAL;
-    }
-
-    public void setFECHA_INGRESO_DUAL(String FECHA_INGRESO_DUAL) {
-        this.FECHA_INGRESO_DUAL = FECHA_INGRESO_DUAL;
-    }
-
-    
-    
+   
     
     
    

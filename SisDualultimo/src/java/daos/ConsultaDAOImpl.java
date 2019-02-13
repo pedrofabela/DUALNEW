@@ -261,7 +261,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
     }
 
     @Override
-    public boolean GuardaAlumnos(Connection conn, PreparedStatement stat, DatosBean objdatos) throws Exception {
+   public boolean GuardaAlumnos(Connection conn, PreparedStatement stat, DatosBean objdatos) throws Exception {
 
 //Crear un ArrayList para agregar los campos a insertar
         ArrayList<ObjPrepareStatement> arregloCampos = new ArrayList<ObjPrepareStatement>();
@@ -407,7 +407,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         return list;
     }
 
-    public List listaAlumnos(DatosBean datos) throws Exception {
+  public List listaAlumnos(DatosBean datos) throws Exception {
         String query = "SELECT CA.ID_ALUMNO, CA.MATRICULA,CA.CURP,CA.NOMBRE,CA.APELLIDOP,CA.APELLIDOM,CA.NOMBRE ||' ' ||CA.APELLIDOP ||' ' ||CA.APELLIDOM AS NOMBRE_COMPLETO,CA.GENERO,CA.FECHA_NAC,CA.DOMICILIO,CA.COLONIA,CA.CP,CA.TELEFONO,CA.CORREO,(SELECT C.NOM_CAR  FROM CAT_CARRERA_CCT C WHERE c.cve_car=ca.CVE_CARRERA AND C.CCT=CA.CCT  ) AS CARRERA, "
                 + "CA.GRADO, CA.PROMEDIO, CA.SITUACION_ACA, CA.TIPO_ALUMNO,CA.MUNICIPIO,(SELECT M.NOM_MUN FROM CAT_MUNICIPIOS M WHERE M.ID=CA.MUNICIPIO) AS NOMMUNICIPIO,CA.CCT ,CA.AVANCE,CA.FECHA_INGRESO_DUAL "
                 + "FROM CAT_ALUMNOS CA  WHERE CA.CCT='" + datos.getCCT() + "' AND CA.STATUS='1' ORDER BY ca.cve_carrera ASC";
@@ -435,7 +435,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         return list;
     }
 
-    public boolean actualizarAlumno(DatosBean datos) throws Exception {
+     public boolean actualizarAlumno(DatosBean datos) throws Exception {
         //Crear un ArrayList para agregar los campos a insertar
         ArrayList<ObjPrepareStatement> arregloCampos = new ArrayList<ObjPrepareStatement>();
         ObjPrepareStatement temporal;
@@ -638,7 +638,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
     //***********************************************************FIN PARTE 2**********************************************************
     //***********************************************************IMPL PETER********************************************************** 
     public List listaAlumnosDashboard(DatosBean datos) throws Exception {
-        String query = "SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_INGRESO_DUAL AS FECHA_REG FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_REG)>='" + datos.getFECHA_INICIO() + "' AND TO_DATE(FECHA_REG)<='" + datos.getFECHA_TERMINO() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS";
+        String query = "SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_INGRESO_DUAL AS FECHA_REG, TIPO_ALUMNO FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_REG)>='" + datos.getFECHA_INICIO() + "' AND TO_DATE(FECHA_REG)<='" + datos.getFECHA_TERMINO() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS";
         Constantes.enviaMensajeConsola("Consulta Alumnos Dashboard----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new alumnosDashboardMapper());
@@ -646,7 +646,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
     }
 
     public List listaAlumnosDashboardU(DatosBean datos) throws Exception {
-        String query = "SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_REG FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_REG)>='" + datos.getFECHA_INICIO() + "' AND TO_DATE(FECHA_REG)<='" + datos.getFECHA_TERMINO() + "' AND  CCT='" + datos.getCCT() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS";
+        String query = "SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_INGRESO_DUAL AS FECHA_REG, TIPO_ALUMNO FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_REG)>='" + datos.getFECHA_INICIO() + "' AND TO_DATE(FECHA_REG)<='" + datos.getFECHA_TERMINO() + "' AND  CCT='" + datos.getCCT() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS";
         Constantes.enviaMensajeConsola("Consulta Alumnos Dashboard----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new alumnosDashboardMapper());
@@ -974,7 +974,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         return status;
     }
     
-    public boolean GuardaAlumnos(AlumnosBean objdatos) throws Exception {
+  public boolean GuardaAlumnos(AlumnosBean objdatos) throws Exception {
 
 //Crear un ArrayList para agregar los campos a insertar
         ArrayList<ObjPrepareStatement> arregloCampos = new ArrayList<ObjPrepareStatement>();

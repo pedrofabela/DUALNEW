@@ -50,7 +50,7 @@
                                     <header class="masthead  text-white text-center" style="background: linear-gradient(to bottom, rgba(38,122,191,1) 0%, rgba(38,122,191,1) 4%, rgba(5,59,117,1) 17%, rgba(11,75,143,1) 84%, rgba(38,120,191,1) 98%, rgba(38,120,191,1) 100%);" >
                                         <div class="container col-lg-4" >
                                             <div class="card card-login  mx-auto mt-4" style="box-shadow: 2px 2px 7px ; background: linear-gradient(to bottom, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 0%, rgba(181,198,208,1) 24%, rgba(224,239,249,1) 100%);">
-                                                <div class="card-header " style="color: #fff;"  align="center"><h4>Acceso Sistema DUAL prueba</h4></div>
+                                                <div class="card-header " style="color: #fff;"  align="center"><h4>Acceso Sistema DUAL</h4></div>
                                                 <div class="card-body" >
 
                                                     <div class="form-group ">
