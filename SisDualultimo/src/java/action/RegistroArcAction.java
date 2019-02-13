@@ -22,6 +22,9 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.text.html.HTML;
@@ -808,6 +811,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                     contador = contador + 1;
                 } else {
                     Constantes.enviaMensajeConsola("esto recibe de lleno: " + lleno);
+
                     if (fila != 1 && lleno) {
                         Constantes.enviaMensajeConsola("******************DATOS CON ERRORES************");
                         Constantes.enviaMensajeConsola("Curp de responsable: " + datos.getCURP_RESPONSABLE());
@@ -912,7 +916,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                         //Constantes.enviaMensajeConsola("columna: " + columna + " fila: " + fila);
                         if (fila >= 2 && columna == 1) {
                             datos.setCURP_RESPONSABLE(contenidoCelda);
-                            Constantes.enviaMensajeConsola("curp: " + datos.getCURP_RESPONSABLE());
+                            Constantes.enviaMensajeConsola("curp DE RENAPO: " + datos.getCURP_RESPONSABLE());
                         }
                         if (fila >= 2 && columna == 2) {
                             datos.setNOMBRER(contenidoCelda);
@@ -933,8 +937,10 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                     }
 
                 }
-
+                Constantes.enviaMensajeConsola("fila en RENAPO: " + fila);
                 if (fila != 1 && lleno) {
+
+                    Constantes.enviaMensajeConsola("entro al if" + datos.getCURP_RESPONSABLE());
 
                     service = new ConsultaRenapoPorCurp_Service();
                     port = service.getConsultaRenapoPorCurpPort();
@@ -1550,7 +1556,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                         Constantes.enviaMensajeConsola("entro a columna 5");
                         datos.setCVE_CAR_RES(contenidoCelda);
 
-                         if (ValidaCadenas(datos.getCVE_CAR_RES())) {
+                        if (ValidaCadenas(datos.getCVE_CAR_RES())) {
                             //Constantes.enviaMensajeConsola("TIENE CARACTERES NO PERMITIDOS EN EL APELLIDO PATERNO DE LA FILA  " + (fila) + " FAVOR DE VERIFICAR LOS DATOS");
                             datos.setDESERROR("TIENE CARACTERES NO PERMITIDOS EN LA CLAVE DE LA CARRERA  EN LA FILA  " + (fila) + " FAVOR DE VERIFICAR LOS DATOS");
                             validaCve_Car = false;
@@ -2102,7 +2108,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
             boolean PROMEDIOGRAL = false;
             boolean SITUACIONACA = false;
             boolean TIPO_ALUMNO = false;
-           
+            boolean FECHA_INGRESO = false;
             boolean VALIDO = false;
             String Resultado = "";
             /**
@@ -2192,7 +2198,10 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                         Constantes.enviaMensajeConsola("TIPO_ALUMNO ");
                         TIPO_ALUMNO = true;
                     }
-                    
+                    if (ContenidoCabecera.equals("FECHA_INGRESO_DUAL")) {
+                        Constantes.enviaMensajeConsola("FECHA_INGRESO_DUAL ");
+                        FECHA_INGRESO = true;
+                    }
 
                 }
                 /*VALIDANDO NUMERO CAMPOS */
@@ -2210,12 +2219,12 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                 }
 
             }
-            if (!MATRICULA || !CURP || !APATERNO || !AMATERNO || !NOMBRE || !DOMICILIO || !COLONIA || !CP || !CVE_MUNICIPIO || !TELEFONO || !EMAIL || !CVE_CAR || !CUATRI_CURSA || !PROMEDIOGRAL || !SITUACIONACA || !TIPO_ALUMNO ) {
+            if (!MATRICULA || !CURP || !APATERNO || !AMATERNO || !NOMBRE || !DOMICILIO || !COLONIA || !CP || !CVE_MUNICIPIO || !TELEFONO || !EMAIL || !CVE_CAR || !CUATRI_CURSA || !PROMEDIOGRAL || !SITUACIONACA || !TIPO_ALUMNO || !FECHA_INGRESO) {
                 Constantes.enviaMensajeConsola("FALTA UN CAMPO REQUERIDO");
                 addFieldError("archiA", "*** FALTA UN CAMPO REQUERIDO Ó ESTA MAL ESCRITO ALGUN ENCABEZADO FAVOR DE VERIFICAR EL ARCHIVO***");
             }
 
-            if (MATRICULA && CURP && APATERNO && AMATERNO && NOMBRE && DOMICILIO && COLONIA && CP && CVE_MUNICIPIO && TELEFONO && EMAIL && CVE_CAR && CUATRI_CURSA && PROMEDIOGRAL && SITUACIONACA && TIPO_ALUMNO  && VALIDO ) {
+            if (MATRICULA && CURP && APATERNO && AMATERNO && NOMBRE && DOMICILIO && COLONIA && CP && CVE_MUNICIPIO && TELEFONO && EMAIL && CVE_CAR && CUATRI_CURSA && PROMEDIOGRAL && SITUACIONACA && TIPO_ALUMNO && FECHA_INGRESO && VALIDO) {
 
                 Resultado = "Correcto";
 
@@ -2255,7 +2264,9 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
             boolean validaTel = false;
             boolean validaemail = false;
             boolean validacvecar = false;
-        
+            boolean validatipo_alumno = false;
+            boolean validafecha_ingreso = false;
+
             String Respuesta = null;
             int fila = 0;
             int contador = 0;
@@ -2428,14 +2439,54 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                         }
 
                     }
-                    
-                    
+
+                    if (fila >= 2 && columna == 16) {
+
+                        String TipoAlumno = null;
+
+                        TipoAlumno = contenidoCelda;
+
+                        if (ValidaCadenas(TipoAlumno)) {
+                            //Constantes.enviaMensajeConsola("TIENE CARACTERES NO PERMITIDOS EN EL APELLIDO PATERNO DE LA FILA  " + (fila) + " FAVOR DE VERIFICAR LOS DATOS");
+                            datos.setDESERROR("TIENE CARACTERES NO PERMITIDOS EN TIPO DE ALUMNO EN LA FILA  " + (fila) + " FAVOR DE VERIFICAR LOS DATOS");
+                            validatipo_alumno = false;
+                        } else {
+
+                            if (TipoAlumno.equals("NUEVO INGRESO")) {
+                                datos.setTIPO_ALUM("1");
+                                validatipo_alumno = true;
+                            } else if (TipoAlumno.equals("REINGRESO")) {
+                                datos.setTIPO_ALUM("2");
+                                validatipo_alumno = true;
+                            } else {
+                                datos.setDESERROR("EL TIPO DE ALUMNO  EN LA FILA  " + (fila) + " NO COINCIDE CON NINGUNA DE LAS OPCIONES DEBE SER (NUEVO INGRESO O REINGRESO), FAVOR DE VERIFICAR LOS DATOS");
+                                validatipo_alumno = false;
+                            }
+
+                        }
+
+                    }
+
+                    if (fila >= 2 && columna == 17) {
+
+                        datos.setFECHA_INGRESO_DUAL(contenidoCelda);
+
+                        if (validarFecha(datos.getFECHA_INGRESO_DUAL())) {
+                            validafecha_ingreso = true;
+                        } else {
+                            //Constantes.enviaMensajeConsola("TIENE CARACTERES NO PERMITIDOS EN EL APELLIDO PATERNO DE LA FILA  " + (fila) + " FAVOR DE VERIFICAR LOS DATOS");
+                            datos.setDESERROR("LA FECHA QUE INGRESO EN LA FILA: " + fila + " NO TIENE EL FORMATO CORRECTO dd/mm/yyyy ej..(01/01/1900) FAVOR DE VERIFICAR ");
+                            validafecha_ingreso = false;
+
+                        }
+
+                    }
 
                 }
 
                 Constantes.enviaMensajeConsola("fila: " + fila);
 
-                if (validaMat && validacurp && validanom && validaapellidop && validaapellidom && validacvemun && validaTel && validaemail && validacvecar) {
+                if (validaMat && validacurp && validanom && validaapellidop && validaapellidom && validacvemun && validaTel && validaemail && validacvecar && validatipo_alumno && validafecha_ingreso) {
                     contador = contador + 1;
                 } else {
                     if (fila != 1) {
@@ -2448,6 +2499,8 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                         Constantes.enviaMensajeConsola("CVE CAR: **************" + datos.getCVE_CAR_RES());
                         Constantes.enviaMensajeConsola("TELEFONO: **************" + datos.getTELEFONO());
                         Constantes.enviaMensajeConsola("EMAIL: **************" + datos.getCORREO());
+                        Constantes.enviaMensajeConsola("TIPO DE ALUMNO: **************" + datos.getTIPO_ALUM());
+                        Constantes.enviaMensajeConsola("FECHA DE INGRESO: **************" + datos.getFECHA_INGRESO_DUAL());
 
                         datos.setSTATUS("CON ERRORES");
                         //datos.setDESERROR("Datos con caracteres no permitidos en la fila " + fila + "");
@@ -2500,7 +2553,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
 
         try {
             Constantes.enviaMensajeConsola("PASO EL WHILE");
-            
+
             String nom = null;
             String apellidop = null;
             String apellidom = null;
@@ -2556,57 +2609,57 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                     }
 
                 }
-                
-                if(fila !=1){
 
-                service = new ConsultaRenapoPorCurp_Service();
-                port = service.getConsultaRenapoPorCurpPort();
-                personas = port.consultaPorCurp(datos.getCURP());
+                if (fila != 1) {
 
-                //System.out.println("Resultado            : " + personas.getResultado());
-                //System.out.println("Codigo de error      : " + personas.getCodigoError());
-                //System.out.println("Descripcion Error    : " + personas.getDescripcionError());
-                Constantes.enviaMensajeConsola("resultado curp: " + personas.getResultado());
+                    service = new ConsultaRenapoPorCurp_Service();
+                    port = service.getConsultaRenapoPorCurpPort();
+                    personas = port.consultaPorCurp(datos.getCURP());
 
-                if (personas.getResultado().equals("EXITO")) {
+                    //System.out.println("Resultado            : " + personas.getResultado());
+                    //System.out.println("Codigo de error      : " + personas.getCodigoError());
+                    //System.out.println("Descripcion Error    : " + personas.getDescripcionError());
+                    Constantes.enviaMensajeConsola("resultado curp: " + personas.getResultado());
 
-                    nom = personas.getNombre();
-                    apellidop = personas.getApellidoPaterno();
-                    apellidom = personas.getApellidoMaterno();
+                    if (personas.getResultado().equals("EXITO")) {
 
-                    nom = limpiarCadenas(nom);
-                    apellidop = limpiarCadenas(apellidop);
-                    apellidom = limpiarCadenas(apellidom);
+                        nom = personas.getNombre();
+                        apellidop = personas.getApellidoPaterno();
+                        apellidom = personas.getApellidoMaterno();
 
-                    Constantes.enviaMensajeConsola("nombre renapo: " + nom + "--------- nombre Archivo: " + datos.getNOMBRE());
-                    Constantes.enviaMensajeConsola("ape p renapo: " + apellidop + "--------- a paterno Archivo: " + datos.getAPELLIDOP());
-                    Constantes.enviaMensajeConsola("ape m renapo: " + apellidom + "--------- a materno Archivo: " + datos.getAPELLIDOM());
+                        nom = limpiarCadenas(nom);
+                        apellidop = limpiarCadenas(apellidop);
+                        apellidom = limpiarCadenas(apellidom);
 
-                    if (nom.equals(datos.getNOMBRE())) {
-                        validanomrenapo = true;
-                    } else {
-                        validanomrenapo = false;
-                    }
-                    if (apellidop.equals(datos.getAPELLIDOP())) {
-                        validaapeprenapo = true;
-                    } else {
-                        validaapeprenapo = false;
-                    }
+                        Constantes.enviaMensajeConsola("nombre renapo: " + nom + "--------- nombre Archivo: " + datos.getNOMBRE());
+                        Constantes.enviaMensajeConsola("ape p renapo: " + apellidop + "--------- a paterno Archivo: " + datos.getAPELLIDOP());
+                        Constantes.enviaMensajeConsola("ape m renapo: " + apellidom + "--------- a materno Archivo: " + datos.getAPELLIDOM());
+
+                        if (nom.equals(datos.getNOMBRE())) {
+                            validanomrenapo = true;
+                        } else {
+                            validanomrenapo = false;
+                        }
+                        if (apellidop.equals(datos.getAPELLIDOP())) {
+                            validaapeprenapo = true;
+                        } else {
+                            validaapeprenapo = false;
+                        }
 //                      if (apellidom.equals(datos.getAPELLIDOM())) {
 //                         validaapemrenapo = true;
 //                      } else {
 //                         validaapeprenapo = false;
 //                      }
 
-                } else {
-                    //regresa valor si la curp no existe                                                                
-                    //System.out.println("Resultado            : " + personas.getResultado());
-                    //System.out.println("Codigo de error      : " + personas.getCodigoError());
-                    //System.out.println("Descripcion Error    : " + personas.getDescripcionError());
+                    } else {
+                        //regresa valor si la curp no existe                                                                
+                        //System.out.println("Resultado            : " + personas.getResultado());
+                        //System.out.println("Codigo de error      : " + personas.getCodigoError());
+                        //System.out.println("Descripcion Error    : " + personas.getDescripcionError());
 
-                    addFieldError("ErrorValCurp", personas.getDescripcionError());
-                }//
-            }
+                        addFieldError("ErrorValCurp", personas.getDescripcionError());
+                    }//
+                }
                 //Constantes.enviaMensajeConsola("fila: " + fila);
                 if (validanomrenapo && validaapeprenapo) {
                     contador = contador + 1;
@@ -2750,7 +2803,27 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                         datos.setSITUACIONACA(contenidoCelda);
                     }
                     if (fila >= 2 && columna == 16) {
-                        datos.setTIPO_ALUM(contenidoCelda);
+
+                        String TipoAlumno = null;
+
+                        TipoAlumno = contenidoCelda;
+
+                        
+
+                            if (TipoAlumno.equals("NUEVO INGRESO")) {
+                                datos.setTIPO_ALUM("1");
+                               
+                            } else if (TipoAlumno.equals("REINGRESO")) {
+                                datos.setTIPO_ALUM("2");
+                               
+                            } 
+
+                        
+
+                    }
+                    if (fila >= 2 && columna == 17) {
+
+                        datos.setFECHA_INGRESO_DUAL(contenidoCelda);
 
                     }
 
@@ -2848,7 +2921,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
             return "ERROR";
         }
 
-    }
+    } // FALTA AGREGAR TIPO ALU Y FECHA 
 
     public String ValidaCarrera(DatosBean datos) throws Exception {
 
@@ -3119,12 +3192,32 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
         // Comprobar si encaja
         return m.matches();
     }
-    
-    public boolean validarFecha(String valFecha) {
+
+    public boolean validarFecha(String valFecha) throws ParseException {
+        Constantes.enviaMensajeConsola("entro a validar fecha " + valFecha);
+
         valFecha = valFecha.toUpperCase().trim();
-        return valFecha.matches("[0-9]{2}[/][0-9]{2}[/][0-9]{4}");
-    }//Cierra método validarFOLIO
-    
+
+        // el que parsea
+        SimpleDateFormat parseador = new SimpleDateFormat("dd/MM/yy");
+// el que formatea
+        SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yy");
+
+        Date date = parseador.parse(valFecha);
+
+        String ff = formateador.format(date);
+
+        System.out.println(formateador.format(date));
+
+        boolean Fecha = ff.matches("[0-9]{2}[/][0-9]{2}[/][0-9]{2}");
+
+        Constantes.enviaMensajeConsola("fecha validada es:  " + Fecha);
+
+        return Fecha;
+
+    }
+
+//Cierra método validarFOLIO
     private void cierraConexiones() {
         try {
             objConexion.close();

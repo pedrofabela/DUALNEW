@@ -51,10 +51,6 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
     public ArrayList<DatosBean> ListaAlumnosBeca = new ArrayList<DatosBean>();
     public List<DatosBean> ListaCarreras = new ArrayList<DatosBean>();
     private ArrayList<DatosBean> ObtenerCarreraCCT = new ArrayList<>();
-     public List<DatosBean> ListaTotalEstatus = new ArrayList<DatosBean>();
-     public List<DatosBean> ListaAlumnosDashboard = new ArrayList<DatosBean>();
-      public List<DatosBean> ListaTotalEsuela = new ArrayList<DatosBean>();
-      private boolean bantablero = false;
 
     //SESSIN USUARIO	
     // private Map session  = ActionContext.getContext().getSession();
@@ -116,133 +112,6 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
 
                     datos.setFECHA_INICIO("01/" + fecha);
                     datos.setFECHA_TERMINO(fecha());
-                    
-                    
-                    
-                    
-                    
-                                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
-
-            
-
-            bantablero = true;
-            
-            
-
-           
-
-            Constantes.enviaMensajeConsola("FECHA INICIO"+datos.getFECHA_INICIO());
-            Constantes.enviaMensajeConsola("FECHA termino"+datos.getFECHA_TERMINO());
-
-            ListaAlumnosDashboard = con.listaAlumnosDashboard(datos);
-            
-            
-
-            Constantes.enviaMensajeConsola("lista Alumnos : " + ListaAlumnosDashboard.size());
-
-            Iterator LAD = ListaAlumnosDashboard.iterator();
-
-            DatosBean obj;
-            int total = 0;
-            int activo = 0;
-            int inactivo = 0;
-            int hombre = 0;
-            int mujer = 0;
-            int egresados = 0;
-            int nuevos = 0;
-            int tipo_alu = 0;
-              
-              
-               Date fechaReg=null;
-               Date fechainicio=null;
-                Date fechatermino=null;
-              System.out.println("fecha reg" + fechaReg);  
-                fechainicio=format.parse(datos.getFECHA_INICIO());
-                fechatermino=format.parse(datos.getFECHA_TERMINO());
-
-            while (LAD.hasNext()) {
-                obj = (DatosBean) LAD.next();
-                total = total + 1;
-
-                Constantes.enviaMensajeConsola("SEXO: " + obj.getSEXO());
-
-                if (obj.getESTATUS_GENERAL().equals("ACTIVO")) {
-
-                    activo = activo + 1;
-                }
-                if (obj.getESTATUS_GENERAL().equals("INACTIVO") && !obj.getSTATUS().equals("10")) {
-
-                    inactivo = inactivo + 1;
-                }
-
-                if (obj.getSEXO().equals("HOMBRE")) {
-
-                    hombre = hombre + 1;
-                }
-                if (obj.getSEXO().equals("MUJER")) {
-
-                    mujer = mujer + 1;
-                }
-                
-                 if (obj.getSTATUS().equals("10")) {
-
-                    egresados = egresados + 1;
-                }
-                 
-                 if(obj.getFECHA_REG()!=null){
-                fechaReg=format.parse(obj.getFECHA_REG());
-                if ( fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)  ) {
-
-                    nuevos = nuevos + 1;
-                }
-                 }
-                 
-                 
-                  if (obj.getTIPO_ALUMNO().equals("2")) {
-
-                    tipo_alu = tipo_alu + 1;
-                }
-                  
-            }
-
-            
-            datos.setTOTAL_ALU_DUAL(String.valueOf(total));
-            datos.setTOTAL_ALU_ACTIVO(String.valueOf(activo));
-            datos.setTOTAL_ALU_INACTIVO(String.valueOf(inactivo));
-            datos.setALUMNOS_NUEVO_INGRESO(con.AlumnosNuevoIngresoA(datos));
-            datos.setALUMNOS_ACTIVOS_PERIODO(con.AlumnosActivosPeriodoA(datos));
-            datos.setTOTAL_HOMBRE(String.valueOf(hombre));
-            datos.setTOTAL_MUJER(String.valueOf(mujer));
-             datos.setEGRESADOS(String.valueOf(egresados));
-             datos.setALUMNOS_NUEVOS(String.valueOf(nuevos));
-               datos.setTOTAL_TIPO_ALUMNO(String.valueOf(tipo_alu));
-            Constantes.enviaMensajeConsola("hombre&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" + hombre + " asignado" + datos.getTOTAL_HOMBRE());
-
-             ListaTotalEstatus = con.listaTotalEstatus(datos);
-            ListaTotalEsuela = con.listaTotalEscuela(datos);
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
 
                     
 
@@ -609,48 +478,5 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
     public void setObtenerCarreraCCT(ArrayList<DatosBean> ObtenerCarreraCCT) {
         this.ObtenerCarreraCCT = ObtenerCarreraCCT;
     }
-
-    public List<DatosBean> getListaTotalEstatus() {
-        return ListaTotalEstatus;
-    }
-
-    public void setListaTotalEstatus(List<DatosBean> ListaTotalEstatus) {
-        this.ListaTotalEstatus = ListaTotalEstatus;
-    }
-
-    public List<DatosBean> getListaAlumnosDashboard() {
-        return ListaAlumnosDashboard;
-    }
-
-    public void setListaAlumnosDashboard(List<DatosBean> ListaAlumnosDashboard) {
-        this.ListaAlumnosDashboard = ListaAlumnosDashboard;
-    }
-
-    public boolean isBantablero() {
-        return bantablero;
-    }
-
-    public void setBantablero(boolean bantablero) {
-        this.bantablero = bantablero;
-    }
-
-    public String getNivelUsuario() {
-        return nivelUsuario;
-    }
-
-    public void setNivelUsuario(String nivelUsuario) {
-        this.nivelUsuario = nivelUsuario;
-    }
-
-    public List<DatosBean> getListaTotalEsuela() {
-        return ListaTotalEsuela;
-    }
-
-    public void setListaTotalEsuela(List<DatosBean> ListaTotalEsuela) {
-        this.ListaTotalEsuela = ListaTotalEsuela;
-    }
-    
-    
-    
 
 }

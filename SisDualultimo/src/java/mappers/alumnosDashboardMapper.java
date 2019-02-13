@@ -83,13 +83,6 @@ public class alumnosDashboardMapper implements Mapper {
         } else {
             dat.setCLAVECARRERA(rs.getString("CVE_CARRERA"));
         }
-        
-        
-          if (rs.getString("TIPO_ALUMNO") != null) {
-            dat.setTIPO_ALUMNO(rs.getString("TIPO_ALUMNO").trim());
-        } else {
-            dat.setTIPO_ALUMNO(rs.getString("TIPO_ALUMNO"));
-        }
 
         return dat;
 
