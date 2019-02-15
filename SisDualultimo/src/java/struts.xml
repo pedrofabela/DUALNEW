@@ -235,7 +235,29 @@
         </action>
       
         <!-- *****************************************fin  parte 1************************************************************-->
-            
+        <!-- ***************************************** Admin Catalogos************************************************************-->
+        <action name="AdminCat" class="action.AdminCatalogosAction" method="AbreAdminCat">
+            <result name="SUCCESS">/pages/AdminCatalogos.jsp</result>                          
+            <result name="ERROR">/pages/index2.jsp</result>
+            <result name="input">/pages/index2.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>     
+        
+        <action name="AgregarCarreraA" class="action.AdminCatalogosAction" method="GuardaCarrera">
+            <result name="SUCCESS">/pages/AdminCatalogos.jsp</result>                          
+            <result name="ERROR">/pages/AdminCatalogos.jsp</result>
+            <result name="input">/pages/AdminCatalogos.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>   
+        
+        <action name="EliminarCarreraA" class="action.AdminCatalogosAction" method="EliminarCarrera">
+            <result name="SUCCESS">/pages/AdminCatalogos.jsp</result>                          
+            <result name="ERROR">/pages/AdminCatalogos.jsp</result>
+            <result name="input">/pages/AdminCatalogos.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>     
+        
+        <!-- *****************************************fin Admin Catalogos************************************************************-->
         <!-- CERRAR SESION -->
         <action name="CerrarSesion" class="action.CerrarSesion" method="cerrar">  
             <result name="SUCCESS" type="chain">acceso</result>

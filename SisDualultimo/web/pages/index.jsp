@@ -599,10 +599,10 @@
                                                                                     <tbody>
                                                                                         <s:iterator value="DatosResponsablesValidadosRenapoConError" id="DatosResponsablesValidadosRenapoConError" status="stat">
                                                                                             <tr>
-                                                                                                <td class="text-muted" ><s:property value="CURP_RESPONSABLE"/></td>
-                                                                                                <td class="text-muted" ><s:property value="NOMBRER"/></td>
-                                                                                                <td class="text-muted" ><s:property value="APELLIDOPR"/></td>
-                                                                                                <td class="text-muted" ><s:property value="APELLIDOMR"/></td>
+                                                                                                <td class="text-muted" ><s:property value="CURP"/></td>
+                                                                                                <td class="text-muted" ><s:property value="NOMBRE"/></td>
+                                                                                                <td class="text-muted" ><s:property value="APELLIDOP"/></td>
+                                                                                                <td class="text-muted" ><s:property value="APELLIDOM"/></td>
                                                                                                 <td class="text-muted" ><s:property value="STATUS"/></td>
                                                                                                 <td class="text-muted" ><s:property value="DESERROR"/></td> 
                                                                                             </tr>

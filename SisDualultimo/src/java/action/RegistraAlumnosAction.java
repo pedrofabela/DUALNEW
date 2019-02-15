@@ -268,6 +268,8 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
                 al.setSTATUS("1");
                 al.setAVANCE("50");
                 al.setBECA("no");
+                al.setTIPO_ALUM("2");
+                
 
                 con.HabilitarAlumno(al);
 
