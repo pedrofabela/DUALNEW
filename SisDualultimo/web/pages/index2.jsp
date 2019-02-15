@@ -512,154 +512,154 @@
                                                                     <br></br>   
                                                                 </section>
 
-                                                                <!-- Actualiza Modal-->
-                                                                <div class="modal fade" id="editUsu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                    <div class="modal-dialog modal-lg " role="document">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header bg-primary">
-                                                                                <h4 align="center"  style="color: #ffffff"> <i class="fas fa-book"></i> ACTUALIZACIÓN DE DATOS PERSONALES DEL ALUMNO</h4> 
-                                                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                                                    <span aria-hidden="true"></span>
-                                                                                </button>
-                                                                            </div>
-                                                                            <div class="modal-body">
+                                                                    <!-- Actualiza Modal-->
+                                                                    <div class="modal fade" id="editUsu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-lg " role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header bg-primary">
+                                                                                    <h4 align="center"  style="color: #ffffff"> <i class="fas fa-book"></i> ACTUALIZACIÓN DE DATOS PERSONALES DEL ALUMNO</h4> 
+                                                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true"></span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
 
-                                                                                <div class="row">
-                                                                                    <div class="form-group col-lg-6">
-                                                                                        <label class="col-form-label" for="matricula">Matricula:</label>
-                                                                                        <div class="col-sm-auto">
-                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="datos.MATRICULA" id="matricula" readonly="true"></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorMatricula" cssClass="alert alert-danger"></s:fielderror>
+                                                                                    <div class="row">
+                                                                                        <div class="form-group col-lg-6">
+                                                                                            <label class="col-form-label" for="matricula">Matricula:</label>
+                                                                                            <div class="col-sm-auto">
+                                                                                            <s:textfield  cssClass="form-control text-uppercase" name="datos.MATRICULA" id="matricula" readonly="true"></s:textfield>
+                                                                                            <s:fielderror fieldName="ErrorMatricula" cssClass="alert alert-danger"></s:fielderror>
+                                                                                            </div> 
+                                                                                        </div>
+                                                                                        <div class="form-group col-lg-6 ">
+                                                                                            <label class="col-form-label" style="text-align : left;" for="curp">CURP:</label>
+                                                                                            <div class="col-sm-auto">
+                                                                                            <s:textfield  cssClass="form-control text-uppercase" name="datos.CURP" id="curp" readonly="true"></s:textfield>
+                                                                                            <s:fielderror fieldName="ErrorCurp" cssClass="alert alert-danger"/>
                                                                                         </div> 
                                                                                     </div>
-                                                                                    <div class="form-group col-lg-6 ">
-                                                                                        <label class="col-form-label" style="text-align : left;" for="curp">CURP:</label>
+                                                                                    <div class="form-group col-lg-12">
+                                                                                        <label class="col-form-label" for="nombre">Nombre:</label>
                                                                                         <div class="col-sm-auto">
-                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="datos.CURP" id="curp" readonly="true"></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorCurp" cssClass="alert alert-danger"/>
+                                                                                            <s:textfield  cssClass="form-control text-uppercase" name="datos.NOMBRE" id="nombre" readonly="true"></s:textfield>
+                                                                                            <s:fielderror fieldName="ErrorNombre" cssClass="alert alert-danger"/>
+                                                                                        </div> 
+                                                                                    </div>
+                                                                                    <div class="form-group col-lg-6">
+                                                                                        <label class="col-form-label" for="apellidop">Apellido Paterno:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                            <s:textfield  cssClass="form-control text-uppercase" name="datos.APELLIDOP" id="apellidop" readonly="true"></s:textfield>
+                                                                                            <s:fielderror fieldName="ErrorApellidoP" cssClass="alert alert-danger"/>
+                                                                                        </div> 
+                                                                                    </div>    
+                                                                                    <div class="form-group col-lg-6">
+                                                                                        <label class="col-form-label" for="apellidom">Apellido Materno:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                            <s:textfield  cssClass="form-control text-uppercase" name="datos.APELLIDOM" id="apellidom" readonly="true"></s:textfield>
+                                                                                            <s:fielderror fieldName="ErrorApellidoM" cssClass="alert alert-danger"/>
+                                                                                        </div> 
+                                                                                    </div>   
+                                                                                    <div class="form-group col-lg-4">
+                                                                                        <label class="col-form-label" for="Genero">Genero:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                            <s:textfield  cssClass="form-control text-uppercase" name="datos.SEXO" id="genero" readonly="true"></s:textfield>
+                                                                                            <s:fielderror fieldName="ErrorGenero" cssClass="alert alert-danger"/>
+                                                                                        </div> 
+                                                                                    </div>      
+                                                                                    <div class="form-group col-lg-4">
+                                                                                        <label class="col-form-label" for="fechaNac">Fecha de Nacimiento:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                            <s:textfield  cssClass="form-control text-uppercase" name="datos.FECHANAC" id="fechanac" readonly="true"></s:textfield>
+                                                                                            <s:fielderror fieldName="ErrorFechaNac" cssClass="alert alert-danger"/>
+                                                                                        </div> 
+                                                                                    </div>  
+                                                                                    <div class="form-group col-lg-4">
+                                                                                        <label class="col-form-label" for="tel">Teléfono:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                            <s:textfield  cssClass="form-control text-uppercase" name="datos.TELEFONO" id="telefono"></s:textfield>
+                                                                                            <s:fielderror fieldName="ErrorTel" cssClass="alert alert-danger"/>
+                                                                                        </div> 
+                                                                                    </div>     
+                                                                                    <div class="form-group col-lg-12">
+                                                                                        <label class="col-form-label" for="domicilio">Domicilio:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                            <s:textfield  cssClass="form-control text-uppercase" name="datos.DOMICILIOA" id="domicilio"></s:textfield>
+                                                                                            <s:fielderror fieldName="ErrorDomicilio" cssClass="alert alert-danger"/>
+                                                                                        </div> 
+                                                                                    </div>    
+                                                                                    <div class="form-group col-lg-9">
+                                                                                        <label class="col-form-label" for="Colonia">Colonia:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                            <s:textfield  cssClass="form-control text-uppercase" name="datos.COLONIAA" id="colonia" ></s:textfield>
+                                                                                            <s:fielderror fieldName="ErrorColonia" cssClass="alert alert-danger"/>
+                                                                                        </div> 
+                                                                                    </div>     
+                                                                                    <div class="form-group col-lg-3">
+                                                                                        <label class="col-form-label" for="cp">Codigo Postal:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                            <s:textfield  cssClass="form-control text-uppercase" name="datos.CP" id="cp" ></s:textfield>
+                                                                                            <s:fielderror fieldName="ErrorCp" cssClass="alert alert-danger"/>
+                                                                                        </div> 
+                                                                                    </div>                                                     
+                                                                                    <div class="form-group col-lg-4">
+                                                                                        <label class="col-form-label" for="correo">Email:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                            <s:textfield  cssClass="form-control " name="datos.CORREO" id="correo" ></s:textfield>
+                                                                                            <s:fielderror fieldName="ErrorCorreo" cssClass="alert alert-danger"/>
+                                                                                        </div> 
+                                                                                    </div>  
+                                                                                    <div class="form-group col-lg-8">
+                                                                                        <label class="col-form-label" for="carrera">Carrera:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                            <s:textfield  cssClass="form-control text-uppercase" name="datos.NOMBRE_CARRERA" id="carrera" readonly="true"></s:textfield>
+                                                                                            <s:fielderror fieldName="ErrorCorreo" cssClass="alert alert-danger"/>
+                                                                                        </div> 
+                                                                                    </div>   
+                                                                                    <div class="form-group col-lg-4">
+                                                                                        <label class="col-form-label" for="grado">Cuatrimestre/Semestre:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                            <s:textfield  cssClass="form-control text-uppercase" name="datos.GRADO" id="grado"></s:textfield>
+                                                                                            <s:fielderror fieldName="ErrorGrado" cssClass="alert alert-danger"/>
+                                                                                        </div> 
                                                                                     </div> 
+                                                                                    <div class="form-group col-lg-4">
+                                                                                        <label class="col-form-label" for="promedio">Promedio:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                            <s:textfield  cssClass="form-control text-uppercase" name="datos.PROMEDIOGRAL" id="promedio"></s:textfield>
+                                                                                            <s:fielderror fieldName="ErrorPromedio" cssClass="alert alert-danger"/>
+                                                                                        </div> 
+                                                                                    </div>
+                                                                                    <div class="form-group col-lg-4">
+                                                                                        <label class="col-form-label" for="SituacionAca">Situación Academica:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                            <s:textfield  cssClass="form-control text-uppercase" name="datos.SITUACIONACA" id="situacion" ></s:textfield>
+                                                                                            <s:fielderror fieldName="ErrorSituacion" cssClass="alert alert-danger"/>
+                                                                                        </div> 
+                                                                                    </div>
+                                                                                    <div class="form-group col-lg-4">
+                                                                                        <label class="col-form-label" for="tipo_Alumno">Tipo de Alumno:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                            <s:select  name="datos.TIPO_ALUM" id="tipo_alu" list="ListaTipoAlumno"  listKey="ID_TIPOALUM"  listValue="NOM_TIPO"  headerKey="" headerValue="--SELECCIONE--" cssClass="form-control " ></s:select>                                                                                                                 
+                                                                                            <s:fielderror fieldName="ErrorTipoAlum" cssClass="alert alert-danger"/>
+                                                                                        </div> 
+                                                                                    </div>      
+                                                                                    <div class="form-group col-lg-8">
+                                                                                        <label class="col-form-label " for="Municipio" >Municipio</label>
+                                                                                        <div class="col-sm-auto ">
+                                                                                            <s:select  name="datos.MUNICIPIO" id="municipio" list="ListaMunicipios"  listKey="ID"  listValue="MUNICIPIO"  headerKey="" headerValue="Municipio" cssClass="form-control "  ></s:select>
+                                                                                            <s:fielderror fieldName="ErrorMunicipio" cssClass="alert alert-danger" cssStyle="font-size: 12px; margin-top: 00px; margin-botton:40px;"/>
+                                                                                        </div> 
+                                                                                    </div>  
+                                                                                    <div class="form-group col-lg-4">
+                                                                                        <label class="col-form-label text-muted" for="FI">Fecha de ingreso a DUAL:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                            <s:textfield name="datos.FECHA_INGRESO_DUAL" id="fechaingresodual"  placeholder="Fecha de ingreso a DUAl" required="true" readonly="true" cssClass="form-control text-uppercase"  />
+                                                                                            <s:fielderror fieldName="ErrorFID" cssClass="alert alert-danger"/>
+                                                                                        </div> 
+                                                                                    </div>    
                                                                                 </div>
-                                                                                <div class="form-group col-lg-12">
-                                                                                    <label class="col-form-label" for="nombre">Nombre:</label>
-                                                                                    <div class="col-sm-auto">
-                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="datos.NOMBRE" id="nombre" readonly="true"></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorNombre" cssClass="alert alert-danger"/>
-                                                                                    </div> 
-                                                                                </div>
-                                                                                <div class="form-group col-lg-6">
-                                                                                    <label class="col-form-label" for="apellidop">Apellido Paterno:</label>
-                                                                                    <div class="col-sm-auto">
-                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="datos.APELLIDOP" id="apellidop" readonly="true"></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorApellidoP" cssClass="alert alert-danger"/>
-                                                                                    </div> 
-                                                                                </div>    
-                                                                                <div class="form-group col-lg-6">
-                                                                                    <label class="col-form-label" for="apellidom">Apellido Materno:</label>
-                                                                                    <div class="col-sm-auto">
-                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="datos.APELLIDOM" id="apellidom" readonly="true"></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorApellidoM" cssClass="alert alert-danger"/>
-                                                                                    </div> 
-                                                                                </div>   
-                                                                                <div class="form-group col-lg-4">
-                                                                                    <label class="col-form-label" for="Genero">Genero:</label>
-                                                                                    <div class="col-sm-auto">
-                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="datos.SEXO" id="genero" readonly="true"></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorGenero" cssClass="alert alert-danger"/>
-                                                                                    </div> 
-                                                                                </div>      
-                                                                                <div class="form-group col-lg-4">
-                                                                                    <label class="col-form-label" for="fechaNac">Fecha de Nacimiento:</label>
-                                                                                    <div class="col-sm-auto">
-                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="datos.FECHANAC" id="fechanac" readonly="true"></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorFechaNac" cssClass="alert alert-danger"/>
-                                                                                    </div> 
-                                                                                </div>  
-                                                                                <div class="form-group col-lg-4">
-                                                                                    <label class="col-form-label" for="tel">Teléfono:</label>
-                                                                                    <div class="col-sm-auto">
-                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="datos.TELEFONO" id="telefono"></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorTel" cssClass="alert alert-danger"/>
-                                                                                    </div> 
-                                                                                </div>     
-                                                                                <div class="form-group col-lg-12">
-                                                                                    <label class="col-form-label" for="domicilio">Domicilio:</label>
-                                                                                    <div class="col-sm-auto">
-                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="datos.DOMICILIOA" id="domicilio"></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorDomicilio" cssClass="alert alert-danger"/>
-                                                                                    </div> 
-                                                                                </div>    
-                                                                                <div class="form-group col-lg-9">
-                                                                                    <label class="col-form-label" for="Colonia">Colonia:</label>
-                                                                                    <div class="col-sm-auto">
-                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="datos.COLONIAA" id="colonia" ></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorColonia" cssClass="alert alert-danger"/>
-                                                                                    </div> 
-                                                                                </div>     
-                                                                                <div class="form-group col-lg-3">
-                                                                                    <label class="col-form-label" for="cp">Codigo Postal:</label>
-                                                                                    <div class="col-sm-auto">
-                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="datos.CP" id="cp" ></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorCp" cssClass="alert alert-danger"/>
-                                                                                    </div> 
-                                                                                </div>                                                     
-                                                                                <div class="form-group col-lg-4">
-                                                                                    <label class="col-form-label" for="correo">Email:</label>
-                                                                                    <div class="col-sm-auto">
-                                                                                        <s:textfield  cssClass="form-control " name="datos.CORREO" id="correo" ></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorCorreo" cssClass="alert alert-danger"/>
-                                                                                    </div> 
-                                                                                </div>  
-                                                                                <div class="form-group col-lg-8">
-                                                                                    <label class="col-form-label" for="carrera">Carrera:</label>
-                                                                                    <div class="col-sm-auto">
-                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="datos.NOMBRE_CARRERA" id="carrera" readonly="true"></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorCorreo" cssClass="alert alert-danger"/>
-                                                                                    </div> 
-                                                                                </div>   
-                                                                                <div class="form-group col-lg-4">
-                                                                                    <label class="col-form-label" for="grado">Cuatrimestre/Semestre:</label>
-                                                                                    <div class="col-sm-auto">
-                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="datos.GRADO" id="grado"></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorGrado" cssClass="alert alert-danger"/>
-                                                                                    </div> 
-                                                                                </div> 
-                                                                                <div class="form-group col-lg-4">
-                                                                                    <label class="col-form-label" for="promedio">Promedio:</label>
-                                                                                    <div class="col-sm-auto">
-                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="datos.PROMEDIOGRAL" id="promedio"></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorPromedio" cssClass="alert alert-danger"/>
-                                                                                    </div> 
-                                                                                </div>
-                                                                                <div class="form-group col-lg-4">
-                                                                                    <label class="col-form-label" for="SituacionAca">Situación Academica:</label>
-                                                                                    <div class="col-sm-auto">
-                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="datos.SITUACIONACA" id="situacion" ></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorSituacion" cssClass="alert alert-danger"/>
-                                                                                    </div> 
-                                                                                </div>
-                                                                                <div class="form-group col-lg-4">
-                                                                                    <label class="col-form-label" for="tipo_Alumno">Tipo de Alumno:</label>
-                                                                                    <div class="col-sm-auto">
-                                                                                        <s:select  name="datos.TIPO_ALUM" id="tipo_alu" list="ListaTipoAlumno"  listKey="ID_TIPOALUM"  listValue="NOM_TIPO"  headerKey="" headerValue="--SELECCIONE--" cssClass="form-control " ></s:select>                                                                                                                 
-                                                                                        <s:fielderror fieldName="ErrorTipoAlum" cssClass="alert alert-danger"/>
-                                                                                    </div> 
-                                                                                </div>      
-                                                                                <div class="form-group col-lg-8">
-                                                                                    <label class="col-form-label " for="Municipio" >Municipio</label>
-                                                                                    <div class="col-sm-auto ">
-                                                                                        <s:select  name="datos.MUNICIPIO" id="municipio" list="ListaMunicipios"  listKey="ID"  listValue="MUNICIPIO"  headerKey="" headerValue="Municipio" cssClass="form-control "  ></s:select>
-                                                                                        <s:fielderror fieldName="ErrorMunicipio" cssClass="alert alert-danger" cssStyle="font-size: 12px; margin-top: 00px; margin-botton:40px;"/>
-                                                                                    </div> 
-                                                                                </div>  
-                                                                                <div class="form-group col-lg-4">
-                                                                                    <label class="col-form-label text-muted" for="FI">Fecha de ingreso a DUAL:</label>
-                                                                                    <div class="col-sm-auto">
-                                                                                        <s:textfield name="datos.FECHA_INGRESO_DUAL" id="fechaingresodual"  placeholder="Fecha de ingreso a DUAl" required="true" readonly="true" cssClass="form-control text-uppercase"  />
-                                                                                        <s:fielderror fieldName="ErrorFID" cssClass="alert alert-danger"/>
-                                                                                    </div> 
-                                                                                </div>    
-                                                                            </div>
-                                                                            <s:textfield name="datos.CCT" id="cct" cssStyle="display:none;"></s:textfield>        
+                                                                                <s:textfield name="datos.CCT" id="cct" cssStyle="display:none;"></s:textfield>        
 
                                                                             </div>        
                                                                             <div class="modal-footer">

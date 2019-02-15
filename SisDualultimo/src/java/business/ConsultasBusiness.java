@@ -1,5 +1,6 @@
 package business;
 
+import beans.AdminCatBean;
 import beans.AlumnosBean;
 import beans.BecaBean;
 import beans.DatosBean;
@@ -81,6 +82,11 @@ public class ConsultasBusiness {
 
     public boolean GuardaResponsable(Connection conn, PreparedStatement stat, DatosBean datos) throws Exception {
         return this.con.GuardaResponsable(conn, stat, datos);
+    }
+    
+    public List ConsultaResponsableAdmin(AdminCatBean obj) throws Exception {
+        List lista = this.con.ConsultaResponsableAdmin(obj);
+        return lista;
     }
 
     //***********************************************business de asesorI**********************************

@@ -890,10 +890,11 @@
                                                                                     <thead> 
                                                                                         <tr style="background-color: #CC0000;"><th colspan="6" > <h5 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS CON ERRORES AL VALIDAR CON RENAPO</h5></th> </tr>
                                                                                         <tr>              
-                                                                                            <th  scope="col">CURP</th>
+                                                                                            
                                                                                             <th  scope="col">NOMBRE(S)</th>
                                                                                             <th  scope="col">APELLIDO PATERNO</th>
                                                                                             <th  scope="col">APELLIDO MATERNO</th>
+                                                                                            <th  scope="col">CURP</th>
                                                                                             <th  scope="col">STATUS</th>
                                                                                             <th  scope="col">INFORMACIÓN</th>
                                                                                         </tr>
@@ -901,10 +902,11 @@
                                                                                     <tbody>
                                                                                         <s:iterator value="DatosAlumnosValidadosRenapoConError" id="DatosAlumnosValidadosRenapoConError" status="stat">
                                                                                             <tr>
-                                                                                                <td class="text-muted" ><s:property value="CURP"/></td>
+                                                                                                
                                                                                                 <td class="text-muted" ><s:property value="NOMBRE"/></td>
                                                                                                 <td class="text-muted" ><s:property value="APELLIDOP"/></td>
                                                                                                 <td class="text-muted" ><s:property value="APELLIDOM"/></td>
+                                                                                                <td class="text-muted" ><s:property value="CURP"/></td>
                                                                                                 <td class="text-muted" ><s:property value="STATUS"/></td>
                                                                                                 <td class="text-muted" ><s:property value="DESERROR"/></td> 
                                                                                             </tr>

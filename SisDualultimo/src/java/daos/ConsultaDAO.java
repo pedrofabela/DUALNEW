@@ -4,6 +4,7 @@
  */
 package daos;
 
+import beans.AdminCatBean;
 import beans.AlumnosBean;
 import beans.BecaBean;
 import beans.DatosBean;
@@ -41,6 +42,8 @@ public interface ConsultaDAO {
     public List ConsultaResponsable(DatosBean obj) throws Exception;
 
     public boolean GuardaResponsable(Connection conn, PreparedStatement stat, DatosBean datos) throws Exception;
+
+    public List ConsultaResponsableAdmin(AdminCatBean obj) throws Exception;
 
     //***********************************************business de asesorI**********************************
     public List ConsultaAsesorI(DatosBean obj) throws Exception;

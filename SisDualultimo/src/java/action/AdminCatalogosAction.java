@@ -1,6 +1,7 @@
 package action;
 
 //BEANS
+import beans.AdminCatBean;
 import beans.DatosBean;
 import beans.DatosErroresBean;
 import beans.VerificaArchivoBean;
@@ -41,37 +42,13 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
     //LISTAS PERSISTENTES DEL MENU
     public List<moduloBean> modulosAUX = new ArrayList<moduloBean>();
     public List<moduloAuxBean> modulosAUXP = new ArrayList<moduloAuxBean>();
-    
-    
-    public List<DatosBean> listaCCT = new ArrayList<>();
 
+    public List<DatosBean> listaCCT = new ArrayList<>();
     private ArrayList<DatosBean> VerificaCarrera = new ArrayList<>();
     private ArrayList<DatosBean> ObtenerCarreraCCT = new ArrayList<>();
-
-    private ArrayList<DatosBean> VerificaCarreraRegistradas = new ArrayList<>();
-    private ArrayList<DatosErroresBean> ListaDatosResponsablesConError = new ArrayList<>();
-    private ArrayList<DatosErroresBean> DatosResponsablesValidadosRenapoConError = new ArrayList<>();
-    private ArrayList<DatosBean> VerificaResponsables = new ArrayList<>();
-    private ArrayList<DatosErroresBean> ResponsableExistente = new ArrayList<>();
-    private ArrayList<DatosErroresBean> RegistrosNuevosR = new ArrayList<>();
-
-    private ArrayList<DatosErroresBean> ListaDatosAsesoresIConError = new ArrayList<>();
-    private ArrayList<DatosBean> VerificaAsesores = new ArrayList<>();
-    private ArrayList<DatosErroresBean> DatosAsesorValidadosRenapoConError = new ArrayList<>();
-    private ArrayList<DatosErroresBean> AsesoresIExistente = new ArrayList<>();
-    private ArrayList<DatosErroresBean> RegistrosNuevosAI = new ArrayList<>();
-
-    private ArrayList<DatosBean> VerificaAlumnosRegistradas = new ArrayList<>();
-    private ArrayList<DatosErroresBean> ListaDatosAlumnosConError = new ArrayList<>();
-
-    private ArrayList<DatosBean> VerificaAlumnos = new ArrayList<>();
-    private ArrayList<DatosErroresBean> AlumnosExistente = new ArrayList<>();
-    private ArrayList<DatosErroresBean> RegistrosNuevosA = new ArrayList<>();
-    private ArrayList<DatosErroresBean> DatosAlumnosValidadosRenapoConError = new ArrayList<>();
-    private ArrayList<DatosBean> ListaCarrera = new ArrayList<>();
-    private ArrayList<DatosBean> ListaModalidad = new ArrayList<>();
-    private List<VerificaArchivoBean> VerificaArchivos = new ArrayList<>();
     public List<DatosBean> ListaCarreras = new ArrayList<DatosBean>();
+    private List<AdminCatBean> ListaResponsables=new ArrayList<>();
+    
 
     //SESSIN USUARIO	
     // private Map session  = ActionContext.getContext().getSession();
@@ -105,12 +82,11 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
 
     DatosBean datos = new DatosBean();
 
-    
+    AdminCatBean ad = new AdminCatBean();
+
     private boolean BanCarreraAgregada;
     private boolean BanCarreraEliminada;
     private boolean BanCarreraExistente;
-
-    
 
     public String AbreAdminCat() {
 
@@ -129,30 +105,32 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
         }
 
         try {
-            
-            ConsultasBusiness con= new ConsultasBusiness();
-            
+
+            ConsultasBusiness con = new ConsultasBusiness();
+
             listaCCT = con.ConsultaCCT(usuariocons.getUSUARIO());
-                    ListaCarreras = con.ConsultaCarreras();
-                    datos.setCCT(usuariocons.getUSUARIO());
-                    ObtenerCarreraCCT = (ArrayList<DatosBean>) con.ConsultaCarreraExistente(datos);
+            ListaCarreras = con.ConsultaCarreras();
+            datos.setCCT(usuariocons.getUSUARIO());
+            ObtenerCarreraCCT = (ArrayList<DatosBean>) con.ConsultaCarreraExistente(datos);
 
-                  
+            Iterator LCCT = listaCCT.iterator();
+            DatosBean obj;
 
-                    Iterator LCCT = listaCCT.iterator();
-                    DatosBean obj;
+            while (LCCT.hasNext()) {
+                obj = (DatosBean) LCCT.next();
 
-                    while (LCCT.hasNext()) {
-                        obj = (DatosBean) LCCT.next();
-
-                        datos.setCCT(obj.getCCT());
-                        datos.setNOMESC(obj.getNOMESC());
-                        datos.setCALLE(obj.getCALLE() + " " + obj.getNUM_ESC());
-                        datos.setCOLONIA(obj.getCOLONIA());
-                        datos.setLOCALIDAD(obj.getLOCALIDAD());
-                        datos.setCP(obj.getCP());
-                        datos.setMUNICIPIOCCT(obj.getMUNICIPIOCCT());
-                    }
+                datos.setCCT(obj.getCCT());
+                datos.setNOMESC(obj.getNOMESC());
+                datos.setCALLE(obj.getCALLE() + " " + obj.getNUM_ESC());
+                datos.setCOLONIA(obj.getCOLONIA());
+                datos.setLOCALIDAD(obj.getLOCALIDAD());
+                datos.setCP(obj.getCP());
+                datos.setMUNICIPIOCCT(obj.getMUNICIPIOCCT());
+            }
+            
+            ad.setCCT(usuariocons.getUSUARIO());
+            
+            ListaResponsables=con.ConsultaResponsableAdmin(ad);
 
             return "SUCCESS";
 
@@ -190,8 +168,6 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
 
             if (VerificaCarrera.size() > 0) {
 
-                
-
                 BanCarreraExistente = true;
                 addFieldError("CarreraExiste", "La carrera que intenta Registrar ya existe");
 
@@ -211,11 +187,7 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
                 //aqui va metodo guardar datos.
                 ObtenerCarreraCCT = (ArrayList<DatosBean>) con.ConsultaCarreraExistente(datos);
 
-               
-
             }
-
-           
 
             return "SUCCESS";
         } catch (Exception e) {
@@ -255,14 +227,10 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
             ObtenerCarreraCCT = (ArrayList<DatosBean>) con.ConsultaCarreraExistente(datos);
 
             if (ObtenerCarreraCCT.size() == 0) {
-                
+
                 datos.setSTATUS("no");
                 con.ActualizaDocCar(datos);
             }
-
-           
-
-            
 
             return "SUCCESS";
         } catch (Exception e) {
@@ -272,9 +240,9 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
         }
 
     }
-
     
-
+    //*************************************************responsables*********************************************************
+    
     
 
 //Cierra método validarFOLIO
@@ -372,8 +340,6 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
         this.tabSelect = tabSelect;
     }
 
-   
-
     public String getNombreUsuario() {
         return nombreUsuario;
     }
@@ -381,9 +347,6 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
     public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
-
-   
-   
 
     public DatosBean getDatos() {
         return datos;
@@ -393,7 +356,13 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
         this.datos = datos;
     }
 
-   
+    public AdminCatBean getAd() {
+        return ad;
+    }
+
+    public void setAd(AdminCatBean ad) {
+        this.ad = ad;
+    }
 
     public boolean isBanCarreraAgregada() {
         return BanCarreraAgregada;
@@ -418,8 +387,6 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
     public void setListaCCT(List<DatosBean> listaCCT) {
         this.listaCCT = listaCCT;
     }
-    
-    
 
     public ArrayList<DatosBean> getVerificaCarrera() {
         return VerificaCarrera;
@@ -437,118 +404,6 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
         this.ObtenerCarreraCCT = ObtenerCarreraCCT;
     }
 
-    public ArrayList<DatosBean> getVerificaCarreraRegistradas() {
-        return VerificaCarreraRegistradas;
-    }
-
-    public void setVerificaCarreraRegistradas(ArrayList<DatosBean> VerificaCarreraRegistradas) {
-        this.VerificaCarreraRegistradas = VerificaCarreraRegistradas;
-    }
-
-    public ArrayList<DatosErroresBean> getListaDatosResponsablesConError() {
-        return ListaDatosResponsablesConError;
-    }
-
-    public void setListaDatosResponsablesConError(ArrayList<DatosErroresBean> ListaDatosResponsablesConError) {
-        this.ListaDatosResponsablesConError = ListaDatosResponsablesConError;
-    }
-
-    public ArrayList<DatosBean> getVerificaResponsables() {
-        return VerificaResponsables;
-    }
-
-    public void setVerificaResponsables(ArrayList<DatosBean> VerificaResponsables) {
-        this.VerificaResponsables = VerificaResponsables;
-    }
-
-    public ArrayList<DatosErroresBean> getResponsableExistente() {
-        return ResponsableExistente;
-    }
-
-    public void setResponsableExistente(ArrayList<DatosErroresBean> ResponsableExistente) {
-        this.ResponsableExistente = ResponsableExistente;
-    }
-
-    public ArrayList<DatosErroresBean> getRegistrosNuevosR() {
-        return RegistrosNuevosR;
-    }
-
-    public void setRegistrosNuevosR(ArrayList<DatosErroresBean> RegistrosNuevosR) {
-        this.RegistrosNuevosR = RegistrosNuevosR;
-    }
-
-    public ArrayList<DatosBean> getVerificaAlumnosRegistradas() {
-        return VerificaAlumnosRegistradas;
-    }
-
-    public void setVerificaAlumnosRegistradas(ArrayList<DatosBean> VerificaAlumnosRegistradas) {
-        this.VerificaAlumnosRegistradas = VerificaAlumnosRegistradas;
-    }
-
-    public ArrayList<DatosErroresBean> getListaDatosAlumnosConError() {
-        return ListaDatosAlumnosConError;
-    }
-
-    public void setListaDatosAlumnosConError(ArrayList<DatosErroresBean> ListaDatosAlumnosConError) {
-        this.ListaDatosAlumnosConError = ListaDatosAlumnosConError;
-    }
-
-    public ArrayList<DatosErroresBean> getDatosResponsablesValidadosRenapoConError() {
-        return DatosResponsablesValidadosRenapoConError;
-    }
-
-    public void setDatosResponsablesValidadosRenapoConError(ArrayList<DatosErroresBean> DatosResponsablesValidadosRenapoConError) {
-        this.DatosResponsablesValidadosRenapoConError = DatosResponsablesValidadosRenapoConError;
-    }
-
-    public ArrayList<DatosBean> getVerificaAlumnos() {
-        return VerificaAlumnos;
-    }
-
-    public void setVerificaAlumnos(ArrayList<DatosBean> VerificaAlumnos) {
-        this.VerificaAlumnos = VerificaAlumnos;
-    }
-
-    public ArrayList<DatosErroresBean> getAlumnosExistente() {
-        return AlumnosExistente;
-    }
-
-    public void setAlumnosExistente(ArrayList<DatosErroresBean> AlumnosExistente) {
-        this.AlumnosExistente = AlumnosExistente;
-    }
-
-    public ArrayList<DatosErroresBean> getRegistrosNuevosA() {
-        return RegistrosNuevosA;
-    }
-
-    public void setRegistrosNuevosA(ArrayList<DatosErroresBean> RegistrosNuevosA) {
-        this.RegistrosNuevosA = RegistrosNuevosA;
-    }
-
-    public ArrayList<DatosBean> getListaCarrera() {
-        return ListaCarrera;
-    }
-
-    public void setListaCarrera(ArrayList<DatosBean> ListaCarrera) {
-        this.ListaCarrera = ListaCarrera;
-    }
-
-    public ArrayList<DatosBean> getListaModalidad() {
-        return ListaModalidad;
-    }
-
-    public void setListaModalidad(ArrayList<DatosBean> ListaModalidad) {
-        this.ListaModalidad = ListaModalidad;
-    }
-
-    public List<VerificaArchivoBean> getVerificaArchivos() {
-        return VerificaArchivos;
-    }
-
-    public void setVerificaArchivos(List<VerificaArchivoBean> VerificaArchivos) {
-        this.VerificaArchivos = VerificaArchivos;
-    }
-
     public List<DatosBean> getListaCarreras() {
         return ListaCarreras;
     }
@@ -557,12 +412,16 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
         this.ListaCarreras = ListaCarreras;
     }
 
+    public List<AdminCatBean> getListaResponsables() {
+        return ListaResponsables;
+    }
+
+    public void setListaResponsables(List<AdminCatBean> ListaResponsables) {
+        this.ListaResponsables = ListaResponsables;
+    }
     
-
-   
-
-   
-
+    
+    
     public boolean isBanCarreraExistente() {
         return BanCarreraExistente;
     }
@@ -571,65 +430,4 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
         this.BanCarreraExistente = BanCarreraExistente;
     }
 
-   
-    
-
-   
-    
-
-    
-
-    
-
-    public ArrayList<DatosErroresBean> getListaDatosAsesoresIConError() {
-        return ListaDatosAsesoresIConError;
-    }
-
-    public void setListaDatosAsesoresIConError(ArrayList<DatosErroresBean> ListaDatosAsesoresIConError) {
-        this.ListaDatosAsesoresIConError = ListaDatosAsesoresIConError;
-    }
-
-    public ArrayList<DatosBean> getVerificaAsesores() {
-        return VerificaAsesores;
-    }
-
-    public void setVerificaAsesores(ArrayList<DatosBean> VerificaAsesores) {
-        this.VerificaAsesores = VerificaAsesores;
-    }
-
-    public ArrayList<DatosErroresBean> getAsesoresIExistente() {
-        return AsesoresIExistente;
-    }
-
-    public void setAsesoresIExistente(ArrayList<DatosErroresBean> AsesoresIExistente) {
-        this.AsesoresIExistente = AsesoresIExistente;
-    }
-
-    public ArrayList<DatosErroresBean> getRegistrosNuevosAI() {
-        return RegistrosNuevosAI;
-    }
-
-    public void setRegistrosNuevosAI(ArrayList<DatosErroresBean> RegistrosNuevosAI) {
-        this.RegistrosNuevosAI = RegistrosNuevosAI;
-    }
-
-    
-
-    public ArrayList<DatosErroresBean> getDatosAsesorValidadosRenapoConError() {
-        return DatosAsesorValidadosRenapoConError;
-    }
-
-    public void setDatosAsesorValidadosRenapoConError(ArrayList<DatosErroresBean> DatosAsesorValidadosRenapoConError) {
-        this.DatosAsesorValidadosRenapoConError = DatosAsesorValidadosRenapoConError;
-    }
-
-    public ArrayList<DatosErroresBean> getDatosAlumnosValidadosRenapoConError() {
-        return DatosAlumnosValidadosRenapoConError;
-    }
-
-    public void setDatosAlumnosValidadosRenapoConError(ArrayList<DatosErroresBean> DatosAlumnosValidadosRenapoConError) {
-        this.DatosAlumnosValidadosRenapoConError = DatosAlumnosValidadosRenapoConError;
-    }
-
-    
 }

@@ -1,5 +1,6 @@
 package daos;
 
+import beans.AdminCatBean;
 import beans.AlumnosBean;
 import beans.BecaBean;
 import beans.DatosBean;
@@ -28,6 +29,7 @@ import mappers.VerificaAsesorMapper;
 import mappers.VerificaCuentaxCurpDCMapper;
 import mappers.VerificaCarrerasMapper;
 import mappers.VerificaModalidadMapper;
+import mappers.VerificaResponsableAdminMapper;
 import mappers.VerificaResponsableMapper;
 import mappers.alumnosDashboardMapper;
 import mappers.listaAlumnos2Mapper;
@@ -199,7 +201,15 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
 //Ejecutar la funcion del OracleDAOFactory queryInsert, se deber pasar como parmetros la tabla en donde se insertara
         return oraDaoFac.queryInsertTransaccion(conn, stat, Constantes.TablaResponsables, arregloCampos);
     }
-
+    
+     public List ConsultaResponsableAdmin(AdminCatBean obj) throws Exception {
+        String query = "SELECT ID_CAT_RES,NOMBRE,APELLIDOP,APELLIDOM,CVE_SER_PUB,CCT,CARGO, TELEFONO, EMAIL FROM " + Constantes.TablaResponsables + " WHERE  CCT='" + obj.getCCT() + "'";
+        Constantes.enviaMensajeConsola("verifica si existen responsable PARA cvecarrera----->" + query);
+        List list = null;
+        list = queryForList(query, new VerificaResponsableAdminMapper());
+        return list;
+    }
+    
     //*************************************************DAO IMPL ASESORES I*******************************************************************************
     @Override
     public List ConsultaAsesorI(DatosBean obj) throws Exception {
