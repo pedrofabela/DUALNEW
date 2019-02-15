@@ -239,9 +239,9 @@
                                                                             <li class="nav-item mx-0 mx-lg-1">
                                                                                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Javascript:Accion('AbreTablero')">Tablero de Control</a>
                                                                             </li>
-                                                                            <li class="nav-item mx-0 mx-lg-1">
+                                                                            <%--<li class="nav-item mx-0 mx-lg-1">
                                                                                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Javascript:Accion('AdminCat')">Administrar Catalogos</a>
-                                                                            </li>
+                                                                            </li>--%>
                                                                             <li class="nav-item dropdown no-arrow">
                                                                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                                     <i class="fas fa-user-circle fa-fw" style="font-size: 40px;"></i>

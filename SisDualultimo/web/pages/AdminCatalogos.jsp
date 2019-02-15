@@ -77,26 +77,25 @@
                                                     window.onload = function () {/*hace que se cargue la función lo que predetermina que div estará oculto hasta llamar a la función nuevamente*/
                                                         var pos = window.name || 0;
                                                         window.scrollTo(0, pos);
-
                                                         if (document.getElementById) {
                                                             /* variables para ocultar load de ARCHIVO*/
                                                             var GrdCar = document.getElementById('loadGrdCar'); //se define la variable "el" igual a nuestro div
-                                                            GrdCar.style.display = (GrdCar.style.display == 'none') ? 'block' : 'none';/* "contenido_a_mostrar" es el nombre que le dimos al DIV */
+                                                            GrdCar.style.display = (GrdCar.style.display == 'none') ? 'block' : 'none'; /* "contenido_a_mostrar" es el nombre que le dimos al DIV */
                                                         }
                                                         if (document.getElementById) {
                                                             /* variables para ocultar load de ARCHIVO*/
                                                             var EliCar = document.getElementById('loadEliCar'); //se define la variable "el" igual a nuestro div
-                                                            EliCar.style.display = (EliCar.style.display == 'none') ? 'block' : 'none';/* "contenido_a_mostrar" es el nombre que le dimos al DIV */
+                                                            EliCar.style.display = (EliCar.style.display == 'none') ? 'block' : 'none'; /* "contenido_a_mostrar" es el nombre que le dimos al DIV */
                                                         }
                                                         if (document.getElementById) {
                                                             /* variables para ocultar load de ARCHIVO*/
                                                             var GM = document.getElementById('loadGM'); //se define la variable "el" igual a nuestro div
-                                                            GM.style.display = (GM.style.display == 'none') ? 'block' : 'none';/* "contenido_a_mostrar" es el nombre que le dimos al DIV */
+                                                            GM.style.display = (GM.style.display == 'none') ? 'block' : 'none'; /* "contenido_a_mostrar" es el nombre que le dimos al DIV */
                                                         }
                                                         if (document.getElementById) {
                                                             /* variables para ocultar load de ARCHIVO*/
                                                             var CD = document.getElementById('loadCarDatos'); //se define la variable "el" igual a nuestro div
-                                                            CD.style.display = (CD.style.display == 'none') ? 'block' : 'none';/* "contenido_a_mostrar" es el nombre que le dimos al DIV */
+                                                            CD.style.display = (CD.style.display == 'none') ? 'block' : 'none'; /* "contenido_a_mostrar" es el nombre que le dimos al DIV */
                                                         }
 
 
@@ -108,8 +107,6 @@
                                                     window.onunload = function () {
                                                         window.name = self.pageYOffset
                                                                 || (document.documentElement.scrollTop + document.body.scrollTop);
-
-
                                                     }
                                                 </script>
                                                 <!-- Bootstrap core JavaScript -->
@@ -126,11 +123,9 @@
                                                                 $('.buscar tr').filter(function () {
                                                                     return rex.test($(this).text());
                                                                 }).show();
-
                                                             })
 
                                                         }(jQuery));
-
                                                     });
                                                 </script>
 
@@ -692,7 +687,7 @@
                                                                             <div class="form-group col-lg-4">
                                                                                 <label class="col-form-label" for="tel">Teléfono:</label>
                                                                                 <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.TELEFONO_RESPONSABLE" id="telefono"></s:textfield>
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.TELEFONO_RESPONSABLE" id="telefonor"></s:textfield>
                                                                                     <s:fielderror fieldName="ErrorTel" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>     
@@ -700,7 +695,7 @@
                                                                             <div class="form-group col-lg-4">
                                                                                 <label class="col-form-label" for="correo">Email:</label>
                                                                                 <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control " name="ad.EMAIL_RESPONSABLE" id="correo" ></s:textfield>
+                                                                                    <s:textfield  cssClass="form-control " name="ad.EMAIL_RESPONSABLE" id="emailr" ></s:textfield>
                                                                                     <s:fielderror fieldName="ErrorCorreo" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>  
@@ -785,21 +780,14 @@
                                                             <script src="js/contact_me.js"></script>
 
                                                             <!-- Custom scripts for this template -->
-                                                            <script src="js/freelancer.min.js"></script
-
-
-                                                   <script>
-                                                            $('#editUsu').on('show.bs.modal', function (event) {
+                                                                <script src="js/freelancer.min.js"></script>
+                                                    
+                                                    
+                                                        <script>
+                                                            $('#EditResponsables').on('show.bs.modal', function (event) {
                                                         var button = $(event.relatedTarget) // Button that triggered the modal
 
-                                                       data-curpr='<s:property value="CURP_RESPONSABLE"/>' 
-                                                                                                          data-nombrer='<s:property value="NOMBRER"/>' 
-                                                                                                          data-apellidopr='<s:property value="APELLIDOPR"/>' 
-                                                                                                          data-apellidomr='<s:property value="APELLIDOMR"/>' 
-                                                                                                          data-cargo='<s:property value="CARGO_RESPONSABLE"/>' 
-                                                                                                          data-telefonor='<s:property value="TELEFONO_RESPONSABLE"/>' 
-                                                                                                          data-emailr='<s:property value="EMAIL_RESPONSABLE"/>' 
-                                                                                                          data-idresp='<s:property value="ID_CAT_RESP"/>' 
+
                                                         var recipient0 = button.data('curpr')
                                                         var recipient1 = button.data('nombrer')
                                                         var recipient2 = button.data('apellidopr')
@@ -808,7 +796,7 @@
                                                         var recipient5 = button.data('telefonor')
                                                         var recipient6 = button.data('emailr')
                                                         var recipient7 = button.data('idresp')
-                                                        
+
 
 
                                                         // Extract info from data-* attributes
@@ -816,26 +804,14 @@
                                                         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 
                                                         var modal = $(this)
-                                                        modal.find('.modal-body #matricula').val(recipient0)
-                                                        modal.find('.modal-body #curp').val(recipient1)
-                                                        modal.find('.modal-body #nombre').val(recipient2)
-                                                        modal.find('.modal-body #apellidop').val(recipient3)
-                                                        modal.find('.modal-body #apellidom').val(recipient4)
-                                                        modal.find('.modal-body #genero').val(recipient5)
-                                                        modal.find('.modal-body #fechanac').val(recipient6)
-                                                        modal.find('.modal-body #domicilio').val(recipient7)
-                                                        modal.find('.modal-body #colonia').val(recipient8)
-                                                        modal.find('.modal-body #cp').val(recipient9)
-                                                        modal.find('.modal-body #telefono').val(recipient10)
-                                                        modal.find('.modal-body #correo').val(recipient11)
-                                                        modal.find('.modal-body #carrera').val(recipient12)
-                                                        modal.find('.modal-body #grado').val(recipient13)
-                                                        modal.find('.modal-body #promedio').val(recipient14)
-                                                        modal.find('.modal-body #situacion').val(recipient15)
-                                                        modal.find('.modal-body #tipo_alu').val(recipient16)
-                                                        modal.find('.modal-body #municipio').val(recipient17)
-                                                        modal.find('.modal-body #cct').val(recipient18)
-                                                        modal.find('.modal-body #fechaingresodual').val(recipient19)
+                                                        modal.find('.modal-body #curpr').val(recipient0)
+                                                        modal.find('.modal-body #nombrer').val(recipient1)
+                                                        modal.find('.modal-body #apellidopr').val(recipient2)
+                                                        modal.find('.modal-body #apellidomr').val(recipient3)
+                                                        modal.find('.modal-body #cargo').val(recipient4)
+                                                        modal.find('.modal-body #telefonor').val(recipient5)
+                                                        modal.find('.modal-body #emailr').val(recipient6)
+                                                        modal.find('.modal-body #idresp').val(recipient7)
 
 
 
@@ -843,10 +819,10 @@
 
                                                     });
 
-                                                                </script>   
+                                                            </script>
 
-                                                                                      </s:form>
+                                                        </s:form>
 
-                                    </body>
+                                                </body>
 
                                                 </html>

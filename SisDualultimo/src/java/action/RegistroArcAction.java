@@ -2672,7 +2672,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                             datos.setDESERROR("EL NOMBRE EN LA CURP PROPORCIONADA DE LA FILA " + fila + " ,NO COINCIDE CON LOS DATOS DE RENAPO, RESULTADO DE RENAPO(" + nom + " " + apellidop + " " + apellidom + ")  FAVOR DE VERIFICAR");
                         }
 
-                        DatosErroresBean ValidaError = new DatosErroresBean(datos.getNOMBRE(), datos.getAPELLIDOP(), datos.getAPELLIDOM(), datos.getCURP(), datos.getSTATUS(), datos.getDESERROR());
+                        DatosErroresBean ValidaError = new DatosErroresBean(datos.getCURP(),datos.getNOMBRE(), datos.getAPELLIDOP(), datos.getAPELLIDOM(),  datos.getSTATUS(), datos.getDESERROR());
 
                         DatosAlumnosValidadosRenapoConError.add(ValidaError);
                     }

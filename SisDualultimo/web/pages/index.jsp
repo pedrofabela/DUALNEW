@@ -477,16 +477,16 @@
                                                                             <div class="table-wrapper-scroll-y">                                 
                                                                                 <table class="table table-hover">                                                                   
                                                                                     <thead>
-                                                                                        <tr style="background-color: #CC0000;"><th colspan="7" > <h5 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS CON ERRORES</h5></th> </tr>
+                                                                                        <tr style="background-color: #CC0000;"><th colspan="7" > <h6 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS CON ERRORES</h6></th> </tr>
 
                                                                                         <tr>              
-                                                                                            <th  scope="col">CURP DEL RESPONSABLE</th>
-                                                                                            <th  scope="col">NOMBRE</th>
-                                                                                            <th  scope="col">APELLIDO P</th>
-                                                                                            <th  scope="col">APELLIDO M</th>
-                                                                                            <th  scope="col">CARGO</th>
-                                                                                            <th  scope="col">STATUS</th>
-                                                                                            <th  scope="col">INFORMACIÓN</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CURP DEL RESPONSABLE</th>
+                                                                                            <th style="font-size: 10px;" scope="col">NOMBRE</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO P</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO M</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CARGO</th>
+                                                                                            <th style="font-size: 10px;" scope="col">STATUS</th>
+                                                                                            <th style="font-size: 10px;" scope="col">INFORMACIÓN</th>
 
                                                                                         </tr>
                                                                                     </thead>
@@ -494,13 +494,13 @@
                                                                                         <s:iterator value="ListaDatosResponsablesConError" id="ListaDatosResponsablesConError" status="stat">
                                                                                             <tr >
 
-                                                                                                <td class="text-muted"><s:property value="CURP_RESPONSABLE"/></td>
-                                                                                                <td class="text-muted"><s:property value="NOMBRER"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOPR"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOMR"/></td>
-                                                                                                <td class="text-muted"><s:property value="CARGO_RESPONSABLE"/></td>
-                                                                                                <td class="text-muted"><s:property value="STATUS"/></td>
-                                                                                                <td class="text-muted"><s:property value="DESERROR"/></td> 
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CURP_RESPONSABLE"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="NOMBRER"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOPR"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOMR"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CARGO_RESPONSABLE"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="STATUS"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="DESERROR"/></td> 
                                                                                             </tr>
                                                                                         </s:iterator>
                                                                                     </tbody>
@@ -514,29 +514,29 @@
                                                                             <div class="table-wrapper-scroll-y">                                 
                                                                                 <table class="table table-hover">                                                                   
                                                                                     <thead>
-                                                                                        <tr style="background-color: #0d47a1;"><th colspan="7" > <h5 class="text-white" align="center"><i class="fas fa-info-circle"></i>RESPONSABLES YA REGISTRADOS</h5></th> </tr>
+                                                                                        <tr style="background-color: #0d47a1;"><th colspan="7" > <h6 class="text-white" align="center"><i class="fas fa-info-circle"></i>RESPONSABLES YA REGISTRADOS</h6></th> </tr>
 
                                                                                         <tr>              
-                                                                                            <th  scope="col">CURP DE RESPOSABLE</th>
-                                                                                            <th  scope="col">NOMBRE</th>
-                                                                                            <th  scope="col">APELLIDO P</th>
-                                                                                            <th  scope="col">APELLIDO M</th>
-                                                                                            <th  scope="col">CARGO</th>
-                                                                                            <th  scope="col">STATUS</th>
-                                                                                            <th  scope="col">INFORMACIÓN</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CURP DE RESPOSABLE</th>
+                                                                                            <th style="font-size: 10px;" scope="col">NOMBRE</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO P</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO M</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CARGO</th>
+                                                                                            <th style="font-size: 10px;" scope="col">STATUS</th>
+                                                                                            <th style="font-size: 10px;" scope="col">INFORMACIÓN</th>
 
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody>
                                                                                         <s:iterator value="ResponsableExistente" id="ResponsableExistente" status="stat">
                                                                                             <tr >
-                                                                                                <td class="text-muted"><s:property value="CURP_RESPONSABLE"/></td>
-                                                                                                <td class="text-muted"><s:property value="NOMBRER"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOPR"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOMR"/></td>
-                                                                                                <td class="text-muted"><s:property value="CARGO_RESPONSABLE"/></td>
-                                                                                                <td class="text-muted"><s:property value="STATUS"/></td>
-                                                                                                <td class="text-muted"><s:property value="DESERROR"/></td> 
+                                                                                                <td class="text-muted"style="font-size: 10px;"><s:property value="CURP_RESPONSABLE"/></td>
+                                                                                                <td class="text-muted"style="font-size: 10px;"><s:property value="NOMBRER"/></td>
+                                                                                                <td class="text-muted"style="font-size: 10px;"><s:property value="APELLIDOPR"/></td>
+                                                                                                <td class="text-muted"style="font-size: 10px;"><s:property value="APELLIDOMR"/></td>
+                                                                                                <td class="text-muted"style="font-size: 10px;"><s:property value="CARGO_RESPONSABLE"/></td>
+                                                                                                <td class="text-muted"style="font-size: 10px;"><s:property value="STATUS"/></td>
+                                                                                                <td class="text-muted"style="font-size: 10px;"><s:property value="DESERROR"/></td> 
                                                                                             </tr>
                                                                                         </s:iterator>
                                                                                     </tbody>
@@ -550,29 +550,29 @@
                                                                             <div class="table-wrapper-scroll-y">                                 
                                                                                 <table class="table table-hover">                                                                   
                                                                                     <thead>
-                                                                                        <tr style="background-color: #00C851;"><th colspan="7" > <h5 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS REGISTRADOS</h5></th> </tr>
+                                                                                        <tr style="background-color: #00C851;"><th colspan="7" > <h6 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS REGISTRADOS</h6></th> </tr>
 
                                                                                         <tr>              
-                                                                                            <th  scope="col">CURP DE RESPONSABLE</th>
-                                                                                            <th  scope="col">NOMBRE</th>
-                                                                                            <th  scope="col">APELLIDO P</th>
-                                                                                            <th  scope="col">APELLIDO M</th>
-                                                                                            <th  scope="col">CARGO</th>
-                                                                                            <th  scope="col">STATUS</th>
-                                                                                            <th  scope="col">INFORMACIÓN</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CURP DE RESPONSABLE</th>
+                                                                                            <th style="font-size: 10px;" scope="col">NOMBRE</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO P</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO M</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CARGO</th>
+                                                                                            <th style="font-size: 10px;" scope="col">STATUS</th>
+                                                                                            <th style="font-size: 10px;" scope="col">INFORMACIÓN</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody>
                                                                                         <s:iterator value="RegistrosNuevosR" id="RegistrosNuevosR" status="stat">
                                                                                             <tr >
 
-                                                                                                <td class="text-muted"><s:property value="CURP_RESPONSABLE"/></td>
-                                                                                                <td class="text-muted"><s:property value="NOMBRER"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOPR"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOMR"/></td>
-                                                                                                <td class="text-muted"><s:property value="CARGO_RESPONSABLE"/></td>
-                                                                                                <td class="text-muted"><s:property value="STATUS"/></td>
-                                                                                                <td class="text-muted"><s:property value="DESERROR"/></td> 
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CURP_RESPONSABLE"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="NOMBRER"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOPR"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOMR"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CARGO_RESPONSABLE"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="STATUS"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="DESERROR"/></td> 
                                                                                             </tr>
                                                                                         </s:iterator>
                                                                                     </tbody>
@@ -586,25 +586,25 @@
 
                                                                                 <table class="table table-hover">                                                                   
                                                                                     <thead> 
-                                                                                        <tr style="background-color: #CC0000;"><th colspan="6" > <h5 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS CON ERRORES AL VALIDAR CON RENAPO</h5></th> </tr>
+                                                                                        <tr style="background-color: #CC0000;"><th colspan="6" > <h6 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS CON ERRORES AL VALIDAR CON RENAPO</h6></th> </tr>
                                                                                         <tr>              
-                                                                                            <th  scope="col">CURP DE RESPONSABLE</th>
-                                                                                            <th  scope="col">NOMBRE(S)</th>
-                                                                                            <th  scope="col">APELLIDO PATERNO</th>
-                                                                                            <th  scope="col">APELLIDO MATERNO</th>
-                                                                                            <th  scope="col">STATUS</th>
-                                                                                            <th  scope="col">INFORMACIÓN</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CURP DE RESPONSABLE</th>
+                                                                                            <th style="font-size: 10px;" scope="col">NOMBRE(S)</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO PATERNO</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO MATERNO</th>
+                                                                                            <th style="font-size: 10px;" scope="col">STATUS</th>
+                                                                                            <th style="font-size: 10px;" scope="col">INFORMACIÓN</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody>
                                                                                         <s:iterator value="DatosResponsablesValidadosRenapoConError" id="DatosResponsablesValidadosRenapoConError" status="stat">
                                                                                             <tr>
-                                                                                                <td class="text-muted" ><s:property value="CURP"/></td>
-                                                                                                <td class="text-muted" ><s:property value="NOMBRE"/></td>
-                                                                                                <td class="text-muted" ><s:property value="APELLIDOP"/></td>
-                                                                                                <td class="text-muted" ><s:property value="APELLIDOM"/></td>
-                                                                                                <td class="text-muted" ><s:property value="STATUS"/></td>
-                                                                                                <td class="text-muted" ><s:property value="DESERROR"/></td> 
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CURP"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="NOMBRE"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOP"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOM"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="STATUS"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="DESERROR"/></td> 
                                                                                             </tr>
                                                                                         </s:iterator>
                                                                                     </tbody>
@@ -657,16 +657,16 @@
                                                                             <div class="table-wrapper-scroll-y">                                 
                                                                                 <table class="table table-hover">                                                                   
                                                                                     <thead>
-                                                                                        <tr style="background-color: #CC0000;"><th colspan="7" > <h5 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS CON ERRORES</h5></th> </tr>
+                                                                                        <tr style="background-color: #CC0000;"><th colspan="7" > <h6 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS CON ERRORES</h6></th> </tr>
 
                                                                                         <tr>              
-                                                                                            <th  scope="col">CURP</th>
-                                                                                            <th  scope="col">NOMBRE</th>
-                                                                                            <th  scope="col">APELLIDO P</th>
-                                                                                            <th  scope="col">APELLIDO M</th>
-                                                                                            <th  scope="col">CLAVE DE LA CARRERA RESPONSABLE</th>
-                                                                                            <th  scope="col">STATUS</th>
-                                                                                            <th  scope="col">INFORMACIÓN</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CURP</th>
+                                                                                            <th style="font-size: 10px;" scope="col">NOMBRE</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO P</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO M</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CLAVE DE LA CARRERA RESPONSABLE</th>
+                                                                                            <th style="font-size: 10px;" scope="col">STATUS</th>
+                                                                                            <th style="font-size: 10px;" scope="col">INFORMACIÓN</th>
 
                                                                                         </tr>
                                                                                     </thead>
@@ -674,13 +674,13 @@
                                                                                         <s:iterator value="ListaDatosAsesoresIConError" id="ListaDatosAsesoresIConError" status="stat">
                                                                                             <tr >
 
-                                                                                                <td class="text-muted"><s:property value="CURP_RESPONSABLE"/></td>
-                                                                                                <td class="text-muted"><s:property value="NOMBRER"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOPR"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOMR"/></td>
-                                                                                                <td class="text-muted"><s:property value="CARGO_RESPONSABLE"/></td>
-                                                                                                <td class="text-muted"><s:property value="STATUS"/></td>
-                                                                                                <td class="text-muted"><s:property value="DESERROR"/></td> 
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CURP_RESPONSABLE"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="NOMBRER"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOPR"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOMR"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CARGO_RESPONSABLE"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="STATUS"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="DESERROR"/></td> 
                                                                                             </tr>
                                                                                         </s:iterator>
                                                                                     </tbody>
@@ -694,25 +694,25 @@
 
                                                                                 <table class="table table-hover">                                                                   
                                                                                     <thead> 
-                                                                                        <tr style="background-color: #CC0000;"><th colspan="6" > <h5 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS CON ERRORES AL VALIDAR CON RENAPO</h5></th> </tr>
+                                                                                        <tr style="background-color: #CC0000;"><th colspan="6" > <h6 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS CON ERRORES AL VALIDAR CON RENAPO</h6></th> </tr>
                                                                                         <tr>              
-                                                                                            <th  scope="col">CURP</th>
-                                                                                            <th  scope="col">NOMBRE(S)</th>
-                                                                                            <th  scope="col">APELLIDO PATERNO</th>
-                                                                                            <th  scope="col">APELLIDO MATERNO</th>
-                                                                                            <th  scope="col">STATUS</th>
-                                                                                            <th  scope="col">INFORMACIÓN</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CURP</th>
+                                                                                            <th style="font-size: 10px;" scope="col">NOMBRE(S)</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO PATERNO</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO MATERNO</th>
+                                                                                            <th style="font-size: 10px;" scope="col">STATUS</th>
+                                                                                            <th style="font-size: 10px;" scope="col">INFORMACIÓN</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody>
                                                                                         <s:iterator value="DatosAsesorValidadosRenapoConError" id="DatosAsesorValidadosRenapoConError" status="stat">
                                                                                             <tr>
-                                                                                                <td class="text-muted"><s:property value="CURP"/></td>
-                                                                                                <td class="text-muted"><s:property value="NOMBRE"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOP"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOM"/></td>                                                                                             
-                                                                                                <td class="text-muted"><s:property value="STATUS"/></td>
-                                                                                                <td class="text-muted"><s:property value="DESERROR"/></td> 
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CURP"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="NOMBRE"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOP"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOM"/></td>                                                                                             
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="STATUS"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;" ><s:property value="DESERROR"/></td> 
                                                                                             </tr>
                                                                                         </s:iterator>
                                                                                     </tbody>
@@ -726,29 +726,29 @@
                                                                             <div class="table-wrapper-scroll-y">                                 
                                                                                 <table class="table table-hover">                                                                   
                                                                                     <thead>
-                                                                                        <tr style="background-color: #0d47a1;"><th colspan="7" > <h5 class="text-white" align="center"><i class="fas fa-info-circle"></i>ASESORES  YA REGISTRADOS</h5></th> </tr>
+                                                                                        <tr style="background-color: #0d47a1;"><th colspan="7" > <h6 class="text-white" align="center"><i class="fas fa-info-circle"></i>ASESORES  YA REGISTRADOS</h6></th> </tr>
 
                                                                                         <tr>              
-                                                                                            <th  scope="col">CURP</th>
-                                                                                            <th  scope="col">NOMBRE</th>
-                                                                                            <th  scope="col">APELLIDO P</th>
-                                                                                            <th  scope="col">APELLIDO M</th>
-                                                                                            <th  scope="col">CLAVE DE LA CARRERA RESPONSABLE</th>
-                                                                                            <th  scope="col">STATUS</th>
-                                                                                            <th  scope="col">INFORMACIÓN</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CURP</th>
+                                                                                            <th style="font-size: 10px;" scope="col">NOMBRE</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO P</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO M</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CLAVE DE LA CARRERA RESPONSABLE</th>
+                                                                                            <th style="font-size: 10px;" scope="col">STATUS</th>
+                                                                                            <th style="font-size: 10px;" scope="col">INFORMACIÓN</th>
 
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody>
                                                                                         <s:iterator value="AsesoresIExistente" id="AsesoresIExistente" status="stat">
                                                                                             <tr >
-                                                                                                <td class="text-muted"><s:property value="CURP_RESPONSABLE"/></td>
-                                                                                                <td class="text-muted"><s:property value="NOMBRER"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOPR"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOMR"/></td>
-                                                                                                <td class="text-muted"><s:property value="CARGO_RESPONSABLE"/></td>
-                                                                                                <td class="text-muted"><s:property value="STATUS"/></td>
-                                                                                                <td class="text-muted"><s:property value="DESERROR"/></td> 
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CURP_RESPONSABLE"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="NOMBRER"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOPR"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOMR"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CARGO_RESPONSABLE"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="STATUS"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="DESERROR"/></td> 
                                                                                             </tr>
                                                                                         </s:iterator>
                                                                                     </tbody>
@@ -763,16 +763,16 @@
                                                                             <div class="table-wrapper-scroll-y">                                 
                                                                                 <table class="table table-hover">                                                                   
                                                                                     <thead>
-                                                                                        <tr style="background-color: #00C851;"><th colspan="7" > <h5 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS REGISTRADOS</h5></th> </tr>
+                                                                                        <tr style="background-color: #00C851;"><th colspan="7" > <h6 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS REGISTRADOS</h6></th> </tr>
 
                                                                                         <tr>              
-                                                                                            <th  scope="col">CURP</th>
-                                                                                            <th  scope="col">NOMBRE</th>
-                                                                                            <th  scope="col">APELLIDO P</th>
-                                                                                            <th  scope="col">APELLIDO M</th>
-                                                                                            <th  scope="col">CLAVE DE LA CARRERA RESPONSABLE</th>
-                                                                                            <th  scope="col">STATUS</th>
-                                                                                            <th  scope="col">INFORMACIÓN</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CURP</th>
+                                                                                            <th style="font-size: 10px;" scope="col">NOMBRE</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO P</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO M</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CLAVE DE LA CARRERA RESPONSABLE</th>
+                                                                                            <th style="font-size: 10px;" scope="col">STATUS</th>
+                                                                                            <th style="font-size: 10px;" scope="col">INFORMACIÓN</th>
 
                                                                                         </tr>
                                                                                     </thead>
@@ -780,13 +780,13 @@
                                                                                         <s:iterator value="RegistrosNuevosAI" id="RegistrosNuevosAI" status="stat">
                                                                                             <tr >
 
-                                                                                                <td class="text-muted"><s:property value="CURP_RESPONSABLE"/></td>
-                                                                                                <td class="text-muted"><s:property value="NOMBRER"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOPR"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOMR"/></td>
-                                                                                                <td class="text-muted"><s:property value="CARGO_RESPONSABLE"/></td>
-                                                                                                <td class="text-muted"><s:property value="STATUS"/></td>
-                                                                                                <td class="text-muted"><s:property value="DESERROR"/></td> 
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CURP_RESPONSABLE"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="NOMBRER"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOPR"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOMR"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CARGO_RESPONSABLE"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="STATUS"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="DESERROR"/></td> 
                                                                                             </tr>
                                                                                         </s:iterator>
                                                                                     </tbody>
@@ -845,19 +845,19 @@
                                                                             <div class="table-wrapper-scroll-y">                                 
                                                                                 <table class="table table-hover">                                                                   
                                                                                     <thead>
-                                                                                        <tr style="background-color: #CC0000;"><th colspan="10" > <h5 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS CON ERRORES</h5></th> </tr>
+                                                                                        <tr style="background-color: #CC0000;"><th colspan="10" > <h6 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS CON ERRORES</h6></th> </tr>
 
                                                                                         <tr>              
-                                                                                            <th  scope="col">MATRICULA</th>
-                                                                                            <th  scope="col">CURP</th>
-                                                                                            <th  scope="col">NOMBRE</th>
-                                                                                            <th  scope="col">APELLIDO PATERNO</th>
-                                                                                            <th  scope="col">APELLIDO MATERNO</th>
-                                                                                            <th  scope="col">CLAVE DE LA CARRERA </th>
-                                                                                            <th  scope="col">TELEFONO </th>
-                                                                                            <th  scope="col">CORREO </th>    
-                                                                                            <th  scope="col">STATUS</th>
-                                                                                            <th  scope="col">INFORMACIÓN</th>
+                                                                                            <th style="font-size: 10px;" scope="col">MATRICULA</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CURP</th>
+                                                                                            <th style="font-size: 10px;" scope="col">NOMBRE</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO PATERNO</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO MATERNO</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CLAVE DE LA CARRERA </th>
+                                                                                            <th style="font-size: 10px;" scope="col">TELEFONO </th>
+                                                                                            <th style="font-size: 10px;" scope="col">CORREO </th>    
+                                                                                            <th style="font-size: 10px;" scope="col">STATUS</th>
+                                                                                            <th style="font-size: 10px;" scope="col">INFORMACIÓN</th>
 
                                                                                         </tr>
                                                                                     </thead>
@@ -865,16 +865,16 @@
                                                                                         <s:iterator value="ListaDatosAlumnosConError" id="ListaDatosAlumnosConError" status="stat">
                                                                                             <tr >
 
-                                                                                                <td class="text-muted"><s:property value="MATRICULA"/></td>
-                                                                                                <td class="text-muted"><s:property value="CURP"/></td>
-                                                                                                <td class="text-muted"><s:property value="NOMBRE"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOP"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOM"/></td>
-                                                                                                <td class="text-muted"><s:property value="CVE_CAR_RES"/></td>
-                                                                                                <td class="text-muted"><s:property value="TELEFONO"/></td>
-                                                                                                <td class="text-muted"><s:property value="CORREO"/></td>
-                                                                                                <td class="text-muted"><s:property value="STATUS"/></td>
-                                                                                                <td class="text-muted"><s:property value="DESERROR"/></td> 
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="MATRICULA"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CURP"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="NOMBRE"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOP"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOM"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CVE_CAR_RES"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="TELEFONO"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CORREO"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="STATUS"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="DESERROR"/></td> 
                                                                                             </tr>
                                                                                         </s:iterator>
                                                                                     </tbody>
@@ -888,27 +888,25 @@
 
                                                                                 <table class="table table-hover">                                                                   
                                                                                     <thead> 
-                                                                                        <tr style="background-color: #CC0000;"><th colspan="6" > <h5 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS CON ERRORES AL VALIDAR CON RENAPO</h5></th> </tr>
+                                                                                        <tr style="background-color: #CC0000;"><th colspan="6" > <h6 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS CON ERRORES AL VALIDAR CON RENAPO</h6></th> </tr>
                                                                                         <tr>              
-                                                                                            
-                                                                                            <th  scope="col">NOMBRE(S)</th>
-                                                                                            <th  scope="col">APELLIDO PATERNO</th>
-                                                                                            <th  scope="col">APELLIDO MATERNO</th>
-                                                                                            <th  scope="col">CURP</th>
-                                                                                            <th  scope="col">STATUS</th>
-                                                                                            <th  scope="col">INFORMACIÓN</th>
+                                                                                            <th style="font-size: 10px;"  scope="col">CURP</th>
+                                                                                            <th style="font-size: 10px;" scope="col">NOMBRE(S)</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO PATERNO</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO MATERNO</th>                                                                                           
+                                                                                            <th style="font-size: 10px;" scope="col">STATUS</th>
+                                                                                            <th style="font-size: 10px;" scope="col">INFORMACIÓN</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody>
                                                                                         <s:iterator value="DatosAlumnosValidadosRenapoConError" id="DatosAlumnosValidadosRenapoConError" status="stat">
                                                                                             <tr>
-                                                                                                
-                                                                                                <td class="text-muted" ><s:property value="NOMBRE"/></td>
-                                                                                                <td class="text-muted" ><s:property value="APELLIDOP"/></td>
-                                                                                                <td class="text-muted" ><s:property value="APELLIDOM"/></td>
-                                                                                                <td class="text-muted" ><s:property value="CURP"/></td>
-                                                                                                <td class="text-muted" ><s:property value="STATUS"/></td>
-                                                                                                <td class="text-muted" ><s:property value="DESERROR"/></td> 
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CURP"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="NOMBRE"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOP"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOM"/></td>                            
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="STATUS"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;" ><s:property value="DESERROR"/></td> 
                                                                                             </tr>
                                                                                         </s:iterator>
                                                                                     </tbody>
@@ -921,27 +919,27 @@
                                                                             <div class="table-wrapper-scroll-y">                                 
                                                                                 <table class="table table-hover">                                                                   
                                                                                     <thead>
-                                                                                        <tr style="background-color: #0d47a1;"><th colspan="7" > <h5 class="text-white" align="center"><i class="fas fa-info-circle"></i>ALUMNOS YA REGISTRADOS</h5></th> </tr>
+                                                                                        <tr style="background-color: #0d47a1;"><th colspan="7" > <h6 class="text-white" align="center"><i class="fas fa-info-circle"></i>ALUMNOS YA REGISTRADOS</h6></th> </tr>
 
                                                                                         <tr>              
-                                                                                            <th  scope="col">CURP</th>
-                                                                                            <th  scope="col">NOMBRE</th>
-                                                                                            <th  scope="col">APELLIDO P</th>
-                                                                                            <th  scope="col">APELLIDO M</th>                                                                            
-                                                                                            <th  scope="col">STATUS</th>
-                                                                                            <th  scope="col">INFORMACIÓN</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CURP</th>
+                                                                                            <th style="font-size: 10px;" scope="col">NOMBRE</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO P</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO M</th>                                                                            
+                                                                                            <th style="font-size: 10px;" scope="col">STATUS</th>
+                                                                                            <th style="font-size: 10px;" scope="col">INFORMACIÓN</th>
 
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody>
                                                                                         <s:iterator value="AlumnosExistente" id="AlumnosExistente" status="stat">
                                                                                             <tr >
-                                                                                                <td class="text-muted"><s:property value="CURP"/></td>
-                                                                                                <td class="text-muted"><s:property value="NOMBRE"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOP"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOM"/></td>
-                                                                                                <td class="text-muted"><s:property value="STATUS"/></td>
-                                                                                                <td class="text-muted"><s:property value="DESERROR"/></td> 
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CURP"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="NOMBRE"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOP"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOM"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="STATUS"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="DESERROR"/></td> 
                                                                                             </tr>
                                                                                         </s:iterator>
                                                                                     </tbody>
@@ -956,15 +954,15 @@
                                                                             <div class="table-wrapper-scroll-y">                                 
                                                                                 <table class="table table-hover">                                                                   
                                                                                     <thead>
-                                                                                        <tr style="background-color: #00C851;"><th colspan="7" > <h5 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS REGISTRADOS</h5></th> </tr>
+                                                                                        <tr style="background-color: #00C851;"><th colspan="7" > <h6 class="text-white" align="center"><i class="fas fa-info-circle"></i>DATOS REGISTRADOS</h6></th> </tr>
 
                                                                                         <tr>              
-                                                                                            <th  scope="col">CURP</th>
-                                                                                            <th  scope="col">NOMBRE</th>
-                                                                                            <th  scope="col">APELLIDO P</th>
-                                                                                            <th  scope="col">APELLIDO M</th>      
-                                                                                            <th  scope="col">STATUS</th>
-                                                                                            <th  scope="col">INFORMACIÓN</th>
+                                                                                            <th style="font-size: 10px;" scope="col">CURP</th>
+                                                                                            <th style="font-size: 10px;" scope="col">NOMBRE</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO P</th>
+                                                                                            <th style="font-size: 10px;" scope="col">APELLIDO M</th>      
+                                                                                            <th style="font-size: 10px;" scope="col">STATUS</th>
+                                                                                            <th style="font-size: 10px;" scope="col">INFORMACIÓN</th>
 
                                                                                         </tr>
                                                                                     </thead>
@@ -972,12 +970,12 @@
                                                                                         <s:iterator value="RegistrosNuevosA" id="RegistrosNuevosA" status="stat">
                                                                                             <tr >
 
-                                                                                                <td class="text-muted"><s:property value="CURP"/></td>
-                                                                                                <td class="text-muted"><s:property value="NOMBRE"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOP"/></td>
-                                                                                                <td class="text-muted"><s:property value="APELLIDOM"/></td>                                                                                  
-                                                                                                <td class="text-muted"><s:property value="STATUS"/></td>
-                                                                                                <td class="text-muted"><s:property value="DESERROR"/></td> 
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="CURP"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="NOMBRE"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOP"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="APELLIDOM"/></td>                                                                                  
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="STATUS"/></td>
+                                                                                                <td class="text-muted" style="font-size: 10px;"><s:property value="DESERROR"/></td> 
                                                                                             </tr>
                                                                                         </s:iterator>
                                                                                     </tbody>
