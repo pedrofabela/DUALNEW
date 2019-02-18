@@ -110,7 +110,8 @@
                                                     }
                                                 </script>
                                                 <!-- Bootstrap core JavaScript -->
-                                                <script src="vendor/jquery/jquery.min.js"></script>   
+                                                <script src="vendor/jquery/jquery.min.js"></script>  
+
                                                 <script type="text/javascript">
                                                     $(document).ready(function () {
 
@@ -129,6 +130,40 @@
                                                     });
                                                 </script>
 
+                                                <script type="text/javascript">
+                                                    $(document).ready(function () {
+
+                                                        (function ($) {
+
+                                                            $('#filtrarR').keyup(function () {
+
+                                                                var rex = new RegExp($(this).val(), 'i');
+                                                                $('.buscarR tr').hide();
+                                                                $('.buscarR tr').filter(function () {
+                                                                    return rex.test($(this).text());
+                                                                }).show();
+                                                            })
+
+                                                        }(jQuery));
+                                                    });
+                                                </script>
+                                                <script type="text/javascript">
+                                                    $(document).ready(function () {
+
+                                                        (function ($) {
+
+                                                            $('#filtrarA').keyup(function () {
+
+                                                                var rex = new RegExp($(this).val(), 'i');
+                                                                $('.buscarA tr').hide();
+                                                                $('.buscarA tr').filter(function () {
+                                                                    return rex.test($(this).text());
+                                                                }).show();
+                                                            })
+
+                                                        }(jQuery));
+                                                    });
+                                                </script>
 
 
                                                 </head>
@@ -386,14 +421,14 @@
                                                                     <div class="modal-body"  >
                                                                         <div class="row">
 
-                                                                            <s:if test="BanProyectoRegistrado">
+                                                                            <s:if test="BanResponsableRegistrado">
                                                                                 <div class="alert alert-success"  style="width:100%; border-radius: 5px; ">
-                                                                                    <h5 align="center" style="color: #ffffff">Proyecto Registrado Correctamente</h5>
+                                                                                    <h5 align="center" style="color: #ffffff">Responsable Registrado Correctamente</h5>
                                                                                 </div>
                                                                             </s:if> 
-                                                                            <s:if test="BanProyectoActualizado">
+                                                                            <s:if test="BanResponsableActualizado">
                                                                                 <div class="alert alert-success"  style="width:100%; border-radius: 5px; ">
-                                                                                    <h5 align="center" style="color: #ffffff">Proyecto Actualizado Correctamente</h5>
+                                                                                    <h5 align="center" style="color: #ffffff">Responsable Actualizado Correctamente</h5>
                                                                                 </div>
                                                                             </s:if> 
 
@@ -403,7 +438,7 @@
 
                                                                             <div class="input-group ">                        
                                                                                 <i class="fa fa-search fa-2x " style="color: #0056b3"></i>                                                                                                                  
-                                                                                <input id="filtrar" type="text" class="form-control" placeholder="INGRESA EL NOMBRE DEL ALUMNO QUE BUSCA...."/>
+                                                                                <input id="filtrarR" type="text" class="form-control" placeholder="INGRESA EL NOMBRE DEL RESPONSABLE QUE BUSCA...."/>
                                                                             </div>                                                                                                                                                     
 
                                                                             <br/>
@@ -425,7 +460,7 @@
                                                                                             <th scope="col" >Eliminar</th>
                                                                                         </tr>
                                                                                     </thead>
-                                                                                    <tbody class='buscar'>
+                                                                                    <tbody class='buscarR'>
 
                                                                                         <s:iterator value="ListaResponsables" id="ListaResponsables" status="stat">
                                                                                             <tr style="color: #666; font-size: 70%;">
@@ -502,18 +537,95 @@
                                                                         <br/>
                                                                     </div>  
                                                                     <div class="modal-body"  >
-                                                                        <br></br>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleFormControlFile1">Cargar Archivo:</label>
-                                                                            <s:file   name="archi" id="archi" accept="application/vnd.ms-excel,application/vnd.ms-powerpoint, application/zip, application/x-rar-compressed" title="Solo archivos con extension xlsx"></s:file>
-                                                                            <s:fielderror fieldName="archiAI" cssClass="alert alert-danger"/>  
-                                                                            <s:fielderror fieldName="NOCARRERAS" cssClass="alert alert-danger"/> 
-                                                                            <s:if test="BanArcchivoProcesadoAI"> 
-                                                                                <div class="col-sm-auto" >
-                                                                                    <s:fielderror  fieldName="DatosProcesadosAI" cssClass="alert alert-success"/>
+                                                                        <div class="row">
+
+                                                                            <s:if test="BanAsesorRegistrado">
+                                                                                <div class="alert alert-success"  style="width:100%; border-radius: 5px; ">
+                                                                                    <h5 align="center" style="color: #ffffff">Asesor Registrado Correctamente</h5>
                                                                                 </div>
-                                                                            </s:if>  
-                                                                        </div>
+                                                                            </s:if> 
+                                                                            <s:if test="BanAsesorActualizado">
+                                                                                <div class="alert alert-success"  style="width:100%; border-radius: 5px; ">
+                                                                                    <h5 align="center" style="color: #ffffff">Asesor Actualizado Correctamente</h5>
+                                                                                </div>
+                                                                            </s:if> 
+
+
+
+
+
+                                                                            <div class="input-group ">                        
+                                                                                <i class="fa fa-search fa-2x " style="color: #0056b3"></i>                                                                                                                  
+                                                                                <input id="filtrarA" type="text" class="form-control" placeholder="INGRESA EL NOMBRE DEL ASESOR QUE BUSCA...."/>
+                                                                            </div>                                                                                                                                                     
+
+                                                                            <br/>
+                                                                            <br/>
+                                                                            <br/>
+                                                                            <br/>
+                                                                            <div class="table-wrapper-scroll-y col-lg-12">  
+                                                                                <table class="table table-hover">
+                                                                                    <thead>
+                                                                                        <tr class="bg-secondary" style="font-size: 75%; color: #fff;">
+                                                                                            <th scope="col" >CURP</th>
+                                                                                            <th scope="col" >Nombre</th>                                                                                         
+                                                                                            <th scope="col" >Apellido Paterno</th>
+                                                                                            <th scope="col" >Apellido Materno</th>
+                                                                                            <th scope="col" >Cargo</th>
+                                                                                            <th scope="col" >Teléfono</th>
+                                                                                            <th scope="col" >Email</th>                                                    
+                                                                                            <th scope="col" >Modificar</th>
+                                                                                            <th scope="col" >Eliminar</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody class='buscarA'>
+
+                                                                                        <s:iterator value="ListaResponsables" id="ListaResponsables" status="stat">
+                                                                                            <tr style="color: #666; font-size: 70%;">
+                                                                                                <td  ><s:property value="CURP_RESPONSABLE"/></td>
+                                                                                                <td  ><s:property value="NOMBRER"/></td>
+                                                                                                <td  ><s:property value="APELLIDOPR"/></td>                                                                                             
+                                                                                                <td  ><s:property value="APELLIDOMR"/></td>
+                                                                                                <td  ><s:property value="CARGO_RESPONSABLE"/></td>
+                                                                                                <td  ><s:property value="TELEFONO_RESPONSABLE"/></td>
+                                                                                                <td  ><s:property value="EMAIL_RESPONSABLE"/></td>
+
+                                                                                                <td ><a   data-toggle='modal' data-target='#EditAsesor' 
+
+                                                                                                          data-curpr='<s:property value="CURP_RESPONSABLE"/>' 
+                                                                                                          data-nombrer='<s:property value="NOMBRER"/>' 
+                                                                                                          data-apellidopr='<s:property value="APELLIDOPR"/>' 
+                                                                                                          data-apellidomr='<s:property value="APELLIDOMR"/>' 
+                                                                                                          data-cargo='<s:property value="CARGO_RESPONSABLE"/>' 
+                                                                                                          data-telefonor='<s:property value="TELEFONO_RESPONSABLE"/>' 
+                                                                                                          data-emailr='<s:property value="EMAIL_RESPONSABLE"/>' 
+                                                                                                          data-idresp='<s:property value="ID_CAT_RESP"/>' 
+                                                                                                          ><i class="fa fa-pen" style="font-size: 25px;  color: #004085; "></i>
+                                                                                                    </a>
+                                                                                                </td>
+                                                                                                <td >
+                                                                                                    <a href="#" data-toggle='modal' data-target='#DeleteAsesor' 
+                                                                                                       data-id_eliminar_resp='<s:property value="ID_CAT_RESP"/>'>
+                                                                                                        <i class="fa fa-trash" style="font-size: 25px; color: #004085; "></i><span class="text-muted"> Eliminar Responsable</span></a>
+                                                                                                </td>          
+                                                                                            </tr>  
+
+                                                                                            <s:hidden  name = "ListaResponsables[%{#stat.index}].CURP_RESPONSABLE" id="CURP_RESPONSABLE"></s:hidden>     
+                                                                                            <s:hidden  name = "ListaResponsables[%{#stat.index}].NOMBRER" id="NOMBRER"></s:hidden>  
+                                                                                            <s:hidden  name = "ListaResponsables[%{#stat.index}].APELLIDOPR" id="APELLIDOPR"></s:hidden> 
+                                                                                            <s:hidden  name = "ListaResponsables[%{#stat.index}].APELLIDOMR" id="APELLIDOMR"></s:hidden>  
+                                                                                            <s:hidden  name = "ListaResponsables[%{#stat.index}].CARGO_RESPONSABLE" id="CARGO_RESPONSABLE"></s:hidden>  
+                                                                                            <s:hidden  name = "ListaResponsables[%{#stat.index}].TELEFONO_RESPONSABLE" id="TELEFONO_RESPONSABLE"></s:hidden>  
+                                                                                            <s:hidden  name = "ListaResponsables[%{#stat.index}].EMAIL_RESPONSABLE" id="EMAIL_RESPONSABLE"></s:hidden>  
+                                                                                            <s:hidden  name = "ListaResponsables[%{#stat.index}].ID_CAT_RESP" id="ID_CAT_RESP"></s:hidden>
+
+                                                                                        </s:iterator>
+
+
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>   
+                                                                        </div>  
 
 
                                                                     </div>
@@ -780,48 +892,48 @@
                                                             <script src="js/contact_me.js"></script>
 
                                                             <!-- Custom scripts for this template -->
-                                                                <script src="js/freelancer.min.js"></script>
-                                                    
-                                                    
-                                                        <script>
-                                                            $('#EditResponsables').on('show.bs.modal', function (event) {
-                                                        var button = $(event.relatedTarget) // Button that triggered the modal
+                                                            <script src="js/freelancer.min.js"></script>
 
 
-                                                        var recipient0 = button.data('curpr')
-                                                        var recipient1 = button.data('nombrer')
-                                                        var recipient2 = button.data('apellidopr')
-                                                        var recipient3 = button.data('apellidomr')
-                                                        var recipient4 = button.data('cargo')
-                                                        var recipient5 = button.data('telefonor')
-                                                        var recipient6 = button.data('emailr')
-                                                        var recipient7 = button.data('idresp')
+                                                            <script>
+                                                         $('#EditResponsables').on('show.bs.modal', function (event) {
+                                                             var button = $(event.relatedTarget) // Button that triggered the modal
 
 
-
-                                                        // Extract info from data-* attributes
-                                                        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                                                        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-
-                                                        var modal = $(this)
-                                                        modal.find('.modal-body #curpr').val(recipient0)
-                                                        modal.find('.modal-body #nombrer').val(recipient1)
-                                                        modal.find('.modal-body #apellidopr').val(recipient2)
-                                                        modal.find('.modal-body #apellidomr').val(recipient3)
-                                                        modal.find('.modal-body #cargo').val(recipient4)
-                                                        modal.find('.modal-body #telefonor').val(recipient5)
-                                                        modal.find('.modal-body #emailr').val(recipient6)
-                                                        modal.find('.modal-body #idresp').val(recipient7)
+                                                             var recipient0 = button.data('curpr')
+                                                             var recipient1 = button.data('nombrer')
+                                                             var recipient2 = button.data('apellidopr')
+                                                             var recipient3 = button.data('apellidomr')
+                                                             var recipient4 = button.data('cargo')
+                                                             var recipient5 = button.data('telefonor')
+                                                             var recipient6 = button.data('emailr')
+                                                             var recipient7 = button.data('idresp')
 
 
 
+                                                             // Extract info from data-* attributes
+                                                             // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                                                             // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
+                                                             var modal = $(this)
+                                                             modal.find('.modal-body #curpr').val(recipient0)
+                                                             modal.find('.modal-body #nombrer').val(recipient1)
+                                                             modal.find('.modal-body #apellidopr').val(recipient2)
+                                                             modal.find('.modal-body #apellidomr').val(recipient3)
+                                                             modal.find('.modal-body #cargo').val(recipient4)
+                                                             modal.find('.modal-body #telefonor').val(recipient5)
+                                                             modal.find('.modal-body #emailr').val(recipient6)
+                                                             modal.find('.modal-body #idresp').val(recipient7)
 
 
-                                                    });
+
+
+
+                                                         });
 
                                                             </script>
 
-                                                        </s:form>
+                                                    </s:form>
 
                                                 </body>
 
