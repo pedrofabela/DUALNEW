@@ -2363,18 +2363,6 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                         }
 
                     }
-                    if (fila >= 2 && columna == 5) {
-
-                        datos.setNOMBRE(contenidoCelda);
-                        if (ValidaCadenasN(datos.getNOMBRE())) {
-                            //Constantes.enviaMensajeConsola("TIENE CARACTERES NO PERMITIDOS EN EL NOMBRE DE LA FILA  " + (fila) + " FAVOR DE VERIFICAR LOS DATOS");
-                            datos.setDESERROR("TIENE CARACTERES NO PERMITIDOS EN EL NOMBRE DE LA FILA  " + (fila) + " FAVOR DE VERIFICAR LOS DATOS");
-                            validanom = false;
-                        } else {
-                            validanom = true;
-                        }
-
-                    }
                     if (fila >= 2 && columna == 9) {
 
                         datos.setCVE_MUNA(contenidoCelda);
@@ -2672,7 +2660,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
                             datos.setDESERROR("EL NOMBRE EN LA CURP PROPORCIONADA DE LA FILA " + fila + " ,NO COINCIDE CON LOS DATOS DE RENAPO, RESULTADO DE RENAPO(" + nom + " " + apellidop + " " + apellidom + ")  FAVOR DE VERIFICAR");
                         }
 
-                        DatosErroresBean ValidaError = new DatosErroresBean(datos.getCURP(),datos.getNOMBRE(), datos.getAPELLIDOP(), datos.getAPELLIDOM(),  datos.getSTATUS(), datos.getDESERROR());
+                        DatosErroresBean ValidaError = new DatosErroresBean(datos.getCURP(), datos.getNOMBRE(), datos.getAPELLIDOP(), datos.getAPELLIDOM(), datos.getSTATUS(), datos.getDESERROR());
 
                         DatosAlumnosValidadosRenapoConError.add(ValidaError);
                     }
@@ -2808,17 +2796,13 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
 
                         TipoAlumno = contenidoCelda;
 
-                        
+                        if (TipoAlumno.equals("NUEVO INGRESO")) {
+                            datos.setTIPO_ALUM("1");
 
-                            if (TipoAlumno.equals("NUEVO INGRESO")) {
-                                datos.setTIPO_ALUM("1");
-                               
-                            } else if (TipoAlumno.equals("REINGRESO")) {
-                                datos.setTIPO_ALUM("2");
-                               
-                            } 
+                        } else if (TipoAlumno.equals("REINGRESO")) {
+                            datos.setTIPO_ALUM("2");
 
-                        
+                        }
 
                     }
                     if (fila >= 2 && columna == 17) {
@@ -3215,6 +3199,16 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
 
         return Fecha;
 
+    }
+
+    public boolean esEntero(String cad) {
+        for (int i = 0; i < cad.length(); i++) {
+            if (!Character.isDigit(cad.charAt(i))) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
 //Cierra método validarFOLIO
