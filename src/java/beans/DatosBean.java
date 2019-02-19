@@ -101,7 +101,62 @@ public class DatosBean {
      
      private String TIPO_ALUMNO;
       private String TOTAL_TIPO_ALUMNO;
+       private String ALUMNOS_ACTIVOS_GENERAL;
+        private String ALUMNOS_INACTIVOS_GENERAL;
+         private String ALUMNOS_EGRESADOS_GENERAL;
+          private String TOTAL_ALUMNOS_DUAL;
+           private String TOTAL_PROYECTOS;
+
+    public String getTOTAL_PROYECTOS() {
+        return TOTAL_PROYECTOS;
+    }
+
+    public void setTOTAL_PROYECTOS(String TOTAL_PROYECTOS) {
+        this.TOTAL_PROYECTOS = TOTAL_PROYECTOS;
+    }
+           
+           
+           
+           
+
+    public String getTOTAL_ALUMNOS_DUAL() {
+        return TOTAL_ALUMNOS_DUAL;
+    }
+
+    public void setTOTAL_ALUMNOS_DUAL(String TOTAL_ALUMNOS_DUAL) {
+        this.TOTAL_ALUMNOS_DUAL = TOTAL_ALUMNOS_DUAL;
+    }
+          
+          
+          
+
+    public String getALUMNOS_ACTIVOS_GENERAL() {
+        return ALUMNOS_ACTIVOS_GENERAL;
+    }
+
+    public void setALUMNOS_ACTIVOS_GENERAL(String ALUMNOS_ACTIVOS_GENERAL) {
+        this.ALUMNOS_ACTIVOS_GENERAL = ALUMNOS_ACTIVOS_GENERAL;
+    }
+
+    public String getALUMNOS_INACTIVOS_GENERAL() {
+        return ALUMNOS_INACTIVOS_GENERAL;
+    }
+
+    public void setALUMNOS_INACTIVOS_GENERAL(String ALUMNOS_INACTIVOS_GENERAL) {
+        this.ALUMNOS_INACTIVOS_GENERAL = ALUMNOS_INACTIVOS_GENERAL;
+    }
+
+    public String getALUMNOS_EGRESADOS_GENERAL() {
+        return ALUMNOS_EGRESADOS_GENERAL;
+    }
+
+    public void setALUMNOS_EGRESADOS_GENERAL(String ALUMNOS_EGRESADOS_GENERAL) {
+        this.ALUMNOS_EGRESADOS_GENERAL = ALUMNOS_EGRESADOS_GENERAL;
+    }
       
+         
+         
+         
       
          private String FECHA_INGRESO_DUAL;
 

@@ -75,8 +75,14 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public List<DatosBean> ListaTotalEsuela = new ArrayList<DatosBean>();
 
     public List<DatosBean> ListaAlumnosDashboardU = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaAlumnosDashboardUGeneral = new ArrayList<DatosBean>();
     public List<DatosBean> ListaTotalEstatusU = new ArrayList<DatosBean>();
     public List<DatosBean> ListaTotalEsuelaU = new ArrayList<DatosBean>();
+    
+    
+    public List<DatosBean> ListaProyectos = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaReingresos = new ArrayList<DatosBean>();
+    
 
     private boolean bantablero = false;
 
@@ -1478,6 +1484,12 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
             ListaTotalEstatus = con.listaTotalEstatus(datos);
             ListaTotalEsuela = con.listaTotalEscuela(datos);
+           
+            
+            
+            
+            
+            
 
             return "SUCCESS";
 
@@ -1547,6 +1559,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             datos.setCCT(usuariocons.getUSUARIO());
 
             ListaAlumnosDashboardU = con.listaAlumnosDashboardU(datos);
+            
+            
 
             Iterator LAD = ListaAlumnosDashboardU.iterator();
 
@@ -1607,7 +1621,9 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                 }
 
             }
-
+            
+            
+           
             datos.setTOTAL_ALU_DUAL(String.valueOf(total));
             datos.setTOTAL_ALU_ACTIVO(String.valueOf(activo));
             datos.setTOTAL_ALU_INACTIVO(String.valueOf(inactivo));
@@ -1618,11 +1634,79 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             datos.setEGRESADOS(String.valueOf(egresados));
             datos.setALUMNOS_NUEVOS(String.valueOf(nuevos));
             datos.setTOTAL_TIPO_ALUMNO(String.valueOf(tipo_alu));
+            
+            
+            
+            
+            activo=0;
+            inactivo=0;
+            egresados=0;
+            
+            
+            ListaAlumnosDashboardUGeneral = con.listaAlumnosDashboardUGeneral(datos);
+             
+             Iterator LADUG=ListaAlumnosDashboardUGeneral.iterator();
+              DatosBean obj2;
+             
+            while (LADUG.hasNext()) {
+          obj2 = (DatosBean) LADUG.next();
+          
+          
+          
+          if (obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
 
-            Constantes.enviaMensajeConsola("hombre&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&6" + hombre + " asignado" + datos.getTOTAL_HOMBRE());
+                    activo = activo + 1;
+                }
+                if (obj2.getESTATUS_GENERAL().equals("INACTIVO") && !obj2.getSTATUS().equals("10")) {
+
+                    inactivo = inactivo + 1;
+                }
+                
+                 if (obj2.getSTATUS().equals("10")) {
+
+                    egresados = egresados + 1;
+                }
+          
+          
+          
+                
+            }
+            
+            datos.setALUMNOS_ACTIVOS_GENERAL(String.valueOf(activo));
+            datos.setALUMNOS_INACTIVOS_GENERAL(String.valueOf(inactivo));
+              datos.setALUMNOS_EGRESADOS_GENERAL(String.valueOf(egresados));
+              datos.setTOTAL_ALUMNOS_DUAL(String.valueOf(activo+inactivo+egresados));
+            
+            
+
+
+           
 
             ListaTotalEstatusU = con.listaTotalEstatusU(datos);
             ListaTotalEsuelaU = con.listaTotalAsesorProyecto(datos);
+            
+            
+             System.out.println("voy a calcular proyectos");
+            ListaProyectos=con.proyectos(datos);
+            
+            
+            Iterator LP =ListaProyectos.iterator();
+            
+             DatosBean obj3;
+             
+             while (LP.hasNext()) {
+               obj3= (DatosBean) LP.next();
+               
+               datos.setTOTAL_PROYECTOS(obj3.getTOTAL_PROYECTOS());
+                
+            }
+             System.out.println("EL TOTAL DE LOS PROYECTOS ES DE "+datos.getTOTAL_PROYECTOS());
+            
+            
+            
+            
+            
+            
 
             return "SUCCESS";
 
@@ -2145,5 +2229,33 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public void setBantablero(boolean bantablero) {
         this.bantablero = bantablero;
     }
+
+    public List<DatosBean> getListaAlumnosDashboardUGeneral() {
+        return ListaAlumnosDashboardUGeneral;
+    }
+
+    public void setListaAlumnosDashboardUGeneral(List<DatosBean> ListaAlumnosDashboardUGeneral) {
+        this.ListaAlumnosDashboardUGeneral = ListaAlumnosDashboardUGeneral;
+    }
+
+    public List<DatosBean> getListaProyectos() {
+        return ListaProyectos;
+    }
+
+    public void setListaProyectos(List<DatosBean> ListaProyectos) {
+        this.ListaProyectos = ListaProyectos;
+    }
+
+    public List<DatosBean> getListaReingresos() {
+        return ListaReingresos;
+    }
+
+    public void setListaReingresos(List<DatosBean> ListaReingresos) {
+        this.ListaReingresos = ListaReingresos;
+    }
+    
+    
+    
+    
 
 }
