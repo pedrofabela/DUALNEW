@@ -1071,13 +1071,33 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                     pro.setCONVENIO("");
                 }
 
-                Constantes.enviaMensajeConsola("paos lo de archivos");
+                //Constantes.enviaMensajeConsola("paos lo de archivos");
+                if (pro.getSTATUS_P().equals("10")) {
+                    pro.setFECHA_CAMBIO_STATUS(fecha());
+                    pro.setFECHA_EGRESO(fecha());
+                    pro.setFECHA_CIERRE(fecha());
+                    con.ActualizarProyecto(pro);
+                    con.ActualizarEstatusAlumnoEgresado(pro);
+                } else if (pro.getSTATUS_P().equals("11") || pro.getSTATUS_P().equals("12") || pro.getSTATUS_P().equals("13") || pro.getSTATUS_P().equals("14")) {
 
-                con.ActualizarProyecto(pro);
+                    pro.setFECHA_CIERRE(fecha());
+                    pro.setFECHA_CAMBIO_STATUS(fecha());
 
-                con.ActualizarAsesor(pro);
+                    con.ActualizarProyecto(pro);
 
-                con.ActualizarEstatusAlumnos(pro);
+                    con.ActualizarAsesor(pro);
+
+                    con.ActualizarEstatusAlumnos(pro);
+
+                } else {
+                    
+                    pro.setFECHA_CIERRE("");
+                    
+                    con.ActualizarProyecto(pro);
+
+                    con.ActualizarAsesor(pro);
+
+                }
 
                 BanProyectoActualizado = true;
 

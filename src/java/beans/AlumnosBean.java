@@ -36,6 +36,7 @@ public class AlumnosBean {
     private String CP;
     private String BECA;
    private String FECHA_INGRESO_DUAL;
+   private String FECHA_REINGRESO;
     
     
     private String CVE_CAR;
@@ -47,6 +48,14 @@ public class AlumnosBean {
 
     public void setFECHA_INGRESO_DUAL(String FECHA_INGRESO_DUAL) {
         this.FECHA_INGRESO_DUAL = FECHA_INGRESO_DUAL;
+    }
+
+    public String getFECHA_REINGRESO() {
+        return FECHA_REINGRESO;
+    }
+
+    public void setFECHA_REINGRESO(String FECHA_REINGRESO) {
+        this.FECHA_REINGRESO = FECHA_REINGRESO;
     }
 
     

@@ -67,6 +67,10 @@ public String ID_ESTATUS;
 public String NOM_ESTATUS;
 public String CONVENIO;
 public String CONVENIOR;
+public String FECHA_EGRESO;
+public String FECHA_CIERRE; 
+public String FECHA_CAMBIO_STATUS;
+
 
 
     public String getRFCA() {
@@ -447,6 +451,33 @@ public String CONVENIOR;
     public void setCONVENIOR(String CONVENIOR) {
         this.CONVENIOR = CONVENIOR;
     }
+
+    public String getFECHA_EGRESO() {
+        return FECHA_EGRESO;
+    }
+
+    public void setFECHA_EGRESO(String FECHA_EGRESO) {
+        this.FECHA_EGRESO = FECHA_EGRESO;
+    }
+
+    public String getFECHA_CIERRE() {
+        return FECHA_CIERRE;
+    }
+
+    public void setFECHA_CIERRE(String FECHA_CIERRE) {
+        this.FECHA_CIERRE = FECHA_CIERRE;
+    }
+
+    public String getFECHA_CAMBIO_STATUS() {
+        return FECHA_CAMBIO_STATUS;
+    }
+
+    public void setFECHA_CAMBIO_STATUS(String FECHA_CAMBIO_STATUS) {
+        this.FECHA_CAMBIO_STATUS = FECHA_CAMBIO_STATUS;
+    }
+    
+    
+    
     
     
     

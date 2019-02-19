@@ -156,6 +156,11 @@
                                                                     <h5 align="center" style="color: #ffffff">EL ALUMNO QUE INTENTA REGISTRAR YA EXISTE EN LA BASE DE DATOS</h5>
                                                                 </div>
                                                             </s:if>    
+                                                            <s:if test="BanAlumnoEgresado">
+                                                                <div class="alert bg-warning"  style="width:100%; border-radius: 5px; ">
+                                                                    <h5 align="center" style="color: #ffffff">EL ALUMNO QUE INTENTA REGISTRAR YA SE ENCUENTRA CON ESTATUS DE EGRESADO</h5>
+                                                                </div>
+                                                            </s:if>    
                                                             <s:if test="BanExisteAlumStatusInhabil">
 
                                                                 <div  class="modal-dialog bg-info" role="document">

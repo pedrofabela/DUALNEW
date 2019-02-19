@@ -106,6 +106,8 @@ public interface ConsultaDAO {
     public boolean ActualizarProyecto(ProyectoBean pro) throws Exception;
 
     public boolean ActualizarEstatusAlumnos(ProyectoBean pro) throws Exception;
+    
+    public boolean ActualizarEstatusAlumnoEgresado(ProyectoBean pro) throws Exception;
 
     public boolean GuardaBecas(BecaBean be) throws Exception;
 

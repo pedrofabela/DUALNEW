@@ -223,6 +223,10 @@ public class ConsultasBusiness {
     public boolean ActualizarEstatusAlumnos(ProyectoBean pro) throws Exception {
         return this.con.ActualizarEstatusAlumnos(pro);
     }
+    
+    public boolean ActualizarEstatusAlumnoEgresado(ProyectoBean pro) throws Exception {
+        return this.con.ActualizarEstatusAlumnoEgresado(pro);
+    }
 
     public boolean GuardaBecas(BecaBean be) throws Exception {
         return this.con.GuardaBecas(be);

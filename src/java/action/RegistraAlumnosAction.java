@@ -44,12 +44,11 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
     public List<DatosBean> ListaMunicipios = new ArrayList<DatosBean>();
 
     private List<DatosBean> ListaCarreras = new ArrayList<>();
-    
+
     private List<DatosBean> ListaTipoAlumno = new ArrayList<>();
 
     private List<DatosBean> VerificaAlumno = new ArrayList<>();
-    
-   
+
     //SESSIN USUARIO	
     // private Map session  = ActionContext.getContext().getSession();
     private String nivelUsuario;
@@ -85,9 +84,10 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
 
     private boolean BANCURPENCONTRADA = false;
     private boolean BanExisteAlum = false;
-    private boolean BanExisteAlumStatusInhabil=false;
+    private boolean BanExisteAlumStatusInhabil = false;
     private boolean BanAlumReg = false;
     private boolean BanAlumHabilitado = false;
+    private boolean BanAlumnoEgresado = false;
 
     public String FormAlumno() {
 
@@ -151,31 +151,28 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
             if (banlong) {
 
                 ConsultasBusiness con = new ConsultasBusiness();
-                
-                 obj.setCURP(al.getCURPA());
+
+                obj.setCURP(al.getCURPA());
 
                 VerificaAlumno = con.ConsultaAlumnos2(obj);
 
                 if (VerificaAlumno.size() > 0) {
-                    
-                    String VerificaStatus=con.ConsultaStatus(obj);
-                    
+
+                    String VerificaStatus = con.ConsultaStatus(obj);
+
                     Constantes.enviaMensajeConsola(VerificaStatus);
-                    
+
                     if (VerificaStatus.equals("1")) {
-                        
-                         BanExisteAlum = true;
-                        
+
+                        BanExisteAlum = true;
+
+                    } else if (VerificaStatus.equals("10")) {
+                        BanAlumnoEgresado = true;
                     } else {
                         Constantes.enviaMensajeConsola("entro aqui");
-                         BanExisteAlumStatusInhabil = true;
+                        BanExisteAlumStatusInhabil = true;
                     }
-                    
-                    
-                    
-                    
 
-                   
                     return "input";
 
                 } else {
@@ -208,8 +205,7 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
 
                         ListaMunicipios = con.listaMunicipios();
                         ListaCarreras = con.ConsultaCarreraExistente(obj);
-                        ListaTipoAlumno=con.ConsultaTipoAlumno();
-                                
+                        ListaTipoAlumno = con.ConsultaTipoAlumno();
 
                         al.setCURPA("");
 
@@ -222,7 +218,7 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
 
                         addFieldError("ErrorValCurp", personas.getDescripcionError());
                     }
-                } 
+                }
             }
         } catch (Exception e) {
             addActionError("Ocurrio un error: " + e);
@@ -230,7 +226,7 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
         }
         return "SUCCESS";
     }
-    
+
     public String HabilitarAlumno() {
         //validando session***********************************************************************
         if (session.get("cveUsuario") != null) {
@@ -249,7 +245,7 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
         try {
 
             boolean curp = false;
-           al.getCURPA();
+            al.getCURPA();
 
             if (al.getCURPA().length() > 0) {
                 curp = true;
@@ -257,19 +253,16 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
                 addFieldError("ErrorCurp", "Agregar el domicilio del alumno");
                 curp = false;
             }
-           
 
-            if (curp ) {
+            if (curp) {
 
                 ConsultasBusiness con = new ConsultasBusiness();
-
-               
 
                 al.setSTATUS("1");
                 al.setAVANCE("50");
                 al.setBECA("no");
                 al.setTIPO_ALUM("2");
-                
+                al.setFECHA_REINGRESO(fecha());
 
                 con.HabilitarAlumno(al);
 
@@ -287,8 +280,6 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
         }
         return "SUCCESS";
     }
-    
-    
 
     public String GuardaAlum() {
         //validando session***********************************************************************
@@ -404,8 +395,6 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
 
                 ConsultasBusiness con = new ConsultasBusiness();
 
-               
-
                 al.setSTATUS("1");
                 al.setAVANCE("50");
                 al.setBECA("no");
@@ -457,6 +446,12 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
         al.setTIPO_ALUM("");
     }
 
+    public String fecha() {
+        Date ahora = new Date();
+        SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yy");
+        return formateador.format(ahora);
+    }
+
     public AlumnosBean getAl() {
         return al;
     }
@@ -496,8 +491,6 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
     public void setBanExisteAlumStatusInhabil(boolean BanExisteAlumStatusInhabil) {
         this.BanExisteAlumStatusInhabil = BanExisteAlumStatusInhabil;
     }
-    
-    
 
     public boolean isBanAlumReg() {
         return BanAlumReg;
@@ -514,8 +507,14 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
     public void setBanAlumHabilitado(boolean BanAlumHabilitado) {
         this.BanAlumHabilitado = BanAlumHabilitado;
     }
-    
-    
+
+    public boolean isBanAlumnoEgresado() {
+        return BanAlumnoEgresado;
+    }
+
+    public void setBanAlumnoEgresado(boolean BanAlumnoEgresado) {
+        this.BanAlumnoEgresado = BanAlumnoEgresado;
+    }
 
     public List<DatosBean> getListaMunicipios() {
         return ListaMunicipios;
@@ -548,8 +547,6 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
     public void setListaTipoAlumno(List<DatosBean> ListaTipoAlumno) {
         this.ListaTipoAlumno = ListaTipoAlumno;
     }
-    
-    
 
     public List<DatosBean> getVerificaAlumno() {
         return VerificaAlumno;
@@ -558,9 +555,5 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
     public void setVerificaAlumno(List<DatosBean> VerificaAlumno) {
         this.VerificaAlumno = VerificaAlumno;
     }
-
-   
-    
-    
 
 }

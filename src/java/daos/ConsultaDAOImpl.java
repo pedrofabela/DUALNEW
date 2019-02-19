@@ -836,6 +836,8 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         arregloCampos.add(temporal);
         temporal = new ObjPrepareStatement("CONVENIO", "STRING", objdatos.getCONVENIO());
         arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("FECHA_CIERRE", "STRING", objdatos.getFECHA_CIERRE());
+        arregloCampos.add(temporal);
 
         String Condicion;
         Condicion = " WHERE CURP_A='" + objdatos.getCURP_AL() + "' AND CCT='" + objdatos.getCCT() + "'";
@@ -856,6 +858,35 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
 
 //En el objeto temporal settear el campo de la tabla, el tipo de dato y el valor a insertar
         temporal = new ObjPrepareStatement("STATUS", "STRING", objdatos.getSTATUS_P());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("FECHA_CAMBIO_ESTATUS", "STRING", objdatos.getFECHA_CAMBIO_STATUS());
+        arregloCampos.add(temporal);
+       
+        
+
+        String Condicion;
+        Condicion = " WHERE CURP='" + objdatos.getCURP_AL() + "' AND CCT='" + objdatos.getCCT() + "'";
+
+//Se terminan de adicionar a nuesto ArrayLis los objetos
+//Ejecutar la funcion del OracleDAOFactory queryInsert, se deber pasar como parmetros la tabla en donde se insertara
+        return oraDaoFac.queryUpdate(Constantes.TablaAlumnos, arregloCampos, Condicion);
+    }
+    
+    public boolean ActualizarEstatusAlumnoEgresado(ProyectoBean objdatos) throws Exception {
+
+//Crear un ArrayList para agregar los campos a insertar
+        ArrayList<ObjPrepareStatement> arregloCampos = new ArrayList<ObjPrepareStatement>();
+//Crear un objeto de tipo ObjPrepareStatement
+        ObjPrepareStatement temporal;
+//imprimiendo los valores del objeto tipo CCT...........
+        Constantes.enviaMensajeConsola("Entre al DAO del INSERT...................................");
+
+//En el objeto temporal settear el campo de la tabla, el tipo de dato y el valor a insertar
+        temporal = new ObjPrepareStatement("STATUS", "STRING", objdatos.getSTATUS_P());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("FECHA_EGRESO", "STRING", objdatos.getFECHA_EGRESO());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("FECHA_CAMBIO_ESTATUS", "STRING", objdatos.getFECHA_CAMBIO_STATUS());
         arregloCampos.add(temporal);
 
         String Condicion;
@@ -1072,6 +1103,8 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         temporal = new ObjPrepareStatement("AVANCE", "STRING", objdatos.getAVANCE());
         arregloCampos.add(temporal);
         temporal = new ObjPrepareStatement("BECA", "STRING", objdatos.getBECA());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("FECHA_REINGRESO", "STRING", objdatos.getFECHA_REINGRESO());
         arregloCampos.add(temporal);
 
         String Condicion;
