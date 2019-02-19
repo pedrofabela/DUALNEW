@@ -98,6 +98,11 @@ public class ConsultasBusiness {
     public boolean GuardaAsesorI(Connection conn, PreparedStatement stat, DatosBean datos) throws Exception {
         return this.con.GuardaAsesorI(conn, stat, datos);
     }
+    
+    public List ConsultaAsesorAdmin(AdminCatBean obj) throws Exception {
+        List lista = this.con.ConsultaAsesorAdmin(obj);
+        return lista;
+    }
 
     //***********************************************business de ALUMNOS**********************************
     public List ConsultaModalidad(DatosBean obj) throws Exception {

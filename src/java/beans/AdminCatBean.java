@@ -38,10 +38,13 @@ public class AdminCatBean {
     private String CCT_RESP;
     
     //asesores
+    private String ID_CAT_ASE;
     private String CURP_ASESORI;
     private String NOMBREAI;
     private String APELLIDOPAI;
     private String APELLIDOMAI;
+    private String CVE_CAR_ASE;
+    private String CCT_ASE;
 
     public String getCCT() {
         return CCT;
@@ -238,6 +241,32 @@ public class AdminCatBean {
     public void setCURP_ASESORI(String CURP_ASESORI) {
         this.CURP_ASESORI = CURP_ASESORI;
     }
+
+    public String getID_CAT_ASE() {
+        return ID_CAT_ASE;
+    }
+
+    public void setID_CAT_ASE(String ID_CAT_ASE) {
+        this.ID_CAT_ASE = ID_CAT_ASE;
+    }
+
+    public String getCVE_CAR_ASE() {
+        return CVE_CAR_ASE;
+    }
+
+    public void setCVE_CAR_ASE(String CVE_CAR_ASE) {
+        this.CVE_CAR_ASE = CVE_CAR_ASE;
+    }
+
+    public String getCCT_ASE() {
+        return CCT_ASE;
+    }
+
+    public void setCCT_ASE(String CCT_ASE) {
+        this.CCT_ASE = CCT_ASE;
+    }
+    
+    
 
     public String getNOMBREAI() {
         return NOMBREAI;

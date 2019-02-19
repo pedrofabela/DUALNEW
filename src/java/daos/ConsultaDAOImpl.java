@@ -24,6 +24,7 @@ import mappers.ResponsableIMapper;
 import mappers.TipoBecasMapper;
 import mappers.VerificaAlumnosMapper;
 import mappers.VerificaArcRegMapper;
+import mappers.VerificaAsesorAdminMapper;
 import mappers.VerificaAsesorIMapper;
 import mappers.VerificaAsesorMapper;
 import mappers.VerificaCuentaxCurpDCMapper;
@@ -250,6 +251,14 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
 //Se terminan de adicionar a nuesto ArrayLis los objetos
 //Ejecutar la funcion del OracleDAOFactory queryInsert, se deber pasar como parmetros la tabla en donde se insertara
         return oraDaoFac.queryInsertTransaccion(conn, stat, Constantes.TablaAsesoresI, arregloCampos);
+    }
+    
+    public List ConsultaAsesorAdmin(AdminCatBean obj) throws Exception {
+        String query = "SELECT ID_CAT_ASE,NOMBRE,APELLIDOP,APELLIDOM,CVE_CAR_RES,CURP,CCT FROM " + Constantes.TablaAsesoresI + " WHERE  CCT='" + obj.getCCT() + "'";
+        Constantes.enviaMensajeConsola("verifica si existen responsable PARA cvecarrera----->" + query);
+        List list = null;
+        list = queryForList(query, new VerificaAsesorAdminMapper());
+        return list;
     }
 
     //*************************************************DAO IMPL ALumnos*******************************************************************************

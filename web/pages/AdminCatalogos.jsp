@@ -571,53 +571,50 @@
                                                                                             <th scope="col" >Nombre</th>                                                                                         
                                                                                             <th scope="col" >Apellido Paterno</th>
                                                                                             <th scope="col" >Apellido Materno</th>
-                                                                                            <th scope="col" >Cargo</th>
-                                                                                            <th scope="col" >Teléfono</th>
-                                                                                            <th scope="col" >Email</th>                                                    
+                                                                                            <th scope="col" >Clave Carrera</th>
+                                                                                                                                           
                                                                                             <th scope="col" >Modificar</th>
                                                                                             <th scope="col" >Eliminar</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody class='buscarA'>
 
-                                                                                        <s:iterator value="ListaResponsables" id="ListaResponsables" status="stat">
+                                                                                        <s:iterator value="ListaAsesores" id="ListaAsesores" status="stat">
                                                                                             <tr style="color: #666; font-size: 70%;">
-                                                                                                <td  ><s:property value="CURP_RESPONSABLE"/></td>
-                                                                                                <td  ><s:property value="NOMBRER"/></td>
-                                                                                                <td  ><s:property value="APELLIDOPR"/></td>                                                                                             
-                                                                                                <td  ><s:property value="APELLIDOMR"/></td>
-                                                                                                <td  ><s:property value="CARGO_RESPONSABLE"/></td>
-                                                                                                <td  ><s:property value="TELEFONO_RESPONSABLE"/></td>
-                                                                                                <td  ><s:property value="EMAIL_RESPONSABLE"/></td>
+                                                                                                <td  ><s:property value="CURP_ASESORI"/></td>
+                                                                                                <td  ><s:property value="NOMBREAI"/></td>
+                                                                                                <td  ><s:property value="APELLIDOPAI"/></td>                                                                                             
+                                                                                                <td  ><s:property value="APELLIDOMAI"/></td>
+                                                                                                <td  ><s:property value="CVE_CAR_ASE"/></td>
+                                                                                                
 
                                                                                                 <td ><a   data-toggle='modal' data-target='#EditAsesor' 
 
-                                                                                                          data-curpr='<s:property value="CURP_RESPONSABLE"/>' 
-                                                                                                          data-nombrer='<s:property value="NOMBRER"/>' 
-                                                                                                          data-apellidopr='<s:property value="APELLIDOPR"/>' 
-                                                                                                          data-apellidomr='<s:property value="APELLIDOMR"/>' 
-                                                                                                          data-cargo='<s:property value="CARGO_RESPONSABLE"/>' 
-                                                                                                          data-telefonor='<s:property value="TELEFONO_RESPONSABLE"/>' 
-                                                                                                          data-emailr='<s:property value="EMAIL_RESPONSABLE"/>' 
-                                                                                                          data-idresp='<s:property value="ID_CAT_RESP"/>' 
+                                                                                                          data-curpr='<s:property value="CURP_ASESORI"/>' 
+                                                                                                          data-nombrer='<s:property value="NOMBREAI"/>' 
+                                                                                                          data-apellidopa='<s:property value="APELLIDOPAI"/>' 
+                                                                                                          data-apellidoma='<s:property value="APELLIDOMAI"/>' 
+                                                                                                          data-carrera='<s:property value="CVE_CAR_ASE"/>' 
+                                                                                                          data-ccta='<s:property value="CCT_ASE"/>'                                                                                                          
+                                                                                                          data-idase='<s:property value="ID_CAT_ASE"/>' 
                                                                                                           ><i class="fa fa-pen" style="font-size: 25px;  color: #004085; "></i>
                                                                                                     </a>
                                                                                                 </td>
                                                                                                 <td >
                                                                                                     <a href="#" data-toggle='modal' data-target='#DeleteAsesor' 
-                                                                                                       data-id_eliminar_resp='<s:property value="ID_CAT_RESP"/>'>
-                                                                                                        <i class="fa fa-trash" style="font-size: 25px; color: #004085; "></i><span class="text-muted"> Eliminar Responsable</span></a>
+                                                                                                       data-id_eliminar_resp='<s:property value="ID_CAT_ASE"/>'>
+                                                                                                        <i class="fa fa-trash" style="font-size: 25px; color: #004085; "></i></a>
                                                                                                 </td>          
                                                                                             </tr>  
 
-                                                                                            <s:hidden  name = "ListaResponsables[%{#stat.index}].CURP_RESPONSABLE" id="CURP_RESPONSABLE"></s:hidden>     
-                                                                                            <s:hidden  name = "ListaResponsables[%{#stat.index}].NOMBRER" id="NOMBRER"></s:hidden>  
-                                                                                            <s:hidden  name = "ListaResponsables[%{#stat.index}].APELLIDOPR" id="APELLIDOPR"></s:hidden> 
-                                                                                            <s:hidden  name = "ListaResponsables[%{#stat.index}].APELLIDOMR" id="APELLIDOMR"></s:hidden>  
-                                                                                            <s:hidden  name = "ListaResponsables[%{#stat.index}].CARGO_RESPONSABLE" id="CARGO_RESPONSABLE"></s:hidden>  
-                                                                                            <s:hidden  name = "ListaResponsables[%{#stat.index}].TELEFONO_RESPONSABLE" id="TELEFONO_RESPONSABLE"></s:hidden>  
-                                                                                            <s:hidden  name = "ListaResponsables[%{#stat.index}].EMAIL_RESPONSABLE" id="EMAIL_RESPONSABLE"></s:hidden>  
-                                                                                            <s:hidden  name = "ListaResponsables[%{#stat.index}].ID_CAT_RESP" id="ID_CAT_RESP"></s:hidden>
+                                                                                            <s:hidden  name = "ListaAsesores[%{#stat.index}].CURP_ASESORI" id="CURP_ASESORI"></s:hidden>     
+                                                                                            <s:hidden  name = "ListaAsesores[%{#stat.index}].NOMBREAI" id="NOMBREAI"></s:hidden>  
+                                                                                            <s:hidden  name = "ListaAsesores[%{#stat.index}].APELLIDOPAI" id="APELLIDOPAI"></s:hidden> 
+                                                                                            <s:hidden  name = "ListaAsesores[%{#stat.index}].APELLIDOMAI" id="APELLIDOMAI"></s:hidden>  
+                                                                                            <s:hidden  name = "ListaAsesores[%{#stat.index}].CVE_CAR_ASE" id="CVE_CAR_ASE"></s:hidden>  
+                                                                                            <s:hidden  name = "ListaAsesores[%{#stat.index}].CCT_ASE" id="CCT_ASE"></s:hidden>  
+                                                                                            <s:hidden  name = "ListaAsesores[%{#stat.index}].ID_CAT_ASE" id="ID_CAT_ASE"></s:hidden>  
+                                                                                            
 
                                                                                         </s:iterator>
 

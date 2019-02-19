@@ -3180,17 +3180,13 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
     public boolean validarFecha(String valFecha) throws ParseException {
 
         Constantes.enviaMensajeConsola("entro a validar fecha " + valFecha);
-        boolean Fecha=false;
+        boolean Fecha = false;
 
-       
-
-        String obdiagonal1 = valFecha.substring(2, 3);
-        String obdiagonal2 = valFecha.substring(5, 6);
-
-        Constantes.enviaMensajeConsola("diagonal 1" + obdiagonal1);
-        Constantes.enviaMensajeConsola("diagonal 2" + obdiagonal2);
-
-        if (obdiagonal1.equals("/") && obdiagonal2.equals("/")) {
+        Fecha = valFecha.matches("[0-9]{2}[/][0-9]{2}[/][0-9]{4}");
+        
+        Constantes.enviaMensajeConsola("fecha: "+Fecha);
+        
+        if (Fecha) {
             
             Constantes.enviaMensajeConsola("entro al if");
             // el que parsea
@@ -3205,19 +3201,22 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
 
             System.out.println(formateador.format(date));
 
-             Fecha = ff.matches("[0-9]{2}[/][0-9]{2}[/][0-9]{4}");
+            Fecha = ff.matches("[0-9]{2}[/][0-9]{2}[/][0-9]{4}");
 
             Constantes.enviaMensajeConsola("fecha validada es:  " + Fecha);
 
             return Fecha;
-
+            
         } else {
-            
-            Fecha=false;
-            
+            Fecha = false;
+
             return Fecha;
-            
         }
+        
+
+        
+
+        
 
     }
 

@@ -365,7 +365,8 @@
                                                   
 
                                                        
-                                                        <div id="wrapper2">       
+                                                        <div id="wrapper2"> 
+                                                            <!--
                                                              <div style="width: 100%; height: 40px;  background: #343a40; margin-bottom: 15px; padding: 7px; ">Indicadores Generales</div>
 
                                                              <div class="row" style="margin-bottom: 30px;">
@@ -469,7 +470,7 @@
                                                              </div>
                                                              
                                                              
-                                                                               
+                                                             -->                  
                                                                                
                                                                                
                                                     <div style="width: 100%; height: 40px;  background: #343a40; margin-bottom: 15px; padding: 7px; ">Indicadores Generales por Periodo</div>

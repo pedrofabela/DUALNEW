@@ -1,11 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: ${CICD_GIT_REPO_NAME}-service
+  name: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}-service
   namespace: default
 spec:
   selector:
-    app: ${CICD_GIT_REPO_NAME}
+    app: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}
   type: NodePort
   ports:
     - protocol: TCP
@@ -15,32 +15,33 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ${CICD_GIT_REPO_NAME}
+  name: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}
   namespace: default
   labels:
-    app: ${CICD_GIT_REPO_NAME}
+    app: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ${CICD_GIT_REPO_NAME}
+      app: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}
   template:
     metadata:
       labels:
-        app: ${CICD_GIT_REPO_NAME}
+        app: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}
     spec:
       imagePullSecrets:
-      - name: pipeline-docker-registry
+      - name: registry-edugem
       containers:
-      - name: ${CICD_GIT_REPO_NAME}
+      - name: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}
         image: ${CICD_IMAGE}:${CICD_GIT_BRANCH}
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: ${CICD_GIT_REPO_NAME}
+  name: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}
   namespace: default
 spec:
   rules:
@@ -48,11 +49,5 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: ${CICD_GIT_REPO_NAME}-service
+          serviceName: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}-service
           servicePort: 8080
-status:
-  loadBalancer:
-    ingress:
-    - ip: 10.33.220.135
-    - ip: 10.33.220.136
-    - ip: 10.33.220.137

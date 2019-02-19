@@ -48,6 +48,7 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
     private ArrayList<DatosBean> ObtenerCarreraCCT = new ArrayList<>();
     public List<DatosBean> ListaCarreras = new ArrayList<DatosBean>();
     private List<AdminCatBean> ListaResponsables=new ArrayList<>();
+    private List<AdminCatBean> ListaAsesores=new ArrayList<>();
     
 
     //SESSIN USUARIO	
@@ -131,6 +132,8 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
             ad.setCCT(usuariocons.getUSUARIO());
             
             ListaResponsables=con.ConsultaResponsableAdmin(ad);
+            
+            ListaAsesores=con.ConsultaAsesorAdmin(ad);
 
             return "SUCCESS";
 
@@ -419,8 +422,14 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
     public void setListaResponsables(List<AdminCatBean> ListaResponsables) {
         this.ListaResponsables = ListaResponsables;
     }
-    
-    
+
+    public List<AdminCatBean> getListaAsesores() {
+        return ListaAsesores;
+    }
+
+    public void setListaAsesores(List<AdminCatBean> ListaAsesores) {
+        this.ListaAsesores = ListaAsesores;
+    }
     
     public boolean isBanCarreraExistente() {
         return BanCarreraExistente;

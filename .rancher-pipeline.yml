@@ -20,3 +20,4 @@ stages:
   - applyYamlConfig:
       path: ./publicar.yaml
 timeout: 60
+
