@@ -2367,9 +2367,9 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
 
                         datos.setCVE_MUNA(contenidoCelda);
 
-                        if (ValidaCadenas(datos.getCVE_MUNA())) {
+                        if (!esEntero(datos.getCVE_MUNA())) {
                             //Constantes.enviaMensajeConsola("TIENE CARACTERES NO PERMITIDOS EN EL APELLIDO PATERNO DE LA FILA  " + (fila) + " FAVOR DE VERIFICAR LOS DATOS");
-                            datos.setDESERROR("TIENE CARACTERES NO PERMITIDOS EN LA CLAVE DE MUNICIPIO  EN LA FILA  " + (fila) + " FAVOR DE VERIFICAR LOS DATOS");
+                            datos.setDESERROR("TIENE CARACTERES NO PERMITIDOS EN LA CLAVE DE MUNICIPIO  EN LA FILA  " + (fila) + " FAVOR DE VERIFICAR LOS DATOS SOLO SE PERMITEN NÚMEROS");
                             validacvemun = false;
                         } else {
                             validacvemun = true;
@@ -3178,30 +3178,51 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
     }
 
     public boolean validarFecha(String valFecha) throws ParseException {
+
         Constantes.enviaMensajeConsola("entro a validar fecha " + valFecha);
+        boolean Fecha=false;
 
-        valFecha = valFecha.toUpperCase().trim();
+       
 
-        // el que parsea
-        SimpleDateFormat parseador = new SimpleDateFormat("dd/MM/yy");
-// el que formatea
-        SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yy");
+        String obdiagonal1 = valFecha.substring(2, 3);
+        String obdiagonal2 = valFecha.substring(5, 6);
 
-        Date date = parseador.parse(valFecha);
+        Constantes.enviaMensajeConsola("diagonal 1" + obdiagonal1);
+        Constantes.enviaMensajeConsola("diagonal 2" + obdiagonal2);
 
-        String ff = formateador.format(date);
+        if (obdiagonal1.equals("/") && obdiagonal2.equals("/")) {
+            
+            Constantes.enviaMensajeConsola("entro al if");
+            // el que parsea
+            SimpleDateFormat parseador = new SimpleDateFormat("dd/MM/yyyy");
+            // el que formatea
+            SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
 
-        System.out.println(formateador.format(date));
+            Date date = parseador.parse(valFecha);
 
-        boolean Fecha = ff.matches("[0-9]{2}[/][0-9]{2}[/][0-9]{2}");
+            //System.out.println("date"+date);
+            String ff = formateador.format(date);
 
-        Constantes.enviaMensajeConsola("fecha validada es:  " + Fecha);
+            System.out.println(formateador.format(date));
 
-        return Fecha;
+             Fecha = ff.matches("[0-9]{2}[/][0-9]{2}[/][0-9]{4}");
+
+            Constantes.enviaMensajeConsola("fecha validada es:  " + Fecha);
+
+            return Fecha;
+
+        } else {
+            
+            Fecha=false;
+            
+            return Fecha;
+            
+        }
 
     }
 
     public boolean esEntero(String cad) {
+
         for (int i = 0; i < cad.length(); i++) {
             if (!Character.isDigit(cad.charAt(i))) {
                 return false;
