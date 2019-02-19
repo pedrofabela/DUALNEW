@@ -365,10 +365,117 @@
                                                   
 
                                                        
-                                                        <div id="wrapper2">         
+                                                        <div id="wrapper2">       
+                                                             <div style="width: 100%; height: 40px;  background: #343a40; margin-bottom: 15px; padding: 7px; ">Indicadores Generales</div>
 
-                                                            <div class="row">
+                                                             <div class="row" style="margin-bottom: 30px;">
                                                                 
+                                                               
+                                                                
+                                                                <div class="form-group col-lg-4" style="padding: none;"  >
+
+                                                                   <div style="background: #28a745; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+
+                                                                       <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
+
+                                                                           Alumnos activos 
+
+                                                                       </div>
+                                                                           <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
+
+                                                                               <s:property value="datos.TOTAL_ALU_ACTIVO"/> <i class="fas fa-fw fa-user" style="position: absolute; z-index: 0; top : -2 rem; right: 0.5rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+
+                                                                       </div>
+                                                                     <a href="#popup" style="text-decoration: none; color:white;" >      <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+
+                                                                          Detalle de Alumnos        ->
+
+                                                                         </div></a>
+
+
+                                                                   </div>
+
+
+                                                               </div>  
+                                                                               
+                                                                               
+                                                                               
+                                                                     <div class="form-group col-lg-4" style="padding: none;"  >
+
+                                                                   <div style="background: #dc3545; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+
+                                                                       <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
+
+                                                                           Alumnos inactivos 
+
+                                                                       </div>
+                                                                            <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
+
+                                                                               <s:property value="datos.TOTAL_ALU_INACTIVO"/> <i class="fas fa-fw fa-thumbs-down" style="position: absolute; z-index: 0; top : -2 rem; right: 0.5rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+
+                                                                           </div> 
+                                                                               <a href="#popup2" style="text-decoration: none; color: white;" > <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+
+                                                                          Detalle de Alumnos        ->
+
+                                                                                   </div>
+                                                                               </a>
+
+
+                                                                   </div>
+
+
+                                                               </div>  
+                                                                                          
+                                                                               
+                                                                     
+                                                                               
+                                                                               
+                                                                               
+                                                                 <div class="form-group col-lg-4" style="padding: none;"  >
+
+                                                                   <div style="background: #ffc107; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+
+                                                                       <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
+
+                                                                           Alumnos egresados
+
+                                                                       </div>
+                                                                           <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
+
+                                                                               <s:property value="datos.EGRESADOS"/> <i class="fas fa-fw fa-graduation-cap" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+
+                                                                       </div>
+                                                                               <a href="#popup3" style="text-decoration: none; color: white;" >    <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+
+                                                                          Detalle de Alumnos        ->
+
+                                                                       </div>
+                                                                                   </a>
+
+
+                                                                   </div>
+
+
+                                                               </div>          
+                                                                    
+                                                                    
+                                                                   
+                                                                     
+                                                                               <br></br>
+                                                                
+                                                                               
+                                                                
+                                                             </div>
+                                                             
+                                                             
+                                                                               
+                                                                               
+                                                                               
+                                                    <div style="width: 100%; height: 40px;  background: #343a40; margin-bottom: 15px; padding: 7px; ">Indicadores Generales por Periodo</div>
+                                                             
+                                                                
+                                                                  <div class="row" style="margin-bottom: 30px;">
                                                                 
                                                                 
                                                                  <div class="form-group col-lg-4" style="background: #343a40; padding: 10px; height: 60px;"  >
