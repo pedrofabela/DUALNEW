@@ -38,7 +38,7 @@ import mappers.listaAlumnosBecaMapper;
 import mappers.listaAlumnosMapper;
 import mappers.listaBecasMapper;
 import mappers.listaMunicipiosMapper;
-import mappers.proyectoMapper;
+import mappers.proyectoTotalMapper;
 import mappers.totalAluEscuela;
 import mappers.totalEstatusMapper;
 import utilidades.Constantes;
@@ -699,7 +699,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         String query = "SELECT COUNT(ID_PROYECTO) AS TOTAL_PROYECTOS  FROM TBL_PROYECTOS WHERE CCT='"+datos.getCCT()+"' AND TO_DATE(FECHA_REG)>='"+datos.getFECHA_INICIO()+"' AND TO_DATE(FECHA_REG)<='"+datos.getFECHA_TERMINO()+"'";
         Constantes.enviaMensajeConsola("cCANTIDAD DE PROYECTOS REGISTRADOS----->" + query);
         List list = null;
-        list = queryForList(query, (Mapper) new proyectoMapper());
+        list = queryForList(query, (Mapper) new proyectoTotalMapper());
         return list;
     }
 

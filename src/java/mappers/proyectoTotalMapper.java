@@ -13,7 +13,7 @@ import java.sql.SQLException;
  *
  * @author pedro
  */
-public class proyectoMapper implements Mapper{
+public class proyectoTotalMapper implements Mapper{
       public Object mapRow(ResultSet rs) throws SQLException {
         DatosBean dat = new DatosBean();
         
