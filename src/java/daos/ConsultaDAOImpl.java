@@ -782,7 +782,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         query = "SELECT tp.id_proyecto,tp.cct,tp.curp_a,tp.nombre_p,tp.etapa,tp.fecha_inicio,tp.fecha_termino,tp.area_conocimiento,tp.num_hora,tp.asesor_int,tp.responsable_ins,tp.status,tp.convenio,"
                 + "ce.rfc,ce.razon_social,ce.giro,ce.sector,ce.domicilio,ce.colonia,ce.localidad,ce.cp,ce.municipio,ce.rep_legal,ce.telefono,ce.correo_electronico,"
                 + "cre.nombre,cre.apellidop,cre.apellidom,cre.cargo,cre.telefono as tel_resp,cre.correo "
-                + "FROM tbl_proyectos tp INNER JOIN cat_empresas ce on tp.rfc = ce.rfc INNER JOIN cat_responsables_empresa cre on tp.curp_a=cre.curp where curp_a='" + curp + "'";
+                + "FROM tbl_proyectos tp INNER JOIN cat_empresas ce on tp.rfc = ce.rfc INNER JOIN cat_responsables_empresa cre on tp.curp_a=cre.curp where curp_a='" + curp + "' AND STATUS='1'";
         Constantes.enviaMensajeConsola(" query consulta CCTS --> " + query);
         ProyectoBean resu = (ProyectoBean) oraDaoFac.queryForObject(query, new ProyectoMapper());
         return resu;
