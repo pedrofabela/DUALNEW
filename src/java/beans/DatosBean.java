@@ -106,6 +106,60 @@ public class DatosBean {
          private String ALUMNOS_EGRESADOS_GENERAL;
           private String TOTAL_ALUMNOS_DUAL;
            private String TOTAL_PROYECTOS;
+            private String TOTAL_REINGRESOS;
+             private String TOTAL_BECAS;
+              private String TOTAL_HOMBRE_GENERAL;
+               private String TOTAL_MUJER_GENERAL;
+                private String TOTAL_BECA_GENERAL;
+
+    public String getTOTAL_BECA_GENERAL() {
+        return TOTAL_BECA_GENERAL;
+    }
+
+    public void setTOTAL_BECA_GENERAL(String TOTAL_BECA_GENERAL) {
+        this.TOTAL_BECA_GENERAL = TOTAL_BECA_GENERAL;
+    }
+                 
+
+    public String getTOTAL_HOMBRE_GENERAL() {
+        return TOTAL_HOMBRE_GENERAL;
+    }
+
+    public void setTOTAL_HOMBRE_GENERAL(String TOTAL_HOMBRE_GENERAL) {
+        this.TOTAL_HOMBRE_GENERAL = TOTAL_HOMBRE_GENERAL;
+    }
+
+    public String getTOTAL_MUJER_GENERAL() {
+        return TOTAL_MUJER_GENERAL;
+    }
+
+    public void setTOTAL_MUJER_GENERAL(String TOTAL_MUJER_GENERAL) {
+        this.TOTAL_MUJER_GENERAL = TOTAL_MUJER_GENERAL;
+    }
+
+             
+             
+             
+             
+    public String getTOTAL_REINGRESOS() {
+        return TOTAL_REINGRESOS;
+    }
+
+    public void setTOTAL_REINGRESOS(String TOTAL_REINGRESOS) {
+        this.TOTAL_REINGRESOS = TOTAL_REINGRESOS;
+    }
+
+    public String getTOTAL_BECAS() {
+        return TOTAL_BECAS;
+    }
+
+    public void setTOTAL_BECAS(String TOTAL_BECAS) {
+        this.TOTAL_BECAS = TOTAL_BECAS;
+    }
+             
+             
+             
+             
 
     public String getTOTAL_PROYECTOS() {
         return TOTAL_PROYECTOS;

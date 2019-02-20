@@ -90,6 +90,12 @@ public class alumnosDashboardMapper implements Mapper {
         } else {
             dat.setTIPO_ALUMNO(rs.getString("TIPO_ALUMNO"));
         }
+          
+           if (rs.getString("BECA") != null) {
+            dat.setBECA(rs.getString("BECA").trim());
+        } else {
+            dat.setBECA(rs.getString("BECA"));
+        }
 
         return dat;
 

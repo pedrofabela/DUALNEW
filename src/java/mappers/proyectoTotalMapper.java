@@ -26,9 +26,17 @@ public class proyectoTotalMapper implements Mapper{
             dat.setTOTAL_PROYECTOS(rs.getString("TOTAL_PROYECTOS"));
         }
                  
-             
+           if (rs.getString("TOTAL_REINGRESOS") != null) {
+            dat.setTOTAL_REINGRESOS(rs.getString("TOTAL_REINGRESOS").trim());
+        } else {
+            dat.setTOTAL_REINGRESOS(rs.getString("TOTAL_REINGRESOS"));
+        }    
                    
-                   
+          if (rs.getString("TOTAL_BECAS") != null) {
+            dat.setTOTAL_BECAS(rs.getString("TOTAL_BECAS").trim());
+        } else {
+            dat.setTOTAL_BECAS(rs.getString("TOTAL_BECAS"));
+        }           
          
         return dat;  
         

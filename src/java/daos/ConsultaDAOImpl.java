@@ -658,7 +658,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
     //***********************************************************FIN PARTE 2**********************************************************
     //***********************************************************IMPL PETER********************************************************** 
     public List listaAlumnosDashboard(DatosBean datos) throws Exception {
-        String query = "SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_INGRESO_DUAL AS FECHA_REG, TIPO_ALUMNO FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_REG)>='" + datos.getFECHA_INICIO() + "' AND TO_DATE(FECHA_REG)<='" + datos.getFECHA_TERMINO() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS";
+        String query = "SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_INGRESO_DUAL AS FECHA_REG, TIPO_ALUMNO, BECA FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_REG)>='" + datos.getFECHA_INICIO() + "' AND TO_DATE(FECHA_REG)<='" + datos.getFECHA_TERMINO() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS";
         Constantes.enviaMensajeConsola("Consulta Alumnos Dashboard----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new alumnosDashboardMapper());
@@ -666,14 +666,14 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
     }
 
     public List listaAlumnosDashboardU(DatosBean datos) throws Exception {
-        String query = "SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_INGRESO_DUAL AS FECHA_REG, TIPO_ALUMNO FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_INGRESO_DUAL)>='" + datos.getFECHA_INICIO() + "' AND TO_DATE(FECHA_INGRESO_DUAL)<='" + datos.getFECHA_TERMINO() + "' AND  CCT='" + datos.getCCT() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS";
+        String query = "SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_INGRESO_DUAL AS FECHA_REG, TIPO_ALUMNO, BECA FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_INGRESO_DUAL)>='" + datos.getFECHA_INICIO() + "' AND TO_DATE(FECHA_INGRESO_DUAL)<='" + datos.getFECHA_TERMINO() + "' AND  CCT='" + datos.getCCT() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS";
         Constantes.enviaMensajeConsola("Consulta Alumnos Dashboard----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new alumnosDashboardMapper());
         return list;
     }
      public List listaAlumnosDashboardUGeneral(DatosBean datos) throws Exception {
-        String query = "SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_INGRESO_DUAL AS FECHA_REG, TIPO_ALUMNO FROM CAT_ALUMNOS WHERE   CCT='" + datos.getCCT() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS";
+        String query = "SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_INGRESO_DUAL AS FECHA_REG, TIPO_ALUMNO, BECA FROM CAT_ALUMNOS WHERE   CCT='" + datos.getCCT() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS";
         Constantes.enviaMensajeConsola("Consulta Alumnos Dashboard----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new alumnosDashboardMapper());
@@ -695,8 +695,15 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         list = queryForList(query, (Mapper) new totalEstatusMapper());
         return list;
     }
+     public List listaTotalEstatusUGeneral(DatosBean datos) throws Exception {
+        String query = "SELECT DISTINCT(NOM_ESTATUS), COUNT(NOM_ESTATUS) AS TOTAL_ESTATUS FROM (SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_REG FROM CAT_ALUMNOS WHERE  CCT='" + datos.getCCT() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS) GROUP BY NOM_ESTATUS";
+        Constantes.enviaMensajeConsola("Consulta cct----->" + query);
+        List list = null;
+        list = queryForList(query, (Mapper) new totalEstatusMapper());
+        return list;
+    }
     public List proyectos(DatosBean datos) throws Exception {
-        String query = "SELECT COUNT(ID_PROYECTO) AS TOTAL_PROYECTOS  FROM TBL_PROYECTOS WHERE CCT='"+datos.getCCT()+"' AND TO_DATE(FECHA_REG)>='"+datos.getFECHA_INICIO()+"' AND TO_DATE(FECHA_REG)<='"+datos.getFECHA_TERMINO()+"'";
+        String query = "SELECT * FROM (SELECT COUNT(ID_PROYECTO) AS TOTAL_PROYECTOS  FROM TBL_PROYECTOS WHERE CCT='"+datos.getCCT()+"' AND TO_DATE(FECHA_REG)>='"+datos.getFECHA_INICIO()+"' AND TO_DATE(FECHA_REG)<='"+datos.getFECHA_TERMINO()+"'), (SELECT COUNT(ID_ALUMNO) AS TOTAL_REINGRESOS FROM CAT_ALUMNOS WHERE TIPO_ALUMNO='2' AND TO_DATE(FECHA_REINGRESO)>='"+datos.getFECHA_INICIO()+"' AND TO_DATE(FECHA_REINGRESO)<='"+datos.getFECHA_TERMINO()+"' AND CCT='"+datos.getCCT()+"') , (SELECT COUNT(DISTINCT(CURP)) TOTAL_BECAS FROM TBL_BECAS WHERE CCT='"+datos.getCCT()+"' AND TO_DATE(FECHA_REG_BECA)>='"+datos.getFECHA_INICIO()+"' AND TO_DATE(FECHA_REG_BECA)<='"+datos.getFECHA_TERMINO()+"')";
         Constantes.enviaMensajeConsola("cCANTIDAD DE PROYECTOS REGISTRADOS----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new proyectoTotalMapper());

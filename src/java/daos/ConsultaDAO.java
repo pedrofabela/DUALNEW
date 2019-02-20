@@ -131,6 +131,7 @@ public interface ConsultaDAO {
     public List listaTotalEstatus(DatosBean datos) throws Exception;
 
     public List listaTotalEstatusU(DatosBean datos) throws Exception;
+      public List listaTotalEstatusUGeneral(DatosBean datos) throws Exception;
     
     public List proyectos(DatosBean datos) throws Exception;
 
