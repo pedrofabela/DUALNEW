@@ -307,7 +307,7 @@
 
                                                                     <div class="form-inline">
 
-                                                                        <div class="modal-body col-lg-6"  > 
+                                                                        <div class="modal-body col-lg-6"  >                        
                                                                             <div class="table-wrapper-scroll-y">                                 
                                                                                 <table class="table  table-hover">                                                                   
                                                                                     <thead>
@@ -432,19 +432,73 @@
                                                                                 </div>
                                                                             </s:if> 
 
+                                                                            <h5 align="center" class="bg-secondary col-lg-12 text-white"  > <i class="fas fa-book"></i> Registro de Responsables </h5> 
+                                                                            <div class="form-group col-lg-6">
+                                                                                <label class="col-form-label" for="curp">CURP:</label>
+                                                                                <div class="col-sm-auto">
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.CURP_RESPONSABLE" id="curpr" readonly="true"></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorCurp" cssClass="alert alert-danger"></s:fielderror>
+                                                                                    </div> 
+                                                                                </div>
+                                                                                <div class="form-group col-lg-6 ">
+                                                                                    <label class="col-form-label"  for="nombre">Nombre:</label>
+                                                                                    <div class="col-sm-auto">
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.NOMBRER" id="nombrer" readonly="true"></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorNombre" cssClass="alert alert-danger"/>
+                                                                                </div> 
+                                                                            </div>              
+                                                                            <div class="form-group col-lg-6">
+                                                                                <label class="col-form-label" for="apellidop">Apellido Paterno:</label>
+                                                                                <div class="col-sm-auto">
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOPR" id="apellidopr" readonly="true"></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorApellidoP" cssClass="alert alert-danger"/>
+                                                                                </div> 
+                                                                            </div>    
+                                                                            <div class="form-group col-lg-6">
+                                                                                <label class="col-form-label" for="apellidomr">Apellido Materno:</label>
+                                                                                <div class="col-sm-auto">
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOMR" id="apellidomr" readonly="true"></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorApellidoM" cssClass="alert alert-danger"/>
+                                                                                </div> 
+                                                                            </div>   
+                                                                            <div class="form-group col-lg-4">
+                                                                                <label class="col-form-label" for="Genero">Cargo:</label>
+                                                                                <div class="col-sm-auto">
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.CARGO_RESPONSABLE" id="cargo" ></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorCargo" cssClass="alert alert-danger"/>
+                                                                                </div> 
+                                                                            </div>      
 
+                                                                            <div class="form-group col-lg-4">
+                                                                                <label class="col-form-label" for="tel">Teléfono:</label>
+                                                                                <div class="col-sm-auto">
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.TELEFONO_RESPONSABLE" id="telefonor"></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorTel" cssClass="alert alert-danger"/>
+                                                                                </div> 
+                                                                            </div>     
 
+                                                                            <div class="form-group col-lg-4">
+                                                                                <label class="col-form-label" for="correo">Email:</label>
+                                                                                <div class="col-sm-auto">
+                                                                                    <s:textfield  cssClass="form-control " name="ad.EMAIL_RESPONSABLE" id="emailr" ></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorCorreo" cssClass="alert alert-danger"/>
+                                                                                </div> 
+                                                                            </div> 
 
+                                                                            <div class="form-group col-lg-12">                                                             
+                                                                                <div align="center">
+                                                                                    <a class="btn bg-success " style="color: white;"  href="Javascript:muestra_oculta('GuardarResponsable','loadGM')">Guardar  Responsables</a>
+                                                                                </div>  
+                                                                            </div>
 
+                                                                            &nbsp;
+                                                                            <h5 align="center" class="bg-secondary col-lg-12 text-white"  > <i class="fas fa-book"></i>Responsables Registrados  </h5>     
+                                                                            &nbsp;
                                                                             <div class="input-group ">                        
                                                                                 <i class="fa fa-search fa-2x " style="color: #0056b3"></i>                                                                                                                  
-                                                                                <input id="filtrarR" type="text" class="form-control" placeholder="INGRESA EL NOMBRE DEL RESPONSABLE QUE BUSCA...."/>
+                                                                                <input id="filtrarR" type="text" class="form-control col-lg-6" placeholder="INGRESA EL NOMBRE DEL RESPONSABLE QUE BUSCA...."/>
                                                                             </div>                                                                                                                                                     
-
-                                                                            <br/>
-                                                                            <br/>
-                                                                            <br/>
-                                                                            <br/>
+                                                                            
                                                                             <div class="table-wrapper-scroll-y col-lg-12">  
                                                                                 <table class="table table-hover">
                                                                                     <thead>
@@ -488,7 +542,7 @@
                                                                                                 <td >
                                                                                                     <a href="#" data-toggle='modal' data-target='#DeleteResp' 
                                                                                                        data-id_eliminar_resp='<s:property value="ID_CAT_RESP"/>'>
-                                                                                                        <i class="fa fa-trash" style="font-size: 25px; color: #004085; "></i><span class="text-muted"> Eliminar Responsable</span></a>
+                                                                                                        <i class="fa fa-trash" style="font-size: 25px; color: #004085; "></i></a>
                                                                                                 </td>          
                                                                                             </tr>  
 
@@ -512,11 +566,7 @@
 
                                                                     </div>
                                                                     <div class="modal-footer bg-secondary" >
-                                                                        <div class="form-inline">                                                             
-                                                                            <div class="col-sm-auto">
-                                                                                <a class="btn bg-primary " style="color: white;"  href="Javascript:muestra_oculta('GuardarResponsable','loadGM')">Guardar Archivo de Responsables</a>
-                                                                            </div>  
-                                                                        </div>
+
                                                                     </div>
                                                                 </div>
                                                                 <br></br>   
@@ -572,7 +622,7 @@
                                                                                             <th scope="col" >Apellido Paterno</th>
                                                                                             <th scope="col" >Apellido Materno</th>
                                                                                             <th scope="col" >Clave Carrera</th>
-                                                                                                                                           
+
                                                                                             <th scope="col" >Modificar</th>
                                                                                             <th scope="col" >Eliminar</th>
                                                                                         </tr>
@@ -586,12 +636,12 @@
                                                                                                 <td  ><s:property value="APELLIDOPAI"/></td>                                                                                             
                                                                                                 <td  ><s:property value="APELLIDOMAI"/></td>
                                                                                                 <td  ><s:property value="CVE_CAR_ASE"/></td>
-                                                                                                
 
-                                                                                                <td ><a   data-toggle='modal' data-target='#EditAsesor' 
 
-                                                                                                          data-curpr='<s:property value="CURP_ASESORI"/>' 
-                                                                                                          data-nombrer='<s:property value="NOMBREAI"/>' 
+                                                                                                <td ><a   data-toggle='modal' data-target='#EditAsesores' 
+
+                                                                                                          data-curpa='<s:property value="CURP_ASESORI"/>' 
+                                                                                                          data-nombrea='<s:property value="NOMBREAI"/>' 
                                                                                                           data-apellidopa='<s:property value="APELLIDOPAI"/>' 
                                                                                                           data-apellidoma='<s:property value="APELLIDOMAI"/>' 
                                                                                                           data-carrera='<s:property value="CVE_CAR_ASE"/>' 
@@ -602,7 +652,7 @@
                                                                                                 </td>
                                                                                                 <td >
                                                                                                     <a href="#" data-toggle='modal' data-target='#DeleteAsesor' 
-                                                                                                       data-id_eliminar_resp='<s:property value="ID_CAT_ASE"/>'>
+                                                                                                       data-id_eliminar_ase='<s:property value="ID_CAT_ASE"/>'>
                                                                                                         <i class="fa fa-trash" style="font-size: 25px; color: #004085; "></i></a>
                                                                                                 </td>          
                                                                                             </tr>  
@@ -614,7 +664,7 @@
                                                                                             <s:hidden  name = "ListaAsesores[%{#stat.index}].CVE_CAR_ASE" id="CVE_CAR_ASE"></s:hidden>  
                                                                                             <s:hidden  name = "ListaAsesores[%{#stat.index}].CCT_ASE" id="CCT_ASE"></s:hidden>  
                                                                                             <s:hidden  name = "ListaAsesores[%{#stat.index}].ID_CAT_ASE" id="ID_CAT_ASE"></s:hidden>  
-                                                                                            
+
 
                                                                                         </s:iterator>
 
@@ -721,51 +771,28 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!-- Elimiar Modal-->
-                                                        <div class="modal fade" id="DeleteResp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
+                                                        <!-- Actualiza Responsable Modal-->
+                                                        <div class="modal fade" id="EditResponsables" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg " role="document">
                                                                 <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">Eliminar Beca</h5>
+                                                                    <div class="modal-header bg-primary">
+                                                                        <h4 align="center"  style="color: #ffffff"> <i class="fas fa-book"></i> ACTUALIZACIÓN DE RESPONSABLE INSTITUCIONAL</h4> 
                                                                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                                             <span aria-hidden="true"></span>
                                                                         </button>
                                                                     </div>
-                                                                    <div class="modal-body">Estas seguro que deseas eliminar el responsable Institucional?.
-                                                                        <s:textfield name="ad.ID_CAT_RESP" id="id_eliminar" cssStyle="display:none;"></s:textfield> 
-                                                                        </div>
+                                                                    <div class="modal-body">
 
-
-                                                                        <div class="modal-footer">
-                                                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                                            <a class="btn btn-primary" href="Javascript:Accion('EliminarResp')">Aceptar</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div> 
-                                                            <!-- Actualiza Modal-->
-                                                            <div class="modal fade" id="EditResponsables" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog modal-lg " role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header bg-primary">
-                                                                            <h4 align="center"  style="color: #ffffff"> <i class="fas fa-book"></i> ACTUALIZACIÓN DE RESPONSABLE INSTITUCIONAL</h4> 
-                                                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                                                <span aria-hidden="true"></span>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-
-                                                                            <div class="row">
-                                                                                <div class="form-group col-lg-6">
-                                                                                    <label class="col-form-label" for="curp">CURP:</label>
-                                                                                    <div class="col-sm-auto">
+                                                                        <div class="row">
+                                                                            <div class="form-group col-lg-6">
+                                                                                <label class="col-form-label" for="curp">CURP:</label>
+                                                                                <div class="col-sm-auto">
                                                                                     <s:textfield  cssClass="form-control text-uppercase" name="ad.CURP_RESPONSABLE" id="curpr" readonly="true"></s:textfield>
                                                                                     <s:fielderror fieldName="ErrorCurp" cssClass="alert alert-danger"></s:fielderror>
                                                                                     </div> 
                                                                                 </div>
                                                                                 <div class="form-group col-lg-6 ">
-                                                                                    <label class="col-form-label" style="text-align : left;" for="nombre">Nombre:</label>
+                                                                                    <label class="col-form-label"  for="nombre">Nombre:</label>
                                                                                     <div class="col-sm-auto">
                                                                                     <s:textfield  cssClass="form-control text-uppercase" name="ad.NOMBRER" id="nombrer" readonly="true"></s:textfield>
                                                                                     <s:fielderror fieldName="ErrorNombre" cssClass="alert alert-danger"/>
@@ -781,14 +808,14 @@
                                                                             <div class="form-group col-lg-6">
                                                                                 <label class="col-form-label" for="apellidomr">Apellido Materno:</label>
                                                                                 <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="datos.APELLIDOMR" id="apellidomr" readonly="true"></s:textfield>
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOMR" id="apellidomr" readonly="true"></s:textfield>
                                                                                     <s:fielderror fieldName="ErrorApellidoM" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>   
                                                                             <div class="form-group col-lg-4">
                                                                                 <label class="col-form-label" for="Genero">Cargo:</label>
                                                                                 <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.CARGO_RESPONSABLE" id="cargo" readonly="true"></s:textfield>
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.CARGO_RESPONSABLE" id="cargo" ></s:textfield>
                                                                                     <s:fielderror fieldName="ErrorCargo" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>      
@@ -819,7 +846,121 @@
                                                                         </div>                                         
                                                                     </div>
                                                                 </div>
-                                                            </div>              
+                                                            </div>    
+                                                            <!-- Elimiar Responsable Modal-->
+                                                            <div class="modal fade" id="DeleteResp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar Responsable</h5>
+                                                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true"></span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">Estas seguro que deseas eliminar el responsable Institucional?
+                                                                        <s:textfield name="ad.ID_CAT_RESP" id="id_eliminar_resp" cssStyle="display:none;"></s:textfield> 
+                                                                        </div>
+
+
+                                                                        <div class="modal-footer">
+                                                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                                            <a class="btn btn-primary" href="Javascript:Accion('EliminarResp')">Aceptar</a>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div> 
+
+                                                            <!-- Actualiza Asesores Modal-->
+                                                            <div class="modal fade" id="EditAsesores" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-lg " role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header bg-primary">
+                                                                            <h4 align="center"  style="color: #ffffff"> <i class="fas fa-book"></i> ACTUALIZACIÓN DE ASESOR INSTITUCIONAL</h4> 
+                                                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true"></span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+
+                                                                            <div class="row">
+                                                                                <div class="form-group col-lg-6">
+                                                                                    <label class="col-form-label" for="curp">CURP:</label>
+                                                                                    <div class="col-sm-auto">
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.CURP_ASESORI" id="curpa" readonly="true"></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorCurp" cssClass="alert alert-danger"></s:fielderror>
+                                                                                    </div> 
+                                                                                </div>
+                                                                                <div class="form-group col-lg-6 ">
+                                                                                    <label class="col-form-label" style="text-align : left;" for="nombre">Nombre:</label>
+                                                                                    <div class="col-sm-auto">
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.NOMBREAI" id="nombrea" readonly="true"></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorNombre" cssClass="alert alert-danger"/>
+                                                                                </div> 
+                                                                            </div>              
+                                                                            <div class="form-group col-lg-6">
+                                                                                <label class="col-form-label" for="apellidop">Apellido Paterno:</label>
+                                                                                <div class="col-sm-auto">
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOPAI" id="apellidopa" readonly="true"></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorApellidoP" cssClass="alert alert-danger"/>
+                                                                                </div> 
+                                                                            </div>    
+                                                                            <div class="form-group col-lg-6">
+                                                                                <label class="col-form-label" for="apellidomr">Apellido Materno:</label>
+                                                                                <div class="col-sm-auto">
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOMAI" id="apellidoma" readonly="true"></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorApellidoM" cssClass="alert alert-danger"/>
+                                                                                </div> 
+                                                                            </div>   
+                                                                            <div class="form-group col-lg-12">
+                                                                                <label class="col-form-label text-muted " for="CARRERA" >Carrera:</label>
+                                                                                <div class="col-sm-auto ">
+                                                                                    <s:select  name="ad.CVE_CAR_ASE" id="carrera" list="ObtenerCarreraCCT"  listKey="CLAVECARRERA"  listValue="NOMBRE_CARRERA"  headerKey="" headerValue="--SELECCIONE UNA CARRERA" cssClass="form-control " ></s:select>
+                                                                                    <s:fielderror fieldName="ErrorCarrera" cssClass="alert alert-danger" />
+                                                                                </div> 
+                                                                            </div>      
+
+
+
+                                                                        </div>
+                                                                        <s:textfield name="ad.ID_CAT_ASE" id="idase" cssStyle="display:none;"></s:textfield>        
+
+                                                                        </div>        
+                                                                        <div class="modal-footer">
+                                                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                                            <a class="btn btn-primary" href="Javascript:Accion('ActualizaAse')">Actualizar</a>
+                                                                        </div>                                         
+                                                                    </div>
+                                                                </div>
+                                                            </div>  
+
+                                                            <!-- Elimiar Ase Modal-->
+                                                            <div class="modal fade" id="DeleteAsesor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar Asesor Institucional</h5>
+                                                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true"></span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">Estas seguro que deseas eliminar el Asesor Institucional?
+                                                                        <s:textfield name="ad.ID_CAT_ASE" id="id_eliminar_ase" cssStyle="display:none;"></s:textfield> 
+                                                                        </div>
+
+
+                                                                        <div class="modal-footer">
+                                                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                                            <a class="btn btn-primary" href="Javascript:Accion('EliminarAse')">Aceptar</a>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>  
+
+
+
+
 
 
                                                             <div id="loadGrdCar">
@@ -893,42 +1034,99 @@
 
 
                                                             <script>
-                                                         $('#EditResponsables').on('show.bs.modal', function (event) {
-                                                             var button = $(event.relatedTarget) // Button that triggered the modal
+                                                    $('#EditResponsables').on('show.bs.modal', function (event) {
+                                                        var button = $(event.relatedTarget) // Button that triggered the modal
 
 
-                                                             var recipient0 = button.data('curpr')
-                                                             var recipient1 = button.data('nombrer')
-                                                             var recipient2 = button.data('apellidopr')
-                                                             var recipient3 = button.data('apellidomr')
-                                                             var recipient4 = button.data('cargo')
-                                                             var recipient5 = button.data('telefonor')
-                                                             var recipient6 = button.data('emailr')
-                                                             var recipient7 = button.data('idresp')
-
-
-
-                                                             // Extract info from data-* attributes
-                                                             // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                                                             // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-
-                                                             var modal = $(this)
-                                                             modal.find('.modal-body #curpr').val(recipient0)
-                                                             modal.find('.modal-body #nombrer').val(recipient1)
-                                                             modal.find('.modal-body #apellidopr').val(recipient2)
-                                                             modal.find('.modal-body #apellidomr').val(recipient3)
-                                                             modal.find('.modal-body #cargo').val(recipient4)
-                                                             modal.find('.modal-body #telefonor').val(recipient5)
-                                                             modal.find('.modal-body #emailr').val(recipient6)
-                                                             modal.find('.modal-body #idresp').val(recipient7)
+                                                        var recipient0 = button.data('curpr')
+                                                        var recipient1 = button.data('nombrer')
+                                                        var recipient2 = button.data('apellidopr')
+                                                        var recipient3 = button.data('apellidomr')
+                                                        var recipient4 = button.data('cargo')
+                                                        var recipient5 = button.data('telefonor')
+                                                        var recipient6 = button.data('emailr')
+                                                        var recipient7 = button.data('idresp')
 
 
 
+                                                        // Extract info from data-* attributes
+                                                        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                                                        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
+                                                        var modal = $(this)
+                                                        modal.find('.modal-body #curpr').val(recipient0)
+                                                        modal.find('.modal-body #nombrer').val(recipient1)
+                                                        modal.find('.modal-body #apellidopr').val(recipient2)
+                                                        modal.find('.modal-body #apellidomr').val(recipient3)
+                                                        modal.find('.modal-body #cargo').val(recipient4)
+                                                        modal.find('.modal-body #telefonor').val(recipient5)
+                                                        modal.find('.modal-body #emailr').val(recipient6)
+                                                        modal.find('.modal-body #idresp').val(recipient7)
 
 
-                                                         });
+
+
+
+                                                    });
 
                                                             </script>
+
+                                                            <script>
+                                                                $('#EditAsesores').on('show.bs.modal', function (event) {
+                                                                    var button = $(event.relatedTarget) // Button that triggered the modal
+
+
+
+
+                                                                    var recipient0 = button.data('curpa')
+                                                                    var recipient1 = button.data('nombrea')
+                                                                    var recipient2 = button.data('apellidopa')
+                                                                    var recipient3 = button.data('apellidoma')
+                                                                    var recipient4 = button.data('carrera')
+                                                                    var recipient5 = button.data('idase')
+
+
+
+
+                                                                    // Extract info from data-* attributes
+                                                                    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                                                                    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
+                                                                    var modal = $(this)
+                                                                    modal.find('.modal-body #curpa').val(recipient0)
+                                                                    modal.find('.modal-body #nombrea').val(recipient1)
+                                                                    modal.find('.modal-body #apellidopa').val(recipient2)
+                                                                    modal.find('.modal-body #apellidoma').val(recipient3)
+                                                                    modal.find('.modal-body #carrera').val(recipient4)
+                                                                    modal.find('.modal-body #idase').val(recipient5)
+
+                                                                });
+
+                                                            </script>
+
+                                                            <script>
+                                                                $('#DeleteResp').on('show.bs.modal', function (event) {
+                                                                    var button = $(event.relatedTarget) // Button that triggered the modal
+
+
+                                                                    var recipient0 = button.data('id_eliminar_resp')
+                                                                    var modal = $(this)
+                                                                    modal.find('.modal-body #id_eliminar_resp').val(recipient0)
+                                                                });
+
+                                                            </script>  
+
+                                                            <script>
+                                                                $('#DeleteAsesor').on('show.bs.modal', function (event) {
+                                                                    var button = $(event.relatedTarget) // Button that triggered the modal
+
+
+                                                                    var recipient0 = button.data('id_eliminar_ase')
+                                                                    var modal = $(this)
+                                                                    modal.find('.modal-body #id_eliminar_ase').val(recipient0)
+                                                                });
+
+                                                            </script>  
 
                                                     </s:form>
 

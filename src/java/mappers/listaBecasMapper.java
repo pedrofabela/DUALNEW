@@ -66,6 +66,11 @@ public class listaBecasMapper implements Mapper {
         } else {
             dat.setTIPO_BECA(rs.getString("tipo_beca"));
         }
+        if (rs.getString("status") != null) {
+            dat.setSTATUS_B(rs.getString("status").trim());
+        } else {
+            dat.setSTATUS_B(rs.getString("status"));
+        } 
          if (rs.getString("des_beca") != null) {
             dat.setDES_BECA(rs.getString("des_beca").trim());
         } else {

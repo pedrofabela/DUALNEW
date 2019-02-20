@@ -1346,8 +1346,20 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             be.setCURP_AB(datos.getCURP());
 
             ListaBecas = (ArrayList<BecaBean>) con.ConsultaBecas(datos);
+            
+            Iterator LB=ListaBecas.iterator();
+            BecaBean obj;
+            int contador=0;
+            
+            while (LB.hasNext()) {
+                obj = (BecaBean) LB.next();
+                        
+                if (obj.getSTATUS_B().equals("1")) {
+                     contador=contador+1;                  
+                }
+            }
 
-            if (ListaBecas.size() == 0) {
+            if (contador == 0) {
                 be.setBECA("no");
                 con.ActualizaStatusBeca(be);
             }

@@ -973,7 +973,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
     }
 
     public List ConsultaBecas(DatosBean datos) throws Exception {
-        String query = "SELECT id_beca,cct,curp,fuente,monto,periodicidad,duracion,(SELECT cat_becas.nom_beca FROM cat_becas where tbl_becas.tipo_beca = cat_becas.id_beca)  nom_beca , tipo_beca, des_beca FROM tbl_becas where cct='" + datos.getCCT() + "' and curp='" + datos.getCURP() + "'";
+        String query = "SELECT id_beca,cct,curp,fuente,monto,periodicidad,duracion,(SELECT cat_becas.nom_beca FROM cat_becas where tbl_becas.tipo_beca = cat_becas.id_beca)  nom_beca , tipo_beca, des_beca,status FROM tbl_becas where cct='" + datos.getCCT() + "' and curp='" + datos.getCURP() + "' AND STATUS='1'";
         Constantes.enviaMensajeConsola("Consulta ALUMNOS----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new listaBecasMapper());
@@ -1015,10 +1015,14 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         //Crear un ArrayList para agregar los campos a insertar     
         ArrayList<ObjPrepareStatement> arregloCampos = new ArrayList<ObjPrepareStatement>();
         ObjPrepareStatement temporal;
-        temporal = new ObjPrepareStatement("ID_BECA", "STRING", be.getID_BECAE());
+        
+        temporal = new ObjPrepareStatement("STATUS", "STRING", "2");
         arregloCampos.add(temporal);
+        
+        String Condicion;
+        Condicion = " WHERE ID_BECA='" + be.getID_BECAE() + "'";
 
-        return queryDelete(Constantes.TablaBecas, arregloCampos);
+        return queryUpdate(Constantes.TablaBecas, arregloCampos,Condicion);
     }
 
     //*********************************************************************************REGISTRO DE ALUMNO INDIVIDUAL***********************************************************************************
