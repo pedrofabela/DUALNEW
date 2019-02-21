@@ -111,6 +111,42 @@ public class DatosBean {
               private String TOTAL_HOMBRE_GENERAL;
                private String TOTAL_MUJER_GENERAL;
                 private String TOTAL_BECA_GENERAL;
+                
+                 private String MUNICIPIO_ACTIVOS;
+                  private String MUNICIPIO_INACTIVOS;
+                   private String MUNICIPIO_EGRESADOS;
+
+                   
+                   
+                   
+    public String getMUNICIPIO_ACTIVOS() {
+        return MUNICIPIO_ACTIVOS;
+    }
+
+    public void setMUNICIPIO_ACTIVOS(String MUNICIPIO_ACTIVOS) {
+        this.MUNICIPIO_ACTIVOS = MUNICIPIO_ACTIVOS;
+    }
+
+    public String getMUNICIPIO_INACTIVOS() {
+        return MUNICIPIO_INACTIVOS;
+    }
+
+    public void setMUNICIPIO_INACTIVOS(String MUNICIPIO_INACTIVOS) {
+        this.MUNICIPIO_INACTIVOS = MUNICIPIO_INACTIVOS;
+    }
+
+    public String getMUNICIPIO_EGRESADOS() {
+        return MUNICIPIO_EGRESADOS;
+    }
+
+    public void setMUNICIPIO_EGRESADOS(String MUNICIPIO_EGRESADOS) {
+        this.MUNICIPIO_EGRESADOS = MUNICIPIO_EGRESADOS;
+    }
+                   
+                   
+                   
+                   
+                   
 
     public String getTOTAL_BECA_GENERAL() {
         return TOTAL_BECA_GENERAL;

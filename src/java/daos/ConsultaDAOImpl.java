@@ -38,6 +38,7 @@ import mappers.listaAlumnosBecaMapper;
 import mappers.listaAlumnosMapper;
 import mappers.listaBecasMapper;
 import mappers.listaMunicipiosMapper;
+import mappers.munEscMapper;
 import mappers.proyectoTotalMapper;
 import mappers.totalAluEscuela;
 import mappers.totalEstatusMapper;
@@ -723,6 +724,13 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         Constantes.enviaMensajeConsola("Consulta cct----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new totalAluEscuela());
+        return list;
+    }
+     public List listaMunEsc(DatosBean datos) throws Exception {
+        String query = "SELECT  CAT_MUNICIPIOS.NOM_MUN AS NOMESC, NVL(ACTIVO.TOTAL_MUNICIPIOACTIVO,'0') AS MUNICIPIO_ACTIVOS, NVL(INACTIVO.TOTAL_MUNICIPIOINACTIVO,'0') AS MUNICIPIO_INACTIVOS, NVL(EGRESADOS.TOTAL_MUNICIPIOEGRESADO,'0' ) AS MUNICIPIO_EGRESADOS FROM CAT_MUNICIPIOS LEFT OUTER JOIN (SELECT DISTINCT(MUNICIPIO) AS MUNICIPIOACTIVO, COUNT(MUNICIPIO) AS TOTAL_MUNICIPIOACTIVO FROM  CAT_ALUMNOS WHERE STATUS=1 AND CCT='"+datos.getCCT()+"' GROUP BY MUNICIPIO )ACTIVO ON CAT_MUNICIPIOS.ID=ACTIVO.MUNICIPIOACTIVO LEFT OUTER JOIN (SELECT DISTINCT(MUNICIPIO) AS MUNICIPIOINACTIVO, COUNT(MUNICIPIO) AS TOTAL_MUNICIPIOINACTIVO FROM  CAT_ALUMNOS WHERE STATUS<>10 AND STATUS>10  AND CCT='"+datos.getCCT()+"' GROUP BY MUNICIPIO) INACTIVO ON CAT_MUNICIPIOS.ID=INACTIVO.MUNICIPIOINACTIVO LEFT OUTER JOIN (SELECT DISTINCT(MUNICIPIO) AS MINICIPIOEGRESADO, COUNT(MUNICIPIO) AS TOTAL_MUNICIPIOEGRESADO FROM  CAT_ALUMNOS WHERE STATUS=10  AND CCT='"+datos.getCCT()+"' GROUP BY MUNICIPIO )EGRESADOS ON CAT_MUNICIPIOS.ID=EGRESADOS.MINICIPIOEGRESADO WHERE ACTIVO.TOTAL_MUNICIPIOACTIVO IS NOT NULL OR INACTIVO.TOTAL_MUNICIPIOINACTIVO IS NOT NULL OR EGRESADOS.TOTAL_MUNICIPIOEGRESADO IS NOT NULL ORDER BY CAT_MUNICIPIOS.NOM_MUN ASC ";
+        Constantes.enviaMensajeConsola("Consulta cct----->" + query);
+        List list = null;
+        list = queryForList(query, (Mapper) new munEscMapper());
         return list;
     }
 

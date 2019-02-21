@@ -700,6 +700,69 @@
                                                                     </div> 
 
                                                                 </div>  
+                                                                               
+                                                                 <div class="form-group col-lg-6" >
+
+
+                                                                    <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Alumnos por Municipio</div>
+                                                                   
+                                                                    <div style="height: 250px; overflow-y: scroll">
+                                                                    <table class="table table-hover"  style=" font-size: 14px; width: 100%;">
+
+                                                               
+
+                                                                <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999; background: purple; color:white;">
+                                                                    <td  scope="row" style="width: 40%;">Municipio</td>
+                                                                    <td style="width: 20%;">Activos</td>
+                                                                    <td style="width: 20%;">Inactivos</td>
+                                                                    <td style="width: 20%;">Egresados</td>
+
+                                                                   
+
+
+                                                                </tr>
+
+                                                                <s:iterator value="ListaMunicipioEscuela" id="ListaMunicipioEscuela" status="stat">
+
+                                                             
+
+                                                                        <tr style=" background: #efeaf0; font-size: 12px; color: #333;">
+                                                                            <td style="width: 40%;"><s:property value="NOMESC"/></td>
+                                                                            <td style="width: 20%;"><s:property value="MUNICIPIO_ACTIVOS"/></td>
+                                                                            <td style="width: 20%;"><s:property value="MUNICIPIO_INACTIVOS"/></td>
+                                                                            <td style="width: 20%;"><s:property value="MUNICIPIO_EGRESADOS" /></td>
+
+                                                                          
+
+                                                                        </tr>
+
+                                                               
+                                                                </s:iterator>
+                                                         
+
+                                                            <s:else>
+
+                                                                <div style="color: #e1173e; font-size: 12px; text-align: center;">No hay información para mostrar </div>
+
+
+                                                            </s:else>
+                                                        </table>
+                                                                    
+                                                                   </div> 
+                                                                    
+                                                                    
+
+                                                                </div>    
+                                                                               
+                                                                                 <div class="form-group col-lg-6" >
+
+
+                                                                    <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Alumnos por género</div>
+                                                                   
+                                                                   <div id="chart_div_gen" style="margin-bottom: 10px; height: 240px;"></div>
+
+                                                                </div>    
+                                                                               
                                                                 
                                                                 
                                                                                
