@@ -995,7 +995,7 @@
                                                                     
 
 
-                                                                <div class="form-group col-lg-6" >
+                                                           <!--     <div class="form-group col-lg-6" >
 
 
                                                                     <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Alumnos por género del periodo</div>
@@ -1015,7 +1015,7 @@
 
                                                                     </div> 
 
-                                                                </div>  
+                                                                </div>  -->
 
 
                                                                 <div class="form-group col-lg-12"  >
@@ -1035,22 +1035,7 @@
 
 
 
-                                                                <div class="form-group col-lg-12"  >
-
-
-                                                                    <div style="width:100%; text-align: center; background: #606060; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Número de Alumnos por Género</div>
-                                                                    <div class="col-sm-auto  " style="background:  #edecec; margin-left: 00px;">
-
-                                                                        <div id="chart_div" style="margin-bottom: 50px; height: 250px;"></div>
-
-
-
-
-
-                                                                    </div> 
-
-                                                                </div>  
-
+                                                                
 
 
 
@@ -1088,7 +1073,7 @@
                                                     <table id="customers" style="text-align: justify;">
 
 
-                                                        <s:if test="ListaAlumnosDashboardU.size()>0">
+                                                        <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
 
 
                                                             <table id="customers" style=" font-size: 12px;">
@@ -1108,7 +1093,7 @@
 
                                                                 </tr>
 
-                                                                <s:iterator value="ListaAlumnosDashboardU" id="ListaAlumnosDashboardU" status="stat">
+                                                                <s:iterator value="ListaAlumnosDashboardUGeneral" id="ListaAlumnosDashboardUGeneral" status="stat">
 
                                                                     <s:if test="STATUS==1">
 
@@ -1137,7 +1122,7 @@
                                                     </table>
 
 
-                                                    <s:if test="ListaAlumnosDashboardU.size()>0">
+                                                    <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
 
                                                         <center>
 
@@ -1182,7 +1167,7 @@
                                                     <table id="customers" style="text-align: justify;">
 
 
-                                                        <s:if test="ListaAlumnosDashboardU.size()>0">
+                                                        <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
 
 
                                                             <table id="customers" style=" font-size: 12px;">
@@ -1202,9 +1187,9 @@
 
                                                                 </tr>
 
-                                                                <s:iterator value="ListaAlumnosDashboardU" id="ListaAlumnosDashboardU" status="stat">
+                                                                <s:iterator value="ListaAlumnosDashboardUGeneral" id="ListaAlumnosDashboardUGeneral" status="stat">
 
-                                                                    <s:if test="STATUS!=1">
+                                                                    <s:if test="STATUS!=1 && STATUS!=10">
 
                                                                         <tr style=" background: #efeaf0; font-size: 8px;">
                                                                             <td style="width: 10%;"><s:property value="CURP"/></td>
@@ -1230,7 +1215,7 @@
 
                                                     </table>
 
-                                                    <s:if test="ListaAlumnosDashboardU.size()>0">
+                                                    <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
 
                                                         <center>
 
@@ -1296,7 +1281,7 @@
 
                                                                 </tr>
 
-                                                                <s:iterator value="ListaAlumnosDashboardUGenetral" id="ListaAlumnosDashboardUGeneral" status="stat">
+                                                                <s:iterator value="ListaAlumnosDashboardUGeneral" id="ListaAlumnosDashboardUGeneral" status="stat">
 
                                                                     <s:if test="STATUS==10">
 
@@ -1389,7 +1374,7 @@
 
                                                                 <s:iterator value="ListaAlumnosDashboardUGeneral" id="ListaAlumnosDashboardUGeneral" status="stat">
 
-                                                                    <s:if test="BECA=='si'">
+                                                                    <s:if test="BECA=='si' && STATUS==1">
 
                                                                         <tr style=" background: #efeaf0; font-size: 8px;">
                                                                             <td style="width: 10%;"><s:property value="CURP"/></td>
@@ -1519,7 +1504,7 @@
 
                                                     </table>
 
-                                                    <s:if test="ListaAlumnosDashboardU.size()>0">
+                                                    <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
 
                                                         <center>
 
@@ -1608,7 +1593,7 @@
 
                                                     </table>
 
-                                                    <s:if test="ListaAlumnosDashboardU.size()>0">
+                                                    <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
 
                                                         <center>
 

@@ -122,6 +122,120 @@
 
 
     </script>
+            
+            <script type="text/javascript">
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+        <s:iterator value="ListaTotalEstatusUGeneral" id="ListaTotalEstatusUGeneral" status="stat">
+
+                ['<s:property value="NOM_ESTATUS"/>', <s:property value="TOTAL_ESTATUS"/>],
+
+        </s:iterator>
+
+            ]);
+
+            var options = {
+
+                backgroundColor: '#edecec',
+                 
+                
+
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_general'));
+
+            chart.draw(data, options);
+            
+                var counter = 0;
+
+    var handler = setInterval(function(){ 
+        counter = counter + 0.01
+        options = {
+                    
+          slices: {                        
+                    3: {offset: counter},
+                    4: {offset: counter},                       
+                    5: {offset: counter},                       
+                    
+          },
+          
+          
+                                backgroundColor: '#e7e6e6',
+                                            chartArea: {left: 20, top: 25, width: '85%', height: '80%'},
+                                            legend: {position: 'left', top: 20, width: '45%', textStyle: {fontSize: 13, color: 'black', fontName: 'Didactic'}},
+
+                                            colors: ['green', '#25a1db', '#9dc325', '#fcce00', '#a29f9d', '#e1173e'],
+
+                                            textStyle: {
+
+                                                fontSize: 16,
+
+                                                // The color of the text.
+                                                color: '#848484'
+                                                        // The color of the text outline.
+
+                                                        // The transparency of the text.
+
+                                            },
+
+                                        };
+                                        chart.draw(data, options);
+
+                                        if (counter > 0.20)
+                                            clearInterval(handler);
+                                    }, 200);
+        }
+    </script>  
+             <script type="text/javascript">
+
+
+
+        google.charts.load('current', {packages: ['corechart', 'bar']});
+        google.charts.setOnLoadCallback(drawBarColors);
+
+        function drawBarColors() {
+            var data = google.visualization.arrayToDataTable([
+                ['City', 'DUAL', {role: 'annotation'}, { role: 'style' }],
+
+                ['Hombre', <s:property value="datos.TOTAL_HOMBRE_GENERAL" />, '<s:property value="datos.TOTAL_HOMBRE_GENERAL" />','blue'],
+                ['Mujer', <s:property value="datos.TOTAL_MUJER_GENERAL" />, '<s:property value="datos.TOTAL_MUJER_GENERAL" />','pink'],
+            ]);
+
+            var options = {
+
+                chartArea: {width: '50%'},
+                colors: ['#ffab91', '#ffab91'],
+                hAxis: {
+                    title: 'Total de Alumnos',
+                    minValue: 0,
+                    textStyle: {
+                        fontSize: 10,
+                    }
+
+                },
+                backgroundColor: '#edecec',
+                bar: {groupWidth: "85%"},
+                vAxis: {
+                    title: 'Alumnos DUAL'
+                },
+                animation: {
+                duration: 4500,
+                startup: true //This is the new option
+            },
+
+            };
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div_gen'));
+            chart.draw(data, options);
+        }
+
+
+
+    </script>
 
 
 
@@ -370,10 +484,310 @@
                                                           
                                                                     
                                                                     
-                                                                    
+                                                                     <div style="width: 100%; height: 40px;  background: #343a40; margin-bottom: 15px; padding: 7px; ">Indicadores Generales</div>
                                                                     
 
                                                                     <div class="row"  >
+                                                                        
+                                                                 
+                                                                   <div class="form-group col-lg-4" style="padding: none;"  >
+
+                                                                   <div style="background: #a2a3b8; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+
+                                                                       <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
+
+                                                                           Total de Alumnos 
+
+                                                                       </div>
+                                                                           <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
+
+                                                                               <s:property value="datos.TOTAL_ALUMNOS_DUAL"/> <i class="fas fa-fw fa-wrench" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+
+                                                                       </div>
+                                                                        <a href="#popup5" style="text-decoration: none; color:white;" >    <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+
+                                                                          Detalle de Alumnos        ->
+
+                                                                            </div></a>
+
+
+                                                                   </div>
+
+
+                                                               </div>           
+                                                                
+                                                               
+                                                                
+                                                                <div class="form-group col-lg-2" style="padding: none;"  >
+
+                                                                   <div style="background: #28a745; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+
+                                                                       <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
+
+                                                                           Activos 
+
+                                                                       </div>
+                                                                           <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
+
+                                                                               <s:property value="datos.ALUMNOS_ACTIVOS_GENERAL"/> <i class="fas fa-fw fa-user" style="position: absolute; z-index: 0; top : -2 rem; right: 0.5rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+
+                                                                       </div>
+                                                                     <a href="#popup6" style="text-decoration: none; color:white;" >      <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+
+                                                                          Detalle de Alumnos        ->
+
+                                                                         </div></a>
+
+
+                                                                   </div>
+
+
+                                                               </div>  
+                                                                               
+                                                                               
+                                                                               
+                                                                     <div class="form-group col-lg-2" style="padding: none;"  >
+
+                                                                   <div style="background: #dc3545; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+
+                                                                       <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
+
+                                                                           Inactivos 
+
+                                                                       </div>
+                                                                            <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
+
+                                                                               <s:property value="datos.ALUMNOS_INACTIVOS_GENERAL"/> <i class="fas fa-fw fa-thumbs-down" style="position: absolute; z-index: 0; top : -2 rem; right: 0.5rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+
+                                                                           </div> 
+                                                                               <a href="#popup2" style="text-decoration: none; color: white;" > <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+
+                                                                          Detalle de Alumnos        ->
+
+                                                                                   </div>
+                                                                               </a>
+
+
+                                                                   </div>
+
+
+                                                               </div>  
+                                                                                          
+                                                                               
+                                                                     
+                                                                               
+                                                                               
+                                                                               
+                                                                 <div class="form-group col-lg-2" style="padding: none;"  >
+
+                                                                   <div style="background: #ffc107; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+
+                                                                       <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
+
+                                                                           Egresados
+
+                                                                       </div>
+                                                                           <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
+
+                                                                               <s:property value="datos.ALUMNOS_EGRESADOS_GENERAL"/> <i class="fas fa-fw fa-graduation-cap" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+
+                                                                       </div>
+                                                                               <a href="#popup3" style="text-decoration: none; color: white;" >    <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+
+                                                                          Detalle de Alumnos        ->
+
+                                                                       </div>
+                                                                                   </a>
+
+
+                                                                   </div>
+
+
+                                                               </div>     
+                                                                               
+                                                                                 <div class="form-group col-lg-2" style="padding: none;"  >
+
+                                                                   <div style="background: #008080; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+
+                                                                       <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
+
+                                                                          Con Beca
+
+                                                                       </div>
+                                                                           <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
+
+                                                                               <s:property value="datos.TOTAL_BECA_GENERAL"/> <i class="fas fa-fw fa-graduation-cap" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+
+                                                                       </div>
+                                                                               <a href="#popup4" style="text-decoration: none; color: white;" >    <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+
+                                                                          Detalle de Alumnos        ->
+
+                                                                       </div>
+                                                                                   </a>
+
+
+                                                                   </div>
+
+
+                                                               </div>        
+                                                                               
+                                                                               
+                                                                               
+                                                                                 <div class="form-group col-lg-6" >
+
+
+                                                                    <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Alumnos por género</div>
+                                                                   
+                                                                   <div id="chart_div_gen" style="margin-bottom: 10px; height: 240px;"></div>
+
+                                                                </div>    
+                                                                               
+                                                                                <div class="form-group col-lg-6"  >
+
+
+                                                                    <div style="width:100%; text-align: center; background: #606060; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; "> Por estatus</div>
+                                                                    <div class="col-sm-auto  " style="background:  #edecec; margin-left: 00px;">
+
+
+                                                                        <div id="piechart_general" style="width: 100%; height: 240px; margin: auto; margin-top: 0px;"></div>
+
+                                                                    </div> 
+
+                                                                </div>  
+                                                                               
+                                                                 <div class="form-group col-lg-6" >
+
+
+                                                                    <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Alumnos por Municipio</div>
+                                                                   
+                                                                    <div style="height: 250px; overflow-y: scroll">
+                                                                    <table class="table table-hover"  style=" font-size: 14px; width: 100%;">
+
+                                                               
+
+                                                                <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999; background: purple; color:white;">
+                                                                    <td  scope="row" style="width: 40%;">Municipio</td>
+                                                                    <td style="width: 20%;">Activos</td>
+                                                                    <td style="width: 20%;">Inactivos</td>
+                                                                    <td style="width: 20%;">Egresados</td>
+
+                                                                   
+
+
+                                                                </tr>
+
+                                                                <s:iterator value="ListaMunicipioEscuela" id="ListaMunicipioEscuela" status="stat">
+
+                                                             
+
+                                                                        <tr style=" background: #efeaf0; font-size: 12px; color: #333;">
+                                                                            <td style="width: 40%;"><s:property value="NOMESC"/></td>
+                                                                            <td style="width: 20%;"><s:property value="MUNICIPIO_ACTIVOS"/></td>
+                                                                            <td style="width: 20%;"><s:property value="MUNICIPIO_INACTIVOS"/></td>
+                                                                            <td style="width: 20%;"><s:property value="MUNICIPIO_EGRESADOS" /></td>
+
+                                                                          
+
+                                                                        </tr>
+
+                                                               
+                                                                </s:iterator>
+                                                         
+
+                                                            <s:else>
+
+                                                                <div style="color: #e1173e; font-size: 12px; text-align: center;">No hay información para mostrar </div>
+
+
+                                                            </s:else>
+                                                        </table>
+                                                                    
+                                                                   </div> 
+                                                                    
+                                                                    
+
+                                                                </div>    
+                                                                               
+                                                                                 <div class="form-group col-lg-6" >
+
+
+                                                                    <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Alumnos activos por empresa</div>
+                                                                   
+                                                                    <div style="height: 250px; overflow-y: scroll">
+                                                                    <table class="table table-hover"  style=" font-size: 14px; width: 100%;">
+
+                                                               
+
+                                                                <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999; background: #10707f; color:white;">
+                                                                    <td  scope="row" style="width: 20%;">RFC</td>
+                                                                    <td style="width: 40%;">Empresa</td>
+                                                                    <td style="width: 20%;">Municipio</td>
+                                                                    <td style="width: 20%;">No.Alumnos</td>
+
+                                                                   
+
+
+                                                                </tr>
+
+                                                                <s:iterator value="ListaEmpresasAlumnos" id="ListaEmpresasAlumnos" status="stat">
+
+                                                             
+
+                                                                        <tr style=" background: #efeaf0; font-size: 12px; color: #333;">
+                                                                            <td style="width: 20%;"><s:property value="RFC"/></td>
+                                                                            <td style="width: 40%;"><s:property value="RAZON_SOCIAL"/></td>
+                                                                            <td style="width: 20%;"><s:property value="NOM_MUN"/></td>
+                                                                            <td style="width: 20%;"><s:property value="TOTAL_ALUMNOS_EMPRESA" /></td>
+
+                                                                          
+
+                                                                        </tr>
+
+                                                               
+                                                                </s:iterator>
+                                                         
+
+                                                            <s:else>
+
+                                                                <div style="color: #e1173e; font-size: 12px; text-align: center;">No hay información para mostrar </div>
+
+
+                                                            </s:else>
+                                                        </table>
+                                                                    
+                                                                   </div> 
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                          
+                                                                               
+                                                                
+                                                                
+                                                                               
+                                                                
+                                                             </div>
+       
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                 <div style="width: 100%; height: 40px;  background: #4885Ed; margin-bottom: 15px; padding: 7px; margin-top: 30px;">Indicadores por Periodo</div>         
                                                                         
                                                                         
                                                                      
@@ -403,24 +817,82 @@
                                                                 </div>         
                                                                         
                                                                     
-                                                               <!-- indicadores de colores -->     
+                                                               <!-- indicadores de colores -->    
+                                                               
+                                                               
                                                                <div class="form-group col-lg-3" style="padding: none;"  >
 
-                                                                   <div style="background: #28a745; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+                                                                   <div style="background: #007bff; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
 
                                                                        <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
 
-                                                                           Alumnos activos 
+                                                                          Nuevos Ingresos
 
                                                                        </div>
                                                                            <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
 
-                                                                               <s:property value="datos.TOTAL_ALU_ACTIVO"/> <i class="fas fa-fw fa-user" style="position: absolute; z-index: 0; top : -2 rem; right: 0.5rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+                                                                               <s:property value="datos.ALUMNOS_NUEVOS"/> <i class="fas fa-fw fa-wrench" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+
+                                                                       </div>
+                                                                          <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+
+                                                                         <!-- Detalle de Alumnos        -->
+
+                                                                       </div>
+
+
+                                                                   </div>
+
+
+                                                               </div>      
+                                                                               
+                                                                             
+                                                                     <div class="form-group col-lg-3" style="padding: none;"  >
+
+                                                                   <div style="background: #A5DF00; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+
+                                                                       <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
+
+                                                                           Reingresos
+
+                                                                       </div>
+                                                                            <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
+
+                                                                               <s:property value="datos.TOTAL_REINGRESOS"/> <i class="fas fa-fw fa-thumbs-down" style="position: absolute; z-index: 0; top : -2 rem; right: 0.5rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+
+                                                                           </div> 
+                                                                               <a href="#popup2" style="text-decoration: none; color: white;" > <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+
+                                                                              <!-- Detalle de Alumnos        -->
+
+                                                                                   </div>
+                                                                               </a>
+
+
+                                                                   </div>
+
+
+                                                               </div>                
+                                                                               
+                                                                               
+                                                                    
+                                                               <div class="form-group col-lg-3" style="padding: none;"  >
+
+                                                                   <div style="background: purple; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+
+                                                                       <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
+
+                                                                           Proyectos Registrados
+
+                                                                       </div>
+                                                                           <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
+
+                                                                               <s:property value="datos.TOTAL_PROYECTOS"/> <i class="fas fa-fw fa-user" style="position: absolute; z-index: 0; top : -2 rem; right: 0.5rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
 
                                                                        </div>
                                                                      <a href="#popup" style="text-decoration: none; color:white;" >      <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
 
-                                                                          Detalle de Alumnos        ->
+                                                                             <!-- Detalle de Alumnos        -->
 
                                                                          </div></a>
 
@@ -431,33 +903,7 @@
                                                                </div>  
                                                                                
                                                                                
-                                                                               
-                                                                     <div class="form-group col-lg-3" style="padding: none;"  >
-
-                                                                   <div style="background: #dc3545; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
-
-                                                                       <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
-
-                                                                           Alumnos inactivos 
-
-                                                                       </div>
-                                                                            <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
-
-                                                                               <s:property value="datos.TOTAL_ALU_INACTIVO"/> <i class="fas fa-fw fa-thumbs-down" style="position: absolute; z-index: 0; top : -2 rem; right: 0.5rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
-
-                                                                           </div> 
-                                                                               <a href="#popup2" style="text-decoration: none; color: white;" > <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
-
-                                                                          Detalle de Alumnos        ->
-
-                                                                                   </div>
-                                                                               </a>
-
-
-                                                                   </div>
-
-
-                                                               </div>  
+                                                                   
                                                                                           
                                                                                
                                                                      
@@ -466,21 +912,21 @@
                                                                                
                                                                  <div class="form-group col-lg-3" style="padding: none;"  >
 
-                                                                   <div style="background: #ffc107; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
+                                                                   <div style="background: #008080; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
 
                                                                        <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
 
-                                                                           Alumnos egresados
+                                                                           Becas Registradas
 
                                                                        </div>
                                                                            <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
 
-                                                                               <s:property value="datos.EGRESADOS"/> <i class="fas fa-fw fa-graduation-cap" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+                                                                               <s:property value="datos.TOTAL_BECAS"/> <i class="fas fa-fw fa-graduation-cap" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
 
                                                                        </div>
                                                                                <a href="#popup3" style="text-decoration: none; color: white;" >    <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
 
-                                                                          Detalle de Alumnos        ->
+                                                                              <!-- Detalle de Alumnos        -->
 
                                                                        </div>
                                                                                    </a>
@@ -489,45 +935,13 @@
                                                                    </div>
 
 
-                                                               </div>                 
-                                                                               
-                                                                               
-                                                                    
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                             
-                                                                 <div class="form-group col-lg-3" style="padding: none;"  >
-
-                                                                   <div style="background: #007bff; width: 100%; height: 100px; padding: 5px; border-radius: 3px; box-shadow: 2px 2px 5px #333; font-size: 14px;">
-
-                                                                       <div style="width: 100%; height: 20px; color: white; text-align:center; ">    
-
-                                                                           Alumnos nuevos
-
-                                                                       </div>
-                                                                           <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
-
-                                                                               <s:property value="datos.ALUMNOS_NUEVOS"/> <i class="fas fa-fw fa-wrench" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
-
-                                                                       </div>
-                                                                          <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
-
-                                                                          Detalle de Alumnos        ->
-
-                                                                       </div>
-
-
-                                                                   </div>
-
-
-                                                               </div>                               
-                                                                               
-                                                                               
+                                                               </div>          
                                                                
-
-
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
                                                              
 
                                                               
@@ -535,53 +949,11 @@
                                                                  <!--  contenedores principlaes-->       
 
 
-                                                                <div class="form-group col-lg-6" >
+                                                           <!--     <div class="form-group col-lg-6" >
 
 
                                                                     <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Total de Alumnos en DUAL</div>
-                                                                    <div class="col-sm-auto  " style="background:  #edecec; margin-left: 00px;">
-                                                                        <table style="width: 98%; text-align: center;  ">
-                                                                            <tr style="background: #edecec;">
-                                                                                <td style="width: 40%;" ><div style="width: 90%; height: 140px; background: #a2a3b8; color: white; margin: auto; border-radius: 10px; margin-top: 35px; margin-bottom: 25px; box-shadow: 5px 5px 10px #666; "><h1 style="padding: 40px; font-size: 50px;"><s:property value="datos.TOTAL_ALU_DUAL"/></h1></div></td>
-                                                                                <td style="width: 60%;">
-                                                                                    <a href="#popup" style="text-decoration: none;" > 
-                                                                                        <div style="width: 43%; height: 65px; background: #008080 ; display: inline-block; margin: auto;  margin-top: 5px; border-radius: 10px; box-shadow: 5px 5px 10px #666;">
-                                                                                            <div style="width: 100%; color: white ; margin-top: 5px; display: block;">Becas</div> 
-                                                                                            <div style="width: 100%; color: white ; margin-top: 0px; display: block;">
-                                                                                                <h3><!--<s:property value="datos.TOTAL_ALU_ACTIVO"/>--> 0</h3>
-                                                                                                <i class="material-icons" style="float: right; margin-top: -45px; margin-right: 15px; font-size: 25px; color: white;"></i> 
-                                                                                            </div>
-                                                                                        </div> 
-                                                                                    </a>
-
-                                                                                    <a href="#popup2" style="text-decoration: none;" >  
-                                                                                        <div style="width: 43%; height: 65px; background: #A5DF00; display: inline-block;  margin: auto; margin-top: 10px; border-radius: 10px; box-shadow: 5px 5px 10px #666;">
-                                                                                            <div style="width: 100%; color: white ; margin-top: 5px; display: block;">Reingresos</div> 
-                                                                                            <div style="width: 100%; color: white ; margin-top: 0px; display: block;">
-                                                                                                <h3><s:property value="datos.TOTAL_TIPO_ALUMNO"/></h3>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </a>
-
-                                                                                    <div style="width: 90%; height: 65px; background: purple; display: inline-block; margin: auto;  margin-top: 10px; border-radius: 10px; box-shadow: 5px 5px 10px #666;">
-                                                                                        <div style="width: 100%; color: white ; margin-top: 5px; display: block; ">Proyectos Registrados</div> 
-                                                                                        <div style="width: 100%; color: white ; margin-top: 0px; display: block;">
-                                                                                            <h3><s:property value="datos.ALUMNOS_ACTIVOS_PERIODO"/></h3>
-                                                                                            <i class="material-icons" style="float: right; margin-top: -45px; margin-right: 15px; font-size: 25px; color: white;"></i> 
-                                                                                        </div>
-                                                                                    </div> 
-
-                                                                                </td>
-
-                                                                            </tr>
-                                                                            <tr style="">
-
-                                                                                <td style="width: 50%;" colspan="2" ><h4 style="color:#666;">Alumnos DUAL</h4></td>
-
-                                                                            </tr>
-
-                                                                        </table>
-                                                                    </div> 
+                                                                     <div id="chart_div" style="margin-bottom: 50px; height: 240px;"></div>
 
                                                                 </div>  
 
@@ -596,7 +968,7 @@
 
                                                                     </div> 
 
-                                                                </div>  
+                                                                </div>  -->
 
 
                                                                 <div class="form-group col-lg-12"  >
@@ -613,22 +985,7 @@
 
 
 
-                                                                <div class="form-group col-lg-12"  >
-
-
-                                                                    <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Número de Alumnos por Género</div>
-                                                                    <div class="col-sm-auto  " style="background:  #edecec; margin-left: 00px;">
-
-                                                                        <div id="chart_div" style="margin-bottom: 50px; height: 250px;"></div>
-
-
-
-
-
-                                                                    </div> 
-
-                                                                </div>  
-
+                                                               
 
 
 
@@ -656,17 +1013,17 @@
                                     </header>
 
 
-                                    <div class="modal-wrapper" id="popup">
+                                   <div class="modal-wrapper" id="popup">
                                         <div class="popup-contenedor">
                                             <h2  >Alumos Activos</h2>
 
-                                            <div style="min-height:350px; max-height: 300px; overflow-y: scroll;" >
+                                            <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
                                                 <div id="dvData">
 
                                                     <table id="customers" style="text-align: justify;">
 
 
-                                                        <s:if test="ListaAlumnosDashboard.size()>0">
+                                                        <s:if test="ListaAlumnosDashboardU.size()>0">
 
 
                                                             <table id="customers" style=" font-size: 12px;">
@@ -686,7 +1043,7 @@
 
                                                                 </tr>
 
-                                                                <s:iterator value="ListaAlumnosDashboard" id="ListaAlumnosDashboard" status="stat">
+                                                                <s:iterator value="ListaAlumnosDashboardU" id="ListaAlumnosDashboardU" status="stat">
 
                                                                     <s:if test="STATUS==1">
 
@@ -715,7 +1072,7 @@
                                                     </table>
 
 
-                                                    <s:if test="ListaAlumnosDashboard.size()>0">
+                                                    <s:if test="ListaAlumnosDashboardU.size()>0">
 
                                                         <center>
 
@@ -760,7 +1117,7 @@
                                                     <table id="customers" style="text-align: justify;">
 
 
-                                                        <s:if test="ListaAlumnosDashboard.size()>0">
+                                                        <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
 
 
                                                             <table id="customers" style=" font-size: 12px;">
@@ -780,9 +1137,9 @@
 
                                                                 </tr>
 
-                                                                <s:iterator value="ListaAlumnosDashboard" id="ListaAlumnosDashboard" status="stat">
+                                                                <s:iterator value="ListaAlumnosDashboardUGeneral" id="ListaAlumnosDashboardUGeneral" status="stat">
 
-                                                                    <s:if test="STATUS!=1">
+                                                                    <s:if test="STATUS!=1 && STATUS!=10">
 
                                                                         <tr style=" background: #efeaf0; font-size: 8px;">
                                                                             <td style="width: 10%;"><s:property value="CURP"/></td>
@@ -808,7 +1165,7 @@
 
                                                     </table>
 
-                                                    <s:if test="ListaAlumnosDashboard.size()>0">
+                                                    <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
 
                                                         <center>
 
@@ -836,33 +1193,31 @@
                                         </div>
                                     </div>                                          
 
+
                                                                                             
                                                                                             
-                                                                                            
-                                      <!-- Alumnos Egresados -->      
-                                      
-                                      
-                                      
+                                       <!-- TOTAL DE ALUMNOS DUAL -->    
+                                       
                                        <div class="modal-wrapper" id="popup3">
                                         <div class="popup3-contenedor">
-                                            <h2 style="color: #ffc107;" >Alumnos egresados</h2>
+                                            <h2 style="color: #ffc107;" >Alumnos Egresados</h2>
 
                                             <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
 
 
-                                                <div id="dvData3">  
+                                                <div id="dvData2">  
 
 
                                                     <table id="customers" style="text-align: justify;">
 
 
-                                                        <s:if test="ListaAlumnosDashboard.size()>0">
+                                                        <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
 
 
                                                             <table id="customers" style=" font-size: 12px;">
 
                                                                 <tr>
-                                                                    <td colspan="7" align="center" style="background: #ffc107; color: white;" >Alumnos Inactivos</td>
+                                                                    <td colspan="7" align="center" style="background: #ffc107; color: white;" >Alumnos Egresados</td>
                                                                 </tr>
 
                                                                 <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999;">
@@ -876,9 +1231,9 @@
 
                                                                 </tr>
 
-                                                                <s:iterator value="ListaAlumnosDashboard" id="ListaAlumnosDashboard" status="stat">
+                                                                <s:iterator value="ListaAlumnosDashboardUGeneral" id="ListaAlumnosDashboardUGeneral" status="stat">
 
-                                                                    <s:if test="STATUS==10">
+                                                                    <s:if test="STATUS == 10">
 
                                                                         <tr style=" background: #efeaf0; font-size: 8px;">
                                                                             <td style="width: 10%;"><s:property value="CURP"/></td>
@@ -904,18 +1259,18 @@
 
                                                     </table>
 
-                                                    <s:if test="ListaAlumnosDashboard.size()>0">
+                                                    <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
 
                                                         <center>
 
-                                                            <input  align="top" type="image" id="btnExport3"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+                                                            <input  align="top" type="image" id="btnExport2"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
 
 
                                                         </center>
 
                                                         <script>
-                                                            $("#btnExport3").click(function (e) {
-                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData3').html()));
+                                                            $("#btnExport2").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData2').html()));
                                                                 e.preventDefault();
                                                             });
                                                         </script>
@@ -930,7 +1285,294 @@
 
                                             <a class="popup3-cerrar" href="#">X</a>
                                         </div>
-                                    </div>                   
+                                    </div>     
+                                       
+                                       
+                                       
+                                        <div class="modal-wrapper" id="popup4">
+                                        <div class="popup4-contenedor">
+                                            <h2 style="color: #008080;" >Alumnos con Beca</h2>
+
+                                            <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
+
+
+                                                <div id="dvData2">  
+
+
+                                                    <table id="customers" style="text-align: justify;">
+
+
+                                                        <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
+
+
+                                                            <table id="customers" style=" font-size: 12px;">
+
+                                                                <tr>
+                                                                    <td colspan="7" align="center" style="background: #008080; color: white;" >Alumnos con beca</td>
+                                                                </tr>
+
+                                                                <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999;">
+                                                                    <td style="width: 10%;">CURP</td>
+                                                                    <td style="width: 50%;">Nombre</td>
+                                                                    <td style="width: 10%;">CCT</td>
+                                                                    <td style="width: 10%;">Sexo</td>
+
+                                                                    <td style="width: 20%;">Clave Carrera</td>
+
+
+                                                                </tr>
+
+                                                                <s:iterator value="ListaAlumnosDashboardUGeneral" id="ListaAlumnosDashboardUGeneral" status="stat">
+
+                                                                    <s:if test="BECA=='si' && STATUS==1 ">
+
+                                                                        <tr style=" background: #efeaf0; font-size: 8px;">
+                                                                            <td style="width: 10%;"><s:property value="CURP"/></td>
+                                                                            <td style="width: 50%;"><s:property value="NOMBRE_COMPLETO"/></td>
+                                                                            <td style="width: 10%;"><s:property value="CCT"/></td>
+                                                                            <td style="width: 10%;"><s:property value="SEXO" /></td>
+
+                                                                            <td style="width: 20%;" align="center"><s:property value="CLAVECARRERA" /></td>
+
+                                                                        </tr>
+
+                                                                    </s:if>
+                                                                </s:iterator>
+                                                            </s:if>
+
+                                                            <s:else>
+
+                                                                <div style="color: #e1173e; font-size: 12px; text-align: center;">No hay información para mostrar </div>
+
+
+                                                            </s:else>
+                                                        </table>
+
+                                                    </table>
+
+                                                    <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
+
+                                                        <center>
+
+                                                            <input  align="top" type="image" id="btnExport2"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+
+
+                                                        </center>
+
+                                                        <script>
+                                                            $("#btnExport2").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData2').html()));
+                                                                e.preventDefault();
+                                                            });
+                                                        </script>
+
+                                                    </s:if>
+
+
+
+
+                                                </div>
+                                            </div>
+
+                                            <a class="popup4-cerrar" href="#">X</a>
+                                        </div>
+                                    </div>     
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       
+                                     <div class="modal-wrapper" id="popup5">
+                                        <div class="popup5-contenedor">
+                                            <h2 style="color: gray;" >Total de alumonos</h2>
+
+                                            <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
+
+
+                                                <div id="dvData2">  
+
+
+                                                    <table id="customers" style="text-align: justify;">
+
+
+                                                        <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
+
+
+                                                            <table id="customers" style=" font-size: 12px;">
+
+                                                                <tr>
+                                                                    <td colspan="7" align="center" style="background: grey; color: white;" >Total de Alumnos DUAL</td>
+                                                                </tr>
+
+                                                                <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999;">
+                                                                    <td style="width: 10%;">CURP</td>
+                                                                    <td style="width: 50%;">Nombre</td>
+                                                                    <td style="width: 10%;">CCT</td>
+                                                                    <td style="width: 10%;">Sexo</td>
+
+                                                                    <td style="width: 20%;">Clave Carrera</td>
+
+
+                                                                </tr>
+
+                                                                <s:iterator value="ListaAlumnosDashboardUGeneral" id="ListaAlumnosDashboardUGeneral" status="stat">
+
+                                                                  
+
+                                                                        <tr style=" background: #efeaf0; font-size: 8px;">
+                                                                            <td style="width: 10%;"><s:property value="CURP"/></td>
+                                                                            <td style="width: 50%;"><s:property value="NOMBRE_COMPLETO"/></td>
+                                                                            <td style="width: 10%;"><s:property value="CCT"/></td>
+                                                                            <td style="width: 10%;"><s:property value="SEXO" /></td>
+
+                                                                            <td style="width: 20%;" align="center"><s:property value="CLAVECARRERA" /></td>
+
+                                                                        </tr>
+
+                                                                 
+                                                                </s:iterator>
+                                                            </s:if>
+
+                                                            <s:else>
+
+                                                                <div style="color: #e1173e; font-size: 12px; text-align: center;">No hay información para mostrar </div>
+
+
+                                                            </s:else>
+                                                        </table>
+
+                                                    </table>
+
+                                                    <s:if test="ListaAlumnosDashboardU.size()>0">
+
+                                                        <center>
+
+                                                            <input  align="top" type="image" id="btnExport2"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+
+
+                                                        </center>
+
+                                                        <script>
+                                                            $("#btnExport2").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData2').html()));
+                                                                e.preventDefault();
+                                                            });
+                                                        </script>
+
+                                                    </s:if>
+
+
+
+
+                                                </div>
+                                            </div>
+
+                                            <a class="popup5-cerrar" href="#">X</a>
+                                        </div>
+                                    </div>                                          
+                                
+                                        <div class="modal-wrapper" id="popup6">
+                                        <div class="popup6-contenedor">
+                                            <h2 style="color: green;" >Total de Alumonos activos</h2>
+
+                                            <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
+
+
+                                                <div id="dvData2">  
+
+
+                                                    <table id="customers" style="text-align: justify;">
+
+
+                                                        <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
+
+
+                                                            <table id="customers" style=" font-size: 12px;">
+
+                                                                <tr>
+                                                                    <td colspan="7" align="center" style="background: green; color: white;" >Total de Alumnos Activos</td>
+                                                                </tr>
+
+                                                                <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999;">
+                                                                    <td style="width: 10%;">CURP</td>
+                                                                    <td style="width: 50%;">Nombre</td>
+                                                                    <td style="width: 10%;">CCT</td>
+                                                                    <td style="width: 10%;">Sexo</td>
+
+                                                                    <td style="width: 20%;">Clave Carrera</td>
+
+
+                                                                </tr>
+
+                                                                <s:iterator value="ListaAlumnosDashboardUGeneral" id="ListaAlumnosDashboardUGeneral" status="stat">
+
+                                                                    <s:if test="STATUS==1">
+
+                                                                        <tr style=" background: #efeaf0; font-size: 8px;">
+                                                                            <td style="width: 10%;"><s:property value="CURP"/></td>
+                                                                            <td style="width: 50%;"><s:property value="NOMBRE_COMPLETO"/></td>
+                                                                            <td style="width: 10%;"><s:property value="CCT"/></td>
+                                                                            <td style="width: 10%;"><s:property value="SEXO" /></td>
+
+                                                                            <td style="width: 20%;" align="center"><s:property value="CLAVECARRERA" /></td>
+
+                                                                        </tr>
+
+                                                                 </s:if>
+                                                                </s:iterator>
+                                                            </s:if>
+
+                                                            <s:else>
+
+                                                                <div style="color: #e1173e; font-size: 12px; text-align: center;">No hay información para mostrar </div>
+
+
+                                                            </s:else>
+                                                        </table>
+
+                                                    </table>
+
+                                                    <s:if test="ListaAlumnosDashboardU.size()>0">
+
+                                                        <center>
+
+                                                            <input  align="top" type="image" id="btnExport2"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+
+
+                                                        </center>
+
+                                                        <script>
+                                                            $("#btnExport2").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData2').html()));
+                                                                e.preventDefault();
+                                                            });
+                                                        </script>
+
+                                                    </s:if>
+
+
+
+
+                                                </div>
+                                            </div>
+
+                                            <a class="popup6-cerrar" href="#">X</a>
+                                        </div>
+                                    </div>                                                                          
+                                                                                            
+                                                                                            
+                                                           
                                                                                             
                                                                                             
 

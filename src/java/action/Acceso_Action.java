@@ -54,6 +54,17 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
      public List<DatosBean> ListaTotalEstatus = new ArrayList<DatosBean>();
      public List<DatosBean> ListaAlumnosDashboard = new ArrayList<DatosBean>();
       public List<DatosBean> ListaTotalEsuela = new ArrayList<DatosBean>();
+      
+      
+       public List<DatosBean> ListaAlumnosDashboardUGeneral = new ArrayList<DatosBean>();
+        public List<DatosBean> ListaProyectos = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaReingresos = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaMunicipioEscuela = new ArrayList<DatosBean>();
+     public List<DatosBean> ListaEmpresasAlumnos = new ArrayList<DatosBean>();
+      public List<DatosBean> ListaTotalEstatusUGeneral = new ArrayList<DatosBean>();
+      
+      
+      
       private boolean bantablero = false;
 
     //SESSIN USUARIO	
@@ -151,7 +162,7 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
             int egresados = 0;
             int nuevos = 0;
             int tipo_alu = 0;
-              
+               int beca = 0;
               
                Date fechaReg=null;
                Date fechainicio=null;
@@ -216,7 +227,105 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
              datos.setEGRESADOS(String.valueOf(egresados));
              datos.setALUMNOS_NUEVOS(String.valueOf(nuevos));
                datos.setTOTAL_TIPO_ALUMNO(String.valueOf(tipo_alu));
-            Constantes.enviaMensajeConsola("hombre&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" + hombre + " asignado" + datos.getTOTAL_HOMBRE());
+           
+            
+            
+              activo=0;
+            inactivo=0;
+            egresados=0;
+             hombre = 0;
+             mujer = 0;
+             beca=0;
+            
+            
+            ListaAlumnosDashboardUGeneral = con.listaAlumnosDashboardGeneral(datos);
+             
+             Iterator LADUG=ListaAlumnosDashboardUGeneral.iterator();
+              DatosBean obj2;
+             
+            while (LADUG.hasNext()) {
+          obj2 = (DatosBean) LADUG.next();
+          
+          
+          
+          if (obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
+
+                    activo = activo + 1;
+                }
+                if (obj2.getESTATUS_GENERAL().equals("INACTIVO") && !obj2.getSTATUS().equals("10")) {
+
+                    inactivo = inactivo + 1;
+                }
+                
+                 if (obj2.getSTATUS().equals("10")) {
+
+                    egresados = egresados + 1;
+                }
+                  if (obj2.getSEXO().equals("HOMBRE")) {
+
+                    hombre = hombre + 1;
+                }
+                if (obj2.getSEXO().equals("MUJER")) {
+
+                    mujer = mujer + 1;
+                }
+
+                 if (obj2.getBECA().equals("si") && obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
+
+                    beca = beca + 1;
+                }
+          
+          
+                
+            }
+            
+            datos.setALUMNOS_ACTIVOS_GENERAL(String.valueOf(activo));
+            datos.setALUMNOS_INACTIVOS_GENERAL(String.valueOf(inactivo));
+            datos.setALUMNOS_EGRESADOS_GENERAL(String.valueOf(egresados));
+            datos.setTOTAL_ALUMNOS_DUAL(String.valueOf(activo + inactivo + egresados));
+            datos.setTOTAL_HOMBRE_GENERAL(String.valueOf(hombre));
+            datos.setTOTAL_MUJER_GENERAL(String.valueOf(mujer));
+            datos.setTOTAL_BECA_GENERAL(String.valueOf(beca));
+            
+             ListaTotalEstatusUGeneral = con.listaTotalEstatusGeneral(datos);
+            
+            ListaMunicipioEscuela = con.listaMunEscGeneral(datos);
+            ListaEmpresasAlumnos = con.listaEmpAluGeneral(datos);
+            
+            
+             System.out.println("voy a calcular proyectos");
+            ListaProyectos=con.proyectosGeneral(datos);
+            
+            
+            Iterator LP =ListaProyectos.iterator();
+            
+             DatosBean obj3;
+             
+             while (LP.hasNext()) {
+               obj3= (DatosBean) LP.next();
+               
+               datos.setTOTAL_PROYECTOS(obj3.getTOTAL_PROYECTOS());
+               datos.setTOTAL_REINGRESOS(obj3.getTOTAL_REINGRESOS());
+                datos.setTOTAL_BECAS(obj3.getTOTAL_BECAS());
+                
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
              ListaTotalEstatus = con.listaTotalEstatus(datos);
             ListaTotalEsuela = con.listaTotalEscuela(datos);
@@ -648,6 +757,54 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
 
     public void setListaTotalEsuela(List<DatosBean> ListaTotalEsuela) {
         this.ListaTotalEsuela = ListaTotalEsuela;
+    }
+
+    public List<DatosBean> getListaAlumnosDashboardUGeneral() {
+        return ListaAlumnosDashboardUGeneral;
+    }
+
+    public void setListaAlumnosDashboardUGeneral(List<DatosBean> ListaAlumnosDashboardUGeneral) {
+        this.ListaAlumnosDashboardUGeneral = ListaAlumnosDashboardUGeneral;
+    }
+
+    public List<DatosBean> getListaProyectos() {
+        return ListaProyectos;
+    }
+
+    public void setListaProyectos(List<DatosBean> ListaProyectos) {
+        this.ListaProyectos = ListaProyectos;
+    }
+
+    public List<DatosBean> getListaReingresos() {
+        return ListaReingresos;
+    }
+
+    public void setListaReingresos(List<DatosBean> ListaReingresos) {
+        this.ListaReingresos = ListaReingresos;
+    }
+
+    public List<DatosBean> getListaMunicipioEscuela() {
+        return ListaMunicipioEscuela;
+    }
+
+    public void setListaMunicipioEscuela(List<DatosBean> ListaMunicipioEscuela) {
+        this.ListaMunicipioEscuela = ListaMunicipioEscuela;
+    }
+
+    public List<DatosBean> getListaEmpresasAlumnos() {
+        return ListaEmpresasAlumnos;
+    }
+
+    public void setListaEmpresasAlumnos(List<DatosBean> ListaEmpresasAlumnos) {
+        this.ListaEmpresasAlumnos = ListaEmpresasAlumnos;
+    }
+
+    public List<DatosBean> getListaTotalEstatusUGeneral() {
+        return ListaTotalEstatusUGeneral;
+    }
+
+    public void setListaTotalEstatusUGeneral(List<DatosBean> ListaTotalEstatusUGeneral) {
+        this.ListaTotalEstatusUGeneral = ListaTotalEstatusUGeneral;
     }
     
     

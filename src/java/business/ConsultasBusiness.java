@@ -288,6 +288,12 @@ public class ConsultasBusiness {
         return lista;
 
     }
+     
+      public List listaAlumnosDashboardGeneral(DatosBean datos) throws Exception {
+        List lista = this.con.listaAlumnosDashboardGeneral(datos);
+        return lista;
+
+    }
 
     public List listaTotalEstatus(DatosBean datos) throws Exception {
         List lista = this.con.listaTotalEstatus(datos);
@@ -305,6 +311,11 @@ public class ConsultasBusiness {
         return lista;
 
     }
+       public List listaTotalEstatusGeneral(DatosBean datos) throws Exception {
+        List lista = this.con.listaTotalEstatusGeneral(datos);
+        return lista;
+
+    }
 
     public List listaTotalEscuela(DatosBean datos) throws Exception {
         List lista = this.con.listaTotalEscuela(datos);
@@ -313,6 +324,11 @@ public class ConsultasBusiness {
     }
       public List proyectos(DatosBean datos) throws Exception {
         List lista = this.con.proyectos(datos);
+        return lista;
+
+    }
+      public List proyectosGeneral(DatosBean datos) throws Exception {
+        List lista = this.con.proyectosGeneral(datos);
         return lista;
 
     }
@@ -327,8 +343,18 @@ public class ConsultasBusiness {
         return lista;
 
     }
+        public List listaMunEscGeneral(DatosBean datos) throws Exception {
+        List lista = this.con.listaMunEscGeneral(datos);
+        return lista;
+
+    }
        public List listaEmpAlu(DatosBean datos) throws Exception {
         List lista = this.con.listaEmpAlu(datos);
+        return lista;
+
+    }
+        public List listaEmpAluGeneral(DatosBean datos) throws Exception {
+        List lista = this.con.listaEmpAluGeneral(datos);
         return lista;
 
     }

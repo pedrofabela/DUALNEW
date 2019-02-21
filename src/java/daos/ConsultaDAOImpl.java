@@ -762,6 +762,13 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         list = queryForList(query, (Mapper) new alumnosDashboardMapper());
         return list;
     }
+     public List listaAlumnosDashboardGeneral(DatosBean datos) throws Exception {
+        String query = "SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_INGRESO_DUAL AS FECHA_REG, TIPO_ALUMNO, BECA FROM CAT_ALUMNOS )ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS";
+        Constantes.enviaMensajeConsola("Consulta Alumnos Dashboard----->" + query);
+        List list = null;
+        list = queryForList(query, (Mapper) new alumnosDashboardMapper());
+        return list;
+    }
 
     public List listaTotalEstatus(DatosBean datos) throws Exception {
         String query = "SELECT DISTINCT(NOM_ESTATUS), COUNT(NOM_ESTATUS) AS TOTAL_ESTATUS FROM (SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_REG FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_REG)>='" + datos.getFECHA_INICIO() + "' AND TO_DATE(FECHA_REG)<='" + datos.getFECHA_TERMINO() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS) GROUP BY NOM_ESTATUS";
@@ -785,8 +792,22 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         list = queryForList(query, (Mapper) new totalEstatusMapper());
         return list;
     }
+      public List listaTotalEstatusGeneral(DatosBean datos) throws Exception {
+        String query = "SELECT DISTINCT(NOM_ESTATUS), COUNT(NOM_ESTATUS) AS TOTAL_ESTATUS FROM (SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_REG FROM CAT_ALUMNOS)ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS) GROUP BY NOM_ESTATUS";
+        Constantes.enviaMensajeConsola("Consulta cct----->" + query);
+        List list = null;
+        list = queryForList(query, (Mapper) new totalEstatusMapper());
+        return list;
+    }
     public List proyectos(DatosBean datos) throws Exception {
         String query = "SELECT * FROM (SELECT COUNT(ID_PROYECTO) AS TOTAL_PROYECTOS  FROM TBL_PROYECTOS WHERE CCT='"+datos.getCCT()+"' AND TO_DATE(FECHA_REG)>='"+datos.getFECHA_INICIO()+"' AND TO_DATE(FECHA_REG)<='"+datos.getFECHA_TERMINO()+"'), (SELECT COUNT(ID_ALUMNO) AS TOTAL_REINGRESOS FROM CAT_ALUMNOS WHERE TIPO_ALUMNO='2' AND TO_DATE(FECHA_REINGRESO)>='"+datos.getFECHA_INICIO()+"' AND TO_DATE(FECHA_REINGRESO)<='"+datos.getFECHA_TERMINO()+"' AND CCT='"+datos.getCCT()+"') , (SELECT COUNT(DISTINCT(CURP)) TOTAL_BECAS FROM TBL_BECAS WHERE CCT='"+datos.getCCT()+"' AND TO_DATE(FECHA_REG_BECA)>='"+datos.getFECHA_INICIO()+"' AND TO_DATE(FECHA_REG_BECA)<='"+datos.getFECHA_TERMINO()+"')";
+        Constantes.enviaMensajeConsola("cCANTIDAD DE PROYECTOS REGISTRADOS----->" + query);
+        List list = null;
+        list = queryForList(query, (Mapper) new proyectoTotalMapper());
+        return list;
+    }
+    public List proyectosGeneral(DatosBean datos) throws Exception {
+        String query = "SELECT * FROM (SELECT COUNT(ID_PROYECTO) AS TOTAL_PROYECTOS  FROM TBL_PROYECTOS WHERE  TO_DATE(FECHA_REG)>='"+datos.getFECHA_INICIO()+"' AND TO_DATE(FECHA_REG)<='"+datos.getFECHA_TERMINO()+"'), (SELECT COUNT(ID_ALUMNO) AS TOTAL_REINGRESOS FROM CAT_ALUMNOS WHERE TIPO_ALUMNO='2' AND TO_DATE(FECHA_REINGRESO)>='"+datos.getFECHA_INICIO()+"' AND TO_DATE(FECHA_REINGRESO)<='"+datos.getFECHA_TERMINO()+"' ) , (SELECT COUNT(DISTINCT(CURP)) TOTAL_BECAS FROM TBL_BECAS WHERE  TO_DATE(FECHA_REG_BECA)>='"+datos.getFECHA_INICIO()+"' AND TO_DATE(FECHA_REG_BECA)<='"+datos.getFECHA_TERMINO()+"')";
         Constantes.enviaMensajeConsola("cCANTIDAD DE PROYECTOS REGISTRADOS----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new proyectoTotalMapper());
@@ -815,8 +836,22 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         list = queryForList(query, (Mapper) new munEscMapper());
         return list;
     }
+      public List listaMunEscGeneral(DatosBean datos) throws Exception {
+        String query = "SELECT  CAT_MUNICIPIOS.NOM_MUN AS NOMESC, NVL(ACTIVO.TOTAL_MUNICIPIOACTIVO,'0') AS MUNICIPIO_ACTIVOS, NVL(INACTIVO.TOTAL_MUNICIPIOINACTIVO,'0') AS MUNICIPIO_INACTIVOS, NVL(EGRESADOS.TOTAL_MUNICIPIOEGRESADO,'0' ) AS MUNICIPIO_EGRESADOS FROM CAT_MUNICIPIOS LEFT OUTER JOIN (SELECT DISTINCT(MUNICIPIO) AS MUNICIPIOACTIVO, COUNT(MUNICIPIO) AS TOTAL_MUNICIPIOACTIVO FROM  CAT_ALUMNOS WHERE STATUS=1  GROUP BY MUNICIPIO )ACTIVO ON CAT_MUNICIPIOS.ID=ACTIVO.MUNICIPIOACTIVO LEFT OUTER JOIN (SELECT DISTINCT(MUNICIPIO) AS MUNICIPIOINACTIVO, COUNT(MUNICIPIO) AS TOTAL_MUNICIPIOINACTIVO FROM  CAT_ALUMNOS WHERE STATUS<>10 AND STATUS>10   GROUP BY MUNICIPIO) INACTIVO ON CAT_MUNICIPIOS.ID=INACTIVO.MUNICIPIOINACTIVO LEFT OUTER JOIN (SELECT DISTINCT(MUNICIPIO) AS MINICIPIOEGRESADO, COUNT(MUNICIPIO) AS TOTAL_MUNICIPIOEGRESADO FROM  CAT_ALUMNOS WHERE STATUS=10   GROUP BY MUNICIPIO )EGRESADOS ON CAT_MUNICIPIOS.ID=EGRESADOS.MINICIPIOEGRESADO WHERE ACTIVO.TOTAL_MUNICIPIOACTIVO IS NOT NULL OR INACTIVO.TOTAL_MUNICIPIOINACTIVO IS NOT NULL OR EGRESADOS.TOTAL_MUNICIPIOEGRESADO IS NOT NULL ORDER BY CAT_MUNICIPIOS.NOM_MUN ASC ";
+        Constantes.enviaMensajeConsola("Consulta cct----->" + query);
+        List list = null;
+        list = queryForList(query, (Mapper) new munEscMapper());
+        return list;
+    }
       public List listaEmpAlu(DatosBean datos) throws Exception {
         String query = "SELECT TOTAL.RFC, EMP.RAZON_SOCIAL, MUN.NOM_MUN, TOTAL.TOTAL_ALUMNOS_EMPRESA FROM (SELECT DISTINCT(RFC), COUNT(RFC) AS TOTAL_ALUMNOS_EMPRESA FROM TBL_PROYECTOS WHERE STATUS=1 AND CCT='"+datos.getCCT()+"' GROUP BY RFC)TOTAL LEFT OUTER JOIN (SELECT RFC AS RFC_EMPRESA, RAZON_SOCIAL, MUNICIPIO FROM CAT_EMPRESAS)EMP ON TOTAL.RFC=EMP.RFC_EMPRESA JOIN (SELECT * FROM CAT_MUNICIPIOS)MUN ON EMP.MUNICIPIO=MUN.ID ";
+        Constantes.enviaMensajeConsola("Consulta cct----->" + query);
+        List list = null;
+        list = queryForList(query, (Mapper) new empAluMapper());
+        return list;
+    }
+       public List listaEmpAluGeneral(DatosBean datos) throws Exception {
+        String query = "SELECT TOTAL.RFC, EMP.RAZON_SOCIAL, MUN.NOM_MUN, TOTAL.TOTAL_ALUMNOS_EMPRESA FROM (SELECT DISTINCT(RFC), COUNT(RFC) AS TOTAL_ALUMNOS_EMPRESA FROM TBL_PROYECTOS WHERE STATUS=1  GROUP BY RFC)TOTAL LEFT OUTER JOIN (SELECT RFC AS RFC_EMPRESA, RAZON_SOCIAL, MUNICIPIO FROM CAT_EMPRESAS)EMP ON TOTAL.RFC=EMP.RFC_EMPRESA JOIN (SELECT * FROM CAT_MUNICIPIOS)MUN ON EMP.MUNICIPIO=MUN.ID ";
         Constantes.enviaMensajeConsola("Consulta cct----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new empAluMapper());

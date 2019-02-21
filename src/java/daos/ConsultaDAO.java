@@ -135,19 +135,24 @@ public interface ConsultaDAO {
 
     public List listaAlumnosDashboardU(DatosBean datos) throws Exception;
      public List listaAlumnosDashboardUGeneral(DatosBean datos) throws Exception;
+      public List listaAlumnosDashboardGeneral(DatosBean datos) throws Exception;
 
     public List listaTotalEstatus(DatosBean datos) throws Exception;
 
     public List listaTotalEstatusU(DatosBean datos) throws Exception;
       public List listaTotalEstatusUGeneral(DatosBean datos) throws Exception;
+       public List listaTotalEstatusGeneral(DatosBean datos) throws Exception;
     
     public List proyectos(DatosBean datos) throws Exception;
+    public List proyectosGeneral(DatosBean datos) throws Exception;
 
     public List listaTotalEscuela(DatosBean datos) throws Exception;
 
     public List listaTotalAsesorProyecto(DatosBean datos) throws Exception;
     public List listaMunEsc(DatosBean datos) throws Exception;
+     public List listaMunEscGeneral(DatosBean datos) throws Exception;
     public List listaEmpAlu(DatosBean datos) throws Exception;
+    public List listaEmpAluGeneral(DatosBean datos) throws Exception;
 
     public String AlumnosNuevoIngresoA(DatosBean datos) throws Exception;
 
