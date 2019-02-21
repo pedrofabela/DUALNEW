@@ -431,74 +431,95 @@
                                                                                     <h5 align="center" style="color: #ffffff">Responsable Actualizado Correctamente</h5>
                                                                                 </div>
                                                                             </s:if> 
+                                                                            <s:if test="BanResponsableExiste">
+                                                                                <div class="alert alert-success"  style="width:100%; border-radius: 5px; ">
+                                                                                    <h5 align="center" style="color: #ffffff">Responsable Actualizado Correctamente</h5>
+                                                                                </div>
+                                                                            </s:if> 
 
-                                                                            <h5 align="center" class="bg-secondary col-lg-12 text-white"  > <i class="fas fa-book"></i> Registro de Responsables </h5> 
-                                                                            <div class="form-group col-lg-6">
-                                                                                <label class="col-form-label" for="curp">CURP:</label>
-                                                                                <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.CURP_RESPONSABLE" id="curpr" readonly="true"></s:textfield>
+                                                                            <h5 align="center" class="bg-secondary col-lg-12 text-white"  > <i class="fas fa-address-card"></i> Registro de Nuevos Responsables </h5> 
+                                                                            <div class="form-inline col-lg-12">
+
+                                                                                <div class=" form-group col-lg-9">
+                                                                                    <s:textfield  cssClass="form-control col-lg-8 text-uppercase" name="ad.CURP_RESPONSABLE" id="ad.CURP_RESPONSABLE"  placeholder="INGRESE LA CURP DEL RESPONSABLE QUE DESEA REGISTRAR" ></s:textfield>
                                                                                     <s:fielderror fieldName="ErrorCurp" cssClass="alert alert-danger"></s:fielderror>
                                                                                     </div> 
+                                                                                    <div class="form-group col-lg-2">                                                             
+
+                                                                                        <a class="btn bg-success " style="color: white;"  href="Javascript:Accion('ConsultaCurpR')">Buscar CURP</a>
+
+                                                                                    </div>    
                                                                                 </div>
+                                                                            <s:if test="BANCURPRENCONTRADA">
+                                                                                <div class="alert alert-primary"  style="width:100%; border-radius: 5px; ">
+                                                                                    <h5 align="center" style="color: #ffffff">CURP VALIDADA</h5>
+                                                                                </div>
+                                                                            </s:if>    
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <s:if test="banCurpValida">  
                                                                                 <div class="form-group col-lg-6 ">
                                                                                     <label class="col-form-label"  for="nombre">Nombre:</label>
                                                                                     <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.NOMBRER" id="nombrer" readonly="true"></s:textfield>
-                                                                                    <s:fielderror fieldName="ErrorNombre" cssClass="alert alert-danger"/>
-                                                                                </div> 
-                                                                            </div>              
-                                                                            <div class="form-group col-lg-6">
-                                                                                <label class="col-form-label" for="apellidop">Apellido Paterno:</label>
-                                                                                <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOPR" id="apellidopr" readonly="true"></s:textfield>
-                                                                                    <s:fielderror fieldName="ErrorApellidoP" cssClass="alert alert-danger"/>
-                                                                                </div> 
-                                                                            </div>    
-                                                                            <div class="form-group col-lg-6">
-                                                                                <label class="col-form-label" for="apellidomr">Apellido Materno:</label>
-                                                                                <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOMR" id="apellidomr" readonly="true"></s:textfield>
-                                                                                    <s:fielderror fieldName="ErrorApellidoM" cssClass="alert alert-danger"/>
-                                                                                </div> 
-                                                                            </div>   
-                                                                            <div class="form-group col-lg-4">
-                                                                                <label class="col-form-label" for="Genero">Cargo:</label>
-                                                                                <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.CARGO_RESPONSABLE" id="cargo" ></s:textfield>
-                                                                                    <s:fielderror fieldName="ErrorCargo" cssClass="alert alert-danger"/>
-                                                                                </div> 
-                                                                            </div>      
+                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="ad.NOMBRER" id="nombrer" readonly="true"></s:textfield>
+                                                                                        <s:fielderror fieldName="ErrorNombre" cssClass="alert alert-danger"/>
+                                                                                    </div> 
+                                                                                </div>              
+                                                                                <div class="form-group col-lg-6">
+                                                                                    <label class="col-form-label" for="apellidop">Apellido Paterno:</label>
+                                                                                    <div class="col-sm-auto">
+                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOPR" id="apellidopr" readonly="true"></s:textfield>
+                                                                                        <s:fielderror fieldName="ErrorApellidoP" cssClass="alert alert-danger"/>
+                                                                                    </div> 
+                                                                                </div>    
+                                                                                <div class="form-group col-lg-6">
+                                                                                    <label class="col-form-label" for="apellidomr">Apellido Materno:</label>
+                                                                                    <div class="col-sm-auto">
+                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOMR" id="apellidomr" readonly="true"></s:textfield>
+                                                                                        <s:fielderror fieldName="ErrorApellidoM" cssClass="alert alert-danger"/>
+                                                                                    </div> 
+                                                                                </div>   
+                                                                                <div class="form-group col-lg-4">
+                                                                                    <label class="col-form-label" for="Genero">Cargo:</label>
+                                                                                    <div class="col-sm-auto">
+                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="ad.CARGO_RESPONSABLE" id="cargo" ></s:textfield>
+                                                                                        <s:fielderror fieldName="ErrorCargo" cssClass="alert alert-danger"/>
+                                                                                    </div> 
+                                                                                </div>      
 
-                                                                            <div class="form-group col-lg-4">
-                                                                                <label class="col-form-label" for="tel">Teléfono:</label>
-                                                                                <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.TELEFONO_RESPONSABLE" id="telefonor"></s:textfield>
-                                                                                    <s:fielderror fieldName="ErrorTel" cssClass="alert alert-danger"/>
+                                                                                <div class="form-group col-lg-4">
+                                                                                    <label class="col-form-label" for="tel">Teléfono:</label>
+                                                                                    <div class="col-sm-auto">
+                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="ad.TELEFONO_RESPONSABLE" id="telefonor"></s:textfield>
+                                                                                        <s:fielderror fieldName="ErrorTel" cssClass="alert alert-danger"/>
+                                                                                    </div> 
+                                                                                </div>     
+
+                                                                                <div class="form-group col-lg-4">
+                                                                                    <label class="col-form-label" for="correo">Email:</label>
+                                                                                    <div class="col-sm-auto">
+                                                                                        <s:textfield  cssClass="form-control " name="ad.EMAIL_RESPONSABLE" id="emailr" ></s:textfield>
+                                                                                        <s:fielderror fieldName="ErrorCorreo" cssClass="alert alert-danger"/>
+                                                                                    </div> 
                                                                                 </div> 
-                                                                            </div>     
 
-                                                                            <div class="form-group col-lg-4">
-                                                                                <label class="col-form-label" for="correo">Email:</label>
-                                                                                <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control " name="ad.EMAIL_RESPONSABLE" id="emailr" ></s:textfield>
-                                                                                    <s:fielderror fieldName="ErrorCorreo" cssClass="alert alert-danger"/>
-                                                                                </div> 
-                                                                            </div> 
-
-                                                                            <div class="form-group col-lg-12">                                                             
-                                                                                <div align="center">
-                                                                                    <a class="btn bg-success " style="color: white;"  href="Javascript:muestra_oculta('GuardarResponsable','loadGM')">Guardar  Responsables</a>
-                                                                                </div>  
-                                                                            </div>
-
+                                                                                <div class="form-group col-lg-12">                                                             
+                                                                                    <div align="center">
+                                                                                        <a class="btn bg-success " style="color: white;"  href="Javascript:muestra_oculta('GuardarResponsable','loadGM')">Guardar  Responsables</a>
+                                                                                    </div>  
+                                                                                </div>
+                                                                            </s:if> 
                                                                             &nbsp;
-                                                                            <h5 align="center" class="bg-secondary col-lg-12 text-white"  > <i class="fas fa-book"></i>Responsables Registrados  </h5>     
                                                                             &nbsp;
-                                                                            <div class="input-group ">                        
-                                                                                <i class="fa fa-search fa-2x " style="color: #0056b3"></i>                                                                                                                  
-                                                                                <input id="filtrarR" type="text" class="form-control col-lg-6" placeholder="INGRESA EL NOMBRE DEL RESPONSABLE QUE BUSCA...."/>
+                                                                            &nbsp;
+                                                                            <h5 align="center" class="bg-secondary col-lg-12 text-white"  > <i class="fas fa-user"></i>Responsables Registrados  </h5>     
+
+                                                                            <div class="form-inline col-lg-12">
+                                                                                <i class="fa fa-search fa-2x " style="color: #0056b3"></i>
+                                                                                <input id="filtrarR" type="text" class="form-control col-lg-11" placeholder="INGRESA EL NOMBRE DEL RESPONSABLE QUE BUSCA...."/>
                                                                             </div>                                                                                                                                                     
-                                                                            
+
                                                                             <div class="table-wrapper-scroll-y col-lg-12">  
                                                                                 <table class="table table-hover">
                                                                                     <thead>

@@ -49,6 +49,7 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
     public List<DatosBean> ListaCarreras = new ArrayList<DatosBean>();
     private List<AdminCatBean> ListaResponsables=new ArrayList<>();
     private List<AdminCatBean> ListaAsesores=new ArrayList<>();
+    private List<AdminCatBean>VerificaResponsable=new ArrayList<>();
     
 
     //SESSIN USUARIO	
@@ -88,6 +89,9 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
     private boolean BanCarreraAgregada;
     private boolean BanCarreraEliminada;
     private boolean BanCarreraExistente;
+    private boolean banCurpValida;
+    private boolean BanResponsableExiste;
+    private boolean BANCURPRENCONTRADA;
 
     public String AbreAdminCat() {
 
@@ -245,7 +249,85 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
     }
     
     //*************************************************responsables*********************************************************
-    
+     public String consultacurpR() {
+        //validando session***********************************************************************
+        if (session.get("cveUsuario") != null) {
+            String sUsu = (String) session.get("cveUsuario");
+        } else {
+            addActionError("**** La sesión ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+        if (session.containsKey("usuario")) {
+            usuariocons = (usuarioBean) session.get("usuario");
+        } else {
+            addActionError("**** La sesión ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+
+        try {
+
+            boolean banlong = false;
+            //limpiar();
+
+            Constantes.enviaMensajeConsola("longitud de curp: " + ad.getCURP_RESPONSABLE().length());
+            ad.getCURP_RESPONSABLE().toUpperCase();
+
+            if (ad.getCURP_RESPONSABLE().length() == 18) {
+                banlong = true;
+            } else {
+                banlong = false;
+
+                addFieldError("ErrorValCurp", "LA CURP DEBE CONTENER 18 CARACTERES");
+
+            }
+
+            if (banlong) {
+
+                ConsultasBusiness con = new ConsultasBusiness();
+                
+                datos.setCCT(usuariocons.getUSUARIO());
+                datos.setCURP(ad.getCURP_RESPONSABLE());
+
+                VerificaResponsable = con.ConsultaResponsable(datos);
+
+                if (VerificaResponsable.size() > 0) {             
+                        BanResponsableExiste = true;                    
+                    return "input";
+
+                } else {
+
+                    //System.outprintln ("MICURP ES: " + micurp);
+                    service = new ConsultaRenapoPorCurp_Service();
+                    port = service.getConsultaRenapoPorCurpPort();
+                    personas = port.consultaPorCurp(ad.getCURP_RESPONSABLE());
+                    //port.consultaPorCurp(micurp)
+
+                    if (personas.getResultado().equals("EXITO")) {
+
+                        BANCURPRENCONTRADA = true;
+                        banCurpValida=true;
+
+                        ad.setNOMBRER(personas.getNombre());
+                        ad.setAPELLIDOPR(personas.getApellidoPaterno());
+                        ad.setAPELLIDOMR(personas.getApellidoMaterno());
+                        
+                    } else {
+
+                        BANCURPRENCONTRADA = false;
+                        System.out.println("Resultado            : " + personas.getResultado());
+                        System.out.println("Codigo de error      : " + personas.getCodigoError());
+                        System.out.println("Descripcion Error    : " + personas.getDescripcionError());
+
+                        addFieldError("ErrorValCurp", personas.getDescripcionError());
+                    }
+                }
+            }
+        } catch (Exception e) {
+            addActionError("Ocurrio un error: " + e);
+            return "ERROR";
+        }
+        return "SUCCESS";
+    }
     
 
 //Cierra método validarFOLIO
@@ -430,6 +512,16 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
     public void setListaAsesores(List<AdminCatBean> ListaAsesores) {
         this.ListaAsesores = ListaAsesores;
     }
+
+    public List<AdminCatBean> getVerificaResponsable() {
+        return VerificaResponsable;
+    }
+
+    public void setVerificaResponsable(List<AdminCatBean> VerificaResponsable) {
+        this.VerificaResponsable = VerificaResponsable;
+    }
+    
+    
     
     public boolean isBanCarreraExistente() {
         return BanCarreraExistente;

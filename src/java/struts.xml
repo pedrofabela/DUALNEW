@@ -255,7 +255,14 @@
             <result name="ERROR">/pages/AdminCatalogos.jsp</result>
             <result name="input">/pages/AdminCatalogos.jsp</result>
             <result name="SESSION" type="chain">CerrarSesion</result>
-        </action>     
+        </action>  
+        
+        <action name="ConsultaCurpR" class="action.AdminCatalogosAction" method="ConsultaCurpR">
+            <result name="SUCCESS">/pages/AdminCatalogos.jsp</result>                          
+            <result name="ERROR">/pages/AdminCatalogos.jsp</result>
+            <result name="input">/pages/AdminCatalogos.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>        
         
         <!-- *****************************************fin Admin Catalogos************************************************************-->
         <!-- CERRAR SESION -->
