@@ -1087,6 +1087,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                     pro.setFECHA_CIERRE(fecha());
                     con.ActualizarProyecto(pro);
                     con.ActualizarEstatusAlumnoEgresado(pro);
+                    con.ActualizarEstatusBeca(pro);
+                    
                 } else if (pro.getSTATUS_P().equals("11") || pro.getSTATUS_P().equals("12") || pro.getSTATUS_P().equals("13") || pro.getSTATUS_P().equals("14")) {
 
                     pro.setFECHA_CIERRE(fecha());
@@ -1097,6 +1099,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                     con.ActualizarAsesor(pro);
 
                     con.ActualizarEstatusAlumnos(pro);
+                    
+                    con.ActualizarEstatusBeca(pro);
 
                 } else {
                     
@@ -1349,20 +1353,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             be.setCURP_AB(datos.getCURP());
 
             ListaBecas = (ArrayList<BecaBean>) con.ConsultaBecas(datos);
-            
-            Iterator LB=ListaBecas.iterator();
-            BecaBean obj;
-            int contador=0;
-            
-            while (LB.hasNext()) {
-                obj = (BecaBean) LB.next();
-                        
-                if (obj.getSTATUS_B().equals("1")) {
-                     contador=contador+1;                  
-                }
-            }
 
-            if (contador == 0) {
+            if (ListaBecas.size() == 0) {
                 be.setBECA("no");
                 con.ActualizaStatusBeca(be);
             }

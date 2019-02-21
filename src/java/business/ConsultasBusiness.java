@@ -88,6 +88,18 @@ public class ConsultasBusiness {
         List lista = this.con.ConsultaResponsableAdmin(obj);
         return lista;
     }
+    
+    public boolean GuardaResponsableN(AdminCatBean ad) throws Exception {
+        return this.con.GuardaResponsableN(ad);
+    }
+    
+     public boolean ActualizaResponsable(AdminCatBean ad) throws Exception {
+        return this.con.ActualizaResponsable(ad);
+    }
+     
+     public boolean EliminarResponsable(AdminCatBean ad) throws Exception {
+        return this.con.EliminarResponsable(ad);
+    }
 
     //***********************************************business de asesorI**********************************
     public List ConsultaAsesorI(DatosBean obj) throws Exception {
@@ -226,6 +238,10 @@ public class ConsultasBusiness {
     
     public boolean ActualizarEstatusAlumnoEgresado(ProyectoBean pro) throws Exception {
         return this.con.ActualizarEstatusAlumnoEgresado(pro);
+    }
+    
+    public boolean ActualizarEstatusBeca(ProyectoBean pro) throws Exception {
+        return this.con.ActualizarEstatusBeca(pro);
     }
 
     public boolean GuardaBecas(BecaBean be) throws Exception {

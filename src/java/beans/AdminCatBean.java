@@ -28,6 +28,7 @@ public class AdminCatBean {
     private String ID_CAT_RESP;
     private String CVE_SER_PUB;
     private String CURP_RESPONSABLE;
+    private String CURP_RESPONSABLEAUX;
     private String NOMBRER;
     private String APELLIDOPR;
     private String APELLIDOMR;
@@ -36,6 +37,16 @@ public class AdminCatBean {
     private String TELEFONO_RESPONSABLE;
     private String EMAIL_RESPONSABLE;
     private String CCT_RESP;
+    
+    private String ID_CAT_RESPA;
+    private String CURP_RESPONSABLEA;
+    private String NOMBRERA;
+    private String APELLIDOPRA;
+    private String APELLIDOMRA;
+    private String CARGO_RESPONSABLEA;
+    private String TELEFONO_RESPONSABLEA;
+    private String EMAIL_RESPONSABLEA;
+    private String CCT_RESPA;
     
     //asesores
     private String ID_CAT_ASE;
@@ -168,6 +179,16 @@ public class AdminCatBean {
         this.CURP_RESPONSABLE = CURP_RESPONSABLE;
     }
 
+    public String getCURP_RESPONSABLEAUX() {
+        return CURP_RESPONSABLEAUX;
+    }
+
+    public void setCURP_RESPONSABLEAUX(String CURP_RESPONSABLEAUX) {
+        this.CURP_RESPONSABLEAUX = CURP_RESPONSABLEAUX;
+    }
+    
+    
+
     public String getNOMBRER() {
         return NOMBRER;
     }
@@ -231,6 +252,79 @@ public class AdminCatBean {
     public void setCCT_RESP(String CCT_RESP) {
         this.CCT_RESP = CCT_RESP;
     }
+
+    public String getID_CAT_RESPA() {
+        return ID_CAT_RESPA;
+    }
+
+    public void setID_CAT_RESPA(String ID_CAT_RESPA) {
+        this.ID_CAT_RESPA = ID_CAT_RESPA;
+    }
+
+    public String getCURP_RESPONSABLEA() {
+        return CURP_RESPONSABLEA;
+    }
+
+    public void setCURP_RESPONSABLEA(String CURP_RESPONSABLEA) {
+        this.CURP_RESPONSABLEA = CURP_RESPONSABLEA;
+    }
+
+    public String getNOMBRERA() {
+        return NOMBRERA;
+    }
+
+    public void setNOMBRERA(String NOMBRERA) {
+        this.NOMBRERA = NOMBRERA;
+    }
+
+    public String getAPELLIDOPRA() {
+        return APELLIDOPRA;
+    }
+
+    public void setAPELLIDOPRA(String APELLIDOPRA) {
+        this.APELLIDOPRA = APELLIDOPRA;
+    }
+
+    public String getAPELLIDOMRA() {
+        return APELLIDOMRA;
+    }
+
+    public void setAPELLIDOMRA(String APELLIDOMRA) {
+        this.APELLIDOMRA = APELLIDOMRA;
+    }
+
+    public String getCARGO_RESPONSABLEA() {
+        return CARGO_RESPONSABLEA;
+    }
+
+    public void setCARGO_RESPONSABLEA(String CARGO_RESPONSABLEA) {
+        this.CARGO_RESPONSABLEA = CARGO_RESPONSABLEA;
+    }
+
+    public String getTELEFONO_RESPONSABLEA() {
+        return TELEFONO_RESPONSABLEA;
+    }
+
+    public void setTELEFONO_RESPONSABLEA(String TELEFONO_RESPONSABLEA) {
+        this.TELEFONO_RESPONSABLEA = TELEFONO_RESPONSABLEA;
+    }
+
+    public String getEMAIL_RESPONSABLEA() {
+        return EMAIL_RESPONSABLEA;
+    }
+
+    public void setEMAIL_RESPONSABLEA(String EMAIL_RESPONSABLEA) {
+        this.EMAIL_RESPONSABLEA = EMAIL_RESPONSABLEA;
+    }
+
+    public String getCCT_RESPA() {
+        return CCT_RESPA;
+    }
+
+    public void setCCT_RESPA(String CCT_RESPA) {
+        this.CCT_RESPA = CCT_RESPA;
+    }
+    
     
     
     

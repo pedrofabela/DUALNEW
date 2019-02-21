@@ -44,6 +44,12 @@ public interface ConsultaDAO {
     public boolean GuardaResponsable(Connection conn, PreparedStatement stat, DatosBean datos) throws Exception;
 
     public List ConsultaResponsableAdmin(AdminCatBean obj) throws Exception;
+    
+    public boolean GuardaResponsableN(AdminCatBean ad) throws Exception;
+    
+    public boolean ActualizaResponsable(AdminCatBean ad) throws Exception;
+    
+    public boolean EliminarResponsable(AdminCatBean ad) throws Exception;
 
     //***********************************************business de asesorI**********************************
     public List ConsultaAsesorI(DatosBean obj) throws Exception;
@@ -108,6 +114,8 @@ public interface ConsultaDAO {
     public boolean ActualizarEstatusAlumnos(ProyectoBean pro) throws Exception;
     
     public boolean ActualizarEstatusAlumnoEgresado(ProyectoBean pro) throws Exception;
+    
+    public boolean ActualizarEstatusBeca(ProyectoBean pro) throws Exception;
 
     public boolean GuardaBecas(BecaBean be) throws Exception;
 

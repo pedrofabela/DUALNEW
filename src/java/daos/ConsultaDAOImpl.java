@@ -163,7 +163,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
     //*************************************************DAO IMPL Responsables*******************************************************************************
     @Override
     public List ConsultaResponsable(DatosBean obj) throws Exception {
-        String query = "SELECT CVE_SER_PUB ,NOMBRE,APELLIDOP,APELLIDOM,CARGO, TELEFONO, EMAIL FROM " + Constantes.TablaResponsables + " WHERE CVE_SER_PUB='" + obj.getCURP_RESPONSABLE() + "' AND CCT='" + obj.getCCT() + "'";
+        String query = "SELECT CVE_SER_PUB ,NOMBRE,APELLIDOP,APELLIDOM,CARGO, TELEFONO, EMAIL FROM " + Constantes.TablaResponsables + " WHERE CVE_SER_PUB='" + obj.getCURP_RESPONSABLE()+ "' AND CCT='" + obj.getCCT() + "'";
         Constantes.enviaMensajeConsola("verifica si existen responsable PARA cvecarrera----->" + query);
         List list = null;
         list = queryForList(query, new VerificaResponsableMapper());
@@ -213,6 +213,87 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         list = queryForList(query, new VerificaResponsableAdminMapper());
         return list;
     }
+     
+    public boolean GuardaResponsableN(AdminCatBean objdatos) throws Exception {
+
+//Crear un ArrayList para agregar los campos a insertar
+        ArrayList<ObjPrepareStatement> arregloCampos = new ArrayList<ObjPrepareStatement>();
+//Crear un objeto de tipo ObjPrepareStatement
+        ObjPrepareStatement temporal;
+//imprimiendo los valores del objeto tipo CCT...........
+        Constantes.enviaMensajeConsola("Entre al DAO del INSERT...................................");
+
+//En el objeto temporal settear el campo de la tabla, el tipo de dato y el valor a insertar
+        temporal = new ObjPrepareStatement("NOMBRE", "STRING", objdatos.getNOMBRER().toUpperCase());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("APELLIDOP", "STRING", objdatos.getAPELLIDOPR().toUpperCase());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("APELLIDOM", "STRING", objdatos.getAPELLIDOMR().toUpperCase());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("CVE_SER_PUB", "STRING", objdatos.getCURP_RESPONSABLE().toUpperCase());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("CCT", "STRING", objdatos.getCCT().toUpperCase());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("CARGO", "STRING", objdatos.getCARGO_RESPONSABLE().toUpperCase());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("TELEFONO", "STRING", objdatos.getTELEFONO_RESPONSABLE());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("EMAIL", "STRING", objdatos.getEMAIL_RESPONSABLE().toLowerCase());
+        arregloCampos.add(temporal);
+
+        
+
+//Se terminan de adicionar a nuesto ArrayLis los objetos
+//Ejecutar la funcion del OracleDAOFactory queryInsert, se deber pasar como parmetros la tabla en donde se insertara
+        return oraDaoFac.queryInsert(Constantes.TablaResponsables, arregloCampos);
+    } 
+    
+    public boolean ActualizaResponsable(AdminCatBean objdatos) throws Exception {
+
+//Crear un ArrayList para agregar los campos a insertar
+        ArrayList<ObjPrepareStatement> arregloCampos = new ArrayList<ObjPrepareStatement>();
+//Crear un objeto de tipo ObjPrepareStatement
+        ObjPrepareStatement temporal;
+//imprimiendo los valores del objeto tipo CCT...........
+        Constantes.enviaMensajeConsola("Entre al DAO del INSERT...................................");
+
+//En el objeto temporal settear el campo de la tabla, el tipo de dato y el valor a insertar
+        
+        temporal = new ObjPrepareStatement("CARGO", "STRING", objdatos.getCARGO_RESPONSABLEA().toUpperCase());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("TELEFONO", "STRING", objdatos.getTELEFONO_RESPONSABLEA());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("EMAIL", "STRING", objdatos.getEMAIL_RESPONSABLEA().toLowerCase());
+        arregloCampos.add(temporal);
+
+        String condicion="WHERE ID_CAT_RES='"+objdatos.getID_CAT_RESPA()+"'";
+        
+
+//Se terminan de adicionar a nuesto ArrayLis los objetos
+//Ejecutar la funcion del OracleDAOFactory queryInsert, se deber pasar como parmetros la tabla en donde se insertara
+        return oraDaoFac.queryUpdate(Constantes.TablaResponsables, arregloCampos,condicion);
+    } 
+    
+    public boolean EliminarResponsable(AdminCatBean objdatos) throws Exception {
+
+//Crear un ArrayList para agregar los campos a insertar
+        ArrayList<ObjPrepareStatement> arregloCampos = new ArrayList<ObjPrepareStatement>();
+//Crear un objeto de tipo ObjPrepareStatement
+        ObjPrepareStatement temporal;
+//imprimiendo los valores del objeto tipo CCT...........
+        Constantes.enviaMensajeConsola("Entre al DAO del INSERT...................................");
+
+//En el objeto temporal settear el campo de la tabla, el tipo de dato y el valor a insertar
+        
+        temporal = new ObjPrepareStatement("ID_CAT_RES", "STRING", objdatos.getID_CAT_RESPA());
+        arregloCampos.add(temporal);
+        
+        
+
+//Se terminan de adicionar a nuesto ArrayLis los objetos
+//Ejecutar la funcion del OracleDAOFactory queryInsert, se deber pasar como parmetros la tabla en donde se insertara
+        return oraDaoFac.queryDelete(Constantes.TablaResponsables, arregloCampos);
+    } 
     
     //*************************************************DAO IMPL ASESORES I*******************************************************************************
     @Override
@@ -934,6 +1015,28 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
 //Ejecutar la funcion del OracleDAOFactory queryInsert, se deber pasar como parmetros la tabla en donde se insertara
         return oraDaoFac.queryUpdate(Constantes.TablaAlumnos, arregloCampos, Condicion);
     }
+    
+    public boolean ActualizarEstatusBeca(ProyectoBean objdatos) throws Exception {
+
+//Crear un ArrayList para agregar los campos a insertar
+        ArrayList<ObjPrepareStatement> arregloCampos = new ArrayList<ObjPrepareStatement>();
+//Crear un objeto de tipo ObjPrepareStatement
+        ObjPrepareStatement temporal;
+//imprimiendo los valores del objeto tipo CCT...........
+        Constantes.enviaMensajeConsola("Entre al DAO del INSERT...................................");
+
+//En el objeto temporal settear el campo de la tabla, el tipo de dato y el valor a insertar
+        temporal = new ObjPrepareStatement("STATUS", "STRING", "2");
+        arregloCampos.add(temporal);
+        
+
+        String Condicion;
+        Condicion = " WHERE CURP='" + objdatos.getCURP_AL() + "' AND CCT='" + objdatos.getCCT() + "'";
+
+//Se terminan de adicionar a nuesto ArrayLis los objetos
+//Ejecutar la funcion del OracleDAOFactory queryInsert, se deber pasar como parmetros la tabla en donde se insertara
+        return oraDaoFac.queryUpdate(Constantes.TablaBecas, arregloCampos, Condicion);
+    }
 
     public List ConsultaTipoBeca() throws Exception {
         String query = "SELECT id_beca,nom_beca FROM cat_becas ";
@@ -1036,16 +1139,12 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
 
     public boolean EliminarBecas(BecaBean be) throws Exception {
         //Crear un ArrayList para agregar los campos a insertar     
-        ArrayList<ObjPrepareStatement> arregloCampos = new ArrayList<ObjPrepareStatement>();
+         ArrayList<ObjPrepareStatement> arregloCampos = new ArrayList<ObjPrepareStatement>();
         ObjPrepareStatement temporal;
-        
-        temporal = new ObjPrepareStatement("STATUS", "STRING", "2");
+        temporal = new ObjPrepareStatement("ID_BECA", "STRING", be.getID_BECAE());
         arregloCampos.add(temporal);
-        
-        String Condicion;
-        Condicion = " WHERE ID_BECA='" + be.getID_BECAE() + "'";
 
-        return queryUpdate(Constantes.TablaBecas, arregloCampos,Condicion);
+        return queryDelete(Constantes.TablaBecas, arregloCampos);
     }
 
     //*********************************************************************************REGISTRO DE ALUMNO INDIVIDUAL***********************************************************************************

@@ -73,6 +73,54 @@
                                                         document.formularioPrincipal.submit();
                                                     }
 
+                                                    function ValidaResponsableM(accion) {
+
+                                                        var cargo = document.getElementById('cargo').value;
+                                                        var telefono = document.getElementById('telefonor').value;
+                                                        var email = document.getElementById('emailr').value;
+                                                        
+
+                                                        var bancargo = false;
+                                                        var bantelefono = false;
+                                                        var banemail = false;
+                                                        
+
+
+
+                                                        if (cargo == null || cargo.length == 0 || /^\s+$/.test(cargo)) {
+                                                            alert('ERROR: Debe agregar el cargo del responsable');
+                                                            bancargo = false;
+                                                        } else {
+                                                            bancargo = true;
+                                                        }
+
+                                                        
+                                                        if (telefono == null || telefono.length == 0 || /^\s+$/.test(telefono)) {
+                                                            alert('ERROR: Debe agregar el teléfono del responsable');
+                                                            bantelefono = false;
+                                                        } else {
+                                                            bantelefono = true;
+                                                        }
+
+                                                        if (email == null || email.length == 0 || /^\s+$/.test(email)) {
+                                                            alert('ERROR: Debe agregar el email del responsable');
+                                                            banemail = false;
+                                                        } else {
+                                                            banemail = true;
+                                                        }
+
+                                                        if (bancargo && bantelefono && banemail) {
+
+                                                            document.formularioPrincipal.action = accion;
+                                                            document.formularioPrincipal.submit();
+
+                                                        }
+
+
+
+
+                                                    }
+
 
                                                     window.onload = function () {/*hace que se cargue la función lo que predetermina que div estará oculto hasta llamar a la función nuevamente*/
                                                         var pos = window.name || 0;
@@ -432,8 +480,13 @@
                                                                                 </div>
                                                                             </s:if> 
                                                                             <s:if test="BanResponsableExiste">
-                                                                                <div class="alert alert-success"  style="width:100%; border-radius: 5px; ">
-                                                                                    <h5 align="center" style="color: #ffffff">Responsable Actualizado Correctamente</h5>
+                                                                                <div class="alert alert-danger"  style="width:100%; border-radius: 5px; ">
+                                                                                    <h5 align="center" style="color: #ffffff">El Responsable que intenta registrar ya existe</h5>
+                                                                                </div>
+                                                                            </s:if> 
+                                                                            <s:if test="BanResponsableEliminado">
+                                                                                <div class="alert alert-danger"  style="width:100%; border-radius: 5px; ">
+                                                                                    <h5 align="center" style="color: #ffffff">Responsable Eliminado</h5>
                                                                                 </div>
                                                                             </s:if> 
 
@@ -441,8 +494,8 @@
                                                                             <div class="form-inline col-lg-12">
 
                                                                                 <div class=" form-group col-lg-9">
-                                                                                    <s:textfield  cssClass="form-control col-lg-8 text-uppercase" name="ad.CURP_RESPONSABLE" id="ad.CURP_RESPONSABLE"  placeholder="INGRESE LA CURP DEL RESPONSABLE QUE DESEA REGISTRAR" ></s:textfield>
-                                                                                    <s:fielderror fieldName="ErrorCurp" cssClass="alert alert-danger"></s:fielderror>
+                                                                                    <s:textfield  cssClass="form-control col-lg-8 text-uppercase" name="ad.CURP_RESPONSABLEAUX" id="ad.CURP_RESPONSABLEAUX"  placeholder="INGRESE LA CURP DEL RESPONSABLE QUE DESEA REGISTRAR" ></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorValCurp" cssClass="alert alert-danger"></s:fielderror>
                                                                                     </div> 
                                                                                     <div class="form-group col-lg-2">                                                             
 
@@ -450,6 +503,7 @@
 
                                                                                     </div>    
                                                                                 </div>
+                                                                                <br></br>        
                                                                             <s:if test="BANCURPRENCONTRADA">
                                                                                 <div class="alert alert-primary"  style="width:100%; border-radius: 5px; ">
                                                                                     <h5 align="center" style="color: #ffffff">CURP VALIDADA</h5>
@@ -459,32 +513,40 @@
 
                                                                         <div class="row">
                                                                             <s:if test="banCurpValida">  
+                                                                                <s:hidden name="banCurpValida" value="%{banCurpValida}"></s:hidden>
+                                                                                    <div class="form-group col-lg-6 ">
+                                                                                        <label class="col-form-label"  for="nombre">CURP:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="ad.CURP_RESPONSABLE" id="nombrer" readonly="true"></s:textfield>
+                                                                                        <s:fielderror fieldName="ErrorCURPR" cssClass="alert alert-danger"/>
+                                                                                    </div> 
+                                                                                </div>
                                                                                 <div class="form-group col-lg-6 ">
                                                                                     <label class="col-form-label"  for="nombre">Nombre:</label>
                                                                                     <div class="col-sm-auto">
                                                                                         <s:textfield  cssClass="form-control text-uppercase" name="ad.NOMBRER" id="nombrer" readonly="true"></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorNombre" cssClass="alert alert-danger"/>
+                                                                                        <s:fielderror fieldName="ErrorNombreR" cssClass="alert alert-danger"/>
                                                                                     </div> 
                                                                                 </div>              
                                                                                 <div class="form-group col-lg-6">
                                                                                     <label class="col-form-label" for="apellidop">Apellido Paterno:</label>
                                                                                     <div class="col-sm-auto">
                                                                                         <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOPR" id="apellidopr" readonly="true"></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorApellidoP" cssClass="alert alert-danger"/>
+                                                                                        <s:fielderror fieldName="ErrorApellidoPR" cssClass="alert alert-danger"/>
                                                                                     </div> 
                                                                                 </div>    
                                                                                 <div class="form-group col-lg-6">
                                                                                     <label class="col-form-label" for="apellidomr">Apellido Materno:</label>
                                                                                     <div class="col-sm-auto">
                                                                                         <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOMR" id="apellidomr" readonly="true"></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorApellidoM" cssClass="alert alert-danger"/>
+                                                                                        <s:fielderror fieldName="ErrorApellidoMR" cssClass="alert alert-danger"/>
                                                                                     </div> 
                                                                                 </div>   
                                                                                 <div class="form-group col-lg-4">
                                                                                     <label class="col-form-label" for="Genero">Cargo:</label>
                                                                                     <div class="col-sm-auto">
                                                                                         <s:textfield  cssClass="form-control text-uppercase" name="ad.CARGO_RESPONSABLE" id="cargo" ></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorCargo" cssClass="alert alert-danger"/>
+                                                                                        <s:fielderror fieldName="ErrorCargoR" cssClass="alert alert-danger"/>
                                                                                     </div> 
                                                                                 </div>      
 
@@ -492,7 +554,7 @@
                                                                                     <label class="col-form-label" for="tel">Teléfono:</label>
                                                                                     <div class="col-sm-auto">
                                                                                         <s:textfield  cssClass="form-control text-uppercase" name="ad.TELEFONO_RESPONSABLE" id="telefonor"></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorTel" cssClass="alert alert-danger"/>
+                                                                                        <s:fielderror fieldName="ErrorTelR" cssClass="alert alert-danger"/>
                                                                                     </div> 
                                                                                 </div>     
 
@@ -500,13 +562,13 @@
                                                                                     <label class="col-form-label" for="correo">Email:</label>
                                                                                     <div class="col-sm-auto">
                                                                                         <s:textfield  cssClass="form-control " name="ad.EMAIL_RESPONSABLE" id="emailr" ></s:textfield>
-                                                                                        <s:fielderror fieldName="ErrorCorreo" cssClass="alert alert-danger"/>
+                                                                                        <s:fielderror fieldName="ErrorCorreoR" cssClass="alert alert-danger"/>
                                                                                     </div> 
                                                                                 </div> 
 
                                                                                 <div class="form-group col-lg-12">                                                             
                                                                                     <div align="center">
-                                                                                        <a class="btn bg-success " style="color: white;"  href="Javascript:muestra_oculta('GuardarResponsable','loadGM')">Guardar  Responsables</a>
+                                                                                        <a class="btn bg-success " style="color: white;"  href="Javascript:Accion('GuardarResponsableN')">Guardar  Responsables</a>
                                                                                     </div>  
                                                                                 </div>
                                                                             </s:if> 
@@ -599,7 +661,7 @@
                                                             </div>
                                                         </section>
 
-                                                        <!-- REGISTRA RESPONSABLES INSTITUCIONALES -->
+                                                        <!-- REGISTRA ASESORES INSTITUCIONALES -->
                                                         <section style="background:  linear-gradient(to bottom, rgba(73,155,234,1) 0%, rgba(11,82,158,1) 83%, rgba(11,82,158,1) 100%);" id="cri">
                                                             <div class="container"  >
                                                                 <div class="modal-content">
@@ -808,62 +870,62 @@
                                                                             <div class="form-group col-lg-6">
                                                                                 <label class="col-form-label" for="curp">CURP:</label>
                                                                                 <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.CURP_RESPONSABLE" id="curpr" readonly="true"></s:textfield>
-                                                                                    <s:fielderror fieldName="ErrorCurp" cssClass="alert alert-danger"></s:fielderror>
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.CURP_RESPONSABLEA" id="curpr" readonly="true"></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorCurpRA" cssClass="alert alert-danger"></s:fielderror>
                                                                                     </div> 
                                                                                 </div>
                                                                                 <div class="form-group col-lg-6 ">
                                                                                     <label class="col-form-label"  for="nombre">Nombre:</label>
                                                                                     <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.NOMBRER" id="nombrer" readonly="true"></s:textfield>
-                                                                                    <s:fielderror fieldName="ErrorNombre" cssClass="alert alert-danger"/>
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.NOMBRERA" id="nombrer" readonly="true"></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorNombreRA" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>              
                                                                             <div class="form-group col-lg-6">
                                                                                 <label class="col-form-label" for="apellidop">Apellido Paterno:</label>
                                                                                 <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOPR" id="apellidopr" readonly="true"></s:textfield>
-                                                                                    <s:fielderror fieldName="ErrorApellidoP" cssClass="alert alert-danger"/>
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOPRA" id="apellidopr" readonly="true"></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorApellidoPRA" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>    
                                                                             <div class="form-group col-lg-6">
                                                                                 <label class="col-form-label" for="apellidomr">Apellido Materno:</label>
                                                                                 <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOMR" id="apellidomr" readonly="true"></s:textfield>
-                                                                                    <s:fielderror fieldName="ErrorApellidoM" cssClass="alert alert-danger"/>
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOMRA" id="apellidomr" readonly="true"></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorApellidoMRA" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>   
                                                                             <div class="form-group col-lg-4">
                                                                                 <label class="col-form-label" for="Genero">Cargo:</label>
                                                                                 <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.CARGO_RESPONSABLE" id="cargo" ></s:textfield>
-                                                                                    <s:fielderror fieldName="ErrorCargo" cssClass="alert alert-danger"/>
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.CARGO_RESPONSABLEA" id="cargo" ></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorCargoRA" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>      
 
                                                                             <div class="form-group col-lg-4">
                                                                                 <label class="col-form-label" for="tel">Teléfono:</label>
                                                                                 <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.TELEFONO_RESPONSABLE" id="telefonor"></s:textfield>
-                                                                                    <s:fielderror fieldName="ErrorTel" cssClass="alert alert-danger"/>
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.TELEFONO_RESPONSABLEA" id="telefonor"></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorTelRA" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>     
 
                                                                             <div class="form-group col-lg-4">
                                                                                 <label class="col-form-label" for="correo">Email:</label>
                                                                                 <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control " name="ad.EMAIL_RESPONSABLE" id="emailr" ></s:textfield>
-                                                                                    <s:fielderror fieldName="ErrorCorreo" cssClass="alert alert-danger"/>
+                                                                                    <s:textfield  cssClass="form-control " name="ad.EMAIL_RESPONSABLEA" id="emailr" ></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorCorreoRA" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>  
 
                                                                         </div>
-                                                                        <s:textfield name="ad.ID_CAT_RESP" id="idresp" cssStyle="display:none;"></s:textfield>        
+                                                                        <s:textfield name="ad.ID_CAT_RESPA" id="idresp" cssStyle="display:none;"></s:textfield>        
 
                                                                         </div>        
                                                                         <div class="modal-footer">
                                                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                                            <a class="btn btn-primary" href="Javascript:Accion('ActualizaResp')">Actualizar</a>
+                                                                            <a class="btn btn-primary" href="Javascript:ValidaResponsableM('ActualizaResp')">Actualizar</a>
                                                                         </div>                                         
                                                                     </div>
                                                                 </div>

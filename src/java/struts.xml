@@ -262,7 +262,28 @@
             <result name="ERROR">/pages/AdminCatalogos.jsp</result>
             <result name="input">/pages/AdminCatalogos.jsp</result>
             <result name="SESSION" type="chain">CerrarSesion</result>
-        </action>        
+        </action>  
+        
+        <action name="GuardarResponsableN" class="action.AdminCatalogosAction" method="GuardarResponsableN">
+            <result name="SUCCESS">/pages/AdminCatalogos.jsp</result>                          
+            <result name="ERROR">/pages/AdminCatalogos.jsp</result>
+            <result name="input">/pages/AdminCatalogos.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>  
+        
+        <action name="ActualizaResp" class="action.AdminCatalogosAction" method="ActualizaResp">
+            <result name="SUCCESS">/pages/AdminCatalogos.jsp</result>                          
+            <result name="ERROR">/pages/AdminCatalogos.jsp</result>
+            <result name="input">/pages/AdminCatalogos.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action> 
+        
+        <action name="EliminarResp" class="action.AdminCatalogosAction" method="EliminarResp">
+            <result name="SUCCESS">/pages/AdminCatalogos.jsp</result>                          
+            <result name="ERROR">/pages/AdminCatalogos.jsp</result>
+            <result name="input">/pages/AdminCatalogos.jsp</result>
+            <result name="SESSION" type="chain">CerrarSesion</result>
+        </action>                                               
         
         <!-- *****************************************fin Admin Catalogos************************************************************-->
         <!-- CERRAR SESION -->
