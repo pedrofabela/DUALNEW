@@ -1085,6 +1085,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                     pro.setFECHA_CAMBIO_STATUS(fecha());
                     pro.setFECHA_EGRESO(fecha());
                     pro.setFECHA_CIERRE(fecha());
+                    pro.setBECA("no");
                     con.ActualizarProyecto(pro);
                     con.ActualizarEstatusAlumnoEgresado(pro);
                     con.ActualizarEstatusBeca(pro);
@@ -1093,6 +1094,8 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
                     pro.setFECHA_CIERRE(fecha());
                     pro.setFECHA_CAMBIO_STATUS(fecha());
+                    
+                    pro.setBECA("no");
 
                     con.ActualizarProyecto(pro);
 

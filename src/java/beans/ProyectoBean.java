@@ -70,6 +70,7 @@ public String CONVENIOR;
 public String FECHA_EGRESO;
 public String FECHA_CIERRE; 
 public String FECHA_CAMBIO_STATUS;
+public String BECA;
 
 
 
@@ -475,6 +476,15 @@ public String FECHA_CAMBIO_STATUS;
     public void setFECHA_CAMBIO_STATUS(String FECHA_CAMBIO_STATUS) {
         this.FECHA_CAMBIO_STATUS = FECHA_CAMBIO_STATUS;
     }
+
+    public String getBECA() {
+        return BECA;
+    }
+
+    public void setBECA(String BECA) {
+        this.BECA = BECA;
+    }
+    
     
     
     

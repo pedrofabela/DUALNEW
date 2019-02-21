@@ -992,6 +992,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         arregloCampos.add(temporal);
         temporal = new ObjPrepareStatement("FECHA_CIERRE", "STRING", objdatos.getFECHA_CIERRE());
         arregloCampos.add(temporal);
+       
 
         String Condicion;
         Condicion = " WHERE CURP_A='" + objdatos.getCURP_AL() + "' AND CCT='" + objdatos.getCCT() + "'";
@@ -1012,6 +1013,8 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
 
 //En el objeto temporal settear el campo de la tabla, el tipo de dato y el valor a insertar
         temporal = new ObjPrepareStatement("STATUS", "STRING", objdatos.getSTATUS_P());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("BECA", "STRING", objdatos.getBECA());
         arregloCampos.add(temporal);
         temporal = new ObjPrepareStatement("FECHA_CAMBIO_ESTATUS", "STRING", objdatos.getFECHA_CAMBIO_STATUS());
         arregloCampos.add(temporal);
@@ -1037,6 +1040,8 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
 
 //En el objeto temporal settear el campo de la tabla, el tipo de dato y el valor a insertar
         temporal = new ObjPrepareStatement("STATUS", "STRING", objdatos.getSTATUS_P());
+        arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("BECA", "STRING", objdatos.getBECA());
         arregloCampos.add(temporal);
         temporal = new ObjPrepareStatement("FECHA_EGRESO", "STRING", objdatos.getFECHA_EGRESO());
         arregloCampos.add(temporal);
