@@ -84,6 +84,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public List<DatosBean> ListaProyectos = new ArrayList<DatosBean>();
     public List<DatosBean> ListaReingresos = new ArrayList<DatosBean>();
     public List<DatosBean> ListaMunicipioEscuela = new ArrayList<DatosBean>();
+     public List<DatosBean> ListaEmpresasAlumnos = new ArrayList<DatosBean>();
     
 
     private boolean bantablero = false;
@@ -1720,6 +1721,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             ListaTotalEstatusU = con.listaTotalEstatusU(datos);
             ListaTotalEsuelaU = con.listaTotalAsesorProyecto(datos);
             ListaMunicipioEscuela=con.listaMunEsc(datos);
+            ListaEmpresasAlumnos=con.listaEmpAlu(datos);
             
             
              System.out.println("voy a calcular proyectos");
@@ -2298,6 +2300,14 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
     public void setListaMunicipioEscuela(List<DatosBean> ListaMunicipioEscuela) {
         this.ListaMunicipioEscuela = ListaMunicipioEscuela;
+    }
+
+    public List<DatosBean> getListaEmpresasAlumnos() {
+        return ListaEmpresasAlumnos;
+    }
+
+    public void setListaEmpresasAlumnos(List<DatosBean> ListaEmpresasAlumnos) {
+        this.ListaEmpresasAlumnos = ListaEmpresasAlumnos;
     }
     
     

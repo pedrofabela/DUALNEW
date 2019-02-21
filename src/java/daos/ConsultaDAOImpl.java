@@ -33,6 +33,7 @@ import mappers.VerificaModalidadMapper;
 import mappers.VerificaResponsableAdminMapper;
 import mappers.VerificaResponsableMapper;
 import mappers.alumnosDashboardMapper;
+import mappers.empAluMapper;
 import mappers.listaAlumnos2Mapper;
 import mappers.listaAlumnosBecaMapper;
 import mappers.listaAlumnosMapper;
@@ -731,6 +732,13 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         Constantes.enviaMensajeConsola("Consulta cct----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new munEscMapper());
+        return list;
+    }
+      public List listaEmpAlu(DatosBean datos) throws Exception {
+        String query = "SELECT TOTAL.RFC, EMP.RAZON_SOCIAL, MUN.NOM_MUN, TOTAL.TOTAL_ALUMNOS_EMPRESA FROM (SELECT DISTINCT(RFC), COUNT(RFC) AS TOTAL_ALUMNOS_EMPRESA FROM TBL_PROYECTOS WHERE STATUS=1 AND CCT='"+datos.getCCT()+"' GROUP BY RFC)TOTAL LEFT OUTER JOIN (SELECT RFC AS RFC_EMPRESA, RAZON_SOCIAL, MUNICIPIO FROM CAT_EMPRESAS)EMP ON TOTAL.RFC=EMP.RFC_EMPRESA JOIN (SELECT * FROM CAT_MUNICIPIOS)MUN ON EMP.MUNICIPIO=MUN.ID ";
+        Constantes.enviaMensajeConsola("Consulta cct----->" + query);
+        List list = null;
+        list = queryForList(query, (Mapper) new empAluMapper());
         return list;
     }
 

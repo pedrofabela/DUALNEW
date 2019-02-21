@@ -757,10 +757,64 @@
                                                                                  <div class="form-group col-lg-6" >
 
 
-                                                                    <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Alumnos por género</div>
+                                                                    <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Alumnos activos por empresa</div>
                                                                    
-                                                                   <div id="chart_div_gen" style="margin-bottom: 10px; height: 240px;"></div>
+                                                                    <div style="height: 250px; overflow-y: scroll">
+                                                                    <table class="table table-hover"  style=" font-size: 14px; width: 100%;">
 
+                                                               
+
+                                                                <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999; background: #10707f; color:white;">
+                                                                    <td  scope="row" style="width: 20%;">RFC</td>
+                                                                    <td style="width: 40%;">Empresa</td>
+                                                                    <td style="width: 20%;">Municipio</td>
+                                                                    <td style="width: 20%;">No.Alumnos</td>
+
+                                                                   
+
+
+                                                                </tr>
+
+                                                                <s:iterator value="ListaEmpresasAlumnos" id="ListaEmpresasAlumnos" status="stat">
+
+                                                             
+
+                                                                        <tr style=" background: #efeaf0; font-size: 12px; color: #333;">
+                                                                            <td style="width: 20%;"><s:property value="RFC"/></td>
+                                                                            <td style="width: 40%;"><s:property value="RAZON_SOCIAL"/></td>
+                                                                            <td style="width: 20%;"><s:property value="NOM_MUN"/></td>
+                                                                            <td style="width: 20%;"><s:property value="TOTAL_ALUMNOS_EMPRESA" /></td>
+
+                                                                          
+
+                                                                        </tr>
+
+                                                               
+                                                                </s:iterator>
+                                                         
+
+                                                            <s:else>
+
+                                                                <div style="color: #e1173e; font-size: 12px; text-align: center;">No hay información para mostrar </div>
+
+
+                                                            </s:else>
+                                                        </table>
+                                                                    
+                                                                   </div> 
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                 
                                                                 </div>    
                                                                                
                                                                 

@@ -115,6 +115,58 @@ public class DatosBean {
                  private String MUNICIPIO_ACTIVOS;
                   private String MUNICIPIO_INACTIVOS;
                    private String MUNICIPIO_EGRESADOS;
+                     private String TOTAL_ALUMNOS_EMPRESA;
+                     private String RFC;
+                      private String RAZON_SOCIAL;
+                       private String NOM_MUN;
+
+                       
+                       
+                       
+                       
+                       
+    public String getNOM_MUN() {
+        return NOM_MUN;
+    }
+
+    public void setNOM_MUN(String NOM_MUN) {
+        this.NOM_MUN = NOM_MUN;
+    }
+                       
+                       
+                       
+                       
+
+    public String getRAZON_SOCIAL() {
+        return RAZON_SOCIAL;
+    }
+
+    public void setRAZON_SOCIAL(String RAZON_SOCIAL) {
+        this.RAZON_SOCIAL = RAZON_SOCIAL;
+    }
+                      
+                      
+
+    public String getRFC() {
+        return RFC;
+    }
+
+    public void setRFC(String RFC) {
+        this.RFC = RFC;
+    }
+                     
+                     
+                     
+                     
+
+    public String getTOTAL_ALUMNOS_EMPRESA() {
+        return TOTAL_ALUMNOS_EMPRESA;
+    }
+
+    public void setTOTAL_ALUMNOS_EMPRESA(String TOTAL_ALUMNOS_EMPRESA) {
+        this.TOTAL_ALUMNOS_EMPRESA = TOTAL_ALUMNOS_EMPRESA;
+    }
+
 
                    
                    

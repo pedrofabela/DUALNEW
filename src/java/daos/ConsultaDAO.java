@@ -139,6 +139,7 @@ public interface ConsultaDAO {
 
     public List listaTotalAsesorProyecto(DatosBean datos) throws Exception;
     public List listaMunEsc(DatosBean datos) throws Exception;
+    public List listaEmpAlu(DatosBean datos) throws Exception;
 
     public String AlumnosNuevoIngresoA(DatosBean datos) throws Exception;
 

@@ -311,6 +311,11 @@ public class ConsultasBusiness {
         return lista;
 
     }
+       public List listaEmpAlu(DatosBean datos) throws Exception {
+        List lista = this.con.listaEmpAlu(datos);
+        return lista;
+
+    }
      
     public String AlumnosNuevoIngresoA(DatosBean datos) throws Exception {
         String nuevos = this.con.AlumnosNuevoIngresoA(datos);
