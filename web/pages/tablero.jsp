@@ -861,7 +861,7 @@
                                                                                <s:property value="datos.TOTAL_REINGRESOS"/> <i class="fas fa-fw fa-thumbs-down" style="position: absolute; z-index: 0; top : -2 rem; right: 0.5rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
 
                                                                            </div> 
-                                                                               <a href="#popup2" style="text-decoration: none; color: white;" > <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+                                                                               <a href="#" style="text-decoration: none; color: white;" > <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
 
                                                                               <!-- Detalle de Alumnos        -->
 
@@ -890,7 +890,7 @@
                                                                                <s:property value="datos.TOTAL_PROYECTOS"/> <i class="fas fa-fw fa-user" style="position: absolute; z-index: 0; top : -2 rem; right: 0.5rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
 
                                                                        </div>
-                                                                     <a href="#popup" style="text-decoration: none; color:white;" >      <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+                                                                     <a href="#" style="text-decoration: none; color:white;" >      <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
 
                                                                              <!-- Detalle de Alumnos        -->
 
@@ -924,7 +924,7 @@
                                                                                <s:property value="datos.TOTAL_BECAS"/> <i class="fas fa-fw fa-graduation-cap" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
 
                                                                        </div>
-                                                                               <a href="#popup3" style="text-decoration: none; color: white;" >    <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+                                                                               <a href="#" style="text-decoration: none; color: white;" >    <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
 
                                                                               <!-- Detalle de Alumnos        -->
 
@@ -1015,7 +1015,7 @@
 
                                    <div class="modal-wrapper" id="popup">
                                         <div class="popup-contenedor">
-                                            <h2  >Alumos Activos</h2>
+                                            <h2  >Alumnos Activos</h2>
 
                                             <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
                                                 <div id="dvData">
@@ -1395,7 +1395,7 @@
                                        
                                      <div class="modal-wrapper" id="popup5">
                                         <div class="popup5-contenedor">
-                                            <h2 style="color: gray;" >Total de alumonos</h2>
+                                            <h2 style="color: gray;" >Total de alumnos</h2>
 
                                             <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
 
@@ -1484,7 +1484,7 @@
                                 
                                         <div class="modal-wrapper" id="popup6">
                                         <div class="popup6-contenedor">
-                                            <h2 style="color: green;" >Total de Alumonos activos</h2>
+                                            <h2 style="color: green;" >Total de Alumnos activos</h2>
 
                                             <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
 
