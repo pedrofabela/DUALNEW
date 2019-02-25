@@ -407,6 +407,15 @@
 
 
                                 }
+                                
+                                
+                                
+                                
+                                function deshabilitaRetroceso(){
+    window.location.hash="no-back-button";
+    window.location.hash="Again-No-back-button" //chrome
+    window.onhashchange=function(){window.location.hash="no-back-button";}
+}
 
 
 
@@ -440,7 +449,7 @@
 
                             </head>
 
-                            <body id="page-top">
+                            <body id="page-top" onload="deshabilitaRetroceso()">
                                 <s:form name="formularioPrincipal" id="formularioPrincipal" enctype="multipart/form-data">
 
                                     <!-- Navigation -->
