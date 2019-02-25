@@ -66,7 +66,7 @@ public class DatosBean {
     private String TELEFONO_RESPONSABLE;
     private String EMAIL_RESPONSABLE;
     
-    
+    private String ID_CAT_ASE;
     private String CURP_ASESORI;
     private String NOMBREAI;
     private String APELLIDOPAI;
@@ -838,6 +838,16 @@ public class DatosBean {
     public void setEMAIL_RESPONSABLE(String EMAIL_RESPONSABLE) {
         this.EMAIL_RESPONSABLE = EMAIL_RESPONSABLE;
     }
+
+    public String getID_CAT_ASE() {
+        return ID_CAT_ASE;
+    }
+
+    public void setID_CAT_ASE(String ID_CAT_ASE) {
+        this.ID_CAT_ASE = ID_CAT_ASE;
+    }
+    
+    
 
     public String getCURP_ASESORI() {
         return CURP_ASESORI;

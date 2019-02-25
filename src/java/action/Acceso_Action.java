@@ -51,21 +51,18 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
     public ArrayList<DatosBean> ListaAlumnosBeca = new ArrayList<DatosBean>();
     public List<DatosBean> ListaCarreras = new ArrayList<DatosBean>();
     private ArrayList<DatosBean> ObtenerCarreraCCT = new ArrayList<>();
-     public List<DatosBean> ListaTotalEstatus = new ArrayList<DatosBean>();
-     public List<DatosBean> ListaAlumnosDashboard = new ArrayList<DatosBean>();
-      public List<DatosBean> ListaTotalEsuela = new ArrayList<DatosBean>();
-      
-      
-       public List<DatosBean> ListaAlumnosDashboardUGeneral = new ArrayList<DatosBean>();
-        public List<DatosBean> ListaProyectos = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaTotalEstatus = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaAlumnosDashboard = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaTotalEsuela = new ArrayList<DatosBean>();
+
+    public List<DatosBean> ListaAlumnosDashboardUGeneral = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaProyectos = new ArrayList<DatosBean>();
     public List<DatosBean> ListaReingresos = new ArrayList<DatosBean>();
     public List<DatosBean> ListaMunicipioEscuela = new ArrayList<DatosBean>();
-     public List<DatosBean> ListaEmpresasAlumnos = new ArrayList<DatosBean>();
-      public List<DatosBean> ListaTotalEstatusUGeneral = new ArrayList<DatosBean>();
-      
-      
-      
-      private boolean bantablero = false;
+    public List<DatosBean> ListaEmpresasAlumnos = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaTotalEstatusUGeneral = new ArrayList<DatosBean>();
+
+    private boolean bantablero = false;
 
     //SESSIN USUARIO	
     // private Map session  = ActionContext.getContext().getSession();
@@ -127,233 +124,168 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
 
                     datos.setFECHA_INICIO("01/" + fecha);
                     datos.setFECHA_TERMINO(fecha());
-                    
-                    
-                    
-                    
-                    
-                                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
 
-            
+                    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
 
-            bantablero = true;
-            
-            
+                    bantablero = true;
 
-           
+                    Constantes.enviaMensajeConsola("FECHA INICIO" + datos.getFECHA_INICIO());
+                    Constantes.enviaMensajeConsola("FECHA termino" + datos.getFECHA_TERMINO());
 
-            Constantes.enviaMensajeConsola("FECHA INICIO"+datos.getFECHA_INICIO());
-            Constantes.enviaMensajeConsola("FECHA termino"+datos.getFECHA_TERMINO());
+                    ListaAlumnosDashboard = con.listaAlumnosDashboard(datos);
 
-            ListaAlumnosDashboard = con.listaAlumnosDashboard(datos);
-            
-            
+                    Constantes.enviaMensajeConsola("lista Alumnos : " + ListaAlumnosDashboard.size());
 
-            Constantes.enviaMensajeConsola("lista Alumnos : " + ListaAlumnosDashboard.size());
+                    Iterator LAD = ListaAlumnosDashboard.iterator();
 
-            Iterator LAD = ListaAlumnosDashboard.iterator();
+                    DatosBean obj;
+                    int total = 0;
+                    int activo = 0;
+                    int inactivo = 0;
+                    int hombre = 0;
+                    int mujer = 0;
+                    int egresados = 0;
+                    int nuevos = 0;
+                    int tipo_alu = 0;
+                    int beca = 0;
 
-            DatosBean obj;
-            int total = 0;
-            int activo = 0;
-            int inactivo = 0;
-            int hombre = 0;
-            int mujer = 0;
-            int egresados = 0;
-            int nuevos = 0;
-            int tipo_alu = 0;
-               int beca = 0;
-              
-               Date fechaReg=null;
-               Date fechainicio=null;
-                Date fechatermino=null;
-              System.out.println("fecha reg" + fechaReg);  
-                fechainicio=format.parse(datos.getFECHA_INICIO());
-                fechatermino=format.parse(datos.getFECHA_TERMINO());
+                    Date fechaReg = null;
+                    Date fechainicio = null;
+                    Date fechatermino = null;
+                    System.out.println("fecha reg" + fechaReg);
+                    fechainicio = format.parse(datos.getFECHA_INICIO());
+                    fechatermino = format.parse(datos.getFECHA_TERMINO());
 
-            while (LAD.hasNext()) {
-                obj = (DatosBean) LAD.next();
-                total = total + 1;
+                    while (LAD.hasNext()) {
+                        obj = (DatosBean) LAD.next();
+                        total = total + 1;
 
-                Constantes.enviaMensajeConsola("SEXO: " + obj.getSEXO());
+                        Constantes.enviaMensajeConsola("SEXO: " + obj.getSEXO());
 
-                if (obj.getESTATUS_GENERAL().equals("ACTIVO")) {
+                        if (obj.getESTATUS_GENERAL().equals("ACTIVO")) {
 
-                    activo = activo + 1;
-                }
-                if (obj.getESTATUS_GENERAL().equals("INACTIVO") && !obj.getSTATUS().equals("10")) {
+                            activo = activo + 1;
+                        }
+                        if (obj.getESTATUS_GENERAL().equals("INACTIVO") && !obj.getSTATUS().equals("10")) {
 
-                    inactivo = inactivo + 1;
-                }
+                            inactivo = inactivo + 1;
+                        }
 
-                if (obj.getSEXO().equals("HOMBRE")) {
+                        if (obj.getSEXO().equals("HOMBRE")) {
 
-                    hombre = hombre + 1;
-                }
-                if (obj.getSEXO().equals("MUJER")) {
+                            hombre = hombre + 1;
+                        }
+                        if (obj.getSEXO().equals("MUJER")) {
 
-                    mujer = mujer + 1;
-                }
-                
-                 if (obj.getSTATUS().equals("10")) {
+                            mujer = mujer + 1;
+                        }
 
-                    egresados = egresados + 1;
-                }
-                 
-                 if(obj.getFECHA_REG()!=null){
-                fechaReg=format.parse(obj.getFECHA_REG());
-                if ( fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)  ) {
+                        if (obj.getSTATUS().equals("10")) {
 
-                    nuevos = nuevos + 1;
-                }
-                 }
-                 
-                 
-                  if (obj.getTIPO_ALUMNO().equals("2")) {
+                            egresados = egresados + 1;
+                        }
 
-                    tipo_alu = tipo_alu + 1;
-                }
-                  
-            }
+                        if (obj.getFECHA_REG() != null) {
+                            fechaReg = format.parse(obj.getFECHA_REG());
+                            if (fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)) {
 
-            
-            datos.setTOTAL_ALU_DUAL(String.valueOf(total));
-            datos.setTOTAL_ALU_ACTIVO(String.valueOf(activo));
-            datos.setTOTAL_ALU_INACTIVO(String.valueOf(inactivo));
-            datos.setALUMNOS_NUEVO_INGRESO(con.AlumnosNuevoIngresoA(datos));
-            datos.setALUMNOS_ACTIVOS_PERIODO(con.AlumnosActivosPeriodoA(datos));
-            datos.setTOTAL_HOMBRE(String.valueOf(hombre));
-            datos.setTOTAL_MUJER(String.valueOf(mujer));
-             datos.setEGRESADOS(String.valueOf(egresados));
-             datos.setALUMNOS_NUEVOS(String.valueOf(nuevos));
-               datos.setTOTAL_TIPO_ALUMNO(String.valueOf(tipo_alu));
-           
-            
-            
-              activo=0;
-            inactivo=0;
-            egresados=0;
-             hombre = 0;
-             mujer = 0;
-             beca=0;
-            
-            
-            ListaAlumnosDashboardUGeneral = con.listaAlumnosDashboardGeneral(datos);
-             
-             Iterator LADUG=ListaAlumnosDashboardUGeneral.iterator();
-              DatosBean obj2;
-             
-            while (LADUG.hasNext()) {
-          obj2 = (DatosBean) LADUG.next();
-          
-          
-          
-          if (obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
+                                nuevos = nuevos + 1;
+                            }
+                        }
 
-                    activo = activo + 1;
-                }
-                if (obj2.getESTATUS_GENERAL().equals("INACTIVO") && !obj2.getSTATUS().equals("10")) {
+                        if (obj.getTIPO_ALUMNO().equals("2")) {
 
-                    inactivo = inactivo + 1;
-                }
-                
-                 if (obj2.getSTATUS().equals("10")) {
+                            tipo_alu = tipo_alu + 1;
+                        }
 
-                    egresados = egresados + 1;
-                }
-                  if (obj2.getSEXO().equals("HOMBRE")) {
+                    }
 
-                    hombre = hombre + 1;
-                }
-                if (obj2.getSEXO().equals("MUJER")) {
+                    datos.setTOTAL_ALU_DUAL(String.valueOf(total));
+                    datos.setTOTAL_ALU_ACTIVO(String.valueOf(activo));
+                    datos.setTOTAL_ALU_INACTIVO(String.valueOf(inactivo));
+                    datos.setALUMNOS_NUEVO_INGRESO(con.AlumnosNuevoIngresoA(datos));
+                    datos.setALUMNOS_ACTIVOS_PERIODO(con.AlumnosActivosPeriodoA(datos));
+                    datos.setTOTAL_HOMBRE(String.valueOf(hombre));
+                    datos.setTOTAL_MUJER(String.valueOf(mujer));
+                    datos.setEGRESADOS(String.valueOf(egresados));
+                    datos.setALUMNOS_NUEVOS(String.valueOf(nuevos));
+                    datos.setTOTAL_TIPO_ALUMNO(String.valueOf(tipo_alu));
 
-                    mujer = mujer + 1;
-                }
+                    activo = 0;
+                    inactivo = 0;
+                    egresados = 0;
+                    hombre = 0;
+                    mujer = 0;
+                    beca = 0;
 
-                 if (obj2.getBECA().equals("si") && obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
+                    ListaAlumnosDashboardUGeneral = con.listaAlumnosDashboardGeneral(datos);
 
-                    beca = beca + 1;
-                }
-          
-          
-                
-            }
-            
-            datos.setALUMNOS_ACTIVOS_GENERAL(String.valueOf(activo));
-            datos.setALUMNOS_INACTIVOS_GENERAL(String.valueOf(inactivo));
-            datos.setALUMNOS_EGRESADOS_GENERAL(String.valueOf(egresados));
-            datos.setTOTAL_ALUMNOS_DUAL(String.valueOf(activo + inactivo + egresados));
-            datos.setTOTAL_HOMBRE_GENERAL(String.valueOf(hombre));
-            datos.setTOTAL_MUJER_GENERAL(String.valueOf(mujer));
-            datos.setTOTAL_BECA_GENERAL(String.valueOf(beca));
-            
-             ListaTotalEstatusUGeneral = con.listaTotalEstatusGeneral(datos);
-            
-            ListaMunicipioEscuela = con.listaMunEscGeneral(datos);
-            ListaEmpresasAlumnos = con.listaEmpAluGeneral(datos);
-            
-            
-             System.out.println("voy a calcular proyectos");
-            ListaProyectos=con.proyectosGeneral(datos);
-            
-            
-            Iterator LP =ListaProyectos.iterator();
-            
-             DatosBean obj3;
-             
-             while (LP.hasNext()) {
-               obj3= (DatosBean) LP.next();
-               
-               datos.setTOTAL_PROYECTOS(obj3.getTOTAL_PROYECTOS());
-               datos.setTOTAL_REINGRESOS(obj3.getTOTAL_REINGRESOS());
-                datos.setTOTAL_BECAS(obj3.getTOTAL_BECAS());
-                
-            }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+                    Iterator LADUG = ListaAlumnosDashboardUGeneral.iterator();
+                    DatosBean obj2;
 
-             ListaTotalEstatus = con.listaTotalEstatus(datos);
-            ListaTotalEsuela = con.listaTotalEscuela(datos);
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                    while (LADUG.hasNext()) {
+                        obj2 = (DatosBean) LADUG.next();
 
-                    
+                        if (obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
+
+                            activo = activo + 1;
+                        }
+                        if (obj2.getESTATUS_GENERAL().equals("INACTIVO") && !obj2.getSTATUS().equals("10")) {
+
+                            inactivo = inactivo + 1;
+                        }
+
+                        if (obj2.getSTATUS().equals("10")) {
+
+                            egresados = egresados + 1;
+                        }
+                        if (obj2.getSEXO().equals("HOMBRE")) {
+
+                            hombre = hombre + 1;
+                        }
+                        if (obj2.getSEXO().equals("MUJER")) {
+
+                            mujer = mujer + 1;
+                        }
+
+                        if (obj2.getBECA().equals("si") && obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
+
+                            beca = beca + 1;
+                        }
+
+                    }
+
+                    datos.setALUMNOS_ACTIVOS_GENERAL(String.valueOf(activo));
+                    datos.setALUMNOS_INACTIVOS_GENERAL(String.valueOf(inactivo));
+                    datos.setALUMNOS_EGRESADOS_GENERAL(String.valueOf(egresados));
+                    datos.setTOTAL_ALUMNOS_DUAL(String.valueOf(activo + inactivo + egresados));
+                    datos.setTOTAL_HOMBRE_GENERAL(String.valueOf(hombre));
+                    datos.setTOTAL_MUJER_GENERAL(String.valueOf(mujer));
+                    datos.setTOTAL_BECA_GENERAL(String.valueOf(beca));
+
+                    ListaTotalEstatusUGeneral = con.listaTotalEstatusGeneral(datos);
+
+                    ListaMunicipioEscuela = con.listaMunEscGeneral(datos);
+                    ListaEmpresasAlumnos = con.listaEmpAluGeneral(datos);
+
+                    System.out.println("voy a calcular proyectos");
+                    ListaProyectos = con.proyectosGeneral(datos);
+
+                    Iterator LP = ListaProyectos.iterator();
+
+                    DatosBean obj3;
+
+                    while (LP.hasNext()) {
+                        obj3 = (DatosBean) LP.next();
+
+                        datos.setTOTAL_PROYECTOS(obj3.getTOTAL_PROYECTOS());
+                        datos.setTOTAL_REINGRESOS(obj3.getTOTAL_REINGRESOS());
+                        datos.setTOTAL_BECAS(obj3.getTOTAL_BECAS());
+
+                    }
+
+                    ListaTotalEstatus = con.listaTotalEstatus(datos);
+                    ListaTotalEsuela = con.listaTotalEscuela(datos);
 
                     return "SUCCESS3";
 
@@ -410,9 +342,338 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
 
                                 ListaMunicipios = con.listaMunicipios();
                                 ListaAlumnos = (ArrayList<DatosBean>) con.listaAlumnos(datos);
-                                ListaTipoAlumno=con.ConsultaTipoAlumno();
+                                ListaTipoAlumno = con.ConsultaTipoAlumno();
                                 ListaAlumnosBeca = (ArrayList<DatosBean>) con.listaAlumnosBeca(datos);
-                                
+
+                                Constantes.enviaMensajeConsola("REGRESO DE CONSULTAS");
+
+                                return "SUCCESS2";
+
+                            } else {
+                                Constantes.enviaMensajeConsola("entro al else");
+                                BanArcchivoFaltante = true;
+                                if (valor.getARCHIVO_CAR().equals("no")) {
+
+                                    valor.setERROR_ARCHIVO_CAR("FALTA CARGAR ARCHIVO DE CARRERAS");
+                                } else {
+                                    valor.setERROR_ARCHIVO_CAR(" ARCHIVO DE CARRERAS CARGADO");
+                                }
+                                if (valor.getARCHIVO_RES().equals("no")) {
+                                    valor.setERROR_ARCHIVO_RES("FALTA CARGAR ARCHIVO DE RESPONSABLES");
+                                } else {
+                                    valor.setERROR_ARCHIVO_RES(" ARCHIVO DE RESPONSABLES CARGADO");
+                                }
+
+                                if (valor.getARCHIVO_ASE_INT().equals("no")) {
+                                    valor.setERROR_ARCHIVO_ASE_INT("FALTA CARGAR ARCHIVO DE ASESORES INTERNOS");
+                                } else {
+                                    valor.setERROR_ARCHIVO_ASE_INT(" ARCHIVO DE ASESORES INTERNOS CARGADO");
+                                }
+
+                                if (valor.getARCHIVO_ALU().equals("no")) {
+                                    valor.setERROR_ARCHIVO_ALU("FALTA CARGAR ARCHIVO DE ALUMNOS");
+
+                                } else {
+                                    valor.setERROR_ARCHIVO_ALU(" ARCHIVO DE ALUMNOS CARGADO");
+                                }
+
+                                return "SUCCESS";
+                            }
+                        }
+                    } else {
+                        BanArcchivoFaltante = true;
+
+                        addFieldError("FaltaCar", "FALTA CARGAR ARCHIVO DE CARRERAS");
+                        addFieldError("FaltaRes", "FALTA CARGAR ARCHIVO DE RESPONSABLES");
+                        addFieldError("FaltaAI", "FALTA CARGAR ARCHIVO DE ASESORES INTERNOS");
+                        addFieldError("FaltaAlu", "FALTA CARGAR ARCHIVO DE ALUMNOS");
+
+                        return "SUCCESS";
+                    }
+
+                    if (modulosAUX == null) {
+                        addActionError("***** Ud. no tiene acceso a este modulo, favor de contacar al administrador del sistema ***** ");
+                        return "ERROR";
+                    }
+                    Constantes.enviaMensajeConsola("voy a successs-----------------------");
+                    return "SUCCESS";
+                }
+            } else {
+                addActionError("***** Usuario no valido, favor de verificar ***** ");
+                return "ERROR";
+            }
+
+        } catch (Exception e) {
+            TipoError = "SESSION";
+            TipoException = e.getMessage();
+            return "ERROR";
+        }
+    }
+
+    public String MuestraMenuPrincipalUsuario2() {
+
+        cveusuario = "DGES";
+        pasusuario = "YCFJUKFQ";
+
+        if (cveusuario != null) {
+            session.put("cveUsuario", cveusuario);
+            session.put("psw", pasusuario);
+        } else if (session.get("cveUsuario") != null) {
+            cveusuario = (String) session.get("cveUsuario");
+            pasusuario = (String) session.get("psw");
+        }
+
+        try {
+
+            //Se crea un nuevo objeto de acceco a Business
+            AccesoBusiness acceso = new AccesoBusiness();
+            ConsultasBusiness con = new ConsultasBusiness();
+            usuariocons = acceso.consultaUsuario(cveusuario, pasusuario);
+
+            Constantes.enviaMensajeConsola("esto llega de usuario: " + usuariocons);
+
+            if (usuariocons != null) {
+
+                session.put("usuario", usuariocons);
+
+                //obteniendo el nombre del usuario
+                nombreUsuario = usuariocons.getNAMEUSUARIO();
+
+                modulosAUX = (ArrayList<moduloBean>) acceso.consultaModulosPerfilMenu(usuariocons.getPERFIL(), modulo);
+                modulosAUXP = (ArrayList<moduloAuxBean>) acceso.consultaModulosHijosPerfilMenu(usuariocons.getPERFIL(), modulo);
+
+                if (usuariocons.getPERFIL() == 2) {
+
+                    Constantes.enviaMensajeConsola("entre a perfil admin");
+
+                    String fecha = fecha();
+                    System.out.println(fecha);
+
+                    fecha = fecha.substring(3, 8);
+
+                    datos.setFECHA_INICIO("01/" + fecha);
+                    datos.setFECHA_TERMINO(fecha());
+
+                    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
+
+                    bantablero = true;
+
+                    Constantes.enviaMensajeConsola("FECHA INICIO" + datos.getFECHA_INICIO());
+                    Constantes.enviaMensajeConsola("FECHA termino" + datos.getFECHA_TERMINO());
+
+                    ListaAlumnosDashboard = con.listaAlumnosDashboard(datos);
+
+                    Constantes.enviaMensajeConsola("lista Alumnos : " + ListaAlumnosDashboard.size());
+
+                    Iterator LAD = ListaAlumnosDashboard.iterator();
+
+                    DatosBean obj;
+                    int total = 0;
+                    int activo = 0;
+                    int inactivo = 0;
+                    int hombre = 0;
+                    int mujer = 0;
+                    int egresados = 0;
+                    int nuevos = 0;
+                    int tipo_alu = 0;
+                    int beca = 0;
+
+                    Date fechaReg = null;
+                    Date fechainicio = null;
+                    Date fechatermino = null;
+                    System.out.println("fecha reg" + fechaReg);
+                    fechainicio = format.parse(datos.getFECHA_INICIO());
+                    fechatermino = format.parse(datos.getFECHA_TERMINO());
+
+                    while (LAD.hasNext()) {
+                        obj = (DatosBean) LAD.next();
+                        total = total + 1;
+
+                        Constantes.enviaMensajeConsola("SEXO: " + obj.getSEXO());
+
+                        if (obj.getESTATUS_GENERAL().equals("ACTIVO")) {
+
+                            activo = activo + 1;
+                        }
+                        if (obj.getESTATUS_GENERAL().equals("INACTIVO") && !obj.getSTATUS().equals("10")) {
+
+                            inactivo = inactivo + 1;
+                        }
+
+                        if (obj.getSEXO().equals("HOMBRE")) {
+
+                            hombre = hombre + 1;
+                        }
+                        if (obj.getSEXO().equals("MUJER")) {
+
+                            mujer = mujer + 1;
+                        }
+
+                        if (obj.getSTATUS().equals("10")) {
+
+                            egresados = egresados + 1;
+                        }
+
+                        if (obj.getFECHA_REG() != null) {
+                            fechaReg = format.parse(obj.getFECHA_REG());
+                            if (fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)) {
+
+                                nuevos = nuevos + 1;
+                            }
+                        }
+
+                        if (obj.getTIPO_ALUMNO().equals("2")) {
+
+                            tipo_alu = tipo_alu + 1;
+                        }
+
+                    }
+
+                    datos.setTOTAL_ALU_DUAL(String.valueOf(total));
+                    datos.setTOTAL_ALU_ACTIVO(String.valueOf(activo));
+                    datos.setTOTAL_ALU_INACTIVO(String.valueOf(inactivo));
+                    datos.setALUMNOS_NUEVO_INGRESO(con.AlumnosNuevoIngresoA(datos));
+                    datos.setALUMNOS_ACTIVOS_PERIODO(con.AlumnosActivosPeriodoA(datos));
+                    datos.setTOTAL_HOMBRE(String.valueOf(hombre));
+                    datos.setTOTAL_MUJER(String.valueOf(mujer));
+                    datos.setEGRESADOS(String.valueOf(egresados));
+                    datos.setALUMNOS_NUEVOS(String.valueOf(nuevos));
+                    datos.setTOTAL_TIPO_ALUMNO(String.valueOf(tipo_alu));
+
+                    activo = 0;
+                    inactivo = 0;
+                    egresados = 0;
+                    hombre = 0;
+                    mujer = 0;
+                    beca = 0;
+
+                    ListaAlumnosDashboardUGeneral = con.listaAlumnosDashboardGeneral(datos);
+
+                    Iterator LADUG = ListaAlumnosDashboardUGeneral.iterator();
+                    DatosBean obj2;
+
+                    while (LADUG.hasNext()) {
+                        obj2 = (DatosBean) LADUG.next();
+
+                        if (obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
+
+                            activo = activo + 1;
+                        }
+                        if (obj2.getESTATUS_GENERAL().equals("INACTIVO") && !obj2.getSTATUS().equals("10")) {
+
+                            inactivo = inactivo + 1;
+                        }
+
+                        if (obj2.getSTATUS().equals("10")) {
+
+                            egresados = egresados + 1;
+                        }
+                        if (obj2.getSEXO().equals("HOMBRE")) {
+
+                            hombre = hombre + 1;
+                        }
+                        if (obj2.getSEXO().equals("MUJER")) {
+
+                            mujer = mujer + 1;
+                        }
+
+                        if (obj2.getBECA().equals("si") && obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
+
+                            beca = beca + 1;
+                        }
+
+                    }
+
+                    datos.setALUMNOS_ACTIVOS_GENERAL(String.valueOf(activo));
+                    datos.setALUMNOS_INACTIVOS_GENERAL(String.valueOf(inactivo));
+                    datos.setALUMNOS_EGRESADOS_GENERAL(String.valueOf(egresados));
+                    datos.setTOTAL_ALUMNOS_DUAL(String.valueOf(activo + inactivo + egresados));
+                    datos.setTOTAL_HOMBRE_GENERAL(String.valueOf(hombre));
+                    datos.setTOTAL_MUJER_GENERAL(String.valueOf(mujer));
+                    datos.setTOTAL_BECA_GENERAL(String.valueOf(beca));
+
+                    ListaTotalEstatusUGeneral = con.listaTotalEstatusGeneral(datos);
+
+                    ListaMunicipioEscuela = con.listaMunEscGeneral(datos);
+                    ListaEmpresasAlumnos = con.listaEmpAluGeneral(datos);
+
+                    System.out.println("voy a calcular proyectos");
+                    ListaProyectos = con.proyectosGeneral(datos);
+
+                    Iterator LP = ListaProyectos.iterator();
+
+                    DatosBean obj3;
+
+                    while (LP.hasNext()) {
+                        obj3 = (DatosBean) LP.next();
+
+                        datos.setTOTAL_PROYECTOS(obj3.getTOTAL_PROYECTOS());
+                        datos.setTOTAL_REINGRESOS(obj3.getTOTAL_REINGRESOS());
+                        datos.setTOTAL_BECAS(obj3.getTOTAL_BECAS());
+
+                    }
+
+                    ListaTotalEstatus = con.listaTotalEstatus(datos);
+                    ListaTotalEsuela = con.listaTotalEscuela(datos);
+
+                    return "SUCCESS3";
+
+                } else {
+
+                    Constantes.enviaMensajeConsola("REGRESE-----------------------");
+                    Iterator iterG = modulosAUX.iterator();
+                    while (iterG.hasNext()) {
+                        moduloBean Concep = (moduloBean) iterG.next();
+                        Constantes.enviaMensajeConsola("VALOR -->" + Concep.getCVE_MODPADRE());
+                        Constantes.enviaMensajeConsola("VALOR -->" + Concep.getDESC_MOD());
+                        Constantes.enviaMensajeConsola("VALOR -->" + Concep.getACTION());
+                        Constantes.enviaMensajeConsola("VALOR -->" + Concep.getIMAGEN());
+
+                    }
+
+                    listaCCT = con.ConsultaCCT(usuariocons.getUSUARIO());
+                    ListaCarreras = con.ConsultaCarreras();
+                    datos.setCCT(usuariocons.getUSUARIO());
+                    ObtenerCarreraCCT = (ArrayList<DatosBean>) con.ConsultaCarreraExistente(datos);
+
+                    if (ObtenerCarreraCCT.size() > 0) {
+                        BanDatosCorrectos = true;
+                    } else {
+                        BanDatosCorrectos = false;
+                    }
+
+                    Iterator LCCT = listaCCT.iterator();
+                    DatosBean obj;
+
+                    while (LCCT.hasNext()) {
+                        obj = (DatosBean) LCCT.next();
+
+                        datos.setCCT(obj.getCCT());
+                        datos.setNOMESC(obj.getNOMESC());
+                        datos.setCALLE(obj.getCALLE() + " " + obj.getNUM_ESC());
+                        datos.setCOLONIA(obj.getCOLONIA());
+                        datos.setLOCALIDAD(obj.getLOCALIDAD());
+                        datos.setCP(obj.getCP());
+                        datos.setMUNICIPIOCCT(obj.getMUNICIPIOCCT());
+                    }
+
+                    VerificaArchivos = con.verificaRegistroArchivo(datos.getCCT());
+                    Constantes.enviaMensajeConsola("TAM VERIFICA ARCHIVOS: " + VerificaArchivos.size());
+                    if (VerificaArchivos.size() > 0) {
+
+                        Iterator VA = VerificaArchivos.iterator();
+                        VerificaArchivoBean valor;
+
+                        while (VA.hasNext()) {
+                            valor = (VerificaArchivoBean) VA.next();
+
+                            if (valor.getARCHIVO_CAR().equals("si") && valor.getARCHIVO_RES().equals("si") && valor.getARCHIVO_ASE_INT().equals("si") && valor.getARCHIVO_ALU().equals("si")) {
+
+                                ListaMunicipios = con.listaMunicipios();
+                                ListaAlumnos = (ArrayList<DatosBean>) con.listaAlumnos(datos);
+                                ListaTipoAlumno = con.ConsultaTipoAlumno();
+                                ListaAlumnosBeca = (ArrayList<DatosBean>) con.listaAlumnosBeca(datos);
+
                                 Constantes.enviaMensajeConsola("REGRESO DE CONSULTAS");
 
                                 return "SUCCESS2";
@@ -684,8 +945,6 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
     public void setListaTipoAlumno(List<DatosBean> ListaTipoAlumno) {
         this.ListaTipoAlumno = ListaTipoAlumno;
     }
-    
-    
 
     public ArrayList<DatosBean> getListaAlumnos() {
         return ListaAlumnos;
@@ -806,8 +1065,5 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
     public void setListaTotalEstatusUGeneral(List<DatosBean> ListaTotalEstatusUGeneral) {
         this.ListaTotalEstatusUGeneral = ListaTotalEstatusUGeneral;
     }
-    
-    
-    
 
 }

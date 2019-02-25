@@ -50,6 +50,7 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
     private List<AdminCatBean> ListaResponsables = new ArrayList<>();
     private List<AdminCatBean> ListaAsesores = new ArrayList<>();
     private List<AdminCatBean> VerificaResponsable = new ArrayList<>();
+     private List<AdminCatBean> VerificaAsesor = new ArrayList<>();
 
     //SESSIN USUARIO	
     // private Map session  = ActionContext.getContext().getSession();
@@ -84,15 +85,26 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
     DatosBean datos = new DatosBean();
 
     AdminCatBean ad = new AdminCatBean();
-
+    //carreras
     private boolean BanCarreraAgregada;
     private boolean BanCarreraEliminada;
     private boolean BanCarreraExistente;
+    //responsables
     private boolean banCurpValida;
     private boolean BanResponsableExiste;
     private boolean BANCURPRENCONTRADA;
     private boolean BanResponsableRegistrado;
     private boolean BanResponsableEliminado;
+    //asesores
+    private boolean banCurpAValida;
+    private boolean BanAsesorExiste;
+    private boolean BANCURPAENCONTRADA;
+    private boolean BanAsesorRegistrado;
+    private boolean BanAsesorEliminado;
+    
+    
+    
+            
 
     public String AbreAdminCat() {
 
@@ -474,6 +486,214 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
         return "SUCCESS";
     }
 
+     //*************************************************responsables*********************************************************
+    public String ConsultaCurpA() {
+        //validando session***********************************************************************
+        if (session.get("cveUsuario") != null) {
+            String sUsu = (String) session.get("cveUsuario");
+        } else {
+            addActionError("**** La sesión ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+        if (session.containsKey("usuario")) {
+            usuariocons = (usuarioBean) session.get("usuario");
+        } else {
+            addActionError("**** La sesión ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+
+        try {
+
+            boolean banlong = false;
+            //limpiar();
+
+            Constantes.enviaMensajeConsola("longitud de curp: " + ad.getCURP_ASESORIAUX().length());
+            ad.getCURP_ASESORIAUX().toUpperCase();
+
+            if (ad.getCURP_ASESORIAUX().length() == 18) {
+                banlong = true;
+            } else {
+                banlong = false;
+
+                addFieldError("ErrorValCurpA", "LA CURP DEBE CONTENER 18 CARACTERES");
+
+            }
+
+            if (banlong) {
+
+                ConsultasBusiness con = new ConsultasBusiness();
+
+                datos.setCCT(usuariocons.getUSUARIO());
+                datos.setCURP_ASESORI(ad.getCURP_ASESORIAUX().toUpperCase());
+
+                VerificaAsesor = con.ConsultaAsesorIAd(datos);
+
+                Constantes.enviaMensajeConsola("verifica asesor: " + VerificaAsesor.size());
+
+                if (VerificaAsesor.size() > 0) {
+                    BanAsesorExiste = true;
+                    return "input";
+
+                } else {
+
+                    Constantes.enviaMensajeConsola("MICURP ES: " + ad.getCURP_ASESORIAUX().toUpperCase());
+                    service = new ConsultaRenapoPorCurp_Service();
+                    port = service.getConsultaRenapoPorCurpPort();
+                    personas = port.consultaPorCurp(ad.getCURP_ASESORIAUX().toUpperCase());
+                    //port.consultaPorCurp(micurp)
+
+                    if (personas.getResultado().equals("EXITO")) {
+
+                        BANCURPAENCONTRADA = true;
+                        banCurpAValida = true;
+                        ad.setCURP_ASESORI(personas.getCurp());
+                        ad.setNOMBREAI(personas.getNombre());
+                        ad.setAPELLIDOPAI(personas.getApellidoPaterno());
+                        ad.setAPELLIDOMAI(personas.getApellidoMaterno());
+                        ad.setCURP_ASESORIAUX("");
+
+                    } else {
+
+                        BANCURPAENCONTRADA = false;
+                        System.out.println("Resultado            : " + personas.getResultado());
+                        System.out.println("Codigo de error      : " + personas.getCodigoError());
+                        System.out.println("Descripcion Error    : " + personas.getDescripcionError());
+
+                        addFieldError("ErrorValCurpA", personas.getDescripcionError());
+                    }
+                }
+            }
+        } catch (Exception e) {
+            addActionError("Ocurrio un error: " + e);
+            return "ERROR";
+        }
+        return "SUCCESS";
+    }
+
+    public String GuardarAsesorN() {
+        //validando session***********************************************************************
+        if (session.get("cveUsuario") != null) {
+            String sUsu = (String) session.get("cveUsuario");
+        } else {
+            addActionError("**** La sesión ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+        if (session.containsKey("usuario")) {
+            usuariocons = (usuarioBean) session.get("usuario");
+        } else {
+            addActionError("**** La sesión ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+
+        try {
+
+            boolean carrera = false;
+                        
+
+            ConsultasBusiness con = new ConsultasBusiness();
+            
+            if (ad.getCVE_CAR_ASE().length()>0) {
+                carrera=true;
+            } else {
+                carrera=false;
+                addFieldError("ErrorCarrera", "Debe selecciona una carrera para el asesor");
+                
+            }
+            
+            
+            if (carrera) {
+                
+                 ad.setCCT_ASE(usuariocons.getUSUARIO());
+                
+                con.GuardaAsesorN(ad);
+                BanAsesorRegistrado=true;
+                banCurpAValida=false;
+                
+                ad.setCCT(usuariocons.getUSUARIO());
+                ListaAsesores = con.ConsultaAsesorAdmin(ad);
+                
+            }
+        } catch (Exception e) {
+            addActionError("Ocurrio un error: " + e);
+            return "ERROR";
+        }
+        return "SUCCESS";
+    }
+    
+    public String ActualizaAse() {
+        //validando session***********************************************************************
+        if (session.get("cveUsuario") != null) {
+            String sUsu = (String) session.get("cveUsuario");
+        } else {
+            addActionError("**** La sesión ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+        if (session.containsKey("usuario")) {
+            usuariocons = (usuarioBean) session.get("usuario");
+        } else {
+            addActionError("**** La sesión ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+
+        try {
+                ConsultasBusiness con=new ConsultasBusiness();
+           
+                
+                 ad.setCCT_ASEA(usuariocons.getUSUARIO());
+                
+                con.ActualizaAsesor(ad);
+                BanAsesorRegistrado=true;
+                banCurpAValida=false;
+                
+                ad.setCCT(usuariocons.getUSUARIO());
+                 ListaAsesores = con.ConsultaAsesorAdmin(ad);
+                
+        } catch (Exception e) {
+            addActionError("Ocurrio un error: " + e);
+            return "ERROR";
+        }
+        return "SUCCESS";
+    }
+    
+     public String EliminarAse() {
+        //validando session***********************************************************************
+        if (session.get("cveUsuario") != null) {
+            String sUsu = (String) session.get("cveUsuario");
+        } else {
+            addActionError("**** La sesión ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+        if (session.containsKey("usuario")) {
+            usuariocons = (usuarioBean) session.get("usuario");
+        } else {
+            addActionError("**** La sesión ha expirado *** favor de iniciar una nueva sesion *** ");
+            return "SESSION";
+        }
+
+        try {
+                ConsultasBusiness con=new ConsultasBusiness();
+           
+                
+                 ad.setCCT_ASEA(usuariocons.getUSUARIO());
+                
+                con.EliminarAsesor(ad);
+                BanAsesorEliminado=true;
+               
+                ad.setCCT(usuariocons.getUSUARIO());
+                 ListaAsesores = con.ConsultaAsesorAdmin(ad);
+                
+            
+            
+            
+
+        } catch (Exception e) {
+            addActionError("Ocurrio un error: " + e);
+            return "ERROR";
+        }
+        return "SUCCESS";
+    }
+ 
+     
 //Cierra método validarFOLIO
     private void cierraConexiones() {
         try {
@@ -665,6 +885,16 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
         this.VerificaResponsable = VerificaResponsable;
     }
 
+    public List<AdminCatBean> getVerificaAsesor() {
+        return VerificaAsesor;
+    }
+
+    public void setVerificaAsesor(List<AdminCatBean> VerificaAsesor) {
+        this.VerificaAsesor = VerificaAsesor;
+    }
+    
+    
+
     public boolean isBanCarreraExistente() {
         return BanCarreraExistente;
     }
@@ -712,6 +942,47 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
     public void setBanResponsableEliminado(boolean BanResponsableEliminado) {
         this.BanResponsableEliminado = BanResponsableEliminado;
     }
+
+    public boolean isBanCurpAValida() {
+        return banCurpAValida;
+    }
+
+    public void setBanCurpAValida(boolean banCurpAValida) {
+        this.banCurpAValida = banCurpAValida;
+    }
+
+    public boolean isBanAsesorExiste() {
+        return BanAsesorExiste;
+    }
+
+    public void setBanAsesorExiste(boolean BanAsesorExiste) {
+        this.BanAsesorExiste = BanAsesorExiste;
+    }
+
+    public boolean isBANCURPAENCONTRADA() {
+        return BANCURPAENCONTRADA;
+    }
+
+    public void setBANCURPAENCONTRADA(boolean BANCURPAENCONTRADA) {
+        this.BANCURPAENCONTRADA = BANCURPAENCONTRADA;
+    }
+
+    public boolean isBanAsesorRegistrado() {
+        return BanAsesorRegistrado;
+    }
+
+    public void setBanAsesorRegistrado(boolean BanAsesorRegistrado) {
+        this.BanAsesorRegistrado = BanAsesorRegistrado;
+    }
+
+    public boolean isBanAsesorEliminado() {
+        return BanAsesorEliminado;
+    }
+
+    public void setBanAsesorEliminado(boolean BanAsesorEliminado) {
+        this.BanAsesorEliminado = BanAsesorEliminado;
+    }
+    
     
     
     

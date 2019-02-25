@@ -51,11 +51,20 @@ public class AdminCatBean {
     //asesores
     private String ID_CAT_ASE;
     private String CURP_ASESORI;
+    private String CURP_ASESORIAUX;
     private String NOMBREAI;
     private String APELLIDOPAI;
     private String APELLIDOMAI;
     private String CVE_CAR_ASE;
     private String CCT_ASE;
+    
+    private String ID_CAT_ASEA;
+    private String CURP_ASESORIA;
+    private String NOMBREAIA;
+    private String APELLIDOPAIA;
+    private String APELLIDOMAIA;
+    private String CVE_CAR_ASEA;
+    private String CCT_ASEA;
 
     public String getCCT() {
         return CCT;
@@ -324,10 +333,7 @@ public class AdminCatBean {
     public void setCCT_RESPA(String CCT_RESPA) {
         this.CCT_RESPA = CCT_RESPA;
     }
-    
-    
-    
-    
+       
     public String getCURP_ASESORI() {
         return CURP_ASESORI;
     }
@@ -335,6 +341,16 @@ public class AdminCatBean {
     public void setCURP_ASESORI(String CURP_ASESORI) {
         this.CURP_ASESORI = CURP_ASESORI;
     }
+
+    public String getCURP_ASESORIAUX() {
+        return CURP_ASESORIAUX;
+    }
+
+    public void setCURP_ASESORIAUX(String CURP_ASESORIAUX) {
+        this.CURP_ASESORIAUX = CURP_ASESORIAUX;
+    }
+    
+    
 
     public String getID_CAT_ASE() {
         return ID_CAT_ASE;
@@ -359,6 +375,64 @@ public class AdminCatBean {
     public void setCCT_ASE(String CCT_ASE) {
         this.CCT_ASE = CCT_ASE;
     }
+
+    public String getID_CAT_ASEA() {
+        return ID_CAT_ASEA;
+    }
+
+    public void setID_CAT_ASEA(String ID_CAT_ASEA) {
+        this.ID_CAT_ASEA = ID_CAT_ASEA;
+    }
+
+    public String getCURP_ASESORIA() {
+        return CURP_ASESORIA;
+    }
+
+    public void setCURP_ASESORIA(String CURP_ASESORIA) {
+        this.CURP_ASESORIA = CURP_ASESORIA;
+    }
+
+    public String getNOMBREAIA() {
+        return NOMBREAIA;
+    }
+
+    public void setNOMBREAIA(String NOMBREAIA) {
+        this.NOMBREAIA = NOMBREAIA;
+    }
+
+    public String getAPELLIDOPAIA() {
+        return APELLIDOPAIA;
+    }
+
+    public void setAPELLIDOPAIA(String APELLIDOPAIA) {
+        this.APELLIDOPAIA = APELLIDOPAIA;
+    }
+
+    public String getAPELLIDOMAIA() {
+        return APELLIDOMAIA;
+    }
+
+    public void setAPELLIDOMAIA(String APELLIDOMAIA) {
+        this.APELLIDOMAIA = APELLIDOMAIA;
+    }
+
+    public String getCVE_CAR_ASEA() {
+        return CVE_CAR_ASEA;
+    }
+
+    public void setCVE_CAR_ASEA(String CVE_CAR_ASEA) {
+        this.CVE_CAR_ASEA = CVE_CAR_ASEA;
+    }
+
+    public String getCCT_ASEA() {
+        return CCT_ASEA;
+    }
+
+    public void setCCT_ASEA(String CCT_ASEA) {
+        this.CCT_ASEA = CCT_ASEA;
+    }
+    
+    
     
     
 

@@ -53,10 +53,19 @@ public interface ConsultaDAO {
 
     //***********************************************business de asesorI**********************************
     public List ConsultaAsesorI(DatosBean obj) throws Exception;
+    
+    public List ConsultaAsesorIAd(DatosBean obj) throws Exception;
 
     public boolean GuardaAsesorI(Connection conn, PreparedStatement stat, DatosBean datos) throws Exception;
     
     public List ConsultaAsesorAdmin(AdminCatBean obj) throws Exception;
+    
+    public boolean GuardaAsesorN(AdminCatBean ad) throws Exception; 
+    
+     public boolean ActualizaAsesor(AdminCatBean ad) throws Exception ;
+     
+     public boolean EliminarAsesor(AdminCatBean ad) throws Exception ;
+
 
     //******************************************************daos responsables*********************************************
     public List ConsultaModalidad(DatosBean obj) throws Exception;

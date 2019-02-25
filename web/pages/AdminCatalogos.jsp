@@ -78,12 +78,12 @@
                                                         var cargo = document.getElementById('cargo').value;
                                                         var telefono = document.getElementById('telefonor').value;
                                                         var email = document.getElementById('emailr').value;
-                                                        
+
 
                                                         var bancargo = false;
                                                         var bantelefono = false;
                                                         var banemail = false;
-                                                        
+
 
 
 
@@ -94,7 +94,7 @@
                                                             bancargo = true;
                                                         }
 
-                                                        
+
                                                         if (telefono == null || telefono.length == 0 || /^\s+$/.test(telefono)) {
                                                             alert('ERROR: Debe agregar el teléfono del responsable');
                                                             bantelefono = false;
@@ -231,7 +231,7 @@
                                                                 <div class="collapse navbar-collapse" id="navbarResponsive">
                                                                     <ul class="navbar-nav ml-auto">
                                                                         <li class="nav-item mx-0 mx-lg-1">
-                                                                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#cc">Administrar Carreras 2</a>
+                                                                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#cc">Administrar Carreras</a>
                                                                         </li>
                                                                         <li class="nav-item mx-0 mx-lg-1">
                                                                             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#cr">Administrar Responsables DUAL</a>
@@ -683,10 +683,86 @@
                                                                                 </div>
                                                                             </s:if> 
 
+                                                                            <s:if test="BanAsesorExiste">
+                                                                                <div class="alert alert-danger"  style="width:100%; border-radius: 5px; ">
+                                                                                    <h5 align="center" style="color: #ffffff">El Asesor que intenta registrar ya existe</h5>
+                                                                                </div>
+                                                                            </s:if> 
+                                                                            <s:if test="BanAsesorEliminado">
+                                                                                <div class="alert alert-danger"  style="width:100%; border-radius: 5px; ">
+                                                                                    <h5 align="center" style="color: #ffffff">Asesor Eliminado</h5>
+                                                                                </div>
+                                                                            </s:if> 
 
+                                                                            <h5 align="center" class="bg-secondary col-lg-12 text-white"  > <i class="fas fa-address-card"></i> Registro de Nuevos Asesores Institucionales </h5> 
+                                                                            <div class="form-inline col-lg-12">
 
+                                                                                <div class=" form-group col-lg-9">
+                                                                                    <s:textfield  cssClass="form-control col-lg-8 text-uppercase" name="ad.CURP_ASESORIAUX" id="ad.CURP_ASESORIAUX"  placeholder="INGRESE LA CURP DEL ASESOR QUE DESEA REGISTRAR" ></s:textfield>
+                                                                                    <s:fielderror fieldName="ErrorValCurpA" cssClass="alert alert-danger"></s:fielderror>
+                                                                                    </div> 
+                                                                                    <div class="form-group col-lg-2">                                                             
 
+                                                                                        <a class="btn bg-success " style="color: white;"  href="Javascript:Accion('ConsultaCurpA')">Buscar CURP</a>
 
+                                                                                    </div>    
+                                                                                </div>
+                                                                                <br></br>        
+                                                                            <s:if test="BANCURPAENCONTRADA">
+                                                                                <div class="alert alert-primary"  style="width:100%; border-radius: 5px; ">
+                                                                                    <h5 align="center" style="color: #ffffff">CURP VALIDADA</h5>
+                                                                                </div>
+                                                                            </s:if>    
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <s:if test="banCurpAValida">  
+                                                                                <s:hidden name="banCurpAValida" value="%{banCurpAValida}"></s:hidden>
+                                                                                    <div class="form-group col-lg-6 ">
+                                                                                        <label class="col-form-label"  for="nombre">CURP:</label>
+                                                                                        <div class="col-sm-auto">
+                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="ad.CURP_ASESORI" id="nombrea" readonly="true"></s:textfield>
+                                                                                        <s:fielderror fieldName="ErrorCURPA" cssClass="alert alert-danger"/>
+                                                                                    </div> 
+                                                                                </div>
+                                                                                <div class="form-group col-lg-6 ">
+                                                                                    <label class="col-form-label"  for="nombre">Nombre:</label>
+                                                                                    <div class="col-sm-auto">
+                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="ad.NOMBREAI" id="nombrea" readonly="true"></s:textfield>
+                                                                                        <s:fielderror fieldName="ErrorNombreA" cssClass="alert alert-danger"/>
+                                                                                    </div> 
+                                                                                </div>              
+                                                                                <div class="form-group col-lg-6">
+                                                                                    <label class="col-form-label" for="apellidop">Apellido Paterno:</label>
+                                                                                    <div class="col-sm-auto">
+                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOPAI" id="apellidopa" readonly="true"></s:textfield>
+                                                                                        <s:fielderror fieldName="ErrorApellidoPA" cssClass="alert alert-danger"/>
+                                                                                    </div> 
+                                                                                </div>    
+                                                                                <div class="form-group col-lg-6">
+                                                                                    <label class="col-form-label" for="apellidomr">Apellido Materno:</label>
+                                                                                    <div class="col-sm-auto">
+                                                                                        <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOMAI" id="apellidoma" readonly="true"></s:textfield>
+                                                                                        <s:fielderror fieldName="ErrorApellidoMAI" cssClass="alert alert-danger"/>
+                                                                                    </div> 
+                                                                                </div>   
+                                                                                <div class="form-group col-lg-12">
+                                                                                    <label class="col-form-label text-muted " for="CARRERA" >Carrera:</label>
+                                                                                    <div class="col-sm-auto ">
+                                                                                        <s:select  name="ad.CVE_CAR_ASE" id="carrera" list="ObtenerCarreraCCT"  listKey="CLAVECARRERA"  listValue="NOMBRE_CARRERA"  headerKey="" headerValue="--SELECCIONE UNA CARRERA" cssClass="form-control " ></s:select>
+                                                                                        <s:fielderror fieldName="ErrorCarrera" cssClass="alert alert-danger" />
+                                                                                    </div> 
+                                                                                </div>       
+                                                                                <div class="form-group col-lg-12">                                                             
+                                                                                    <div align="center">
+                                                                                        <a class="btn bg-success " style="color: white;"  href="Javascript:Accion('GuardarAsesorN')">Guardar  Responsables</a>
+                                                                                    </div>  
+                                                                                </div>
+                                                                            </s:if> 
+                                                                            &nbsp;
+                                                                            &nbsp;
+                                                                            &nbsp;
+                                                                             <h5 align="center" class="bg-secondary col-lg-12 text-white"  > <i class="fas fa-user"></i>Asesores Registrados  </h5>   
                                                                             <div class="input-group ">                        
                                                                                 <i class="fa fa-search fa-2x " style="color: #0056b3"></i>                                                                                                                  
                                                                                 <input id="filtrarA" type="text" class="form-control" placeholder="INGRESA EL NOMBRE DEL ASESOR QUE BUSCA...."/>
@@ -705,8 +781,6 @@
                                                                                             <th scope="col" >Apellido Paterno</th>
                                                                                             <th scope="col" >Apellido Materno</th>
                                                                                             <th scope="col" >Clave Carrera</th>
-
-                                                                                            <th scope="col" >Modificar</th>
                                                                                             <th scope="col" >Eliminar</th>
                                                                                         </tr>
                                                                                     </thead>
@@ -719,20 +793,6 @@
                                                                                                 <td  ><s:property value="APELLIDOPAI"/></td>                                                                                             
                                                                                                 <td  ><s:property value="APELLIDOMAI"/></td>
                                                                                                 <td  ><s:property value="CVE_CAR_ASE"/></td>
-
-
-                                                                                                <td ><a   data-toggle='modal' data-target='#EditAsesores' 
-
-                                                                                                          data-curpa='<s:property value="CURP_ASESORI"/>' 
-                                                                                                          data-nombrea='<s:property value="NOMBREAI"/>' 
-                                                                                                          data-apellidopa='<s:property value="APELLIDOPAI"/>' 
-                                                                                                          data-apellidoma='<s:property value="APELLIDOMAI"/>' 
-                                                                                                          data-carrera='<s:property value="CVE_CAR_ASE"/>' 
-                                                                                                          data-ccta='<s:property value="CCT_ASE"/>'                                                                                                          
-                                                                                                          data-idase='<s:property value="ID_CAT_ASE"/>' 
-                                                                                                          ><i class="fa fa-pen" style="font-size: 25px;  color: #004085; "></i>
-                                                                                                    </a>
-                                                                                                </td>
                                                                                                 <td >
                                                                                                     <a href="#" data-toggle='modal' data-target='#DeleteAsesor' 
                                                                                                        data-id_eliminar_ase='<s:property value="ID_CAT_ASE"/>'>
@@ -970,35 +1030,35 @@
                                                                                 <div class="form-group col-lg-6">
                                                                                     <label class="col-form-label" for="curp">CURP:</label>
                                                                                     <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.CURP_ASESORI" id="curpa" readonly="true"></s:textfield>
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.CURP_ASESORIA" id="curpa" readonly="true"></s:textfield>
                                                                                     <s:fielderror fieldName="ErrorCurp" cssClass="alert alert-danger"></s:fielderror>
                                                                                     </div> 
                                                                                 </div>
                                                                                 <div class="form-group col-lg-6 ">
                                                                                     <label class="col-form-label" style="text-align : left;" for="nombre">Nombre:</label>
                                                                                     <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.NOMBREAI" id="nombrea" readonly="true"></s:textfield>
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.NOMBREAIA" id="nombrea" readonly="true"></s:textfield>
                                                                                     <s:fielderror fieldName="ErrorNombre" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>              
                                                                             <div class="form-group col-lg-6">
                                                                                 <label class="col-form-label" for="apellidop">Apellido Paterno:</label>
                                                                                 <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOPAI" id="apellidopa" readonly="true"></s:textfield>
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOPAIA" id="apellidopa" readonly="true"></s:textfield>
                                                                                     <s:fielderror fieldName="ErrorApellidoP" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>    
                                                                             <div class="form-group col-lg-6">
                                                                                 <label class="col-form-label" for="apellidomr">Apellido Materno:</label>
                                                                                 <div class="col-sm-auto">
-                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOMAI" id="apellidoma" readonly="true"></s:textfield>
+                                                                                    <s:textfield  cssClass="form-control text-uppercase" name="ad.APELLIDOMAIA" id="apellidoma" readonly="true"></s:textfield>
                                                                                     <s:fielderror fieldName="ErrorApellidoM" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>   
                                                                             <div class="form-group col-lg-12">
                                                                                 <label class="col-form-label text-muted " for="CARRERA" >Carrera:</label>
                                                                                 <div class="col-sm-auto ">
-                                                                                    <s:select  name="ad.CVE_CAR_ASE" id="carrera" list="ObtenerCarreraCCT"  listKey="CLAVECARRERA"  listValue="NOMBRE_CARRERA"  headerKey="" headerValue="--SELECCIONE UNA CARRERA" cssClass="form-control " ></s:select>
+                                                                                    <s:select  name="ad.CVE_CAR_ASEA" id="carrera" list="ObtenerCarreraCCT"  listKey="CLAVECARRERA"  listValue="NOMBRE_CARRERA"  headerKey="" headerValue="--SELECCIONE UNA CARRERA" cssClass="form-control " ></s:select>
                                                                                     <s:fielderror fieldName="ErrorCarrera" cssClass="alert alert-danger" />
                                                                                 </div> 
                                                                             </div>      
@@ -1006,7 +1066,7 @@
 
 
                                                                         </div>
-                                                                        <s:textfield name="ad.ID_CAT_ASE" id="idase" cssStyle="display:none;"></s:textfield>        
+                                                                        <s:textfield name="ad.ID_CAT_ASEA" id="idase" cssStyle="display:none;"></s:textfield>        
 
                                                                         </div>        
                                                                         <div class="modal-footer">
@@ -1028,7 +1088,7 @@
                                                                             </button>
                                                                         </div>
                                                                         <div class="modal-body">Estas seguro que deseas eliminar el Asesor Institucional?
-                                                                        <s:textfield name="ad.ID_CAT_ASE" id="id_eliminar_ase" cssStyle="display:none;"></s:textfield> 
+                                                                        <s:textfield name="ad.ID_CAT_ASEA" id="id_eliminar_ase" cssStyle="display:none;"></s:textfield> 
                                                                         </div>
 
 
@@ -1041,15 +1101,9 @@
                                                                 </div>
                                                             </div>  
 
-
-
-
-
-
                                                             <div id="loadGrdCar">
                                                                 <div class="loader1">
                                                                     <div id="circle">
-
                                                                         <div class="loader">
                                                                             <div class="loader">
                                                                                 <div class="loader">
@@ -1067,7 +1121,6 @@
                                                             <div id="loadEliCar">
                                                                 <div class="loader1">
                                                                     <div id="circle">
-
                                                                         <div class="loader">
                                                                             <div class="loader">
                                                                                 <div class="loader">
@@ -1085,7 +1138,6 @@
                                                             <div id="loadGM">
                                                                 <div class="loader1">
                                                                     <div id="circle">
-
                                                                         <div class="loader">
                                                                             <div class="loader">
                                                                                 <div class="loader">

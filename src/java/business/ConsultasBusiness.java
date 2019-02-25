@@ -106,6 +106,11 @@ public class ConsultasBusiness {
         List lista = this.con.ConsultaAsesorI(obj);
         return lista;
     }
+    
+    public List ConsultaAsesorIAd(DatosBean obj) throws Exception {
+        List lista = this.con.ConsultaAsesorIAd(obj);
+        return lista;
+    }
 
     public boolean GuardaAsesorI(Connection conn, PreparedStatement stat, DatosBean datos) throws Exception {
         return this.con.GuardaAsesorI(conn, stat, datos);
@@ -114,6 +119,18 @@ public class ConsultasBusiness {
     public List ConsultaAsesorAdmin(AdminCatBean obj) throws Exception {
         List lista = this.con.ConsultaAsesorAdmin(obj);
         return lista;
+    }
+    
+    public boolean GuardaAsesorN(AdminCatBean ad) throws Exception {
+        return this.con.GuardaAsesorN(ad);
+    }
+    
+     public boolean ActualizaAsesor(AdminCatBean ad) throws Exception {
+        return this.con.ActualizaAsesor(ad);
+    }
+     
+     public boolean EliminarAsesor(AdminCatBean ad) throws Exception {
+        return this.con.EliminarAsesor(ad);
     }
 
     //***********************************************business de ALUMNOS**********************************
