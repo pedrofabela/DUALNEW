@@ -111,6 +111,11 @@ public class ConsultasBusiness {
         List lista = this.con.ConsultaAsesorIAd(obj);
         return lista;
     }
+    
+     public List ConsultaAsesorDes(DatosBean obj) throws Exception {
+        List lista = this.con.ConsultaAsesorDes(obj);
+        return lista;
+    }
 
     public boolean GuardaAsesorI(Connection conn, PreparedStatement stat, DatosBean datos) throws Exception {
         return this.con.GuardaAsesorI(conn, stat, datos);
@@ -125,8 +130,8 @@ public class ConsultasBusiness {
         return this.con.GuardaAsesorN(ad);
     }
     
-     public boolean ActualizaAsesor(AdminCatBean ad) throws Exception {
-        return this.con.ActualizaAsesor(ad);
+     public boolean habilitarAsesor(AdminCatBean ad) throws Exception {
+        return this.con.habilitarAsesor(ad);
     }
      
      public boolean EliminarAsesor(AdminCatBean ad) throws Exception {

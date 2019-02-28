@@ -86,7 +86,11 @@
                                     var pos = window.name || 0;
                                     window.scrollTo(0, pos);
 
-
+                                    window.location.hash = "no-back-button";
+                                    window.location.hash = "Again-No-back-button" //chrome
+                                    window.onhashchange = function () {
+                                        window.location.hash = "no-back-button";
+                                    }
 
                                 }
 
@@ -96,7 +100,11 @@
 
 
                                 }
+
+                                
                             </script>
+
+
 
 
                             </head>
@@ -343,7 +351,9 @@
                                                                 </div> 
                                                             </div>     
                                                             <div class="form-group col-lg-12">                                                                                     
-                                                                <a class="btn bg-success text-white" href="Javascript:Accion('RegistrarAlum')" onclick="this.onclick = function () {return false}">REGISTRAR ALUMNO</a>
+                                                                <a class="btn bg-success text-white" href="Javascript:Accion('RegistrarAlum')" onclick="this.onclick = function () {
+                                                                            return false
+                                                                        }">REGISTRAR ALUMNO</a>
                                                             </div>  
 
 

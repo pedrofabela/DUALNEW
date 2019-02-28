@@ -55,6 +55,8 @@ public interface ConsultaDAO {
     public List ConsultaAsesorI(DatosBean obj) throws Exception;
     
     public List ConsultaAsesorIAd(DatosBean obj) throws Exception;
+    
+     public List ConsultaAsesorDes(DatosBean obj) throws Exception;
 
     public boolean GuardaAsesorI(Connection conn, PreparedStatement stat, DatosBean datos) throws Exception;
     
@@ -62,7 +64,7 @@ public interface ConsultaDAO {
     
     public boolean GuardaAsesorN(AdminCatBean ad) throws Exception; 
     
-     public boolean ActualizaAsesor(AdminCatBean ad) throws Exception ;
+     public boolean habilitarAsesor(AdminCatBean ad) throws Exception ;
      
      public boolean EliminarAsesor(AdminCatBean ad) throws Exception ;
 

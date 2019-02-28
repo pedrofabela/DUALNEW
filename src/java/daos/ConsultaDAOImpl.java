@@ -300,8 +300,16 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
     }
 
     public List ConsultaAsesorIAd(DatosBean obj) throws Exception {
-        String query = "SELECT ID_CAT_ASE, NOMBRE,APELLIDOP,APELLIDOM,CVE_CAR_RES, CURP, CCT FROM " + Constantes.TablaAsesoresI + " WHERE CURP='" + obj.getCURP_ASESORI() + "' AND CCT='" + obj.getCCT() + "' AND CVE_CAR_RES='" + obj.getCVE_CAR_RES() + "'";
-        Constantes.enviaMensajeConsola("verifica si existen responsable PARA cvecarrera----->" + query);
+        String query = "SELECT ID_CAT_ASE, NOMBRE,APELLIDOP,APELLIDOM,CVE_CAR_RES, CURP, CCT FROM " + Constantes.TablaAsesoresI + " WHERE CURP='" + obj.getCURP_ASESORI() + "' AND CCT='" + obj.getCCT() + "' AND CVE_CAR_RES='" + obj.getCVE_CAR_RES() + "' AND STATUS='1'";
+        Constantes.enviaMensajeConsola("verifica si existen Asesor PARA cvecarrera----->" + query);
+        List list = null;
+        list = queryForList(query, new VerificaAsesorIAdMapper());
+        return list;
+    }
+    
+     public List ConsultaAsesorDes(DatosBean obj) throws Exception {
+        String query = "SELECT ID_CAT_ASE, NOMBRE,APELLIDOP,APELLIDOM,CVE_CAR_RES, CURP, CCT FROM " + Constantes.TablaAsesoresI + " WHERE CURP='" + obj.getCURP_ASESORI() + "' AND CCT='" + obj.getCCT() + "' AND CVE_CAR_RES='" + obj.getCVE_CAR_RES() + "' AND STATUS='2'";
+        Constantes.enviaMensajeConsola("verifica si existen ASESOR PARA cvecarrera DESHABILITADO----->" + query);
         List list = null;
         list = queryForList(query, new VerificaAsesorIAdMapper());
         return list;
@@ -330,6 +338,8 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         arregloCampos.add(temporal);
         temporal = new ObjPrepareStatement("CCT", "STRING", objdatos.getCCT());
         arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("STATUS", "STRING", "1");
+        arregloCampos.add(temporal);
 
         System.out.println("conn: " + conn);
         System.out.println("stat: " + stat);
@@ -340,7 +350,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
     }
 
     public List ConsultaAsesorAdmin(AdminCatBean obj) throws Exception {
-        String query = "SELECT ID_CAT_ASE,NOMBRE,APELLIDOP,APELLIDOM,CVE_CAR_RES,CURP,CCT FROM " + Constantes.TablaAsesoresI + " WHERE  CCT='" + obj.getCCT() + "'";
+        String query = "SELECT ID_CAT_ASE,NOMBRE,APELLIDOP,APELLIDOM,CVE_CAR_RES,CURP,CCT FROM " + Constantes.TablaAsesoresI + " WHERE  CCT='" + obj.getCCT() + "' AND STATUS='1'";
         Constantes.enviaMensajeConsola("verifica si existen responsable PARA cvecarrera----->" + query);
         List list = null;
         list = queryForList(query, new VerificaAsesorAdminMapper());
@@ -369,13 +379,15 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         arregloCampos.add(temporal);
         temporal = new ObjPrepareStatement("CCT", "STRING", objdatos.getCCT_ASE().toUpperCase());
         arregloCampos.add(temporal);
+        temporal = new ObjPrepareStatement("STATUS", "STRING", "1");
+        arregloCampos.add(temporal);
 
 //Se terminan de adicionar a nuesto ArrayLis los objetos
 //Ejecutar la funcion del OracleDAOFactory queryInsert, se deber pasar como parmetros la tabla en donde se insertara
         return oraDaoFac.queryInsert(Constantes.TablaAsesoresI, arregloCampos);
     }
 
-    public boolean ActualizaAsesor(AdminCatBean objdatos) throws Exception {
+    public boolean habilitarAsesor(AdminCatBean objdatos) throws Exception {
 
 //Crear un ArrayList para agregar los campos a insertar
         ArrayList<ObjPrepareStatement> arregloCampos = new ArrayList<ObjPrepareStatement>();
@@ -385,7 +397,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         Constantes.enviaMensajeConsola("Entre al DAO del INSERT...................................");
 
 //En el objeto temporal settear el campo de la tabla, el tipo de dato y el valor a insertar
-        temporal = new ObjPrepareStatement("CVE_CAR_RES", "STRING", objdatos.getCVE_CAR_ASEA().toUpperCase());
+        temporal = new ObjPrepareStatement("STATUS", "STRING", "1");
         arregloCampos.add(temporal);
 
         String condicion = "WHERE ID_CAT_ASE='" + objdatos.getID_CAT_ASEA() + "'";
@@ -405,12 +417,14 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         Constantes.enviaMensajeConsola("Entre al DAO del INSERT...................................");
 
 //En el objeto temporal settear el campo de la tabla, el tipo de dato y el valor a insertar
-        temporal = new ObjPrepareStatement("ID_CAT_ASE", "STRING", objdatos.getID_CAT_ASEA());
+        temporal = new ObjPrepareStatement("STATUS", "STRING", "2");
         arregloCampos.add(temporal);
-
+       
+        
+        String condicion="where ID_CAT_ASE='"+objdatos.getID_CAT_ASE()+"'";
 //Se terminan de adicionar a nuesto ArrayLis los objetos
 //Ejecutar la funcion del OracleDAOFactory queryInsert, se deber pasar como parmetros la tabla en donde se insertara
-        return oraDaoFac.queryDelete(Constantes.TablaAsesoresI, arregloCampos);
+        return oraDaoFac.queryUpdate(Constantes.TablaAsesoresI, arregloCampos,condicion);
     }
 
     //*************************************************DAO IMPL ALumnos*******************************************************************************

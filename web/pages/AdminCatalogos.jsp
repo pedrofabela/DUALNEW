@@ -146,7 +146,11 @@
                                                             CD.style.display = (CD.style.display == 'none') ? 'block' : 'none'; /* "contenido_a_mostrar" es el nombre que le dimos al DIV */
                                                         }
 
-
+                                                        window.location.hash = "no-back-button";
+                                                        window.location.hash = "Again-No-back-button" //chrome
+                                                        window.onhashchange = function () {
+                                                            window.location.hash = "no-back-button";
+                                                        }
 
 
 
@@ -211,12 +215,16 @@
 
                                                         }(jQuery));
                                                     });
+
+
+
                                                 </script>
+
 
 
                                                 </head>
 
-                                                <body id="page-top">
+                                                <body id="page-top" >
                                                     <s:form name="formularioPrincipal" id="formularioPrincipal" enctype="multipart/form-data">
 
                                                         <!-- Navigation -->
@@ -238,6 +246,9 @@
                                                                         </li>
                                                                         <li class="nav-item mx-0 mx-lg-1">
                                                                             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#cri">Administrar Asesores Institucionales DUAL</a>
+                                                                        </li>
+                                                                        <li class="nav-item mx-0 mx-lg-1">
+                                                                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Javascript:Accion('ReturnStar')">Inicio</a>
                                                                         </li>
 
                                                                         <li class="nav-item dropdown no-arrow">
@@ -594,7 +605,7 @@
                                                                                             <th scope="col" >Teléfono</th>
                                                                                             <th scope="col" >Email</th>                                                    
                                                                                             <th scope="col" >Modificar</th>
-                                                                                            <th scope="col" >Eliminar</th>
+                                                                                            <!--<th scope="col" >Eliminar</th> -->
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody class='buscarR'>
@@ -622,11 +633,12 @@
                                                                                                           ><i class="fa fa-pen" style="font-size: 25px;  color: #004085; "></i>
                                                                                                     </a>
                                                                                                 </td>
-                                                                                                <td >
+                                                                                             <%--   <td >
                                                                                                     <a href="#" data-toggle='modal' data-target='#DeleteResp' 
                                                                                                        data-id_eliminar_resp='<s:property value="ID_CAT_RESP"/>'>
                                                                                                         <i class="fa fa-trash" style="font-size: 25px; color: #004085; "></i></a>
-                                                                                                </td>          
+                                                                                                </td>   
+                                                                                                   --%>     
                                                                                             </tr>  
 
                                                                                             <s:hidden  name = "ListaResponsables[%{#stat.index}].CURP_RESPONSABLE" id="CURP_RESPONSABLE"></s:hidden>     
@@ -685,12 +697,17 @@
 
                                                                             <s:if test="BanAsesorExiste">
                                                                                 <div class="alert alert-danger"  style="width:100%; border-radius: 5px; ">
-                                                                                    <h5 align="center" style="color: #ffffff">El Asesor que intenta registrar ya existe</h5>
+                                                                                    <h5 align="center" style="color: #ffffff">El Asesor que intenta registrar ya existe para la carrera seleccionada</h5>
                                                                                 </div>
                                                                             </s:if> 
                                                                             <s:if test="BanAsesorEliminado">
                                                                                 <div class="alert alert-danger"  style="width:100%; border-radius: 5px; ">
                                                                                     <h5 align="center" style="color: #ffffff">Asesor Eliminado</h5>
+                                                                                </div>
+                                                                            </s:if> 
+                                                                             <s:if test="BanAsesorHABILITADO">
+                                                                                <div class="alert alert-success"  style="width:100%; border-radius: 5px; ">
+                                                                                    <h5 align="center" style="color: #ffffff">El Asesor se habilito correctamente</h5>
                                                                                 </div>
                                                                             </s:if> 
 
@@ -755,14 +772,33 @@
                                                                                 </div>       
                                                                                 <div class="form-group col-lg-12">                                                             
                                                                                     <div align="center">
-                                                                                        <a class="btn bg-success " style="color: white;"  href="Javascript:Accion('GuardarAsesorN')">Guardar  Responsables</a>
+                                                                                        <a class="btn bg-success " style="color: white;"  href="Javascript:Accion('GuardarAsesorN')">Guardar  Asesor</a>
                                                                                     </div>  
                                                                                 </div>
                                                                             </s:if> 
+                                                                            <s:if test="BanExisteAsesorStatusInhabil">
+
+                                                                                <div  class="modal-dialog bg-info" role="document">
+                                                                                    <div class="modal-content ">
+                                                                                        <div class="modal-header bg-secondary">
+                                                                                            <h5 class="modal-title text-white" id="exampleModalLabel">Habilitar Asesor</h5>
+                                                                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                                                <span aria-hidden="true"></span>
+                                                                                            </button>
+                                                                                        </div>
+                                                                                        <div class="modal-body bg-primary text-white">El Asesor que intenta registrar ya se encuentra en la base de datos con un estatus inhabilitado. Desea Habilitar al Asesor?</div>
+                                                                                        <div class="modal-footer bg-secondary">
+                                                                                             <s:textfield name="ad.ID_CAT_ASEA" id="ad.ID_CAT_ASEA"  style='visibility:hidden' ></s:textfield> 
+                                                                                            <a class="btn btn-primary" href="Javascript:Accion('ActualizaAse')">Habilitar</a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </s:if>   
                                                                             &nbsp;
                                                                             &nbsp;
                                                                             &nbsp;
-                                                                             <h5 align="center" class="bg-secondary col-lg-12 text-white"  > <i class="fas fa-user"></i>Asesores Registrados  </h5>   
+                                                                            <h5 align="center" class="bg-secondary col-lg-12 text-white"  > <i class="fas fa-user"></i>Asesores Registrados  </h5>   
                                                                             <div class="input-group ">                        
                                                                                 <i class="fa fa-search fa-2x " style="color: #0056b3"></i>                                                                                                                  
                                                                                 <input id="filtrarA" type="text" class="form-control" placeholder="INGRESA EL NOMBRE DEL ASESOR QUE BUSCA...."/>
@@ -820,11 +856,7 @@
 
                                                                     </div>
                                                                     <div class="modal-footer bg-secondary" >
-                                                                        <div class="form-inline">                                                             
-                                                                            <div class="col-sm-auto">
-                                                                                <a class="btn bg-primary " style="color: white;"  href="Javascript:muestra_oculta('GuardarAsesoresI','loadGM')">Guardar Archivo de Asesores Institucionales</a>
-                                                                            </div>  
-                                                                        </div>
+
                                                                     </div>
                                                                 </div>
                                                                 <br></br>   
@@ -1013,7 +1045,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div> 
-
+                                                            <%--            
                                                             <!-- Actualiza Asesores Modal-->
                                                             <div class="modal fade" id="EditAsesores" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog modal-lg " role="document">
@@ -1076,7 +1108,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>  
-
+                                                            --%>
                                                             <!-- Elimiar Ase Modal-->
                                                             <div class="modal fade" id="DeleteAsesor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog" role="document">
@@ -1088,7 +1120,7 @@
                                                                             </button>
                                                                         </div>
                                                                         <div class="modal-body">Estas seguro que deseas eliminar el Asesor Institucional?
-                                                                        <s:textfield name="ad.ID_CAT_ASEA" id="id_eliminar_ase" cssStyle="display:none;"></s:textfield> 
+                                                                        <s:textfield name="ad.ID_CAT_ASE" id="id_eliminar_ase"  style='visibility:hidden'></s:textfield> 
                                                                         </div>
 
 

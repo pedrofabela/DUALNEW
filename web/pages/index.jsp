@@ -111,6 +111,9 @@
 
 
                                                     }
+
+                                                   
+
                                                 </script>
                                                 <!-- Bootstrap core JavaScript -->
                                                 <script src="vendor/jquery/jquery.min.js"></script>   
@@ -276,7 +279,7 @@
                                                                                 <table class="table table-hover" style="background: #0056b3;"  >
 
                                                                                     <tbody>
-                                                                                        
+
                                                                                         <tr style="pointer-events: none; background: #ffffff;  color: #000; font-size: 15px; border-radius:10px;">
                                                                                             <s:iterator value="VerificaArchivos" id="VerificaArchivos" status="stat">
                                                                                                 <s:if test="ARCHIVO_CAR=='si'">
@@ -285,48 +288,48 @@
                                                                                                 <s:else>
                                                                                                     <td class="alert-danger" style="width: 25%;"><s:property value="ERROR_ARCHIVO_CAR"/></td>
                                                                                                 </s:else>
-                                                                                         </tr> 
-                                                                                         <tr style="pointer-events: none; background: #ffffff;  color: #000; font-size: 15px; border-radius:10px;">       
+                                                                                            </tr> 
+                                                                                            <tr style="pointer-events: none; background: #ffffff;  color: #000; font-size: 15px; border-radius:10px;">       
                                                                                                 <s:if test="ARCHIVO_RES=='si'">
                                                                                                     <td class="alert-success" style="width: 25%;"><s:property value="ERROR_ARCHIVO_RES"/></td>
                                                                                                 </s:if>
                                                                                                 <s:else>
                                                                                                     <td class="alert-danger" style="width: 25%;"><s:property value="ERROR_ARCHIVO_RES"/></td>
                                                                                                 </s:else>    
-                                                                                         </tr>  
-                                                                                         <tr style="pointer-events: none; background: #ffffff;  color: #000; font-size: 15px; border-radius:10px;">       
+                                                                                            </tr>  
+                                                                                            <tr style="pointer-events: none; background: #ffffff;  color: #000; font-size: 15px; border-radius:10px;">       
                                                                                                 <s:if test="ARCHIVO_ASE_INT=='si'">
                                                                                                     <td class="alert-success" style="width: 25%;"><s:property value="ERROR_ARCHIVO_ASE_INT"/></td>
                                                                                                 </s:if>
                                                                                                 <s:else>
                                                                                                     <td class="alert-danger" style="width: 25%;"><s:property value="ERROR_ARCHIVO_ASE_INT"/></td>
                                                                                                 </s:else>    
-                                                                                         </tr> 
-                                                                                         <tr style="pointer-events: none; background: #ffffff;  color: #000; font-size: 15px; border-radius:10px;">       
+                                                                                            </tr> 
+                                                                                            <tr style="pointer-events: none; background: #ffffff;  color: #000; font-size: 15px; border-radius:10px;">       
                                                                                                 <s:if test="ARCHIVO_ALU=='si'">
                                                                                                     <td class="alert-success" style="width: 25%;"><s:property value="ERROR_ARCHIVO_ALU"/></td>
                                                                                                 </s:if>
                                                                                                 <s:else>
                                                                                                     <td class="alert-danger" style="width: 25%;"><s:property value="ERROR_ARCHIVO_ALU"/></td>
                                                                                                 </s:else>    
-                                                                                         </tr>         
+                                                                                            </tr>         
 
-                                                                                                <s:hidden  name = "VerificaArchivos[%{#stat.index}].ARCHIVO_CAR" id="ARCHIVO_CAR"></s:hidden> 
-                                                                                                <s:hidden  name = "VerificaArchivos[%{#stat.index}].ERROR_ARCHIVO_CAR" id="ERROR_ARCHIVO_CAR"></s:hidden> 
-                                                                                                <s:hidden  name = "VerificaArchivos[%{#stat.index}].ARCHIVO_RES" id="ARCHIVO_RES"></s:hidden> 
-                                                                                                <s:hidden  name = "VerificaArchivos[%{#stat.index}].ERROR_ARCHIVO_RES" id="ERROR_ARCHIVO_RES"></s:hidden> 
-                                                                                                <s:hidden  name = "VerificaArchivos[%{#stat.index}].ARCHIVO_ASE_INT" id="ARCHIVO_ASE_INT"></s:hidden> 
-                                                                                                <s:hidden  name = "VerificaArchivos[%{#stat.index}].ERROR_ARCHIVO_ASE_INT" id="ERROR_ARCHIVO_ASE_INT"></s:hidden> 
-                                                                                                <s:hidden  name = "VerificaArchivos[%{#stat.index}].ARCHIVO_ALU" id="ARCHIVO_ALU"></s:hidden> 
-                                                                                                <s:hidden  name = "VerificaArchivos[%{#stat.index}].ERROR_ARCHIVO_ALU" id="ERROR_ARCHIVO_ALU"></s:hidden> 
+                                                                                            <s:hidden  name = "VerificaArchivos[%{#stat.index}].ARCHIVO_CAR" id="ARCHIVO_CAR"></s:hidden> 
+                                                                                            <s:hidden  name = "VerificaArchivos[%{#stat.index}].ERROR_ARCHIVO_CAR" id="ERROR_ARCHIVO_CAR"></s:hidden> 
+                                                                                            <s:hidden  name = "VerificaArchivos[%{#stat.index}].ARCHIVO_RES" id="ARCHIVO_RES"></s:hidden> 
+                                                                                            <s:hidden  name = "VerificaArchivos[%{#stat.index}].ERROR_ARCHIVO_RES" id="ERROR_ARCHIVO_RES"></s:hidden> 
+                                                                                            <s:hidden  name = "VerificaArchivos[%{#stat.index}].ARCHIVO_ASE_INT" id="ARCHIVO_ASE_INT"></s:hidden> 
+                                                                                            <s:hidden  name = "VerificaArchivos[%{#stat.index}].ERROR_ARCHIVO_ASE_INT" id="ERROR_ARCHIVO_ASE_INT"></s:hidden> 
+                                                                                            <s:hidden  name = "VerificaArchivos[%{#stat.index}].ARCHIVO_ALU" id="ARCHIVO_ALU"></s:hidden> 
+                                                                                            <s:hidden  name = "VerificaArchivos[%{#stat.index}].ERROR_ARCHIVO_ALU" id="ERROR_ARCHIVO_ALU"></s:hidden> 
 
-                                                                                            </s:iterator>   
-                                                                                            
-                                                                                        
-                                                                                        </tbody>
+                                                                                        </s:iterator>   
 
-                                                                                    </table>                                                                             
-                                                                                </div>
+
+                                                                                    </tbody>
+
+                                                                                </table>                                                                             
+                                                                            </div>
 
                                                                         </s:if> 
 

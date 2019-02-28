@@ -98,8 +98,8 @@
                                     }
 
                                 }
-                                
-                                
+
+
 
 
 
@@ -118,12 +118,21 @@
 
 
                                 }
+
+                                function deshabilitaRetroceso() {
+                                    window.location.hash = "no-back-button";
+                                    window.location.hash = "Again-No-back-button" //chrome
+                                    window.onhashchange = function () {
+                                        window.location.hash = "no-back-button";
+                                    }
+                                }
+
                             </script>
 
 
                             </head>
 
-                            <body id="page-top">
+                            <body id="page-top" onload="deshabilitaRetroceso()>
                                 <s:form name="formularioPrincipal" id="formularioPrincipal" enctype="multipart/form-data">
 
                                     <!-- Navigation -->
@@ -370,7 +379,7 @@
                                                                                     <s:fielderror fieldName="archierror" cssClass="alert alert-danger"/>
                                                                                 </div> 
                                                                             </div>
-                                                                                  
+
                                                                             <div class="form-group col-lg-4">
                                                                                 <label class="col-form-label text-muted " for="Municipio" >RESPONSABLE INSTITUCIONAL:</label>
                                                                                 <div class="col-sm-auto ">
@@ -388,15 +397,15 @@
                                                                             <div class="form-group col-lg-4">
                                                                                 <label class="col-form-label text-muted" for="REPLEGAL">CONVENIO REGISTRADO</label>
                                                                                 <s:if test="pro.getCONVENIOR().length()>0">
-                                                                                <div class="col-sm-auto">
-                                                                                    <a  target="black" href="https://dual.edugem.gob.mx/documentos/<s:property  value="pro.CONVENIOR"/> "><s:property  value="pro.CONVENIOR"/></a>
-                                                                                    <s:hidden name="pro.CONVENIOR" id="%{pro.CONVENIOR}"></s:hidden>
-                                                                                </div> 
+                                                                                    <div class="col-sm-auto">
+                                                                                        <a  target="black" href="https://dual.edugem.gob.mx/documentos/<s:property  value="pro.CONVENIOR"/> "><s:property  value="pro.CONVENIOR"/></a>
+                                                                                        <s:hidden name="pro.CONVENIOR" id="%{pro.CONVENIOR}"></s:hidden>
+                                                                                        </div> 
                                                                                 </s:if>   
                                                                                 <s:else>
                                                                                     <div class="col-sm-auto">
                                                                                         <label class="col-form-label "  style="color: red;"for="REPLEGAL">No hay convenio registrado aun</label>
-                                                                                </div> 
+                                                                                    </div> 
                                                                                 </s:else>
                                                                             </div>      
 
@@ -585,8 +594,8 @@
                                         <s:hidden  name = "ListaMunicipios[%{#stat.index}].ID" id="ID"></s:hidden>
                                         <s:hidden  name = "ListaMunicipios[%{#stat.index}].MUNICIPIO" id="MUNICIPIO"></s:hidden>
                                     </s:iterator>
-                                    
-                                     <s:iterator value="ListaResponsables" id="ListaResponsables" status="stat">
+
+                                    <s:iterator value="ListaResponsables" id="ListaResponsables" status="stat">
                                         <s:hidden  name = "ListaResponsables[%{#stat.index}].ID_RESPONSABLE" id="ID_RESPONSABLE"></s:hidden>
                                         <s:hidden  name = "ListaResponsables[%{#stat.index}].NOMBRE_COMPLETO_RESP" id="NOMBRE_COMPLETO_RESP"></s:hidden>
                                     </s:iterator>
@@ -595,7 +604,7 @@
                                         <s:hidden  name = "ListaAsesoresI[%{#stat.index}].ID_ASESOR_I" id="ID_ASESOR_I"></s:hidden>
                                         <s:hidden  name = "ListaAsesoresI[%{#stat.index}].NOMBRE_COMPLETO_AI" id="NOMBRE_COMPLETO_AI"></s:hidden>
                                     </s:iterator>
-                                    
+
                                     <s:iterator value="ListaEstatus" id="ListaEstatus" status="stat">
                                         <s:hidden  name = "ListaEstatus[%{#stat.index}].ID_ESTATUS" id="ID_ESTATUS"></s:hidden>
                                         <s:hidden  name = "ListaEstatus[%{#stat.index}].NOM_ESTATUS" id="NOM_ESTATUS"></s:hidden>
