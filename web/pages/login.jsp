@@ -2,13 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html lang="en">
+    
     <script>
-var URLactual = window.location;
-if(URLactual=="http://dual.edugem.gob.mx/"){
-    location.href ="https://dual.edugem.gob.mx/";
-}
+        var URLactual = window.location;
+        if (URLactual == "http://dual.edugem.gob.mx/") {
+            location.href = "https://dual.edugem.gob.mx/";
+        }
 
-</script>
+    </script>
 
     <head>
 
