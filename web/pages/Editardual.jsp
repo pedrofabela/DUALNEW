@@ -11,7 +11,7 @@
                     <meta name="author" content="">
 
                         <title>SisDUAL</title>
-
+                        <link rel="shortcut icon" href="images/portalSE.png" />
                         <!-- Bootstrap core CSS -->
                         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 
@@ -107,7 +107,11 @@
                                     var pos = window.name || 0;
                                     window.scrollTo(0, pos);
 
-
+                                    window.location.hash = "no-back-button";
+                                    window.location.hash = "Again-No-back-button" //chrome
+                                    window.onhashchange = function () {
+                                        window.location.hash = "no-back-button";
+                                    }
 
 
                                 }
@@ -119,20 +123,14 @@
 
                                 }
 
-                                function deshabilitaRetroceso() {
-                                    window.location.hash = "no-back-button";
-                                    window.location.hash = "Again-No-back-button" //chrome
-                                    window.onhashchange = function () {
-                                        window.location.hash = "no-back-button";
-                                    }
-                                }
+
 
                             </script>
 
 
                             </head>
 
-                            <body id="page-top" onload="deshabilitaRetroceso()>
+                            <body id="page-top" >
                                 <s:form name="formularioPrincipal" id="formularioPrincipal" enctype="multipart/form-data">
 
                                     <!-- Navigation -->

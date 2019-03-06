@@ -1,6 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<script>
+    var URLactual = window.location;
+    if (URLactual == "http://dual.edugem.gob.mx/tablero") {
+        location.href = "https://dual.edugem.gob.mx/tablero";
+    }
+
+</script>
+
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="css/estilo.css"/>
 
@@ -10,31 +18,31 @@
 
 
     <script type="text/javascript">
-        google.charts.load('current', {'packages': ['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
 
-        function drawChart() {
+    function drawChart() {
 
-            var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
         <s:iterator value="ListaTotalEstatus" id="ListaTotalEstatus" status="stat">
 
-                ['<s:property value="NOM_ESTATUS"/>', <s:property value="TOTAL_ESTATUS"/>],
+            ['<s:property value="NOM_ESTATUS"/>', <s:property value="TOTAL_ESTATUS"/>],
 
         </s:iterator>
 
-            ]);
+        ]);
 
-            var options = {
+        var options = {
 
-                backgroundColor: '#edecec',
+            backgroundColor: '#edecec',
 
-            };
+        };
 
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-            chart.draw(data, options);
-        }
+        chart.draw(data, options);
+    }
     </script>    
 
 
@@ -133,7 +141,7 @@
                 ['Task', 'Hours per Day'],
         <s:iterator value="ListaTotalEstatusUGeneral" id="ListaTotalEstatusUGeneral" status="stat">
 
-                        ['<s:property value="NOM_ESTATUS"/>', <s:property value="TOTAL_ESTATUS"/>],
+                ['<s:property value="NOM_ESTATUS"/>', <s:property value="TOTAL_ESTATUS"/>],
 
         </s:iterator>
 
@@ -199,8 +207,8 @@
             var data = google.visualization.arrayToDataTable([
                 ['City', 'DUAL', {role: 'annotation'}, {role: 'style'}],
 
-                         ['Hombre', <s:property value="datos.TOTAL_HOMBRE_GENERAL" />, '<s:property value="datos.TOTAL_HOMBRE_GENERAL" />', 'blue'],
-                         ['Mujer', <s:property value="datos.TOTAL_MUJER_GENERAL" />, '<s:property value="datos.TOTAL_MUJER_GENERAL" />', 'pink'],
+                ['Hombre', <s:property value="datos.TOTAL_HOMBRE_GENERAL" />, '<s:property value="datos.TOTAL_HOMBRE_GENERAL" />', 'blue'],
+                ['Mujer', <s:property value="datos.TOTAL_MUJER_GENERAL" />, '<s:property value="datos.TOTAL_MUJER_GENERAL" />', 'pink'],
             ]);
 
             var options = {
@@ -240,40 +248,41 @@
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
     <script>
-                 $.datepicker.regional['es'] = {
-                     closeText: 'Cerrar',
-                     prevText: '<Ant',
-                     nextText: 'Sig>',
-                     currentText: 'Hoy',
-                     monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                     monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                     dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-                     dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
-                     dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
-                     weekHeader: 'Sm',
-                     dateFormat: 'dd/mm/yy',
-                     changeMonth: true,
-                     changeYear: true,
-                     firstDay: 1,
-                     isRTL: false,
-                     showMonthAfterYear: false,
-                     yearSuffix: ''
-                 };
-                 $.datepicker.setDefaults($.datepicker.regional['es']);
-                 $(function () {
+        $.datepicker.regional['es'] = {
+            closeText: 'Cerrar',
+            prevText: '<Ant',
+            nextText: 'Sig>',
+            currentText: 'Hoy',
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+            dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+            weekHeader: 'Sm',
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            changeYear: true,
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''
+        };
+        $.datepicker.setDefaults($.datepicker.regional['es']);
+        $(function () {
 
-                     $("#Fecha").datepicker();
+            $("#Fecha").datepicker();
 
-                 });
+        });
 
-                 $(function () {
-                     $("#Fecha1").datepicker();
-                 });
+        $(function () {
+            $("#Fecha1").datepicker();
+        });
     </script>
 
 
 
     <html lang="en">
+
 
         <head>
 
@@ -376,6 +385,12 @@
                                         CD.style.display = (CD.style.display == 'none') ? 'block' : 'none';/* "contenido_a_mostrar" es el nombre que le dimos al DIV */
                                     }
 
+                                    window.location.hash = "no-back-button";
+                                    window.location.hash = "Again-No-back-button" //chrome
+                                    window.onhashchange = function () {
+                                        window.location.hash = "no-back-button";
+                                    }
+
 
 
 
@@ -404,13 +419,7 @@
 
 
 
-                                function deshabilitaRetroceso() {
-                                    window.location.hash = "no-back-button";
-                                    window.location.hash = "Again-No-back-button" //chrome
-                                    window.onhashchange = function () {
-                                        window.location.hash = "no-back-button";
-                                    }
-                                }
+
 
 
 
@@ -444,25 +453,16 @@
 
                             </head>
 
-                            <body id="page-top" onload="deshabilitaRetroceso()">
+                            <body id="page-top">
                                 <s:form name="formularioPrincipal" id="formularioPrincipal" enctype="multipart/form-data">
-
-                                   
-
 
                                     <!-- Header -->
                                     <header class="masthead text-white text-center"  >
 
-                                        <div class="container"  style="margin-top: -100px;" >
+                                        <div class="container" style="margin-top: -200px;" >
                                             <div class="modal-content" style="border-radius: 10px;">
-                                                
+
                                                 <div class="modal-body">                                              
-
-
-
-
-
-
 
 
                                                     <!--     <div style="position: absolute; color: white; float: left; width: 150px; height: 40px; background: #633974; margin-top: -15px; border-radius: 20px 20px 0px 0px; padding: 8px; box-shadow: 3px 3px 10px #666; z-index: 1; font-size: 12px;">
@@ -470,9 +470,6 @@
                                                          </div> -->
 
                                                     <div id="wrapper2" style="position: relative;" >    
-
-
-
 
                                                         <div style="width: 100%; height: 40px;  background: #343a40; margin-bottom: 15px; padding: 7px; ">Indicadores Generales</div>
 

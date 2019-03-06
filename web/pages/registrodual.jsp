@@ -11,7 +11,7 @@
                     <meta name="author" content="">
 
                         <title>SisDUAL</title>
-
+                        <link rel="shortcut icon" href="images/portalSE.png" />
                         <!-- Bootstrap core CSS -->
                         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 
@@ -86,30 +86,32 @@
                                     var pos = window.name || 0;
                                     window.scrollTo(0, pos);
 
-
-
-                                }
-
-                                window.onunload = function () {
-                                    window.name = self.pageYOffset
-                                            || (document.documentElement.scrollTop + document.body.scrollTop);
-
-
-                                }
-                                
-                                 function deshabilitaRetroceso() {
                                     window.location.hash = "no-back-button";
                                     window.location.hash = "Again-No-back-button" //chrome
                                     window.onhashchange = function () {
                                         window.location.hash = "no-back-button";
+
+
+
                                     }
+
+                                    window.onunload = function () {
+                                        window.name = self.pageYOffset
+                                                || (document.documentElement.scrollTop + document.body.scrollTop);
+
+
+                                    }
+
+
+
+
                                 }
                             </script>
 
 
                             </head>
 
-                            <body id="page-top" onload="deshabilitaRetroceso()>
+                            <body id="page-top" >
                                 <s:form name="formularioPrincipal" id="formularioPrincipal" enctype="multipart/form-data">
 
                                     <!-- Navigation -->
@@ -566,7 +568,9 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group col-lg-12">
-                                                                            <a class="btn bg-secondary text-white" href="Javascript:Accion('GuardarProyecto')" onclick="this.onclick=function(){return false}">Guardar Proyecto</a>
+                                                                            <a class="btn bg-secondary text-white" href="Javascript:Accion('GuardarProyecto')" onclick="this.onclick = function () {
+                                                                                        return false
+                                                                                    }">Guardar Proyecto</a>
                                                                         </div>  
                                                                     </div> 
 

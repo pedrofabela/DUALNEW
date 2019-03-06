@@ -133,7 +133,7 @@
                 ['Task', 'Hours per Day'],
         <s:iterator value="ListaTotalEstatusUGeneral" id="ListaTotalEstatusUGeneral" status="stat">
 
-                        ['<s:property value="NOM_ESTATUS"/>', <s:property value="TOTAL_ESTATUS"/>],
+                ['<s:property value="NOM_ESTATUS"/>', <s:property value="TOTAL_ESTATUS"/>],
 
         </s:iterator>
 
@@ -199,8 +199,8 @@
             var data = google.visualization.arrayToDataTable([
                 ['City', 'DUAL', {role: 'annotation'}, {role: 'style'}],
 
-                         ['Hombre', <s:property value="datos.TOTAL_HOMBRE_GENERAL" />, '<s:property value="datos.TOTAL_HOMBRE_GENERAL" />', 'blue'],
-                         ['Mujer', <s:property value="datos.TOTAL_MUJER_GENERAL" />, '<s:property value="datos.TOTAL_MUJER_GENERAL" />', 'pink'],
+                ['Hombre', <s:property value="datos.TOTAL_HOMBRE_GENERAL" />, '<s:property value="datos.TOTAL_HOMBRE_GENERAL" />', 'blue'],
+                ['Mujer', <s:property value="datos.TOTAL_MUJER_GENERAL" />, '<s:property value="datos.TOTAL_MUJER_GENERAL" />', 'pink'],
             ]);
 
             var options = {
@@ -240,35 +240,35 @@
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
     <script>
-                 $.datepicker.regional['es'] = {
-                     closeText: 'Cerrar',
-                     prevText: '<Ant',
-                     nextText: 'Sig>',
-                     currentText: 'Hoy',
-                     monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                     monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                     dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-                     dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
-                     dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
-                     weekHeader: 'Sm',
-                     dateFormat: 'dd/mm/yy',
-                     changeMonth: true,
-                     changeYear: true,
-                     firstDay: 1,
-                     isRTL: false,
-                     showMonthAfterYear: false,
-                     yearSuffix: ''
-                 };
-                 $.datepicker.setDefaults($.datepicker.regional['es']);
-                 $(function () {
+        $.datepicker.regional['es'] = {
+            closeText: 'Cerrar',
+            prevText: '<Ant',
+            nextText: 'Sig>',
+            currentText: 'Hoy',
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+            dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+            weekHeader: 'Sm',
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            changeYear: true,
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''
+        };
+        $.datepicker.setDefaults($.datepicker.regional['es']);
+        $(function () {
 
-                     $("#Fecha").datepicker();
+            $("#Fecha").datepicker();
 
-                 });
+        });
 
-                 $(function () {
-                     $("#Fecha1").datepicker();
-                 });
+        $(function () {
+            $("#Fecha1").datepicker();
+        });
     </script>
 
 
@@ -377,7 +377,11 @@
                                     }
 
 
-
+                                    window.location.hash = "no-back-button";
+                                    window.location.hash = "Again-No-back-button" //chrome
+                                    window.onhashchange = function () {
+                                        window.location.hash = "no-back-button";
+                                    }
 
 
                                 }
@@ -404,13 +408,6 @@
 
 
 
-                                function deshabilitaRetroceso() {
-                                    window.location.hash = "no-back-button";
-                                    window.location.hash = "Again-No-back-button" //chrome
-                                    window.onhashchange = function () {
-                                        window.location.hash = "no-back-button";
-                                    }
-                                }
 
 
 
@@ -444,7 +441,7 @@
 
                             </head>
 
-                            <body id="page-top" onload="deshabilitaRetroceso()">
+                            <body id="page-top">
                                 <s:form name="formularioPrincipal" id="formularioPrincipal" enctype="multipart/form-data">
 
                                     <!-- Navigation -->

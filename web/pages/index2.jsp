@@ -13,7 +13,7 @@
                     <meta name="author" content="">
 
                         <title>SisDUAL</title>
-
+                        <link rel="shortcut icon" href="images/portalSE.png" />
                         <!-- Bootstrap core CSS -->
                         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
