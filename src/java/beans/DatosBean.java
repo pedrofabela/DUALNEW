@@ -119,11 +119,43 @@ public class DatosBean {
                      private String RFC;
                       private String RAZON_SOCIAL;
                        private String NOM_MUN;
+                        private String GIRO;
+                         private String SECTOR;
 
                        
+                         private String COLOR;
+
+    public String getGIRO() {
+        return GIRO;
+    }
+
+    public void setGIRO(String GIRO) {
+        this.GIRO = GIRO;
+    }
+
+    public String getSECTOR() {
+        return SECTOR;
+    }
+
+    public void setSECTOR(String SECTOR) {
+        this.SECTOR = SECTOR;
+    }
+
+                         
+                         
+                         
+                         
+    public String getCOLOR() {
+        return COLOR;
+    }
+
+    public void setCOLOR(String COLOR) {
+        this.COLOR = COLOR;
+    }
                        
-                       
-                       
+    
+                         
+                         
                        
     public String getNOM_MUN() {
         return NOM_MUN;

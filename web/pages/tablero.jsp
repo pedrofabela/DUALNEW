@@ -16,10 +16,10 @@
         function drawChart() {
 
             var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
+                ['Task', 'Hours per Day', {role: "style"}],
         <s:iterator value="ListaTotalEstatus" id="ListaTotalEstatus" status="stat">
 
-                ['<s:property value="NOM_ESTATUS"/>', <s:property value="TOTAL_ESTATUS"/>],
+    ['<s:property value="NOM_ESTATUS"/>', <s:property value="TOTAL_ESTATUS"/>,'<s:if test="NOM_ESTATUS==ACTIVO">red</s:if>'],
 
         </s:iterator>
 
@@ -90,7 +90,7 @@
 
         function drawBarColors() {
             var data = google.visualization.arrayToDataTable([
-                ['City', 'DUAL', {role: 'annotation'}],
+                ['City', 'pedro', {role: 'annotation'}],
 
                 ['Hombre', <s:property value="datos.TOTAL_HOMBRE" />, '<s:property value="datos.TOTAL_HOMBRE" />'],
                 ['Mujer', <s:property value="datos.TOTAL_MUJER" />, '<s:property value="datos.TOTAL_MUJER" />'],
@@ -130,10 +130,10 @@
         function drawChart() {
 
             var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
+                ['Task', 'Hours per Day', {role: 'style'}],
         <s:iterator value="ListaTotalEstatusUGeneral" id="ListaTotalEstatusUGeneral" status="stat">
 
-                ['<s:property value="NOM_ESTATUS"/>', <s:property value="TOTAL_ESTATUS"/>],
+                ['<s:property value="NOM_ESTATUS"/>', <s:property value="TOTAL_ESTATUS"/>, '<s:property value="COLOR"/>'],
 
         </s:iterator>
 
@@ -147,7 +147,7 @@
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart_general'));
 
-            chart.draw(data, options);
+         
 
             var counter = 0;
 
@@ -166,7 +166,7 @@
                     chartArea: {left: 20, top: 25, width: '85%', height: '80%'},
                     legend: {position: 'left', top: 20, width: '45%', textStyle: {fontSize: 13, color: 'black', fontName: 'Didactic'}},
 
-                    colors: ['green', '#25a1db', '#9dc325', '#fcce00', '#a29f9d', '#e1173e'],
+                    colors: ['28a745', '#ffc107', '#dc3545', '#893101', '#8B0000', '#DC143C'],
 
                     textStyle: {
 
@@ -185,7 +185,7 @@
 
                 if (counter > 0.20)
                     clearInterval(handler);
-            }, 200);
+            }, 100);
         }
     </script>  
     <script type="text/javascript">
@@ -197,10 +197,10 @@
 
         function drawBarColors() {
             var data = google.visualization.arrayToDataTable([
-                ['City', 'DUAL', {role: 'annotation'}, {role: 'style'}],
+                ['City', '', {role: 'annotation'}, {role: 'style'}],
 
-                ['Hombre', <s:property value="datos.TOTAL_HOMBRE_GENERAL" />, '<s:property value="datos.TOTAL_HOMBRE_GENERAL" />', 'blue'],
-                ['Mujer', <s:property value="datos.TOTAL_MUJER_GENERAL" />, '<s:property value="datos.TOTAL_MUJER_GENERAL" />', 'pink'],
+                ['Hombre', <s:property value="datos.TOTAL_HOMBRE_GENERAL" />, '<s:property value="datos.TOTAL_HOMBRE_GENERAL" />', 'purple'],
+                ['Mujer', <s:property value="datos.TOTAL_MUJER_GENERAL" />, '<s:property value="datos.TOTAL_MUJER_GENERAL" />', 'purple'],
             ]);
 
             var options = {
@@ -224,6 +224,7 @@
                     duration: 4500,
                     startup: true //This is the new option
                 },
+                  legend: 'none',
 
             };
             var chart = new google.visualization.BarChart(document.getElementById('chart_div_gen'));
@@ -663,6 +664,9 @@
                                                                 <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Alumnos por Municipio</div>
 
                                                                 <div style="height: 250px; overflow-y: scroll">
+                                                                  
+                                                                       <div id="dvData2">    
+                                                                    
                                                                     <table class="table table-hover"  style=" font-size: 14px; width: 100%;">
 
 
@@ -696,13 +700,34 @@
                                                                         </s:iterator>
 
 
-                                                                        <s:else>
+                                                                        <s:if test="ListaMunicipioEscuela.size()<=0">
 
                                                                             <div style="color: #e1173e; font-size: 12px; text-align: center;">No hay información para mostrar </div>
 
 
-                                                                        </s:else>
+                                                                        </s:if>
                                                                     </table>
+                                                                           
+                                                                           
+                                                                            <center>
+
+                                                            <input  align="top" type="image" id="btnExport8"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+
+
+                                                        </center>
+
+                                                        <script>
+                                                            $("#btnExport8").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData2').html()));
+                                                                e.preventDefault();
+                                                            });
+                                                        </script>
+                                                                           
+                                                                           
+                                                                           
+                                                                           
+                                                                           
+                                                                       </div>
 
                                                                 </div> 
 
@@ -716,7 +741,11 @@
                                                                 <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Alumnos activos por empresa</div>
 
                                                                 <div style="height: 250px; overflow-y: scroll">
-                                                                    <table class="table table-hover"  style=" font-size: 14px; width: 100%;">
+                                                                  
+                                                                  <div id="dvData2">    
+                                                                    
+                                                                    
+                                                                    <table class="custmers"  style=" font-size: 14px; width: 100%;">
 
 
 
@@ -725,6 +754,10 @@
                                                                             <td style="width: 40%;">Empresa</td>
                                                                             <td style="width: 20%;">Municipio</td>
                                                                             <td style="width: 20%;">No.Alumnos</td>
+                                                                              <td style="width: 20%;">Giro</td>
+                                                                                <td style="width: 20%;">Sector</td>
+                                                                                 <td style="width: 20%;">CCT</td>
+
 
 
 
@@ -740,7 +773,9 @@
                                                                                 <td style="width: 40%;"><s:property value="RAZON_SOCIAL"/></td>
                                                                                 <td style="width: 20%;"><s:property value="NOM_MUN"/></td>
                                                                                 <td style="width: 20%;"><s:property value="TOTAL_ALUMNOS_EMPRESA" /></td>
-
+                                                                                <td style="width: 20%;"><s:property value="GIRO" /></td>
+                                                                                <td style="width: 20%;"><s:property value="SECTOR" /></td>
+                                                                                  <td style="width: 20%;"><s:property value="CCT" /></td>
 
 
                                                                             </tr>
@@ -749,13 +784,30 @@
                                                                         </s:iterator>
 
 
-                                                                        <s:else>
+                                                                        <s:if test="ListaEmpresasAlumnos.size()<=0">
 
                                                                             <div style="color: #e1173e; font-size: 12px; text-align: center;">No hay información para mostrar </div>
 
 
-                                                                        </s:else>
+                                                                        </s:if>
                                                                     </table>
+                                                                      
+                                                                       <center>
+
+                                                            <input  align="top" type="image" id="btnExport2"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+
+
+                                                        </center>
+
+                                                        <script>
+                                                            $("#btnExport2").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData2').html()));
+                                                                e.preventDefault();
+                                                            });
+                                                        </script>
+                                                                      
+                                                                      
+                                                                  </div>
 
                                                                 </div> 
 

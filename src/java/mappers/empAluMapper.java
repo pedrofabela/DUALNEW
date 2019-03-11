@@ -48,7 +48,25 @@ public class empAluMapper implements Mapper{
         } else {
             dat.setTOTAL_ALUMNOS_EMPRESA(rs.getString("TOTAL_ALUMNOS_EMPRESA"));
         }
-                             
+            
+       
+       if (rs.getString("GIRO") != null) {
+            dat.setGIRO(rs.getString("GIRO").trim());
+        } else {
+            dat.setGIRO(rs.getString("GIRO"));
+        }
+       
+       
+       if (rs.getString("SECTOR") != null) {
+            dat.setSECTOR(rs.getString("SECTOR").trim());
+        } else {
+            dat.setSECTOR(rs.getString("SECTOR"));
+        }
+        if (rs.getString("CCT") != null) {
+            dat.setCCT(rs.getString("CCT").trim());
+        } else {
+            dat.setCCT(rs.getString("CCT"));
+        }
          
         return dat;  
         
