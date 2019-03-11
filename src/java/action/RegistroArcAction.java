@@ -9,7 +9,7 @@ import beans.moduloAuxBean;
 import beans.usuarioBean;
 import business.ConsultasBusiness;
 import mx.gob.edomex.dgsei.ws.ConsultaRenapoPorCurp;
-import mx.gob.edomex.dgsei.ws.ConsultaRenapoPorCurp_Service;
+import mx.gob.edomex.dgsei.ws.ConsultaDatosRenapo;
 import mx.gob.edomex.dgsei.ws.PersonasDTO;
 //BUSINESS
 
@@ -106,7 +106,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
     //******************** TERMINA OBJETO DE NAVEGACIoN **********************************************
 
     //instancias para web service//
-    ConsultaRenapoPorCurp_Service service = null;
+    ConsultaDatosRenapo service = null;
     ConsultaRenapoPorCurp port;
     PersonasDTO personas;
 
@@ -942,7 +942,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
 
                     Constantes.enviaMensajeConsola("entro al if" + datos.getCURP_RESPONSABLE());
 
-                    service = new ConsultaRenapoPorCurp_Service();
+                    service = new ConsultaDatosRenapo();
                     port = service.getConsultaRenapoPorCurpPort();
                     personas = port.consultaPorCurp(datos.getCURP_RESPONSABLE());
 
@@ -1698,7 +1698,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
 
                 }
 
-                service = new ConsultaRenapoPorCurp_Service();
+                service = new ConsultaDatosRenapo();
                 port = service.getConsultaRenapoPorCurpPort();
                 personas = port.consultaPorCurp(datos.getCURP_ASESORI());
 
@@ -2600,7 +2600,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
 
                 if (fila != 1) {
 
-                    service = new ConsultaRenapoPorCurp_Service();
+                    service = new ConsultaDatosRenapo();
                     port = service.getConsultaRenapoPorCurpPort();
                     personas = port.consultaPorCurp(datos.getCURP());
 
@@ -2840,7 +2840,7 @@ public class RegistroArcAction extends ActionSupport implements SessionAware {
 
                     } else {
 
-                        service = new ConsultaRenapoPorCurp_Service();
+                        service = new ConsultaDatosRenapo();
                         port = service.getConsultaRenapoPorCurpPort();
                         personas = port.consultaPorCurp(datos.getCURP());
 

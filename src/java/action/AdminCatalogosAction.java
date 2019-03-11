@@ -10,7 +10,7 @@ import beans.moduloAuxBean;
 import beans.usuarioBean;
 import business.ConsultasBusiness;
 import mx.gob.edomex.dgsei.ws.ConsultaRenapoPorCurp;
-import mx.gob.edomex.dgsei.ws.ConsultaRenapoPorCurp_Service;
+import mx.gob.edomex.dgsei.ws.ConsultaDatosRenapo;
 import mx.gob.edomex.dgsei.ws.PersonasDTO;
 //BUSINESS
 
@@ -74,7 +74,7 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
     //******************** TERMINA OBJETO DE NAVEGACIoN **********************************************
 
     //instancias para web service//
-    ConsultaRenapoPorCurp_Service service = null;
+    ConsultaDatosRenapo service = null;
     ConsultaRenapoPorCurp port;
     PersonasDTO personas;
 
@@ -312,7 +312,7 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
                 } else {
 
                     Constantes.enviaMensajeConsola("MICURP ES: " + ad.getCURP_RESPONSABLEAUX().toUpperCase());
-                    service = new ConsultaRenapoPorCurp_Service();
+                    service = new ConsultaDatosRenapo();
                     port = service.getConsultaRenapoPorCurpPort();
                     personas = port.consultaPorCurp(ad.getCURP_RESPONSABLEAUX().toUpperCase());
                     //port.consultaPorCurp(micurp)
@@ -508,7 +508,7 @@ public class AdminCatalogosAction extends ActionSupport implements SessionAware 
             if (banlong) {
 
                 Constantes.enviaMensajeConsola("MICURP ES: " + ad.getCURP_ASESORIAUX().toUpperCase());
-                service = new ConsultaRenapoPorCurp_Service();
+                service = new ConsultaDatosRenapo();
                 port = service.getConsultaRenapoPorCurpPort();
                 personas = port.consultaPorCurp(ad.getCURP_ASESORIAUX().toUpperCase());
                 //port.consultaPorCurp(micurp)

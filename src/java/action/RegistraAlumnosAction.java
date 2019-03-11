@@ -7,7 +7,7 @@ import beans.usuarioBean;
 
 import business.ConsultasBusiness;
 import mx.gob.edomex.dgsei.ws.ConsultaRenapoPorCurp;
-import mx.gob.edomex.dgsei.ws.ConsultaRenapoPorCurp_Service;
+import mx.gob.edomex.dgsei.ws.ConsultaDatosRenapo;
 import mx.gob.edomex.dgsei.ws.PersonasDTO;
 //BUSINESS
 
@@ -70,7 +70,7 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
     //******************** TERMINA OBJETO DE NAVEGACIoN **********************************************
 
     //instancias para web service//
-    ConsultaRenapoPorCurp_Service service = null;
+    ConsultaDatosRenapo service = null;
     ConsultaRenapoPorCurp port;
     PersonasDTO personas;
 
@@ -177,11 +177,13 @@ public class RegistraAlumnosAction extends ActionSupport implements SessionAware
 
                 } else {
 
-                    //System.outprintln ("MICURP ES: " + micurp);
-                    service = new ConsultaRenapoPorCurp_Service();
+                    System.out.println ("MICURP ES: " + al.getCURPA());
+                    service = new ConsultaDatosRenapo();
                     port = service.getConsultaRenapoPorCurpPort();
                     personas = port.consultaPorCurp(al.getCURPA());
                     //port.consultaPorCurp(micurp)
+                    
+                    Constantes.enviaMensajeConsola("resultado de renapo"+personas.getResultado());
 
                     if (personas.getResultado().equals("EXITO")) {
 

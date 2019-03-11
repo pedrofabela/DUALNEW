@@ -823,60 +823,57 @@
                                                               <!-- Custom scripts for this template -->
                                                               <script src="js/freelancer.min.js"></script>
 
-                                                                                                                               <script>
-                                                        $('#editUsu').on('show.bs.modal', function                                                                                                                                     (event) {
+                                                      <script>
+                                                        $('#editUsu').on('show.bs.modal', function(event) {
                                                             var button = $(event.relatedTarget) // Button that triggered t                                                                                                                                    he modal
 
-                                                            var recipient0 = button.data('ma                                                                                                                                            tricula')
-                                                                    var recipient1 = b                                                                  utton.dat
-                                                                                                                              a('curp')
-                                                            var recipient2 = button.data(                                                                  'nombre')
-                                                            var recipient3 = button.data('ap                                                                                                                                    ellidop')
-                                                            var recipient4 = button.data('ap                                                                                                                                    ellidom')
-                                                            var recipient5 = button.data(                                                                  'genero')
-                                                            var recipient6 = button.data('f                                                                                                                                    echanac')
-                                                            var recipient7 = button.data('do                                                                                                                                    micilio')
-                                                            var recipient8 = button.data('                                                                                                                                            colonia')
-                                                                    var recipient9 =                                                                  button.d
-                                                                                                                              ata('cp')
-                                                            var recipient10 = button.data('t                                                                                                                                    elefono')
-                                                            var recipient11 = button.data(                                                                  'correo')
-                                                            var recipient12 = button.data('                                                                                                                                    carrera')
-                                                            var recipient13 = button.data                                                                  ('grado')
-                                                            var recipient14 = button.data('p                                                                                                                                    romedio')
-                                                            var recipient15 = button.data('si                                                                                                                                    tuacion')
-                                                            var recipient16 = button.data('t                                                                                                                                    ipo_alu')
-                                                            var recipient17 = button.data('mu                                                                                                                                            nicipio')
-                                                                    var recipient18 =                                                                   button.da
-                                                                                                                              ta('cct')
-                                                            var recipient19 = button.data('fechaingres                                                                                                                                    odual')
+                                                            var recipient0 = button.data('matricula')
+                                                            var recipient1 = button.data('curp')
+                                                            var recipient2 = button.data('nombre')
+                                                            var recipient3 = button.data('apellidop')
+                                                            var recipient4 = button.data('apellidom')
+                                                            var recipient5 = button.data('genero')
+                                                            var recipient6 = button.data('fechanac')
+                                                            var recipient7 = button.data('domicilio')
+                                                            var recipient8 = button.data('colonia')
+                                                            var recipient9 = button.data('cp')
+                                                            var recipient10 = button.data('telefono')
+                                                            var recipient11 = button.data('correo')
+                                                            var recipient12 = button.data('carrera')
+                                                            var recipient13 = button.data ('grado')
+                                                            var recipient14 = button.data('promedio')
+                                                            var recipient15 = button.data('situacion')
+                                                            var recipient16 = button.data('tipo_alu')
+                                                            var recipient17 = button.data('municipio')
+                                                            var recipient18 = button.data('cct')
+                                                            var recipient19 = button.data('fechaingresodual')
 
 
                                                             // Extract info from data-* a                                                                                                                                    ttributes
                                                             // If necessary, you could initiate an AJAX request here (and then do the updating in a c                                                                                                                                    allback).
                                                             // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods                                                                                                                                     instead.
 
-                                                            var modal                                                                           = $(this)
-                                                                    modal.find('.modal-body #matricula').val(re                                                                                                                                            cipient0)
-                                                                    modal.find('.modal-body #curp').val(re                                                                                                                                            cipient1)
-                                                                    modal.find('.modal-body #nombre').val(re                                                                                                                                            cipient2)
-                                                                    modal.find('.modal-body #apellidop').val(re                                                                                                                                            cipient3)
-                                                                    modal.find('.modal-body #apellidom').val(re                                                                                                                                            cipient4)
-                                                                    modal.find('.modal-body #genero').val(re                                                                                                                                            cipient5)
-                                                                    modal.find('.modal-body #fechanac').val(re                                                                                                                                            cipient6)
-                                                                    modal.find('.modal-body #domicilio').val(re                                                                                                                                            cipient7)
-                                                                    modal.find('.modal-body #colonia').val(re                                                                                                                                            cipient8)
-                                                                    modal.find('.modal-body #cp').val(re                                                                                                                                            cipient9)
-                                                                    modal.find('.modal-body #telefono').val(rec                                                                                                                                            ipient10)
-                                                                    modal.find('.modal-body #correo').val(rec                                                                                                                                            ipient11)
-                                                                    modal.find('.modal-body #carrera').val(rec                                                                                                                                            ipient12)
-                                                                    modal.find('.modal-body #grado').val(rec                                                                                                                                            ipient13)
-                                                                    modal.find('.modal-body #promedio').val(rec                                                                                                                                            ipient14)
-                                                                    modal.find('.modal-body #situacion').val(rec                                                                                                                                            ipient15)
-                                                                    modal.find('.modal-body #tipo_alu').val(rec                                                                                                                                            ipient16)
-                                                                    modal.find('.modal-body #municipio').val(rec                                                                                                                                            ipient17)
-                                                                    modal.find('.modal-body #cct').val(rec                                                                                                                                            ipient18)
-                                                                    modal.find('.modal-body #fechaingresodual').val(recipien                                                                                                                                                      t19)
+                                                            var modal = $(this)
+                                                                    modal.find('.modal-body #matricula').val(recipient0)
+                                                                    modal.find('.modal-body #curp').val(recipient1)
+                                                                    modal.find('.modal-body #nombre').val(recipient2)
+                                                                    modal.find('.modal-body #apellidop').val(recipient3)
+                                                                    modal.find('.modal-body #apellidom').val(recipient4)
+                                                                    modal.find('.modal-body #genero').val(recipient5)
+                                                                    modal.find('.modal-body #fechanac').val(recipient6)
+                                                                    modal.find('.modal-body #domicilio').val(recipient7)
+                                                                    modal.find('.modal-body #colonia').val(recipient8)
+                                                                    modal.find('.modal-body #cp').val(recipient9)
+                                                                    modal.find('.modal-body #telefono').val(recipient10)
+                                                                    modal.find('.modal-body #correo').val(recipient11)
+                                                                    modal.find('.modal-body #carrera').val(recipient12)
+                                                                    modal.find('.modal-body #grado').val(recipient13)
+                                                                    modal.find('.modal-body #promedio').val(recipient14)
+                                                                    modal.find('.modal-body #situacion').val(recipient15)
+                                                                    modal.find('.modal-body #tipo_alu').val(recipient16)
+                                                                    modal.find('.modal-body #municipio').val(recipient17)
+                                                                    modal.find('.modal-body #cct').val(recipient18)
+                                                                    modal.find('.modal-body #fechaingresodual').val(recipient19)
 
 
 

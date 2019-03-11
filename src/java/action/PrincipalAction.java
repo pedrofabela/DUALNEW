@@ -11,7 +11,7 @@ import beans.usuarioBean;
 import business.AccesoBusiness;
 import business.ConsultasBusiness;
 import mx.gob.edomex.dgsei.ws.ConsultaRenapoPorCurp;
-import mx.gob.edomex.dgsei.ws.ConsultaRenapoPorCurp_Service;
+//import mx.gob.edomex.dgsei.ws.ConsultaRenapoPorCurp_Service;
 import mx.gob.edomex.dgsei.ws.PersonasDTO;
 //BUSINESS
 
@@ -77,15 +77,13 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public List<DatosBean> ListaAlumnosDashboardU = new ArrayList<DatosBean>();
     public List<DatosBean> ListaAlumnosDashboardUGeneral = new ArrayList<DatosBean>();
     public List<DatosBean> ListaTotalEstatusU = new ArrayList<DatosBean>();
-     public List<DatosBean> ListaTotalEstatusUGeneral = new ArrayList<DatosBean>();
+    public List<DatosBean> ListaTotalEstatusUGeneral = new ArrayList<DatosBean>();
     public List<DatosBean> ListaTotalEsuelaU = new ArrayList<DatosBean>();
-    
-    
+
     public List<DatosBean> ListaProyectos = new ArrayList<DatosBean>();
     public List<DatosBean> ListaReingresos = new ArrayList<DatosBean>();
     public List<DatosBean> ListaMunicipioEscuela = new ArrayList<DatosBean>();
-     public List<DatosBean> ListaEmpresasAlumnos = new ArrayList<DatosBean>();
-    
+    public List<DatosBean> ListaEmpresasAlumnos = new ArrayList<DatosBean>();
 
     private boolean bantablero = false;
 
@@ -110,7 +108,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     //******************** TERMINA OBJETO DE NAVEGACIoN **********************************************
 
     //instancias para web service//
-    ConsultaRenapoPorCurp_Service service = null;
+//    ConsultaRenapoPorCurp_Service service = null;
     ConsultaRenapoPorCurp port;
     PersonasDTO personas;
 
@@ -1089,12 +1087,12 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                     con.ActualizarProyecto(pro);
                     con.ActualizarEstatusAlumnoEgresado(pro);
                     con.ActualizarEstatusBeca(pro);
-                    
+
                 } else if (pro.getSTATUS_P().equals("11") || pro.getSTATUS_P().equals("12") || pro.getSTATUS_P().equals("13") || pro.getSTATUS_P().equals("14")) {
 
                     pro.setFECHA_CIERRE(fecha());
                     pro.setFECHA_CAMBIO_STATUS(fecha());
-                    
+
                     pro.setBECA("no");
 
                     con.ActualizarProyecto(pro);
@@ -1102,13 +1100,13 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                     con.ActualizarAsesor(pro);
 
                     con.ActualizarEstatusAlumnos(pro);
-                    
+
                     con.ActualizarEstatusBeca(pro);
 
                 } else {
-                    
+
                     pro.setFECHA_CIERRE("");
-                    
+
                     con.ActualizarProyecto(pro);
 
                     con.ActualizarAsesor(pro);
@@ -1412,9 +1410,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             Constantes.enviaMensajeConsola("FECHA INICIO" + datos.getFECHA_INICIO());
             Constantes.enviaMensajeConsola("FECHA termino" + datos.getFECHA_TERMINO());
 
-             ListaAlumnosDashboard = con.listaAlumnosDashboard(datos);
-            
-            
+            ListaAlumnosDashboard = con.listaAlumnosDashboard(datos);
 
             Constantes.enviaMensajeConsola("lista Alumnos : " + ListaAlumnosDashboard.size());
 
@@ -1429,14 +1425,14 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             int egresados = 0;
             int nuevos = 0;
             int tipo_alu = 0;
-               int beca = 0;
-              
-               Date fechaReg=null;
-               Date fechainicio=null;
-                Date fechatermino=null;
-              System.out.println("fecha reg" + fechaReg);  
-                fechainicio=format.parse(datos.getFECHA_INICIO());
-                fechatermino=format.parse(datos.getFECHA_TERMINO());
+            int beca = 0;
+
+            Date fechaReg = null;
+            Date fechainicio = null;
+            Date fechatermino = null;
+            System.out.println("fecha reg" + fechaReg);
+            fechainicio = format.parse(datos.getFECHA_INICIO());
+            fechatermino = format.parse(datos.getFECHA_TERMINO());
 
             while (LAD.hasNext()) {
                 obj = (DatosBean) LAD.next();
@@ -1461,29 +1457,27 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
                     mujer = mujer + 1;
                 }
-                
-                 if (obj.getSTATUS().equals("10")) {
+
+                if (obj.getSTATUS().equals("10")) {
 
                     egresados = egresados + 1;
                 }
-                 
-                 if(obj.getFECHA_REG()!=null){
-                fechaReg=format.parse(obj.getFECHA_REG());
-                if ( fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)  ) {
 
-                    nuevos = nuevos + 1;
+                if (obj.getFECHA_REG() != null) {
+                    fechaReg = format.parse(obj.getFECHA_REG());
+                    if (fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)) {
+
+                        nuevos = nuevos + 1;
+                    }
                 }
-                 }
-                 
-                 
-                  if (obj.getTIPO_ALUMNO().equals("2")) {
+
+                if (obj.getTIPO_ALUMNO().equals("2")) {
 
                     tipo_alu = tipo_alu + 1;
                 }
-                  
+
             }
 
-            
             datos.setTOTAL_ALU_DUAL(String.valueOf(total));
             datos.setTOTAL_ALU_ACTIVO(String.valueOf(activo));
             datos.setTOTAL_ALU_INACTIVO(String.valueOf(inactivo));
@@ -1491,31 +1485,26 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             datos.setALUMNOS_ACTIVOS_PERIODO(con.AlumnosActivosPeriodoA(datos));
             datos.setTOTAL_HOMBRE(String.valueOf(hombre));
             datos.setTOTAL_MUJER(String.valueOf(mujer));
-             datos.setEGRESADOS(String.valueOf(egresados));
-             datos.setALUMNOS_NUEVOS(String.valueOf(nuevos));
-               datos.setTOTAL_TIPO_ALUMNO(String.valueOf(tipo_alu));
-           
-            
-            
-              activo=0;
-            inactivo=0;
-            egresados=0;
-             hombre = 0;
-             mujer = 0;
-             beca=0;
-            
-            
+            datos.setEGRESADOS(String.valueOf(egresados));
+            datos.setALUMNOS_NUEVOS(String.valueOf(nuevos));
+            datos.setTOTAL_TIPO_ALUMNO(String.valueOf(tipo_alu));
+
+            activo = 0;
+            inactivo = 0;
+            egresados = 0;
+            hombre = 0;
+            mujer = 0;
+            beca = 0;
+
             ListaAlumnosDashboardUGeneral = con.listaAlumnosDashboardGeneral(datos);
-             
-             Iterator LADUG=ListaAlumnosDashboardUGeneral.iterator();
-              DatosBean obj2;
-             
+
+            Iterator LADUG = ListaAlumnosDashboardUGeneral.iterator();
+            DatosBean obj2;
+
             while (LADUG.hasNext()) {
-          obj2 = (DatosBean) LADUG.next();
-          
-          
-          
-          if (obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
+                obj2 = (DatosBean) LADUG.next();
+
+                if (obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
 
                     activo = activo + 1;
                 }
@@ -1523,12 +1512,12 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
                     inactivo = inactivo + 1;
                 }
-                
-                 if (obj2.getSTATUS().equals("10")) {
+
+                if (obj2.getSTATUS().equals("10")) {
 
                     egresados = egresados + 1;
                 }
-                  if (obj2.getSEXO().equals("HOMBRE")) {
+                if (obj2.getSEXO().equals("HOMBRE")) {
 
                     hombre = hombre + 1;
                 }
@@ -1537,15 +1526,13 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                     mujer = mujer + 1;
                 }
 
-                 if (obj2.getBECA().equals("si") && obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
+                if (obj2.getBECA().equals("si") && obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
 
                     beca = beca + 1;
                 }
-          
-          
-                
+
             }
-            
+
             datos.setALUMNOS_ACTIVOS_GENERAL(String.valueOf(activo));
             datos.setALUMNOS_INACTIVOS_GENERAL(String.valueOf(inactivo));
             datos.setALUMNOS_EGRESADOS_GENERAL(String.valueOf(egresados));
@@ -1553,48 +1540,30 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             datos.setTOTAL_HOMBRE_GENERAL(String.valueOf(hombre));
             datos.setTOTAL_MUJER_GENERAL(String.valueOf(mujer));
             datos.setTOTAL_BECA_GENERAL(String.valueOf(beca));
-            
-             ListaTotalEstatusUGeneral = con.listaTotalEstatusGeneral(datos);
-            
+
+            ListaTotalEstatusUGeneral = con.listaTotalEstatusGeneral(datos);
+
             ListaMunicipioEscuela = con.listaMunEscGeneral(datos);
             ListaEmpresasAlumnos = con.listaEmpAluGeneral(datos);
-            
-            
-             System.out.println("voy a calcular proyectos");
-            ListaProyectos=con.proyectosGeneral(datos);
-            
-            
-            Iterator LP =ListaProyectos.iterator();
-            
-             DatosBean obj3;
-             
-             while (LP.hasNext()) {
-               obj3= (DatosBean) LP.next();
-               
-               datos.setTOTAL_PROYECTOS(obj3.getTOTAL_PROYECTOS());
-               datos.setTOTAL_REINGRESOS(obj3.getTOTAL_REINGRESOS());
+
+            System.out.println("voy a calcular proyectos");
+            ListaProyectos = con.proyectosGeneral(datos);
+
+            Iterator LP = ListaProyectos.iterator();
+
+            DatosBean obj3;
+
+            while (LP.hasNext()) {
+                obj3 = (DatosBean) LP.next();
+
+                datos.setTOTAL_PROYECTOS(obj3.getTOTAL_PROYECTOS());
+                datos.setTOTAL_REINGRESOS(obj3.getTOTAL_REINGRESOS());
                 datos.setTOTAL_BECAS(obj3.getTOTAL_BECAS());
-                
+
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
 
             ListaTotalEstatus = con.listaTotalEstatus(datos);
             ListaTotalEsuela = con.listaTotalEscuela(datos);
-           
-            
-            
-            
-            
-            
 
             return "SUCCESS";
 
@@ -1664,8 +1633,6 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             datos.setCCT(usuariocons.getUSUARIO());
 
             ListaAlumnosDashboardU = con.listaAlumnosDashboardU(datos);
-            
-            
 
             Iterator LAD = ListaAlumnosDashboardU.iterator();
 
@@ -1680,7 +1647,7 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             int tipo_alu = 0;
             int beca = 0;
             Date fechaReg = null;
-            
+
             Date fechainicio = null;
             Date fechatermino = null;
 
@@ -1726,13 +1693,9 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
                     tipo_alu = tipo_alu + 1;
                 }
-                
-                
 
             }
-            
-            
-           
+
             datos.setTOTAL_ALU_DUAL(String.valueOf(total));
             datos.setTOTAL_ALU_ACTIVO(String.valueOf(activo));
             datos.setTOTAL_ALU_INACTIVO(String.valueOf(inactivo));
@@ -1743,29 +1706,23 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             datos.setEGRESADOS(String.valueOf(egresados));
             datos.setALUMNOS_NUEVOS(String.valueOf(nuevos));
             datos.setTOTAL_TIPO_ALUMNO(String.valueOf(tipo_alu));
-          
-            
-            
-            
-            activo=0;
-            inactivo=0;
-            egresados=0;
-             hombre = 0;
-             mujer = 0;
-             beca=0;
-            
-            
-           ListaAlumnosDashboardUGeneral = con.listaAlumnosDashboardUGeneral(datos);
-             
-             Iterator LADUG=ListaAlumnosDashboardUGeneral.iterator();
-              DatosBean obj2;
-             
+
+            activo = 0;
+            inactivo = 0;
+            egresados = 0;
+            hombre = 0;
+            mujer = 0;
+            beca = 0;
+
+            ListaAlumnosDashboardUGeneral = con.listaAlumnosDashboardUGeneral(datos);
+
+            Iterator LADUG = ListaAlumnosDashboardUGeneral.iterator();
+            DatosBean obj2;
+
             while (LADUG.hasNext()) {
-          obj2 = (DatosBean) LADUG.next();
-          
-          
-          
-          if (obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
+                obj2 = (DatosBean) LADUG.next();
+
+                if (obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
 
                     activo = activo + 1;
                 }
@@ -1773,12 +1730,12 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
                     inactivo = inactivo + 1;
                 }
-                
-                 if (obj2.getSTATUS().equals("10")) {
+
+                if (obj2.getSTATUS().equals("10")) {
 
                     egresados = egresados + 1;
                 }
-                  if (obj2.getSEXO().equals("HOMBRE")) {
+                if (obj2.getSEXO().equals("HOMBRE")) {
 
                     hombre = hombre + 1;
                 }
@@ -1787,15 +1744,13 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                     mujer = mujer + 1;
                 }
 
-                 if (obj2.getBECA().equals("si") && obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
+                if (obj2.getBECA().equals("si") && obj2.getESTATUS_GENERAL().equals("ACTIVO")) {
 
                     beca = beca + 1;
                 }
-          
-          
-                
+
             }
-            
+
             datos.setALUMNOS_ACTIVOS_GENERAL(String.valueOf(activo));
             datos.setALUMNOS_INACTIVOS_GENERAL(String.valueOf(inactivo));
             datos.setALUMNOS_EGRESADOS_GENERAL(String.valueOf(egresados));
@@ -1803,40 +1758,30 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
             datos.setTOTAL_HOMBRE_GENERAL(String.valueOf(hombre));
             datos.setTOTAL_MUJER_GENERAL(String.valueOf(mujer));
             datos.setTOTAL_BECA_GENERAL(String.valueOf(beca));
-            
-            
- 
+
             ListaTotalEstatusUGeneral = con.listaTotalEstatusUGeneral(datos);
 
             ListaTotalEstatusU = con.listaTotalEstatusU(datos);
             ListaTotalEsuelaU = con.listaTotalAsesorProyecto(datos);
             ListaMunicipioEscuela = con.listaMunEsc(datos);
             ListaEmpresasAlumnos = con.listaEmpAlu(datos);
-            
-            
-             System.out.println("voy a calcular proyectos");
-            ListaProyectos=con.proyectos(datos);
-            
-            
-            Iterator LP =ListaProyectos.iterator();
-            
-             DatosBean obj3;
-             
-             while (LP.hasNext()) {
-               obj3= (DatosBean) LP.next();
-               
-               datos.setTOTAL_PROYECTOS(obj3.getTOTAL_PROYECTOS());
-               datos.setTOTAL_REINGRESOS(obj3.getTOTAL_REINGRESOS());
+
+            System.out.println("voy a calcular proyectos");
+            ListaProyectos = con.proyectos(datos);
+
+            Iterator LP = ListaProyectos.iterator();
+
+            DatosBean obj3;
+
+            while (LP.hasNext()) {
+                obj3 = (DatosBean) LP.next();
+
+                datos.setTOTAL_PROYECTOS(obj3.getTOTAL_PROYECTOS());
+                datos.setTOTAL_REINGRESOS(obj3.getTOTAL_REINGRESOS());
                 datos.setTOTAL_BECAS(obj3.getTOTAL_BECAS());
-                
+
             }
-             System.out.println("EL TOTAL DE LOS PROYECTOS ES DE "+datos.getTOTAL_PROYECTOS());
-            
-            
-            
-            
-            
-            
+            System.out.println("EL TOTAL DE LOS PROYECTOS ES DE " + datos.getTOTAL_PROYECTOS());
 
             return "SUCCESS";
 
@@ -2399,10 +2344,5 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public void setListaEmpresasAlumnos(List<DatosBean> ListaEmpresasAlumnos) {
         this.ListaEmpresasAlumnos = ListaEmpresasAlumnos;
     }
-    
-    
-    
-    
-    
 
 }

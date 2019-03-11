@@ -41,18 +41,6 @@
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-
-               
-                   
-                        
-                            <li class="nav-item mx-0 mx-lg-1">
-                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="consultaDashboard">
-                                    <i class="fas fa-fw fa-plus-circle" style="color: white"></i>
-                                    <span style="font-size: 14px; text-decoration: none; text-transform: none;">Tablero</span>
-                                </a>                          
-                            </li> 
-                        
-
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user-circle fa-fw" style="font-size: 30px; color: buttonface;"></i>

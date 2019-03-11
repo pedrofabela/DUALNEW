@@ -1412,7 +1412,7 @@
 
                                     <div class="modal-wrapper" id="popup5">
                                         <div class="popup5-contenedor">
-                                            <h2 style="color: gray;" >Total de alumonos</h2>
+                                            <h2 style="color: gray;" >Total de alumnos</h2>
 
                                             <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
 
@@ -1501,7 +1501,7 @@
 
                                     <div class="modal-wrapper" id="popup6">
                                         <div class="popup6-contenedor">
-                                            <h2 style="color: green;" >Total de Alumonos activos</h2>
+                                            <h2 style="color: green;" >Total de Alumnos activos</h2>
 
                                             <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
 
