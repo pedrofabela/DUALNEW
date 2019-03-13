@@ -344,6 +344,11 @@ public class ConsultasBusiness {
         return lista;
 
     }
+     public List listaCarreraAlu(DatosBean datos) throws Exception {
+        List lista = this.con.listaCarreraAlu(datos);
+        return lista;
+
+    }
       public List proyectos(DatosBean datos) throws Exception {
         List lista = this.con.proyectos(datos);
         return lista;

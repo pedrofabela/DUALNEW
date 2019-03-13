@@ -61,6 +61,7 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
     public List<DatosBean> ListaMunicipioEscuela = new ArrayList<DatosBean>();
     public List<DatosBean> ListaEmpresasAlumnos = new ArrayList<DatosBean>();
     public List<DatosBean> ListaTotalEstatusUGeneral = new ArrayList<DatosBean>();
+     public List<DatosBean> ListaCarreraAlumnos = new ArrayList<DatosBean>();
 
     private boolean bantablero = false;
 
@@ -286,6 +287,9 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
 
                     ListaTotalEstatus = con.listaTotalEstatus(datos);
                     ListaTotalEsuela = con.listaTotalEscuela(datos);
+                    
+                    
+                    ListaCarreraAlumnos = con.listaCarreraAlu(datos);
 
                     return "SUCCESS3";
 
@@ -905,6 +909,20 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
         SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yy");
         return formateador.format(ahora);
     }
+
+    public List<DatosBean> getListaCarreraAlumnos() {
+        return ListaCarreraAlumnos;
+    }
+
+    public void setListaCarreraAlumnos(List<DatosBean> ListaCarreraAlumnos) {
+        this.ListaCarreraAlumnos = ListaCarreraAlumnos;
+    }
+    
+    
+    
+    
+    
+    
 
     public usuarioBean getUsuariocons() {
         return usuariocons;

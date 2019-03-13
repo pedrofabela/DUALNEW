@@ -34,6 +34,7 @@ import mappers.VerificaModalidadMapper;
 import mappers.VerificaResponsableAdminMapper;
 import mappers.VerificaResponsableMapper;
 import mappers.alumnosDashboardMapper;
+import mappers.carreraAluMapper;
 import mappers.empAluMapper;
 import mappers.listaAlumnos2Mapper;
 import mappers.listaAlumnosBecaMapper;
@@ -908,6 +909,13 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         Constantes.enviaMensajeConsola("Consulta cct----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new totalAluEscuela());
+        return list;
+    }
+    public List listaCarreraAlu(DatosBean datos) throws Exception {
+        String query = "SELECT CAT.CVE_CAR AS CLAVECARRERA, CAT.NOM_CAR AS NOMBRE_CARRERA, NVL(ACT.ALUMNOS_ACTIVOS,'0') AS ALUMNOS_ACTIVOS_GENERAL, NVL(INA.ALUMNOS_INACTIVOS,'0') AS ALUMNOS_INACTIVOS_GENERAL, NVL(EGR.ALUMNOS_EGRESADOS, '0' ) AS ALUMNOS_EGRESADOS_GENERAL FROM (SELECT * FROM CAT_CARRERAS)CAT LEFT OUTER JOIN (SELECT DISTINCT(CVE_CARRERA), COUNT(CVE_CARRERA) AS ALUMNOS_ACTIVOS FROM CAT_ALUMNOS WHERE STATUS=1 GROUP BY CVE_CARRERA)ACT ON CAT.CVE_CAR=ACT.CVE_CARRERA LEFT OUTER JOIN (SELECT DISTINCT(CVE_CARRERA), COUNT(CVE_CARRERA) AS ALUMNOS_INACTIVOS FROM CAT_ALUMNOS WHERE STATUS=10 GROUP BY CVE_CARRERA)INA ON CAT.CVE_CAR=INA.CVE_CARRERA LEFT OUTER JOIN (SELECT DISTINCT(CVE_CARRERA), COUNT(CVE_CARRERA) AS ALUMNOS_EGRESADOS FROM CAT_ALUMNOS WHERE STATUS>10 GROUP BY CVE_CARRERA)EGR ON CAT.CVE_CAR=EGR.CVE_CARRERA ORDER BY TO_NUMBER(NVL(ACT.ALUMNOS_ACTIVOS,'0') )DESC";
+        Constantes.enviaMensajeConsola("Consulta cct----->" + query);
+        List list = null;
+        list = queryForList(query, (Mapper) new carreraAluMapper());
         return list;
     }
 
