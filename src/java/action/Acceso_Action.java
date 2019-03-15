@@ -63,6 +63,8 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
     public List<DatosBean> ListaTotalEstatusUGeneral = new ArrayList<DatosBean>();
      public List<DatosBean> ListaCarreraAlumnos = new ArrayList<DatosBean>();
        public List<DatosBean> ListaAvanceMetas = new ArrayList<DatosBean>();
+         public List<DatosBean> ListaAlumnosNuevos = new ArrayList<DatosBean>();
+           public List<DatosBean> ListaAlumnosReingresos = new ArrayList<DatosBean>();
 
     private boolean bantablero = false;
 
@@ -293,6 +295,14 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                     ListaCarreraAlumnos = con.listaCarreraAlu(datos);
                     
                     ListaAvanceMetas= con.listaAvanceMetas(datos);
+                    
+                    ListaAlumnosNuevos= con.listaAlumnosNuevos(datos);
+                       
+                    ListaAlumnosReingresos= con.listaAlumnosReingreso(datos);
+                    
+                    
+                  
+                    
                     
 
                     return "SUCCESS3";
@@ -1216,6 +1226,23 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
     public void setListaAvanceMetas(List<DatosBean> ListaAvanceMetas) {
         this.ListaAvanceMetas = ListaAvanceMetas;
     }
+
+    public List<DatosBean> getListaAlumnosNuevos() {
+        return ListaAlumnosNuevos;
+    }
+
+    public void setListaAlumnosNuevos(List<DatosBean> ListaAlumnosNuevos) {
+        this.ListaAlumnosNuevos = ListaAlumnosNuevos;
+    }
+
+    public List<DatosBean> getListaAlumnosReingresos() {
+        return ListaAlumnosReingresos;
+    }
+
+    public void setListaAlumnosReingresos(List<DatosBean> ListaAlumnosReingresos) {
+        this.ListaAlumnosReingresos = ListaAlumnosReingresos;
+    }
+    
     
     
 

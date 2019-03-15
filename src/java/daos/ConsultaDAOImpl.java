@@ -33,6 +33,7 @@ import mappers.VerificaCarrerasMapper;
 import mappers.VerificaModalidadMapper;
 import mappers.VerificaResponsableAdminMapper;
 import mappers.VerificaResponsableMapper;
+import mappers.aluNuevosMapper;
 import mappers.alumnosDashboardMapper;
 import mappers.avanceMetasMapper;
 import mappers.carreraAluMapper;
@@ -906,7 +907,7 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
     }
 
     public List listaTotalEscuela(DatosBean datos) throws Exception {
-        String query = "SELECT DISTINCT(CCT), COUNT(CCT) AS TOTAL_CCT FROM (SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_REG FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_REG)>='" + datos.getFECHA_INICIO() + "' AND TO_DATE(FECHA_REG)<='" + datos.getFECHA_TERMINO() + "')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS) GROUP BY CCT";
+        String query = "SELECT TRANSLATE(CAT.ABRE_INST,   'áéíóúàèìòùãõâêîôôäëïöüçÁÉÍÓÚÀÈÌÒÙÃÕÂÊÎÔÛÄËÏÖÜÇ',   'aeiouaeiouaoaeiooaeioucAEIOUAEIOUAOAEIOOAEIOUC') AS CCT,  ESC.TOTAL_CCT FROM (SELECT DISTINCT(CCT), COUNT(CCT) AS TOTAL_CCT FROM (SELECT * FROM(SELECT   MATRICULA,  CURP,  NOMBRE ||' '||  APELLIDOP || ' ' ||  APELLIDOM  AS NOMBRE_COMPLETO,  CVE_CARRERA,  GENERO AS SEXO,  STATUS,  CCT,  MUNICIPIO,  FECHA_REG FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_REG)>='"+datos.getFECHA_INICIO()+"' AND TO_DATE(FECHA_REG)<='"+datos.getFECHA_TERMINO()+"')ALU JOIN (SELECT ID_ESTATUS, NOM_ESTATUS, ESTATUS_GENERAL FROM CAT_ESTATUS  )CAT_ES ON  ALU.STATUS=CAT_ES.ID_ESTATUS) GROUP BY CCT)ESC JOIN (SELECT CCT, ABRE_INST FROM CAT_ESCUELAS)CAT ON ESC.CCT=CAT.CCT";
         Constantes.enviaMensajeConsola("Consulta cct----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new totalAluEscuela());
@@ -925,6 +926,21 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         List list = null;
         list = queryForList(query, (Mapper) new avanceMetasMapper());
         return list;
+    }
+    public List listaAlumnosNuevos(DatosBean datos) throws Exception {
+        String query = "SELECT MATRICULA, CURP, NOMBRE||' '||APELLIDOP||' '||APELLIDOM AS NOMBRE_COMPLETO, CVE_CARRERA AS CLAVECARRERA, SITUACION_ACA AS SITUACIONACA, MUNICIPIO, FECHA_INGRESO_DUAL,CCT  FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_INGRESO_DUAL)>='"+datos.getFECHA_INICIO()+"' AND TO_DATE(FECHA_INGRESO_DUAL)<='"+datos.getFECHA_TERMINO()+"'";
+        Constantes.enviaMensajeConsola("Consulta cct----->" + query);
+        List list = null;
+        list = queryForList(query, (Mapper) new aluNuevosMapper());
+       return list;
+    }
+    
+     public List listaAlumnosReingreso(DatosBean datos) throws Exception {
+        String query = "SELECT MATRICULA, CURP, NOMBRE||' '||APELLIDOP||' '||APELLIDOM AS NOMBRE_COMPLETO, CVE_CARRERA AS CLAVECARRERA, SITUACION_ACA AS SITUACIONACA, MUNICIPIO, FECHA_INGRESO_DUAL,CCT  FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_REINGRESO)>='"+datos.getFECHA_INICIO()+"' AND TO_DATE(FECHA_REINGRESO)<='"+datos.getFECHA_TERMINO()+"' AND TIPO_ALUMNO=2";
+        Constantes.enviaMensajeConsola("Consulta cct----->" + query);
+        List list = null;
+        list = queryForList(query, (Mapper) new aluNuevosMapper());
+       return list;
     }
 
     public List listaTotalAsesorProyecto(DatosBean datos) throws Exception {

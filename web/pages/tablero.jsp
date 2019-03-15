@@ -136,7 +136,7 @@
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-                ["Element", "Density", {role: "style"}],
+                ["Element", "Alumnos", {role: "style"}],
         <s:iterator value="ListaTotalEsuela" id="ListaTotalEsuela" status="stat">
                 ["<s:property value="CCT"/>", <s:property value="TOTAL_CCT"/>, "purple"],
         </s:iterator>
@@ -1147,14 +1147,14 @@
                                                                     </div>
                                                                     <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
 
-                                                                        <s:property value="datos.ALUMNOS_NUEVOS"/> <i class="fas fa-fw fa-wrench" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+                                                                        <s:property value="ListaAlumnosNuevos.size()"/> <i class="fas fa-fw fa-wrench" style="position: absolute; z-index: 0; top : -2.5 rem; right: 0.9rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
 
                                                                     </div>
-                                                                    <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+                                                                   <a href="#popup10" style="text-decoration: none; color:white;" >  <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
 
-                                                                        <!-- Detalle de Alumnos        -->
+                                                                        Detalle de Alumnos    
 
-                                                                    </div>
+                                                                       </div></a>
 
 
                                                                 </div>
@@ -1174,12 +1174,12 @@
                                                                     </div>
                                                                     <div style="width: 100%; height: 35px; color: white;   font-size: 30px; text-align: center; ">    
 
-                                                                        <s:property value="datos.TOTAL_REINGRESOS"/> <i class="fas fa-fw fa-thumbs-down" style="position: absolute; z-index: 0; top : -2 rem; right: 0.5rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
+                                                                        <s:property value="ListaAlumnosReingresos.size()"/> <i class="fas fa-fw fa-thumbs-down" style="position: absolute; z-index: 0; top : -2 rem; right: 0.5rem; opacity: 0.4; font-size: 4rem; transform: rotate(15deg)"></i>
 
                                                                     </div> 
-                                                                    <a href="#" style="text-decoration: none; color: white;" > <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
+                                                                    <a href="#popup11" style="text-decoration: none; color: white;" > <div style="width: 100%; height: 30px;  background: rgba(0, 0, 0, 0.05); padding: 3px; margin-top: 10px; border-top: 0.5px solid #666; font-size: 12px; text-align: left;">    
 
-                                                                            <!-- Detalle de Alumnos        -->
+                                                                             Detalle de Alumnos       
 
                                                                         </div>
                                                                     </a>
@@ -1890,6 +1890,228 @@
 
 
 
+                                    
+                                    
+                                    <!-- Alumnos nuevos -->
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <div class="modal-wrapper" id="popup10">
+                                        <div class="popup10-contenedor">
+                                            <h2 style="color: #0065d2;" >Nuevos ingresos DUAL</h2>
+
+                                            <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
+
+
+                                                <div id="dvData12">  
+
+
+                                                    <table id="customers" style="text-align: justify;">
+
+
+                                                        <s:if test="ListaAlumnosNuevos.size()>0">
+
+
+                                                            <table id="customers" style=" font-size: 12px;">
+
+                                                                <tr>
+                                                                    <td colspan="8" align="center" style="background: #0065d2; color: white;" >Total de Alumnos Nuevos</td>
+                                                                </tr>
+
+                                                                <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999;">
+                                                                    <td style="width: 10%;">Matricula</td>
+                                                                    <td style="width: 10%;">CURP</td>
+                                                                    <td style="width: 30%;">Nombre</td>
+                                                                    <td style="width: 10%;">Clave</td>
+                                                                    <td style="width: 10%;">Situación</td>
+
+                                                                    <td style="width: 10%;">Municipio</td>
+                                                                     <td style="width: 10%;">Fecha Ingreso</td>
+                                                                      <td style="width: 10%;">CCT</td>
+
+
+                                                                </tr>
+
+                                                                <s:iterator value="ListaAlumnosNuevos" id="ListaAlumnosNuevos" status="stat">
+
+                                                                   
+
+                                                                        <tr style=" background: #efeaf0; font-size: 8px;">
+                                                                            
+                                                                            
+                                                                            <td style="width: 10%;"><s:property value="MATRICULA"/></td>
+                                                                            <td style="width: 10%;"><s:property value="CURP"/></td>
+                                                                            <td style="width: 30%;"><s:property value="NOMBRE_COMPLETO"/></td>
+                                                                            <td style="width: 10%;"><s:property value="CLAVECARRERA"/></td>
+                                                                            <td style="width: 10%;"><s:property value="SITUACIONACA"/></td>
+
+                                                                            <td style="width: 10%;"><s:property value="MUNICIPIO"/></td>
+                                                                            <td style="width: 10%;"><s:property value="FECHA_INGRESO_DUAL"/></td>
+                                                                            <td style="width: 10%;"><s:property value="CCT"/></td>
+
+                                                                        </tr>
+
+                                                                 
+                                                                </s:iterator>
+                                                            </s:if>
+
+                                                            <s:else>
+
+                                                                <div style="color: #e1173e; font-size: 12px; text-align: center;">No hay información para mostrar </div>
+
+
+                                                            </s:else>
+                                                        </table>
+
+                                                    </table>
+
+                                                    <s:if test="ListaAlumnosNuevos.size()>0">
+
+                                                        <center>
+
+                                                            <input  align="top" type="image" id="btnExport12"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+
+
+                                                        </center>
+
+                                                        <script>
+                                                            $("#btnExport12").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData12').html()));
+                                                                e.preventDefault();
+                                                            });
+                                                        </script>
+
+                                                    </s:if>
+
+
+
+
+                                                </div>
+                                            </div>
+
+                                            <a class="popup10-cerrar" href="#">X</a>
+                                        </div>
+                                    </div>                                                                          
+
+
+                                    
+                                    
+                                    
+                                     <div class="modal-wrapper" id="popup11">
+                                        <div class="popup11-contenedor">
+                                            <h2 style="color: #A5DF00;" >Reingresos DUAL</h2>
+
+                                            <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
+
+
+                                                <div id="dvData13">  
+
+
+                                                    <table id="customers" style="text-align: justify;">
+
+
+                                                        <s:if test="ListaAlumnosReingresos.size()>0">
+
+
+                                                            <table id="customers" style=" font-size: 12px;">
+
+                                                                <tr>
+                                                                    <td colspan="8" align="center" style="background: #A5DF00; color: white;" >Total de Reingresos</td>
+                                                                </tr>
+
+                                                                <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999;">
+                                                                    <td style="width: 10%;">Matricula</td>
+                                                                    <td style="width: 10%;">CURP</td>
+                                                                    <td style="width: 30%;">Nombre</td>
+                                                                    <td style="width: 10%;">Clave</td>
+                                                                    <td style="width: 10%;">Situación</td>
+
+                                                                    <td style="width: 10%;">Municipio</td>
+                                                                     <td style="width: 10%;">Fecha Ingreso</td>
+                                                                      <td style="width: 10%;">CCT</td>
+
+
+                                                                </tr>
+
+                                                                <s:iterator value="ListaAlumnosReingresos" id="ListaAlumnosReingresos" status="stat">
+
+                                                                   
+
+                                                                        <tr style=" background: #efeaf0; font-size: 8px;">
+                                                                            
+                                                                            
+                                                                            <td style="width: 10%;"><s:property value="MATRICULA"/></td>
+                                                                            <td style="width: 10%;"><s:property value="CURP"/></td>
+                                                                            <td style="width: 30%;"><s:property value="NOMBRE_COMPLETO"/></td>
+                                                                            <td style="width: 10%;"><s:property value="CLAVECARRERA"/></td>
+                                                                            <td style="width: 10%;"><s:property value="SITUACIONACA"/></td>
+
+                                                                            <td style="width: 10%;"><s:property value="MUNICIPIO"/></td>
+                                                                            <td style="width: 10%;"><s:property value="FECHA_INGRESO_DUAL"/></td>
+                                                                            <td style="width: 10%;"><s:property value="CCT"/></td>
+
+                                                                        </tr>
+
+                                                                 
+                                                                </s:iterator>
+                                                            </s:if>
+
+                                                            <s:else>
+
+                                                                <div style="color: #e1173e; font-size: 12px; text-align: center;">No hay información para mostrar </div>
+
+
+                                                            </s:else>
+                                                        </table>
+
+                                                    </table>
+
+                                                    <s:if test="ListaAlumnosReingresos.size()>0">
+
+                                                        <center>
+
+                                                            <input  align="top" type="image" id="btnExport13"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+
+
+                                                        </center>
+
+                                                        <script>
+                                                            $("#btnExport13").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData13').html()));
+                                                                e.preventDefault();
+                                                            });
+                                                        </script>
+
+                                                    </s:if>
+
+
+
+
+                                                </div>
+                                            </div>
+
+                                            <a class="popup11-cerrar" href="#">X</a>
+                                        </div>
+                                    </div>               
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
 
 
 

@@ -354,6 +354,17 @@ public class ConsultasBusiness {
         return lista;
 
     }
+       public List listaAlumnosNuevos(DatosBean datos) throws Exception {
+        List lista = this.con.listaAlumnosNuevos(datos);
+        return lista;
+
+    }
+        public List listaAlumnosReingreso(DatosBean datos) throws Exception {
+        List lista = this.con.listaAlumnosReingreso(datos);
+        return lista;
+
+    }
+       
       public List proyectos(DatosBean datos) throws Exception {
         List lista = this.con.proyectos(datos);
         return lista;

@@ -84,6 +84,14 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public List<DatosBean> ListaReingresos = new ArrayList<DatosBean>();
     public List<DatosBean> ListaMunicipioEscuela = new ArrayList<DatosBean>();
     public List<DatosBean> ListaEmpresasAlumnos = new ArrayList<DatosBean>();
+    
+    
+     public List<DatosBean> ListaCarreraAlumnos = new ArrayList<DatosBean>();
+    
+      public List<DatosBean> ListaAvanceMetas = new ArrayList<DatosBean>();
+          public List<DatosBean> ListaAlumnosNuevos = new ArrayList<DatosBean>();   
+           public List<DatosBean> ListaAlumnosReingresos = new ArrayList<DatosBean>();
+                   
 
     private boolean bantablero = false;
 
@@ -1564,6 +1572,13 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
 
             ListaTotalEstatus = con.listaTotalEstatus(datos);
             ListaTotalEsuela = con.listaTotalEscuela(datos);
+               ListaCarreraAlumnos = con.listaCarreraAlu(datos);
+                    
+                    ListaAvanceMetas= con.listaAvanceMetas(datos);
+                    
+                       ListaAlumnosNuevos= con.listaAlumnosNuevos(datos);
+                       
+                         ListaAlumnosReingresos= con.listaAlumnosReingreso(datos);
 
             return "SUCCESS";
 
@@ -2344,5 +2359,47 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
     public void setListaEmpresasAlumnos(List<DatosBean> ListaEmpresasAlumnos) {
         this.ListaEmpresasAlumnos = ListaEmpresasAlumnos;
     }
+
+    public List<DatosBean> getListaTotalEstatusUGeneral() {
+        return ListaTotalEstatusUGeneral;
+    }
+
+    public void setListaTotalEstatusUGeneral(List<DatosBean> ListaTotalEstatusUGeneral) {
+        this.ListaTotalEstatusUGeneral = ListaTotalEstatusUGeneral;
+    }
+
+    public List<DatosBean> getListaCarreraAlumnos() {
+        return ListaCarreraAlumnos;
+    }
+
+    public void setListaCarreraAlumnos(List<DatosBean> ListaCarreraAlumnos) {
+        this.ListaCarreraAlumnos = ListaCarreraAlumnos;
+    }
+
+    public List<DatosBean> getListaAvanceMetas() {
+        return ListaAvanceMetas;
+    }
+
+    public void setListaAvanceMetas(List<DatosBean> ListaAvanceMetas) {
+        this.ListaAvanceMetas = ListaAvanceMetas;
+    }
+
+    public List<DatosBean> getListaAlumnosNuevos() {
+        return ListaAlumnosNuevos;
+    }
+
+    public void setListaAlumnosNuevos(List<DatosBean> ListaAlumnosNuevos) {
+        this.ListaAlumnosNuevos = ListaAlumnosNuevos;
+    }
+
+    public List<DatosBean> getListaAlumnosReingresos() {
+        return ListaAlumnosReingresos;
+    }
+
+    public void setListaAlumnosReingresos(List<DatosBean> ListaAlumnosReingresos) {
+        this.ListaAlumnosReingresos = ListaAlumnosReingresos;
+    }
+    
+    
 
 }
