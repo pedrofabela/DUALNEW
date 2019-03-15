@@ -99,31 +99,98 @@ public class DatosBean {
      private String EGRESADOS;
      private String ALUMNOS_NUEVOS;
      
-     private String TIPO_ALUMNO;
-      private String TOTAL_TIPO_ALUMNO;
-       private String ALUMNOS_ACTIVOS_GENERAL;
-        private String ALUMNOS_INACTIVOS_GENERAL;
-         private String ALUMNOS_EGRESADOS_GENERAL;
-          private String TOTAL_ALUMNOS_DUAL;
-           private String TOTAL_PROYECTOS;
-            private String TOTAL_REINGRESOS;
-             private String TOTAL_BECAS;
-              private String TOTAL_HOMBRE_GENERAL;
-               private String TOTAL_MUJER_GENERAL;
-                private String TOTAL_BECA_GENERAL;
-                
-                 private String MUNICIPIO_ACTIVOS;
-                  private String MUNICIPIO_INACTIVOS;
-                   private String MUNICIPIO_EGRESADOS;
-                     private String TOTAL_ALUMNOS_EMPRESA;
-                     private String RFC;
-                      private String RAZON_SOCIAL;
-                       private String NOM_MUN;
-                        private String GIRO;
-                         private String SECTOR;
+    private String TIPO_ALUMNO;
+    private String TOTAL_TIPO_ALUMNO;
+    private String ALUMNOS_ACTIVOS_GENERAL;
+    private String ALUMNOS_INACTIVOS_GENERAL;
+    private String ALUMNOS_EGRESADOS_GENERAL;
+    private String TOTAL_ALUMNOS_DUAL;
+    private String TOTAL_PROYECTOS;
+    private String TOTAL_REINGRESOS;
+    private String TOTAL_BECAS;
+    private String TOTAL_HOMBRE_GENERAL;
+    private String TOTAL_MUJER_GENERAL;
+    private String TOTAL_BECA_GENERAL;
 
-                       
-                         private String COLOR;
+    private String MUNICIPIO_ACTIVOS;
+    private String MUNICIPIO_INACTIVOS;
+    private String MUNICIPIO_EGRESADOS;
+    private String TOTAL_ALUMNOS_EMPRESA;
+    private String RFC;
+    private String RAZON_SOCIAL;
+    private String NOM_MUN;
+    private String GIRO;
+    private String SECTOR;
+
+    private String COLOR;
+    
+    private String CVE_INSTITUCIONAL;
+    private String META;
+    private String PORCENTAJE_META;
+    private String ABRE_INST;
+    private String ALU_NUEVOS;
+    private String AVANCE_META;
+    private String FALTANTES;
+
+    public String getCVE_INSTITUCIONAL() {
+        return CVE_INSTITUCIONAL;
+    }
+
+    public void setCVE_INSTITUCIONAL(String CVE_INSTITUCIONAL) {
+        this.CVE_INSTITUCIONAL = CVE_INSTITUCIONAL;
+    }
+
+    public String getMETA() {
+        return META;
+    }
+
+    public void setMETA(String META) {
+        this.META = META;
+    }
+
+    public String getPORCENTAJE_META() {
+        return PORCENTAJE_META;
+    }
+
+    public void setPORCENTAJE_META(String PORCENTAJE_META) {
+        this.PORCENTAJE_META = PORCENTAJE_META;
+    }
+
+    public String getABRE_INST() {
+        return ABRE_INST;
+    }
+
+    public void setABRE_INST(String ABRE_INST) {
+        this.ABRE_INST = ABRE_INST;
+    }
+
+    public String getALU_NUEVOS() {
+        return ALU_NUEVOS;
+    }
+
+    public void setALU_NUEVOS(String ALU_NUEVOS) {
+        this.ALU_NUEVOS = ALU_NUEVOS;
+    }
+
+    public String getAVANCE_META() {
+        return AVANCE_META;
+    }
+
+    public void setAVANCE_META(String AVANCE_META) {
+        this.AVANCE_META = AVANCE_META;
+    }
+
+    public String getFALTANTES() {
+        return FALTANTES;
+    }
+
+    public void setFALTANTES(String FALTANTES) {
+        this.FALTANTES = FALTANTES;
+    }
+    
+    
+    
+    
 
     public String getGIRO() {
         return GIRO;

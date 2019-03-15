@@ -27,9 +27,9 @@ public class carreraAluMapper implements Mapper{
         }
                  
                    if (rs.getString("NOMBRE_CARRERA") != null) {
-            dat.setNOMBRE_CARRERA(rs.getString("CLAVECARRERA").trim());
+            dat.setNOMBRE_CARRERA(rs.getString("NOMBRE_CARRERA").trim());
         } else {
-            dat.setNOMBRE_CARRERA(rs.getString("CLAVECARRERA"));
+            dat.setNOMBRE_CARRERA(rs.getString("NOMBRE_CARRERA"));
         }
              
                    if (rs.getString("ALUMNOS_ACTIVOS_GENERAL") != null) {

@@ -36,6 +36,98 @@
             chart.draw(data, options);
         }
     </script>    
+    
+    
+    
+    
+    
+    <script type="text/javascript"  charset="UTF-8">
+
+            //GRAFICA REGION
+            // Load the Visualization API and the piechart package.
+
+            google.load('visualization', '1.0', {'packages': ['corechart']});
+            // Set a callback to run when the Google Visualization API is loaded.
+            google.setOnLoadCallback(drawChart);
+            // Callback that creates and populates a data table,
+            // instantiates the pie chart, passes in the data and
+            // draws it.
+            function drawChart() {
+                // Create the data table.
+                var data = google.visualization.arrayToDataTable([
+                    ['Genre', 'Alumnos Nuevos', 'Alumnos por inscribir', {role: 'annotation'} ],
+
+    <s:iterator value="ListaAvanceMetas" id=" ListaAvanceMetas" status="stat">
+                    ['<s:property value="ABRE_INST"/>', <s:property value="ALU_NUEVOS"/>, <s:property value="FALTANTES"/>, <s:property value="META"/> ],
+
+    </s:iterator>
+
+                ]);
+
+                // Set chart options 
+
+                // Instantiate and draw our chart, passing in some options.
+                var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+                function selectHandler() {
+                    var selectedItem = chart.getSelection()[0];
+                    if (selectedItem) {
+                        var topping = data.getValue(selectedItem.row, 0);
+                        window.location.assign(rutaGraficasOk + 'TipoD?topping=' + topping + '');
+                    }
+                }
+
+                var options = {
+
+                    legend: {position: 'top', maxLines: 3, legend: 'left'},
+                    bar: {groupWidth: '95%'},
+
+                    titleTextStyle: {
+                        color: '#A4A4A4',
+                        fontSize: 16,
+                        fontName: 'Arial',
+
+                    },
+
+                    colors: ['#276c59', '#58bca6'],
+
+                    animation: {
+                        duration: 2500,
+                        startup: true //This is the new option
+                    },
+                    bar: {groupWidth: '95%'},
+                    isStacked: true,
+
+                    textStyle: {
+                        color: '#1b9e77',
+                        fontSize: 20,
+                        fontName: 'Arial',
+
+                        italic: true
+                    },
+                    annotations: {
+                        textStyle: {
+
+                            fontSize: 13,
+
+                            // The color of the text.
+                            color: '#848484'
+                                    // The color of the text outline.
+
+                                    // The transparency of the text.
+
+                        }
+                    }
+
+
+
+
+                };
+                google.visualization.events.addListener(chart, 'select', selectHandler);
+                chart.draw(data, options);
+            }
+
+
+</script>
 
 
 
@@ -665,7 +757,7 @@
 
                                                                 <div style="height: 250px; overflow-y: scroll">
                                                                   
-                                                                       <div id="dvData2">    
+                                                                       <div id="dvData9">    
                                                                     
                                                                     <table class="table table-hover"  style=" font-size: 14px; width: 100%;">
 
@@ -718,7 +810,7 @@
 
                                                         <script>
                                                             $("#btnExport8").click(function (e) {
-                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData2').html()));
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData9').html()));
                                                                 e.preventDefault();
                                                             });
                                                         </script>
@@ -734,6 +826,100 @@
 
 
                                                             </div>    
+                                                                        
+                                                           
+                                                                        
+                                                                        
+                                                            <div class="form-group col-lg-6" >
+
+
+                                                                <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Alumnos por Carrera</div>
+
+                                                                <div style="height: 250px; overflow-y: scroll">
+                                                                  
+                                                                       <div id="dvData8">    
+                                                                    
+                                                                    <table class="table table-hover"  style=" font-size: 14px; width: 100%;">
+
+
+
+                                                                        <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999; background: #dc3545; color:white;">
+                                                                            <td  scope="row" style="width: 20%;">Clave</td>
+                                                                            <td style="width: 40%;">Carrera</td>
+                                                                             <td style="width: 20%;">Activos</td>
+                                                                            <td style="width: 20%;">Inactivos</td>
+                                                                            <td style="width: 20%;">Egresados</td>
+
+
+
+
+                                                                        </tr>
+
+                                                                        <s:iterator value="ListaCarreraAlumnos" id="ListaCarreraAlumnos" status="stat">
+
+
+
+                                                                            <tr style=" background: #efeaf0; font-size: 12px; color: #333;">
+                                                                                <td style="width: 20%;"><s:property value="CLAVECARRERA"/></td>
+                                                                                <td style="width: 40%;"><s:property value="NOMBRE_CARRERA"/></td>
+                                                                                 <td style="width: 20%;"><s:property value="ALUMNOS_ACTIVOS_GENERAL"/></td>
+                                                                                <td style="width: 20%;"><s:property value="ALUMNOS_INACTIVOS_GENERAL"/></td>
+                                                                                <td style="width: 20%;"><s:property value="ALUMNOS_EGRESADOS_GENERAL" /></td>
+
+
+
+                                                                            </tr>
+
+
+                                                                        </s:iterator>
+
+
+                                                                        <s:if test="ListaMunicipioEscuela.size()<=0">
+
+                                                                            <div style="color: #e1173e; font-size: 12px; text-align: center;">No hay información para mostrar </div>
+
+
+                                                                        </s:if>
+                                                                    </table>
+                                                                           
+                                                                           
+                                                                            <center>
+
+                                                            <input  align="top" type="image" id="btnExport9"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+
+
+                                                        </center>
+
+                                                        <script>
+                                                            $("#btnExport9").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData8').html()));
+                                                                e.preventDefault();
+                                                            });
+                                                        </script>
+                                                                           
+                                                                           
+                                                                           
+                                                                           
+                                                                           
+                                                                       </div>
+
+                                                                </div> 
+
+
+
+                                                            </div>               
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
 
                                                             <div class="form-group col-lg-6" >
 
@@ -742,10 +928,10 @@
 
                                                                 <div style="height: 250px; overflow-y: scroll">
                                                                   
-                                                                  <div id="dvData2">    
+                                                                  <div id="dvData7">    
                                                                     
                                                                     
-                                                                    <table class="custmers"  style=" font-size: 14px; width: 100%;">
+                                                                    <table class="table table-hover"   style=" font-size: 14px; width: 100%;">
 
 
 
@@ -801,7 +987,7 @@
 
                                                         <script>
                                                             $("#btnExport2").click(function (e) {
-                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData2').html()));
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData7').html()));
                                                                 e.preventDefault();
                                                             });
                                                         </script>
@@ -814,16 +1000,89 @@
 
 
 
+                                                            </div>
+
+
+                                                                 
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                            <div class="form-group col-lg-6" >
+
+
+                                                                <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Avence de Metas </div>
+
+                                                                <div style="height: 250px; overflow-y: scroll">
+                                                                  
+                                                                  <div id="dvData6">    
+                                                                    
+                                                                    
+                                                                    <table class="table table-hover"   style=" font-size: 14px; width: 100%;">
+
+
+
+                                                                        <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999; background: #007bff; color:white;">
+                                                                            <td  scope="row" style="width: 20%;">Clave</td>
+                                                                            <td style="width: 40%;">Universidad</td>
+                                                                            <td style="width: 20%;">Matricula</td>
+                                                                            <td style="width: 20%;">Meta</td>
+                                                                              <td style="width: 20%;">Nuevos</td>
+                                                                                <td style="width: 20%;">Avance</td>
+                                                                                 <td style="width: 20%;">Matricula vs Meta</td>
 
 
 
 
 
+                                                                        </tr>
+
+                                                                        <s:iterator value="ListaAvanceMetas" id="ListaAvanceMetas" status="stat">
 
 
 
+                                                                            <tr style=" background: #efeaf0; font-size: 12px; color: #333;">
+                                                                                <td style="width: 20%;"><s:property value="CVE_INSTITUCIONAL"/></td>
+                                                                                <td style="width: 40%;"><s:property value="ABRE_INST"/></td>
+                                                                                <td style="width: 20%;"><s:property value="MATRICULA"/></td>
+                                                                                <td style="width: 20%;"><s:property value="META" /></td>
+                                                                                <td style="width: 20%;"><s:property value="ALU_NUEVOS" /></td>
+                                                                                <td style="width: 20%;"><div <s:if test="AVANCE_META<=49">style="width:100%; background: #c82333; color: white; text-align: center; height: 25px; border-radius: 5px; " </s:if> <s:else>style="width:100%; background: #28a745; color: white; text-align: center; height: 25px; border-radius: 5px; "</s:else>><s:property value="AVANCE_META" />%</div></td>
+                                                                                <td style="width: 20%;"><s:property value="PORCENTAJE_META" />%</td>
 
 
+                                                                            </tr>
+
+
+                                                                        </s:iterator>
+
+
+                                                                        <s:if test="ListaAvanceMetas.size()<=0">
+
+                                                                            <div style="color: #e1173e; font-size: 12px; text-align: center;">No hay información para mostrar </div>
+
+
+                                                                        </s:if>
+                                                                    </table>
+                                                                      
+                                                                       <center>
+
+                                                            <input  align="top" type="image" id="btnExport11"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+
+
+                                                        </center>
+
+                                                        <script>
+                                                            $("#btnExport11").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData6').html()));
+                                                                e.preventDefault();
+                                                            });
+                                                        </script>
+                                                                      
+                                                                      
+                                                                  </div>
+
+                                                                </div> 
 
 
 
@@ -831,13 +1090,17 @@
                                                             </div>
 
 
+                                                                        
+                                                                        
+                                                 <div class="form-group col-lg-12" >                  
+                                                     
+                                                <div id="chart_div2" style="margin: auto; width: 100%; height: 450px; margin-bottom: 20px;" ></div>
 
-
-
-
-
-
-
+                                                </div>  
+                                                                        
+                                                                        
+                                                                        
+                                                                        
 
 
                                                             <div style="width: 100%; height: 40px;  background: #4885Ed; margin-bottom: 15px; padding: 7px; margin-top: 30px;">Indicadores por Periodo</div>         

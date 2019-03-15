@@ -34,6 +34,7 @@ import mappers.VerificaModalidadMapper;
 import mappers.VerificaResponsableAdminMapper;
 import mappers.VerificaResponsableMapper;
 import mappers.alumnosDashboardMapper;
+import mappers.avanceMetasMapper;
 import mappers.carreraAluMapper;
 import mappers.empAluMapper;
 import mappers.listaAlumnos2Mapper;
@@ -916,6 +917,13 @@ public class ConsultaDAOImpl extends OracleDAOFactory implements ConsultaDAO {
         Constantes.enviaMensajeConsola("Consulta cct----->" + query);
         List list = null;
         list = queryForList(query, (Mapper) new carreraAluMapper());
+        return list;
+    }
+    public List listaAvanceMetas(DatosBean datos) throws Exception {
+        String query = " SELECT MAT.*,  MET.META, ROUND(TO_NUMBER(MET.META)*100/TO_NUMBER(MAT.MATRICULA),2) AS PORCENTAJE_META, MET.ABRE_INST, TO_NUMBER(NVL(NUEVO.TOTAL_ALU_INST,'0') )AS ALU_NUEVOS, CASE WHEN TO_NUMBER(MET.META)>0 THEN  ROUND(((TO_NUMBER(NVL(NUEVO.TOTAL_ALU_INST,'0') ) * 100)/TO_NUMBER(MET.META) ) , 2) ELSE TO_NUMBER(NVL(NUEVO.TOTAL_ALU_INST,'0'))  END AS AVANCE_META, TO_NUMBER(MET.META)-TO_NUMBER(NVL(NUEVO.TOTAL_ALU_INST,'0') ) AS FALTANTES FROM (SELECT DISTINCT(CVE_INSTITUCIONAL), SUM (MATRICULA) AS MATRICULA FROM TBL_MATRICULA WHERE ANIO=( SELECT ID_ANIO FROM CAT_CICLOS WHERE ESTATUS=1)  GROUP BY CVE_INSTITUCIONAL)MAT JOIN (SELECT * FROM TBL_METAS_SIPREP WHERE ANIO=( SELECT ID_ANIO FROM CAT_CICLOS WHERE ESTATUS=1)) MET ON MAT.CVE_INSTITUCIONAL=MET.CVE_INSTITUCIONAL LEFT OUTER JOIN (       SELECT DISTINCT(CAT.CVE_INSTITUCIONAL), SUM(ESC.NUEVOS_ESCUELA) AS TOTAL_ALU_INST FROM (SELECT DISTINCT(CCT), COUNT(CCT) AS NUEVOS_ESCUELA FROM ( SELECT * FROM CAT_ALUMNOS WHERE TO_DATE(FECHA_INGRESO_DUAL)>= (SELECT FECHA_INICIO FROM CAT_CICLOS WHERE ESTATUS=1) AND TO_DATE(FECHA_INGRESO_DUAL)<= (SELECT FECHA_TERMINO FROM CAT_CICLOS WHERE ESTATUS=1)) GROUP BY CCT)ESC JOIN (SELECT CCT, CVE_INSTITUCIONAL FROM  CAT_ESCUELAS)CAT ON ESC.CCT=CAT.CCT GROUP BY CAT.CVE_INSTITUCIONAL) NUEVO ON MAT.CVE_INSTITUCIONAL=NUEVO.CVE_INSTITUCIONAL  ORDER BY (ROUND(TO_NUMBER(MET.META)*100/TO_NUMBER(MAT.MATRICULA),2)) DESC ";
+        Constantes.enviaMensajeConsola("Consulta cct----->" + query);
+        List list = null;
+        list = queryForList(query, (Mapper) new avanceMetasMapper());
         return list;
     }
 

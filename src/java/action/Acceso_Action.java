@@ -62,6 +62,7 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
     public List<DatosBean> ListaEmpresasAlumnos = new ArrayList<DatosBean>();
     public List<DatosBean> ListaTotalEstatusUGeneral = new ArrayList<DatosBean>();
      public List<DatosBean> ListaCarreraAlumnos = new ArrayList<DatosBean>();
+       public List<DatosBean> ListaAvanceMetas = new ArrayList<DatosBean>();
 
     private boolean bantablero = false;
 
@@ -290,6 +291,9 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                     
                     
                     ListaCarreraAlumnos = con.listaCarreraAlu(datos);
+                    
+                    ListaAvanceMetas= con.listaAvanceMetas(datos);
+                    
 
                     return "SUCCESS3";
 
@@ -1204,5 +1208,15 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
     public void setListaTotalEstatusUGeneral(List<DatosBean> ListaTotalEstatusUGeneral) {
         this.ListaTotalEstatusUGeneral = ListaTotalEstatusUGeneral;
     }
+
+    public List<DatosBean> getListaAvanceMetas() {
+        return ListaAvanceMetas;
+    }
+
+    public void setListaAvanceMetas(List<DatosBean> ListaAvanceMetas) {
+        this.ListaAvanceMetas = ListaAvanceMetas;
+    }
+    
+    
 
 }
