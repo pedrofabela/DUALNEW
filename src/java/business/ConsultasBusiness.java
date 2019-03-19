@@ -349,8 +349,18 @@ public class ConsultasBusiness {
         return lista;
 
     }
+     public List listaCarreraAluEsc(DatosBean datos) throws Exception {
+        List lista = this.con.listaCarreraAluEsc(datos);
+        return lista;
+
+    }
       public List listaAvanceMetas(DatosBean datos) throws Exception {
         List lista = this.con.listaAvanceMetas(datos);
+        return lista;
+
+    }
+       public List listaAvanceMetasEsc(DatosBean datos) throws Exception {
+        List lista = this.con.listaAvanceMetasEsc(datos);
         return lista;
 
     }
@@ -359,8 +369,18 @@ public class ConsultasBusiness {
         return lista;
 
     }
+        public List listaAlumnosNuevosEsc(DatosBean datos) throws Exception {
+        List lista = this.con.listaAlumnosNuevosEsc(datos);
+        return lista;
+
+    }
         public List listaAlumnosReingreso(DatosBean datos) throws Exception {
         List lista = this.con.listaAlumnosReingreso(datos);
+        return lista;
+
+    }
+         public List listaAlumnosReingresoEsc(DatosBean datos) throws Exception {
+        List lista = this.con.listaAlumnosReingresoEsc(datos);
         return lista;
 
     }

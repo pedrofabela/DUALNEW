@@ -1471,13 +1471,13 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                     egresados = egresados + 1;
                 }
 
-                if (obj.getFECHA_REG() != null) {
+               /* if (obj.getFECHA_REG() != null) {
                     fechaReg = format.parse(obj.getFECHA_REG());
                     if (fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)) {
 
                         nuevos = nuevos + 1;
                     }
-                }
+                }*/
 
                 if (obj.getTIPO_ALUMNO().equals("2")) {
 
@@ -1696,13 +1696,13 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                     egresados = egresados + 1;
                 }
 
-                if (obj.getFECHA_REG() != null) {
+            /*    if (obj.getFECHA_REG() != null) {
                     fechaReg = format.parse(obj.getFECHA_REG());
                     if (fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)) {
 
                         nuevos = nuevos + 1;
                     }
-                }
+                }*/
 
                 if (obj.getTIPO_ALUMNO().equals("2")) {
 
@@ -1796,7 +1796,23 @@ public class PrincipalAction extends ActionSupport implements SessionAware {
                 datos.setTOTAL_BECAS(obj3.getTOTAL_BECAS());
 
             }
-            System.out.println("EL TOTAL DE LOS PROYECTOS ES DE " + datos.getTOTAL_PROYECTOS());
+           
+            
+            
+            ListaCarreraAlumnos = con.listaCarreraAluEsc(datos);
+
+            ListaAlumnosNuevos = con.listaAlumnosNuevosEsc(datos);
+
+            ListaAlumnosReingresos = con.listaAlumnosReingresoEsc(datos);
+            
+            
+            ListaAvanceMetas= con.listaAvanceMetasEsc(datos);
+            
+            
+            
+            
+            
+            
 
             return "SUCCESS";
 

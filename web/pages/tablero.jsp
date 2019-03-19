@@ -1011,7 +1011,7 @@
                                                             <div class="form-group col-lg-6" >
 
 
-                                                                <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Avence de Metas </div>
+                                                                <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Avance de Metas </div>
 
                                                                 <div style="height: 250px; overflow-y: scroll">
                                                                   
@@ -1334,7 +1334,7 @@
                                             <h2  >Alumnos Activos</h2>
 
                                             <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
-                                                <div id="dvData">
+                                                <div id="dvData21">
 
                                                     <table id="customers" style="text-align: justify;">
 
@@ -1345,16 +1345,48 @@
                                                             <table id="customers" style=" font-size: 12px;">
 
                                                                 <tr>
-                                                                    <td colspan="7" align="center" style="background: green; color: white;" >Alumnos Activos</td>
+                                                                    <td colspan="28" align="center" style="background: green; color: white;" >Alumnos Activos</td>
                                                                 </tr>
 
                                                                 <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999;">
+                                                                    <td style="width: 10%;">Matricula</td>
                                                                     <td style="width: 10%;">CURP</td>
+                                                                    
                                                                     <td style="width: 50%;">Nombre</td>
-                                                                    <td style="width: 10%;">CCT</td>
-                                                                    <td style="width: 10%;">Sexo</td>
+                                                                    <td style="width: 10%;">Clave carrera</td>
+                                                                    <td style="width: 10%;">Nombre carrera</td>
 
-                                                                    <td style="width: 20%;">Clave Carrera</td>
+                                                                    <td style="width: 10%;">Género</td>
+                                                                     <td style="width: 10%;">Fecha nacimineto</td>
+                                                                    <td style="width: 10%;">Domicilio</td>
+                                                                    
+                                                                    <td style="width: 10%;">Colonia</td>
+                                                                    <td style="width: 10%;">Teléfono</td>  
+                                                                    <td style="width: 10%;">CP</td>
+                                                                    <td style="width: 10%;">Correo</td>
+
+                                                                    <td style="width: 10%;">Grado</td>
+                                                                     <td style="width: 10%;">Promedio</td>
+                                                                    <td style="width: 10%;">Situación académica</td>
+                                                                    
+                                                                    <td style="width: 10%;">Tipo Alumno</td>
+                                                                    <td style="width: 10%;">Estatus</td>
+                                                                    <td style="width: 10%;">CCT</td>
+
+                                                                    <td style="width: 10%;">Escuela</td>
+                                                                     <td style="width: 10%;">Municipio</td>
+                                                                     
+                                                                 
+                                                                    
+                                                                    <td style="width: 10%;">Fecha registro</td>
+                                                                    
+                                                                    <td style="width: 10%;">Beca</td>
+                                                                    <td style="width: 10%;">Fecha ingreso DUAL</td>
+
+                                                                    <td style="width: 10%;">Fecha Reingreso</td>
+                                                                      <td style="width: 10%;">Fecha Egreso</td>
+                                                                      <td style="width: 10%;">Fecha cambio estatus</td>
+                                                                      <td style="width: 10%;">Estatus General</td>
 
 
                                                                 </tr>
@@ -1364,12 +1396,40 @@
                                                                     <s:if test="STATUS==1">
 
                                                                         <tr style=" background: #efeaf0; font-size: 8px;">
-                                                                            <td style="width: 10%;"><s:property value="CURP"/></td>
-                                                                            <td style="width: 50%;"><s:property value="NOMBRE_COMPLETO"/></td>
-                                                                            <td style="width: 10%;"><s:property value="CCT"/></td>
-                                                                            <td style="width: 10%;"><s:property value="SEXO" /></td>
+                                                                            <td style="width: 10%;"><s:property value="MATRICULA"/></td>
+                                                                        <td style="width: 50%;"><s:property value="CURP"/></td>
+                                                                        <td style="width: 10%;"><s:property value="NOMBRE_COMPLETO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="CVE_CAARRERA" /></td>
 
-                                                                            <td style="width: 20%;" align="center"><s:property value="CLAVECARRERA" /></td>
+                                                                        <td style="width: 10%;" align="center"><s:property value="NOMBRE_CARRERA" /></td>
+                                                                        <td style="width: 10%;"><s:property value="SEXO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECNAC"/></td>
+                                                                        <td style="width: 10%;"><s:property value="DOMICILIOA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="COLONIA" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="TELEFONO" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CP" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CORREO" /></td>
+                                                                        
+                                                                        <td style="width: 10%;"><s:property value="GRADO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="PROMEDIOGRAL"/></td>
+                                                                        <td style="width: 10%;"><s:property value="SITUACIONACA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="TIPO_ALUMNO" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="STATUS" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CCT"/></td>
+                                                                        <td style="width: 10%;"><s:property value="NOMESC"/></td>
+                                                                        <td style="width: 10%;"><s:property value="MUNICIPIO"/></td>
+                                                                       
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="FECHA_REG" /></td>
+                                                                        <td style="width: 10%;"><s:property value="BECA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_INGRESO_DUAL"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_REINGRESO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_EGRESO" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="FECHA_CAMBIO_ESTATUS" /></td>
+                                                                        <td style="width: 10%;"><s:property value="ESTATUS_GENERAL"/></td>
 
                                                                         </tr>
 
@@ -1392,14 +1452,14 @@
 
                                                         <center>
 
-                                                            <input  align="top" type="image" id="btnExport"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+                                                            <input  align="top" type="image" id="btnExport21"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
 
 
                                                         </center>
 
                                                         <script>
-                                                            $("#btnExport").click(function (e) {
-                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData').html()));
+                                                            $("#btnExport21").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData21').html()));
                                                                 e.preventDefault();
                                                             });
                                                         </script>
@@ -1427,7 +1487,7 @@
                                             <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
 
 
-                                                <div id="dvData2">  
+                                                <div id="dvData22">  
 
 
                                                     <table id="customers" style="text-align: justify;">
@@ -1439,16 +1499,48 @@
                                                             <table id="customers" style=" font-size: 12px;">
 
                                                                 <tr>
-                                                                    <td colspan="7" align="center" style="background: red; color: white;" >Alumnos Inactivos</td>
+                                                                    <td colspan="28" align="center" style="background: red; color: white;" >Alumnos Inactivos</td>
                                                                 </tr>
 
                                                                 <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999;">
+                                                                     <td style="width: 10%;">Matricula</td>
                                                                     <td style="width: 10%;">CURP</td>
+                                                                    
                                                                     <td style="width: 50%;">Nombre</td>
-                                                                    <td style="width: 10%;">CCT</td>
-                                                                    <td style="width: 10%;">Sexo</td>
+                                                                    <td style="width: 10%;">Clave carrera</td>
+                                                                    <td style="width: 10%;">Nombre carrera</td>
 
-                                                                    <td style="width: 20%;">Clave Carrera</td>
+                                                                    <td style="width: 10%;">Género</td>
+                                                                     <td style="width: 10%;">Fecha nacimineto</td>
+                                                                    <td style="width: 10%;">Domicilio</td>
+                                                                    
+                                                                    <td style="width: 10%;">Colonia</td>
+                                                                    <td style="width: 10%;">Teléfono</td>  
+                                                                    <td style="width: 10%;">CP</td>
+                                                                    <td style="width: 10%;">Correo</td>
+
+                                                                    <td style="width: 10%;">Grado</td>
+                                                                     <td style="width: 10%;">Promedio</td>
+                                                                    <td style="width: 10%;">Situación académica</td>
+                                                                    
+                                                                    <td style="width: 10%;">Tipo Alumno</td>
+                                                                    <td style="width: 10%;">Estatus</td>
+                                                                    <td style="width: 10%;">CCT</td>
+
+                                                                    <td style="width: 10%;">Escuela</td>
+                                                                     <td style="width: 10%;">Municipio</td>
+                                                                     
+                                                                 
+                                                                    
+                                                                    <td style="width: 10%;">Fecha registro</td>
+                                                                    
+                                                                    <td style="width: 10%;">Beca</td>
+                                                                    <td style="width: 10%;">Fecha ingreso DUAL</td>
+
+                                                                    <td style="width: 10%;">Fecha Reingreso</td>
+                                                                      <td style="width: 10%;">Fecha Egreso</td>
+                                                                      <td style="width: 10%;">Fecha cambio estatus</td>
+                                                                      <td style="width: 10%;">Estatus General</td>
 
 
                                                                 </tr>
@@ -1458,12 +1550,40 @@
                                                                     <s:if test="STATUS!=1 && STATUS!=10">
 
                                                                         <tr style=" background: #efeaf0; font-size: 8px;">
-                                                                            <td style="width: 10%;"><s:property value="CURP"/></td>
-                                                                            <td style="width: 50%;"><s:property value="NOMBRE_COMPLETO"/></td>
-                                                                            <td style="width: 10%;"><s:property value="CCT"/></td>
-                                                                            <td style="width: 10%;"><s:property value="SEXO" /></td>
+                                                                            <td style="width: 10%;"><s:property value="MATRICULA"/></td>
+                                                                        <td style="width: 50%;"><s:property value="CURP"/></td>
+                                                                        <td style="width: 10%;"><s:property value="NOMBRE_COMPLETO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="CVE_CAARRERA" /></td>
 
-                                                                            <td style="width: 20%;" align="center"><s:property value="CLAVECARRERA" /></td>
+                                                                        <td style="width: 10%;" align="center"><s:property value="NOMBRE_CARRERA" /></td>
+                                                                        <td style="width: 10%;"><s:property value="SEXO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECNAC"/></td>
+                                                                        <td style="width: 10%;"><s:property value="DOMICILIOA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="COLONIA" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="TELEFONO" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CP" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CORREO" /></td>
+                                                                        
+                                                                        <td style="width: 10%;"><s:property value="GRADO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="PROMEDIOGRAL"/></td>
+                                                                        <td style="width: 10%;"><s:property value="SITUACIONACA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="TIPO_ALUMNO" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="STATUS" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CCT"/></td>
+                                                                        <td style="width: 10%;"><s:property value="NOMESC"/></td>
+                                                                        <td style="width: 10%;"><s:property value="MUNICIPIO"/></td>
+                                                                       
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="FECHA_REG" /></td>
+                                                                        <td style="width: 10%;"><s:property value="BECA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_INGRESO_DUAL"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_REINGRESO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_EGRESO" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="FECHA_CAMBIO_ESTATUS" /></td>
+                                                                        <td style="width: 10%;"><s:property value="ESTATUS_GENERAL"/></td>
 
                                                                         </tr>
 
@@ -1485,14 +1605,14 @@
 
                                                         <center>
 
-                                                            <input  align="top" type="image" id="btnExport2"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+                                                            <input  align="top" type="image" id="btnExport22"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
 
 
                                                         </center>
 
                                                         <script>
-                                                            $("#btnExport2").click(function (e) {
-                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData2').html()));
+                                                            $("#btnExport22").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData22').html()));
                                                                 e.preventDefault();
                                                             });
                                                         </script>
@@ -1521,7 +1641,7 @@
                                             <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
 
 
-                                                <div id="dvData2">  
+                                                <div id="dvData23">  
 
 
                                                     <table id="customers" style="text-align: justify;">
@@ -1533,17 +1653,48 @@
                                                             <table id="customers" style=" font-size: 12px;">
 
                                                                 <tr>
-                                                                    <td colspan="7" align="center" style="background: #ffc107; color: white;" >Alumnos Egresados</td>
+                                                                    <td colspan="28" align="center" style="background: #ffc107; color: white;" >Alumnos Egresados</td>
                                                                 </tr>
 
                                                                 <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999;">
+                                                                    <td style="width: 10%;">Matricula</td>
                                                                     <td style="width: 10%;">CURP</td>
+                                                                    
                                                                     <td style="width: 50%;">Nombre</td>
+                                                                    <td style="width: 10%;">Clave carrera</td>
+                                                                    <td style="width: 10%;">Nombre carrera</td>
+
+                                                                    <td style="width: 10%;">Género</td>
+                                                                     <td style="width: 10%;">Fecha nacimineto</td>
+                                                                    <td style="width: 10%;">Domicilio</td>
+                                                                    
+                                                                    <td style="width: 10%;">Colonia</td>
+                                                                    <td style="width: 10%;">Teléfono</td>  
+                                                                    <td style="width: 10%;">CP</td>
+                                                                    <td style="width: 10%;">Correo</td>
+
+                                                                    <td style="width: 10%;">Grado</td>
+                                                                     <td style="width: 10%;">Promedio</td>
+                                                                    <td style="width: 10%;">Situación académica</td>
+                                                                    
+                                                                    <td style="width: 10%;">Tipo Alumno</td>
+                                                                    <td style="width: 10%;">Estatus</td>
                                                                     <td style="width: 10%;">CCT</td>
-                                                                    <td style="width: 10%;">Sexo</td>
 
-                                                                    <td style="width: 20%;">Clave Carrera</td>
+                                                                    <td style="width: 10%;">Escuela</td>
+                                                                     <td style="width: 10%;">Municipio</td>
+                                                                     
+                                                                 
+                                                                    
+                                                                    <td style="width: 10%;">Fecha registro</td>
+                                                                    
+                                                                    <td style="width: 10%;">Beca</td>
+                                                                    <td style="width: 10%;">Fecha ingreso DUAL</td>
 
+                                                                    <td style="width: 10%;">Fecha Reingreso</td>
+                                                                      <td style="width: 10%;">Fecha Egreso</td>
+                                                                      <td style="width: 10%;">Fecha cambio estatus</td>
+                                                                      <td style="width: 10%;">Estatus General</td>
 
                                                                 </tr>
 
@@ -1552,12 +1703,40 @@
                                                                     <s:if test="STATUS == 10">
 
                                                                         <tr style=" background: #efeaf0; font-size: 8px;">
-                                                                            <td style="width: 10%;"><s:property value="CURP"/></td>
-                                                                            <td style="width: 50%;"><s:property value="NOMBRE_COMPLETO"/></td>
-                                                                            <td style="width: 10%;"><s:property value="CCT"/></td>
-                                                                            <td style="width: 10%;"><s:property value="SEXO" /></td>
+                                                                            <td style="width: 10%;"><s:property value="MATRICULA"/></td>
+                                                                        <td style="width: 50%;"><s:property value="CURP"/></td>
+                                                                        <td style="width: 10%;"><s:property value="NOMBRE_COMPLETO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="CVE_CAARRERA" /></td>
 
-                                                                            <td style="width: 20%;" align="center"><s:property value="CLAVECARRERA" /></td>
+                                                                        <td style="width: 10%;" align="center"><s:property value="NOMBRE_CARRERA" /></td>
+                                                                        <td style="width: 10%;"><s:property value="SEXO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECNAC"/></td>
+                                                                        <td style="width: 10%;"><s:property value="DOMICILIOA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="COLONIA" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="TELEFONO" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CP" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CORREO" /></td>
+                                                                        
+                                                                        <td style="width: 10%;"><s:property value="GRADO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="PROMEDIOGRAL"/></td>
+                                                                        <td style="width: 10%;"><s:property value="SITUACIONACA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="TIPO_ALUMNO" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="STATUS" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CCT"/></td>
+                                                                        <td style="width: 10%;"><s:property value="NOMESC"/></td>
+                                                                        <td style="width: 10%;"><s:property value="MUNICIPIO"/></td>
+                                                                       
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="FECHA_REG" /></td>
+                                                                        <td style="width: 10%;"><s:property value="BECA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_INGRESO_DUAL"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_REINGRESO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_EGRESO" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="FECHA_CAMBIO_ESTATUS" /></td>
+                                                                        <td style="width: 10%;"><s:property value="ESTATUS_GENERAL"/></td>
 
                                                                         </tr>
 
@@ -1579,14 +1758,14 @@
 
                                                         <center>
 
-                                                            <input  align="top" type="image" id="btnExport2"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+                                                            <input  align="top" type="image" id="btnExport23"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
 
 
                                                         </center>
 
                                                         <script>
-                                                            $("#btnExport2").click(function (e) {
-                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData2').html()));
+                                                            $("#btnExport23").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData23').html()));
                                                                 e.preventDefault();
                                                             });
                                                         </script>
@@ -1612,7 +1791,7 @@
                                             <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
 
 
-                                                <div id="dvData2">  
+                                                <div id="dvData24">  
 
 
                                                     <table id="customers" style="text-align: justify;">
@@ -1624,16 +1803,48 @@
                                                             <table id="customers" style=" font-size: 12px;">
 
                                                                 <tr>
-                                                                    <td colspan="7" align="center" style="background: #008080; color: white;" >Alumnos con beca</td>
+                                                                    <td colspan="28" align="center" style="background: #008080; color: white;" >Alumnos con beca</td>
                                                                 </tr>
 
                                                                 <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999;">
+                                                                   <td style="width: 10%;">Matricula</td>
                                                                     <td style="width: 10%;">CURP</td>
+                                                                    
                                                                     <td style="width: 50%;">Nombre</td>
-                                                                    <td style="width: 10%;">CCT</td>
-                                                                    <td style="width: 10%;">Sexo</td>
+                                                                    <td style="width: 10%;">Clave carrera</td>
+                                                                    <td style="width: 10%;">Nombre carrera</td>
 
-                                                                    <td style="width: 20%;">Clave Carrera</td>
+                                                                    <td style="width: 10%;">Género</td>
+                                                                     <td style="width: 10%;">Fecha nacimineto</td>
+                                                                    <td style="width: 10%;">Domicilio</td>
+                                                                    
+                                                                    <td style="width: 10%;">Colonia</td>
+                                                                    <td style="width: 10%;">Teléfono</td>  
+                                                                    <td style="width: 10%;">CP</td>
+                                                                    <td style="width: 10%;">Correo</td>
+
+                                                                    <td style="width: 10%;">Grado</td>
+                                                                     <td style="width: 10%;">Promedio</td>
+                                                                    <td style="width: 10%;">Situación académica</td>
+                                                                    
+                                                                    <td style="width: 10%;">Tipo Alumno</td>
+                                                                    <td style="width: 10%;">Estatus</td>
+                                                                    <td style="width: 10%;">CCT</td>
+
+                                                                    <td style="width: 10%;">Escuela</td>
+                                                                     <td style="width: 10%;">Municipio</td>
+                                                                     
+                                                                 
+                                                                    
+                                                                    <td style="width: 10%;">Fecha registro</td>
+                                                                    
+                                                                    <td style="width: 10%;">Beca</td>
+                                                                    <td style="width: 10%;">Fecha ingreso DUAL</td>
+
+                                                                    <td style="width: 10%;">Fecha Reingreso</td>
+                                                                      <td style="width: 10%;">Fecha Egreso</td>
+                                                                      <td style="width: 10%;">Fecha cambio estatus</td>
+                                                                      <td style="width: 10%;">Estatus General</td>
 
 
                                                                 </tr>
@@ -1643,12 +1854,40 @@
                                                                     <s:if test="BECA=='si' && STATUS==1 ">
 
                                                                         <tr style=" background: #efeaf0; font-size: 8px;">
-                                                                            <td style="width: 10%;"><s:property value="CURP"/></td>
-                                                                            <td style="width: 50%;"><s:property value="NOMBRE_COMPLETO"/></td>
-                                                                            <td style="width: 10%;"><s:property value="CCT"/></td>
-                                                                            <td style="width: 10%;"><s:property value="SEXO" /></td>
+                                                                             <td style="width: 10%;"><s:property value="MATRICULA"/></td>
+                                                                        <td style="width: 50%;"><s:property value="CURP"/></td>
+                                                                        <td style="width: 10%;"><s:property value="NOMBRE_COMPLETO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="CVE_CAARRERA" /></td>
 
-                                                                            <td style="width: 20%;" align="center"><s:property value="CLAVECARRERA" /></td>
+                                                                        <td style="width: 10%;" align="center"><s:property value="NOMBRE_CARRERA" /></td>
+                                                                        <td style="width: 10%;"><s:property value="SEXO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECNAC"/></td>
+                                                                        <td style="width: 10%;"><s:property value="DOMICILIOA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="COLONIA" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="TELEFONO" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CP" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CORREO" /></td>
+                                                                        
+                                                                        <td style="width: 10%;"><s:property value="GRADO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="PROMEDIOGRAL"/></td>
+                                                                        <td style="width: 10%;"><s:property value="SITUACIONACA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="TIPO_ALUMNO" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="STATUS" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CCT"/></td>
+                                                                        <td style="width: 10%;"><s:property value="NOMESC"/></td>
+                                                                        <td style="width: 10%;"><s:property value="MUNICIPIO"/></td>
+                                                                       
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="FECHA_REG" /></td>
+                                                                        <td style="width: 10%;"><s:property value="BECA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_INGRESO_DUAL"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_REINGRESO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_EGRESO" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="FECHA_CAMBIO_ESTATUS" /></td>
+                                                                        <td style="width: 10%;"><s:property value="ESTATUS_GENERAL"/></td>
 
                                                                         </tr>
 
@@ -1670,14 +1909,14 @@
 
                                                         <center>
 
-                                                            <input  align="top" type="image" id="btnExport2"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+                                                            <input  align="top" type="image" id="btnExport24"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
 
 
                                                         </center>
 
                                                         <script>
-                                                            $("#btnExport2").click(function (e) {
-                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData2').html()));
+                                                            $("#btnExport24").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData24').html()));
                                                                 e.preventDefault();
                                                             });
                                                         </script>
@@ -1713,10 +1952,10 @@
                                         <div class="popup5-contenedor">
                                             <h2 style="color: gray;" >Total de alumnos</h2>
 
-                                            <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
+                                            <div style="min-height:350px; max-height: 500px; overflow: scroll;" >
 
 
-                                                <div id="dvData2">  
+                                                <div id="dvData20">  
 
 
                                                     <table id="customers" style="text-align: justify;">
@@ -1728,16 +1967,49 @@
                                                             <table id="customers" style=" font-size: 12px;">
 
                                                                 <tr>
-                                                                    <td colspan="7" align="center" style="background: grey; color: white;" >Total de Alumnos DUAL</td>
+                                                                    <td colspan="28" align="center" style="background: grey; color: white;" >Total de Alumnos DUAL</td>
                                                                 </tr>
 
                                                                 <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999;">
+                                                                    
+                                                                     <td style="width: 10%;">Matricula</td>
                                                                     <td style="width: 10%;">CURP</td>
+                                                                    
                                                                     <td style="width: 50%;">Nombre</td>
-                                                                    <td style="width: 10%;">CCT</td>
-                                                                    <td style="width: 10%;">Sexo</td>
+                                                                    <td style="width: 10%;">Clave carrera</td>
+                                                                    <td style="width: 10%;">Nombre carrera</td>
 
-                                                                    <td style="width: 20%;">Clave Carrera</td>
+                                                                    <td style="width: 10%;">Género</td>
+                                                                     <td style="width: 10%;">Fecha nacimineto</td>
+                                                                    <td style="width: 10%;">Domicilio</td>
+                                                                    
+                                                                    <td style="width: 10%;">Colonia</td>
+                                                                    <td style="width: 10%;">Teléfono</td>  
+                                                                    <td style="width: 10%;">CP</td>
+                                                                    <td style="width: 10%;">Correo</td>
+
+                                                                    <td style="width: 10%;">Grado</td>
+                                                                     <td style="width: 10%;">Promedio</td>
+                                                                    <td style="width: 10%;">Situación académica</td>
+                                                                    
+                                                                    <td style="width: 10%;">Tipo Alumno</td>
+                                                                    <td style="width: 10%;">Estatus</td>
+                                                                    <td style="width: 10%;">CCT</td>
+
+                                                                    <td style="width: 10%;">Escuela</td>
+                                                                     <td style="width: 10%;">Municipio</td>
+                                                                     
+                                                                 
+                                                                    
+                                                                    <td style="width: 10%;">Fecha registro</td>
+                                                                    
+                                                                    <td style="width: 10%;">Beca</td>
+                                                                    <td style="width: 10%;">Fecha ingreso DUAL</td>
+
+                                                                    <td style="width: 10%;">Fecha Reingreso</td>
+                                                                      <td style="width: 10%;">Fecha Egreso</td>
+                                                                      <td style="width: 10%;">Fecha cambio estatus</td>
+                                                                      <td style="width: 10%;">Estatus General</td>
 
 
                                                                 </tr>
@@ -1747,12 +2019,42 @@
 
 
                                                                     <tr style=" background: #efeaf0; font-size: 8px;">
-                                                                        <td style="width: 10%;"><s:property value="CURP"/></td>
-                                                                        <td style="width: 50%;"><s:property value="NOMBRE_COMPLETO"/></td>
-                                                                        <td style="width: 10%;"><s:property value="CCT"/></td>
-                                                                        <td style="width: 10%;"><s:property value="SEXO" /></td>
+                                                                       
+                                                                        <td style="width: 10%;"><s:property value="MATRICULA"/></td>
+                                                                        <td style="width: 50%;"><s:property value="CURP"/></td>
+                                                                        <td style="width: 10%;"><s:property value="NOMBRE_COMPLETO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="CVE_CAARRERA" /></td>
 
-                                                                        <td style="width: 20%;" align="center"><s:property value="CLAVECARRERA" /></td>
+                                                                        <td style="width: 10%;" align="center"><s:property value="NOMBRE_CARRERA" /></td>
+                                                                        <td style="width: 10%;"><s:property value="SEXO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECNAC"/></td>
+                                                                        <td style="width: 10%;"><s:property value="DOMICILIOA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="COLONIA" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="TELEFONO" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CP" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CORREO" /></td>
+                                                                        
+                                                                        <td style="width: 10%;"><s:property value="GRADO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="PROMEDIOGRAL"/></td>
+                                                                        <td style="width: 10%;"><s:property value="SITUACIONACA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="TIPO_ALUMNO" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="STATUS" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CCT"/></td>
+                                                                        <td style="width: 10%;"><s:property value="NOMESC"/></td>
+                                                                        <td style="width: 10%;"><s:property value="MUNICIPIO"/></td>
+                                                                       
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="FECHA_REG" /></td>
+                                                                        <td style="width: 10%;"><s:property value="BECA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_INGRESO_DUAL"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_REINGRESO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_EGRESO" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="FECHA_CAMBIO_ESTATUS" /></td>
+                                                                        <td style="width: 10%;"><s:property value="ESTATUS_GENERAL"/></td>
+                                                                      
 
                                                                     </tr>
 
@@ -1770,18 +2072,18 @@
 
                                                     </table>
 
-                                                    <s:if test="ListaAlumnosDashboardU.size()>0">
+                                                    <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
 
                                                         <center>
 
-                                                            <input  align="top" type="image" id="btnExport2"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+                                                            <input  align="top" type="image" id="btnExport20"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
 
 
                                                         </center>
 
                                                         <script>
-                                                            $("#btnExport2").click(function (e) {
-                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData2').html()));
+                                                            $("#btnExport20").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData20').html()));
                                                                 e.preventDefault();
                                                             });
                                                         </script>
@@ -1805,7 +2107,7 @@
                                             <div style="min-height:350px; max-height: 500px; overflow-y: scroll;" >
 
 
-                                                <div id="dvData2">  
+                                                <div id="dvData25">  
 
 
                                                     <table id="customers" style="text-align: justify;">
@@ -1817,16 +2119,48 @@
                                                             <table id="customers" style=" font-size: 12px;">
 
                                                                 <tr>
-                                                                    <td colspan="7" align="center" style="background: green; color: white;" >Total de Alumnos Activos</td>
+                                                                    <td colspan="28" align="center" style="background: green; color: white;" >Total de Alumnos Activos</td>
                                                                 </tr>
 
                                                                 <tr style="color: #333; border-bottom: 2px solid  #999; pointer-events: none; border-top: 2px solid #999;">
+                                                                    <td style="width: 10%;">Matricula</td>
                                                                     <td style="width: 10%;">CURP</td>
+                                                                    
                                                                     <td style="width: 50%;">Nombre</td>
-                                                                    <td style="width: 10%;">CCT</td>
-                                                                    <td style="width: 10%;">Sexo</td>
+                                                                    <td style="width: 10%;">Clave carrera</td>
+                                                                    <td style="width: 10%;">Nombre carrera</td>
 
-                                                                    <td style="width: 20%;">Clave Carrera</td>
+                                                                    <td style="width: 10%;">Género</td>
+                                                                     <td style="width: 10%;">Fecha nacimineto</td>
+                                                                    <td style="width: 10%;">Domicilio</td>
+                                                                    
+                                                                    <td style="width: 10%;">Colonia</td>
+                                                                    <td style="width: 10%;">Teléfono</td>  
+                                                                    <td style="width: 10%;">CP</td>
+                                                                    <td style="width: 10%;">Correo</td>
+
+                                                                    <td style="width: 10%;">Grado</td>
+                                                                     <td style="width: 10%;">Promedio</td>
+                                                                    <td style="width: 10%;">Situación académica</td>
+                                                                    
+                                                                    <td style="width: 10%;">Tipo Alumno</td>
+                                                                    <td style="width: 10%;">Estatus</td>
+                                                                    <td style="width: 10%;">CCT</td>
+
+                                                                    <td style="width: 10%;">Escuela</td>
+                                                                     <td style="width: 10%;">Municipio</td>
+                                                                     
+                                                                 
+                                                                    
+                                                                    <td style="width: 10%;">Fecha registro</td>
+                                                                    
+                                                                    <td style="width: 10%;">Beca</td>
+                                                                    <td style="width: 10%;">Fecha ingreso DUAL</td>
+
+                                                                    <td style="width: 10%;">Fecha Reingreso</td>
+                                                                      <td style="width: 10%;">Fecha Egreso</td>
+                                                                      <td style="width: 10%;">Fecha cambio estatus</td>
+                                                                      <td style="width: 10%;">Estatus General</td>
 
 
                                                                 </tr>
@@ -1836,13 +2170,40 @@
                                                                     <s:if test="STATUS==1">
 
                                                                         <tr style=" background: #efeaf0; font-size: 8px;">
-                                                                            <td style="width: 10%;"><s:property value="CURP"/></td>
-                                                                            <td style="width: 50%;"><s:property value="NOMBRE_COMPLETO"/></td>
-                                                                            <td style="width: 10%;"><s:property value="CCT"/></td>
-                                                                            <td style="width: 10%;"><s:property value="SEXO" /></td>
+                                                                           <td style="width: 10%;"><s:property value="MATRICULA"/></td>
+                                                                        <td style="width: 50%;"><s:property value="CURP"/></td>
+                                                                        <td style="width: 10%;"><s:property value="NOMBRE_COMPLETO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="CVE_CAARRERA" /></td>
 
-                                                                            <td style="width: 20%;" align="center"><s:property value="CLAVECARRERA" /></td>
+                                                                        <td style="width: 10%;" align="center"><s:property value="NOMBRE_CARRERA" /></td>
+                                                                        <td style="width: 10%;"><s:property value="SEXO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECNAC"/></td>
+                                                                        <td style="width: 10%;"><s:property value="DOMICILIOA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="COLONIA" /></td>
 
+                                                                        <td style="width: 10%;" align="center"><s:property value="TELEFONO" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CP" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CORREO" /></td>
+                                                                        
+                                                                        <td style="width: 10%;"><s:property value="GRADO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="PROMEDIOGRAL"/></td>
+                                                                        <td style="width: 10%;"><s:property value="SITUACIONACA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="TIPO_ALUMNO" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="STATUS" /></td>
+                                                                         <td style="width: 10%;"><s:property value="CCT"/></td>
+                                                                        <td style="width: 10%;"><s:property value="NOMESC"/></td>
+                                                                        <td style="width: 10%;"><s:property value="MUNICIPIO"/></td>
+                                                                       
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="FECHA_REG" /></td>
+                                                                        <td style="width: 10%;"><s:property value="BECA"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_INGRESO_DUAL"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_REINGRESO"/></td>
+                                                                        <td style="width: 10%;"><s:property value="FECHA_EGRESO" /></td>
+
+                                                                        <td style="width: 10%;" align="center"><s:property value="FECHA_CAMBIO_ESTATUS" /></td>
+                                                                        <td style="width: 10%;"><s:property value="ESTATUS_GENERAL"/></td>
                                                                         </tr>
 
                                                                     </s:if>
@@ -1859,18 +2220,18 @@
 
                                                     </table>
 
-                                                    <s:if test="ListaAlumnosDashboardU.size()>0">
+                                                    <s:if test="ListaAlumnosDashboardUGeneral.size()>0">
 
                                                         <center>
 
-                                                            <input  align="top" type="image" id="btnExport2"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
+                                                            <input  align="top" type="image" id="btnExport25"  src="images/excel.png" style="width: 80px; margin-top: 20px;"  />
 
 
                                                         </center>
 
                                                         <script>
-                                                            $("#btnExport2").click(function (e) {
-                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData2').html()));
+                                                            $("#btnExport25").click(function (e) {
+                                                                window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData25').html()));
                                                                 e.preventDefault();
                                                             });
                                                         </script>

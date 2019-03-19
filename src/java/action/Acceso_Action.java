@@ -189,13 +189,13 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                             egresados = egresados + 1;
                         }
 
-                        if (obj.getFECHA_REG() != null) {
+                   /*     if (obj.getFECHA_REG() != null) {
                             fechaReg = format.parse(obj.getFECHA_REG());
                             if (fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)) {
 
                                 nuevos = nuevos + 1;
                             }
-                        }
+                        }*/
 
                         if (obj.getTIPO_ALUMNO().equals("2")) {
 
@@ -363,7 +363,8 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                                 ListaTipoAlumno = con.ConsultaTipoAlumno();
                                 ListaAlumnosBeca = (ArrayList<DatosBean>) con.listaAlumnosBeca(datos);
 
-                                Constantes.enviaMensajeConsola("REGRESO DE CONSULTAS");
+                               
+                    
 
                                 return "SUCCESS2";
 
@@ -532,13 +533,13 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                             egresados = egresados + 1;
                         }
 
-                        if (obj.getFECHA_REG() != null) {
+                      /*  if (obj.getFECHA_REG() != null) {
                             fechaReg = format.parse(obj.getFECHA_REG());
                             if (fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)) {
 
                                 nuevos = nuevos + 1;
                             }
-                        }
+                        }*/
 
                         if (obj.getTIPO_ALUMNO().equals("2")) {
 
@@ -756,13 +757,13 @@ public class Acceso_Action extends ActionSupport implements SessionAware {
                             egresados = egresados + 1;
                         }
 
-                        if (obj.getFECHA_REG() != null) {
+                      /*  if (obj.getFECHA_REG() != null) {
                             fechaReg = format.parse(obj.getFECHA_REG());
                             if (fechaReg.after(fechainicio) && fechaReg.before(fechatermino) || fechaReg.equals(fechainicio) || fechaReg.equals(fechatermino)) {
 
                                 nuevos = nuevos + 1;
                             }
-                        }
+                        }*/
 
                         if (obj.getTIPO_ALUMNO().equals("2")) {
 

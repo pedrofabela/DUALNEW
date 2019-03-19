@@ -131,6 +131,41 @@ public class DatosBean {
     private String ALU_NUEVOS;
     private String AVANCE_META;
     private String FALTANTES;
+    
+    
+    
+    
+     private String FECHA_REINGRESO;
+      private String FECHA_EGRESO;
+       private String FECHA_CAMBIO_ESTATUS;
+
+    public String getFECHA_REINGRESO() {
+        return FECHA_REINGRESO;
+    }
+
+    public void setFECHA_REINGRESO(String FECHA_REINGRESO) {
+        this.FECHA_REINGRESO = FECHA_REINGRESO;
+    }
+
+    public String getFECHA_EGRESO() {
+        return FECHA_EGRESO;
+    }
+
+    public void setFECHA_EGRESO(String FECHA_EGRESO) {
+        this.FECHA_EGRESO = FECHA_EGRESO;
+    }
+
+    public String getFECHA_CAMBIO_ESTATUS() {
+        return FECHA_CAMBIO_ESTATUS;
+    }
+
+    public void setFECHA_CAMBIO_ESTATUS(String FECHA_CAMBIO_ESTATUS) {
+        this.FECHA_CAMBIO_ESTATUS = FECHA_CAMBIO_ESTATUS;
+    }
+    
+    
+       
+       
 
     public String getCVE_INSTITUCIONAL() {
         return CVE_INSTITUCIONAL;
