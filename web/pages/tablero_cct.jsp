@@ -1019,7 +1019,7 @@
                                                             <div class="form-group col-lg-6" >
 
 
-                                                                <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Avance de Metas Global o Individual </div>
+                                                                <div style="width:100%; text-align: center; background: #343a40; color: white; height: 35px; margin-top: 20px; border-radius: 8px 8px 0px 0px;  padding: 5px; ">Avance de Metas Globales ó Individuales </div>
 
                                                                
                                                                  <div id="chart_div2" style="margin: auto; width: 100%; height: 280px; margin-bottom: 20px;" ></div>
